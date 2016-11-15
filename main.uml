@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>sample</OriginalElement>
+  <nodes>
+    <node x="265.0" y="1091.0">sample.CustomerList</node>
+    <node x="609.375" y="1371.0">sample.Main</node>
+    <node x="1621.375" y="1091.5">sample.PartyBus</node>
+    <node x="1069.375" y="1114.0">sample.ClasicBus</node>
+    <node x="555.375" y="1059.0">sample.Trip</node>
+    <node x="1138.875" y="869.5">sample.Bus</node>
+    <node x="0.0" y="1489.0">sample.Controller</node>
+    <node x="409.875" y="0.0">sample.MyDate</node>
+    <node x="1443.375" y="1114.0">sample.MiniBus</node>
+    <node x="215.22458333333338" y="346.0">sample.Person</node>
+    <node x="608.375" y="1270.0">sample.System</node>
+    <node x="611.75" y="892.0">sample.Destination</node>
+    <node x="1254.375" y="1091.5">sample.LuxuryBus</node>
+    <node x="332.75" y="836.0">sample.Customer</node>
+    <node x="0.0" y="580.0">sample.Chauffeur</node>
+    <node x="310.0" y="635.0">sample.Passenger</node>
+    <node x="842.375" y="1091.0">sample.BusList</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="sample.System" target="sample.Trip">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="sample.Customer" target="sample.Passenger">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="sample.Customer" target="sample.Person">
+      <point x="64.75" y="-81.5" />
+      <point x="527.0" y="811.0" />
+      <point x="516.5" y="811.0" />
+      <point x="516.5" y="555.0" />
+      <point x="414.39125000000007" y="555.0" />
+      <point x="79.66666666666669" y="92.0" />
+    </edge>
+    <edge source="sample.CustomerList" target="sample.Customer">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="sample.Chauffeur" target="sample.Person">
+      <point x="0.0" y="-103.0" />
+      <point x="145.0" y="555.0" />
+      <point x="255.05791666666664" y="555.0" />
+      <point x="-79.66666666666669" y="92.0" />
+    </edge>
+    <edge source="sample.Person" target="sample.MyDate">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="sample.PartyBus" target="sample.Bus">
+      <point x="0.0" y="-48.0" />
+      <point x="1699.375" y="1019.0" />
+      <point x="1334.125" y="1019.0" />
+      <point x="88.75" y="48.0" />
+    </edge>
+    <edge source="sample.MiniBus" target="sample.Bus">
+      <point x="0.0" y="-25.5" />
+      <point x="1522.375" y="1029.0" />
+      <point x="1298.625" y="1029.0" />
+      <point x="53.25" y="48.0" />
+    </edge>
+    <edge source="sample.Trip" target="sample.Destination">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="sample.LuxuryBus" target="sample.Bus">
+      <point x="0.0" y="-48.0" />
+      <point x="1338.875" y="1039.0" />
+      <point x="1263.125" y="1039.0" />
+      <point x="17.75" y="48.0" />
+    </edge>
+    <edge source="sample.Trip" target="sample.Customer">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="sample.Trip" target="sample.MyDate">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="sample.Passenger" target="sample.Person">
+      <point x="0.0" y="-48.0" />
+      <point x="408.0" y="555.0" />
+      <point x="334.7245833333334" y="555.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+    <edge source="sample.BusList" target="sample.Bus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="sample.Trip" target="sample.Bus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="sample.ClasicBus" target="sample.Bus">
+      <point x="0.0" y="-25.5" />
+      <point x="1151.875" y="1039.0" />
+      <point x="1227.625" y="1039.0" />
+      <point x="-17.75" y="48.0" />
+    </edge>
+    <edge source="sample.Main" target="sample.System">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.36866059817945385" x="889.0" y="759.0" />
+  <SelectedNodes>
+    <node>sample.BusList</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

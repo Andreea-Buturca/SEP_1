@@ -34,4 +34,5 @@ public class Chauffeur extends Person {
         this.workedHours = workedHours;
         this.isVikar = isVikar;
     }
+
 }

@@ -11,6 +11,9 @@ public class Customer extends Person {
     private String responsiblePerson;
     private ArrayList<Passenger> passengers = new ArrayList<>();
 
+    // add num of registered passengers to calculate how many passengers and trips he had
+    private int points;
+
 
     public Customer(String name, String adress, String email, String phone, boolean isCompany, String responsiblePerson) {
         super(name, adress, email, phone);
@@ -26,4 +29,6 @@ public class Customer extends Person {
     public void addPassenger(Passenger passenger) {
         passengers.add(passenger);
     }
+
+    public void addPointToCustomer() { points = points++; }
 }

@@ -23,7 +23,15 @@ public class Customer extends Person {
         this.isCompany = isCompany;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     public void addPassenger(Passenger passenger) {
         passengers.add(passenger);
+    }
+    public boolean checkIfFrequenntCustomer(Customer customer){
+        return true;
     }
 }

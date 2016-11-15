@@ -14,5 +14,9 @@ public class Trip {
     private ArrayList<Destination> stops;
     private MyDate timeStart;
     private MyDate timeEnd;
+    private ArrayList<String> note;
 
+    public void addNote(String note){
+
+    }
 }

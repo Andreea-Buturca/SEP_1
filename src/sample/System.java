@@ -10,3 +10,4 @@ public class System {
     ArrayList<Trip> trips = new ArrayList<>();
 
 }
+

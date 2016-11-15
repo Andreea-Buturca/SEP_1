@@ -1,6 +1,5 @@
 package sample;
 
-import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.

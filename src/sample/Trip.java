@@ -17,6 +17,6 @@ public class Trip {
     private ArrayList<String> note;
 
     public void addNote(String note){
-
+        this.note.add(note);
     }
 }

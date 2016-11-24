@@ -1,41 +1,45 @@
 package sample;
 
 
-public class MyDate {
+public class MyDate  {
     private int hour;
     private int minute;
     private int day;
     private int month;
     private int year;
 
-    public MyDate(int hour, int minute, int day, int month, int year) {
+    public MyDate(int hour, int minute, int day, int month, int year) throws DateException {
         set(hour, minute, day, month, year);
     }
 
-    public void set(int hour, int minute, int day, int month, int year) {
+    public void set(int hour, int minute, int day, int month, int year) throws DateException {
 
         //@TODO make better set with hours and minutes, exceptions if not valid
 
+        if (hour < 0 && hour>24) {
+            throw new DateException("Wrong hour input...");
+        }else
         this.hour = hour;
+
+        if (minute < 0 && minute>59) {
+            throw new DateException("Wrong minute input...");
+        }else
         this.minute = minute;
 
 
         if (year < 0) {
-            year = -year;
-        }
-        this.year = year;
+            throw new DateException("Wrong year input...");
+        }else
+        this.year=year;
 
-        if (month < 1) {
-            month = 1;
-        }
-        if (month > 12) {
-            month = 12;
-        }
-        this.month = month;
+        if (month < 1 && month>12) {
+            throw new DateException("Wrong month input");
+        }else
+        this.month=month;
 
         if (day < 1) {
-            day = 1;
-        }
+            throw new DateException("Wrong day input");
+        }else
         this.day = day;
     }
 
@@ -88,7 +92,7 @@ public class MyDate {
         return d1 < d2;
     }
 
-    public MyDate copy() {
+    public MyDate copy() throws DateException {
         return new MyDate(hour, minute, day, month, year);
     }
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="1010.0">
+      <bottom>
+        <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
+          <BorderPane.margin>
+            <Insets right="10.0" />
+          </BorderPane.margin>
+        </Label>
+      </bottom>
+      <center>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+          <children>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="1010.0" text="VIA Bus" textAlignment="CENTER">
+              <font>
+                <Font size="20.0" />
+              </font>
+              <VBox.margin>
+                <Insets />
+              </VBox.margin>
+            </Label>
+            <Label alignment="CENTER" prefWidth="1010.0" text="Create Tour">
+              <VBox.margin>
+                <Insets bottom="10.0" />
+              </VBox.margin>
+            </Label>
+          </children>
+          <padding>
+            <Insets bottom="20.0" top="20.0" />
+          </padding>
+        </VBox>
+      </center>
+      <top>
+        <MenuBar>
+          <menus>
+            <Menu mnemonicParsing="false" text="Home" />
+            <Menu mnemonicParsing="false" text="Chaffeur List" />
+            <Menu mnemonicParsing="false" text="Bus List" />
+          </menus>
+        </MenuBar>
+      </top>
+    </BorderPane>
+  </children>
+</AnchorPane>

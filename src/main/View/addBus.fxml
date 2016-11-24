@@ -17,12 +17,12 @@
       </Label>
     </bottom>
     <center>
-      <BorderPane prefHeight="360.0" prefWidth="600.0">
+      <BorderPane prefHeight="485.0" prefWidth="1010.0">
         <padding>
           <Insets left="10.0" right="10.0" />
         </padding>
         <top>
-          <VBox minHeight="55.0" prefHeight="95.0" prefWidth="600.0">
+          <VBox minHeight="55.0" prefHeight="560.0" prefWidth="990.0">
             <children>
               <Label alignment="CENTER" prefHeight="50.0" prefWidth="1010.0" text="VIA Bus" textAlignment="CENTER">
                 <font>
@@ -37,6 +37,28 @@
                   <Insets bottom="10.0" fx:id="x2" />
                 </VBox.margin>
               </Label>
+              <BorderPane prefHeight="50.000099999997474" prefWidth="1010.0">
+                <left>
+                  <Label text="Registration Plate:" />
+                </left>
+                <padding>
+                  <Insets left="395.0" right="275.0" top="16.0" />
+                </padding>
+                <right>
+                  <TextField prefWidth="225.0" />
+                </right>
+              </BorderPane>
+              <BorderPane prefHeight="51.0" prefWidth="1010.0">
+                <left>
+                  <Label text="Number of Seats:" />
+                </left>
+                <padding>
+                  <Insets left="400.0" right="298.0" top="16.0" />
+                </padding>
+                <right>
+                  <TextField prefWidth="200.0" />
+                </right>
+              </BorderPane>
             </children>
             <padding>
               <Insets bottom="20.0" />

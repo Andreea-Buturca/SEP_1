@@ -7,223 +7,262 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller">
-  <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
-    <bottom>
-      <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
-        <BorderPane.margin>
-          <Insets right="10.0" fx:id="x1" />
-        </BorderPane.margin>
-      </Label>
-    </bottom>
-    <center>
-      <BorderPane prefHeight="360.0" prefWidth="600.0">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller">
+    <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
         <bottom>
-          <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="1010.0" text="Overview" wrapText="false">
-            <font>
-              <Font size="18.0" />
-            </font>
-          </Button>
+            <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
+                <BorderPane.margin>
+                    <Insets right="10.0"/>
+                </BorderPane.margin>
+            </Label>
         </bottom>
         <center>
-          <GridPane alignment="CENTER_RIGHT" hgap="10.0" prefHeight="230.0" prefWidth="392.0" vgap="25.0">
-            <children>
-              <Label alignment="CENTER_LEFT" text="Date, Time:" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
-              <Label alignment="CENTER_LEFT" text="Duration:" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-              <Label alignment="CENTER_LEFT" text="Destination:" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-              <Label alignment="CENTER_LEFT" text="Bus type:" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-              <Label alignment="CENTER_LEFT" text="Extra services:" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                <children>
-                  <GridPane hgap="5.0" prefHeight="48.0" prefWidth="499.0" vgap="5.0">
-                    <children>
-                      <TextField prefWidth="140.0" promptText="Date" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                      <TextField prefWidth="140.0" promptText="Time" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                      <Label alignment="CENTER_RIGHT" prefWidth="166.0" text="Start" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                      <Label alignment="CENTER_RIGHT" prefWidth="200.0" text="End" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                      <TextField prefWidth="140.0" promptText="Date" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                      <TextField prefWidth="140.0" promptText="Time" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                    </children>
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="75.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.0" minWidth="10.0" prefWidth="233.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.0" minWidth="10.0" prefWidth="181.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-                </children>
-              </HBox>
-              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                <children>
-                  <TextField alignment="CENTER_LEFT" prefWidth="200.0" />
-                  <ToggleButton mnemonicParsing="false" selected="false" text="Hours" />
-                </children>
-              </HBox>
-              <ComboBox editable="true" prefWidth="252.0" promptText="City, Country" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                <items>
-                  <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Item 1" />
-                    <String fx:value="Item 2" />
-                    <String fx:value="Item 3" />
-                  </FXCollections>
-                </items>
-              </ComboBox>
-              <ChoiceBox prefWidth="252.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-                <items>
-                  <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Item 1" />
-                    <String fx:value="Item 2" />
-                    <String fx:value="Item 3" />
-                  </FXCollections>
-                </items>
-              </ChoiceBox>
-              <Label text="Departure:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-              <ComboBox editable="true" prefHeight="21.0" prefWidth="252.0" promptText="City, Country" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-                <items>
-                  <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Item 1" />
-                    <String fx:value="Item 2" />
-                    <String fx:value="Item 3" />
-                  </FXCollections>
-                </items>
-              </ComboBox>
-              <Label alignment="CENTER_LEFT" text="Distance (km):" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-              <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="252.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-              <Label text="Price:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
-              <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="252.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
-              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                <children>
-                  <CheckBox mnemonicParsing="false" text="Food" />
-                  <CheckBox mnemonicParsing="false" text="Accomodation" />
-                  <CheckBox mnemonicParsing="false" text="Tickets" />
-                </children>
-              </HBox>
-            </children>
-            <columnConstraints>
-              <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="99.0" />
-              <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="499.0" />
-            </columnConstraints>
-            <padding>
-              <Insets bottom="10.0" fx:id="x2" />
-            </padding>
-            <rowConstraints>
-              <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="77.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="104.0" minHeight="0.0" prefHeight="29.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="104.0" minHeight="0.0" prefHeight="28.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="137.0" minHeight="0.0" prefHeight="29.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="137.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="68.0" minHeight="0.0" prefHeight="22.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="26.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <BorderPane.margin>
-              <Insets right="10.0" fx:id="x1" />
-            </BorderPane.margin>
-          </GridPane>
+            <BorderPane prefHeight="360.0" prefWidth="600.0">
+                <bottom>
+                    <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="1010.0" text="Overview">
+                        <font>
+                            <Font size="18.0"/>
+                        </font>
+                    </Button>
+                </bottom>
+                <center>
+                    <GridPane alignment="CENTER_RIGHT" hgap="10.0" prefHeight="230.0" prefWidth="392.0" vgap="25.0">
+                        <children>
+                            <Label text="Date, Time:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                                   GridPane.rowIndex="0"/>
+                            <Label text="Duration:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                                   GridPane.rowIndex="1"/>
+                            <Label text="Destination:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                                   GridPane.rowIndex="3"/>
+                            <Label text="Bus type:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                                   GridPane.rowIndex="5"/>
+                            <Label text="Extra services:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                                   GridPane.rowIndex="6"/>
+                            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                <children>
+                                    <GridPane hgap="5.0" prefHeight="48.0" prefWidth="499.0" vgap="5.0">
+                                        <children>
+                                            <TextField prefWidth="140.0" promptText="Date" GridPane.columnIndex="1"
+                                                       GridPane.rowIndex="0"/>
+                                            <TextField prefWidth="140.0" promptText="Time" GridPane.columnIndex="2"
+                                                       GridPane.rowIndex="0"/>
+                                            <Label alignment="CENTER_RIGHT" prefWidth="166.0" text="Start"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                            <Label alignment="CENTER_RIGHT" prefWidth="200.0" text="End"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                            <TextField prefWidth="140.0" promptText="Date" GridPane.columnIndex="1"
+                                                       GridPane.rowIndex="1"/>
+                                            <TextField prefWidth="140.0" promptText="Time" GridPane.columnIndex="2"
+                                                       GridPane.rowIndex="1"/>
+                                        </children>
+                                        <columnConstraints>
+                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0"
+                                                               prefWidth="75.0"/>
+                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.0" minWidth="10.0"
+                                                               prefWidth="233.0"/>
+                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.0" minWidth="10.0"
+                                                               prefWidth="181.0"/>
+                                        </columnConstraints>
+                                        <rowConstraints>
+                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        </rowConstraints>
+                                    </GridPane>
+                                </children>
+                            </HBox>
+                            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+                                  GridPane.rowIndex="1">
+                                <children>
+                                    <TextField prefWidth="200.0"/>
+                                    <ToggleButton mnemonicParsing="false" text="Hours"/>
+                                </children>
+                            </HBox>
+                            <ComboBox editable="true" prefWidth="252.0" promptText="City, Country"
+                                      GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Item 1"/>
+                                        <String fx:value="Item 2"/>
+                                        <String fx:value="Item 3"/>
+                                    </FXCollections>
+                                </items>
+                            </ComboBox>
+                            <ChoiceBox prefWidth="252.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT"
+                                       GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Item 1"/>
+                                        <String fx:value="Item 2"/>
+                                        <String fx:value="Item 3"/>
+                                    </FXCollections>
+                                </items>
+                            </ChoiceBox>
+                            <Label text="Departure:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                                   GridPane.rowIndex="2"/>
+                            <ComboBox editable="true" prefHeight="21.0" prefWidth="252.0" promptText="City, Country"
+                                      GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Item 1"/>
+                                        <String fx:value="Item 2"/>
+                                        <String fx:value="Item 3"/>
+                                    </FXCollections>
+                                </items>
+                            </ComboBox>
+                            <Label text="Distance (km):" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                                   GridPane.rowIndex="4"/>
+                            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                       minWidth="-Infinity" prefWidth="252.0" GridPane.columnIndex="1"
+                                       GridPane.halignment="RIGHT" GridPane.rowIndex="4"/>
+                            <Label text="Price:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                                   GridPane.rowIndex="7"/>
+                            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                       minWidth="-Infinity" prefWidth="252.0" GridPane.columnIndex="1"
+                                       GridPane.halignment="RIGHT" GridPane.rowIndex="7"/>
+                            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0"
+                                  GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                <children>
+                                    <CheckBox mnemonicParsing="false" text="Food"/>
+                                    <CheckBox mnemonicParsing="false" text="Accomodation"/>
+                                    <CheckBox mnemonicParsing="false" text="Tickets"/>
+                                </children>
+                            </HBox>
+                        </children>
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="99.0"/>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="499.0"/>
+                        </columnConstraints>
+                        <padding>
+                            <Insets bottom="10.0"/>
+                        </padding>
+                        <rowConstraints>
+                            <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="77.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="104.0" minHeight="0.0" prefHeight="29.0" vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="104.0" minHeight="0.0" prefHeight="28.0" vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="137.0" minHeight="0.0" prefHeight="29.0" vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="137.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="68.0" minHeight="0.0" prefHeight="22.0" vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="26.0" vgrow="SOMETIMES"/>
+                        </rowConstraints>
+                        <BorderPane.margin>
+                            <Insets right="10.0"/>
+                        </BorderPane.margin>
+                    </GridPane>
+                </center>
+                <left>
+                    <VBox prefHeight="430.0" prefWidth="200.0" spacing="10.0">
+                        <children>
+                            <GridPane>
+                                <children>
+                                    <Label text="Stop name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Label prefWidth="73.0" text="Time (min):" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+                                    <ComboBox editable="true" prefHeight="21.0" prefWidth="136.0"
+                                              promptText="Central Station" GridPane.columnIndex="1"
+                                              GridPane.rowIndex="0">
+                                        <items>
+                                            <FXCollections fx:factory="observableArrayList">
+                                                <String fx:value="Item 1"/>
+                                                <String fx:value="Item 2"/>
+                                                <String fx:value="Item 3"/>
+                                            </FXCollections>
+                                        </items>
+                                    </ComboBox>
+                                    <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                </children>
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0"
+                                                       prefWidth="63.0"/>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0"
+                                                       prefWidth="117.0"/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                </rowConstraints>
+                            </GridPane>
+                            <Button mnemonicParsing="false" prefWidth="200.0" text="Add stop"/>
+                            <ListView prefHeight="282.9998779296875" prefWidth="180.0"/>
+                            <Button mnemonicParsing="false" prefWidth="200.0" text="Remove Stop">
+                                <VBox.margin>
+                                    <Insets/>
+                                </VBox.margin>
+                            </Button>
+                        </children>
+                        <BorderPane.margin>
+                            <Insets bottom="10.0"/>
+                        </BorderPane.margin>
+                    </VBox>
+                </left>
+                <padding>
+                    <Insets left="10.0" right="10.0"/>
+                </padding>
+                <right>
+                    <VBox prefHeight="230.0" prefWidth="182.0">
+                        <children>
+                            <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="182.0" text="Chaffeur"
+                                   textAlignment="CENTER"/>
+                            <ListView prefHeight="357.9998779296875" prefWidth="182.0"/>
+                            <CheckBox mnemonicParsing="false" prefHeight="24.0" prefWidth="182.0"
+                                      text="Private Trip" VBox.vgrow="ALWAYS">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets top="10.0"/>
+                                </VBox.margin>
+                            </CheckBox>
+                        </children>
+                    </VBox>
+                </right>
+                <top>
+                    <VBox minHeight="55.0" prefHeight="95.0" prefWidth="600.0">
+                        <children>
+                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="1010.0" text="VIA Bus"
+                                   textAlignment="CENTER">
+                                <font>
+                                    <Font size="20.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets/>
+                                </VBox.margin>
+                            </Label>
+                            <Label alignment="CENTER" prefWidth="1010.0" text="Create Tour">
+                                <VBox.margin>
+                                    <Insets bottom="10.0"/>
+                                </VBox.margin>
+                            </Label>
+                        </children>
+                        <padding>
+                            <Insets bottom="20.0"/>
+                        </padding>
+                    </VBox>
+                </top>
+            </BorderPane>
         </center>
-        <left>
-          <VBox padding="$x1" prefHeight="430.0" prefWidth="200.0" spacing="10.0">
-            <children>
-              <GridPane>
-                <children>
-                  <Label text="Stop name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                  <Label prefWidth="73.0" text="Time (min):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                  <ComboBox editable="true" prefHeight="21.0" prefWidth="136.0" promptText="Central Station" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                    <items>
-                      <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Item 1" />
-                        <String fx:value="Item 2" />
-                        <String fx:value="Item 3" />
-                      </FXCollections>
-                    </items>
-                  </ComboBox>
-                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                </children>
-                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0" prefWidth="63.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="117.0" />
-                </columnConstraints>
-                <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                </rowConstraints>
-              </GridPane>
-              <Button mnemonicParsing="false" prefWidth="200.0" text="Add stop" />
-              <ListView prefHeight="282.9998779296875" prefWidth="180.0" />
-              <Button mnemonicParsing="false" prefWidth="200.0" text="Remove Stop">
-                <VBox.margin>
-                  <Insets />
-                </VBox.margin>
-              </Button>
-            </children>
-            <BorderPane.margin>
-              <Insets bottom="10.0" fx:id="x2" />
-            </BorderPane.margin>
-          </VBox>
-        </left>
-        <padding>
-          <Insets left="10.0" right="10.0" />
-        </padding>
-        <right>
-          <VBox prefHeight="230.0" prefWidth="182.0">
-            <children>
-              <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="182.0" text="Chaffeur" textAlignment="CENTER" VBox.margin="$x2" VBox.vgrow="ALWAYS" />
-              <ListView prefHeight="357.9998779296875" prefWidth="182.0" />
-              <CheckBox contentDisplay="LEFT" mnemonicParsing="false" prefHeight="24.0" prefWidth="182.0" text="Private Trip" VBox.vgrow="ALWAYS">
-                <font>
-                  <Font size="16.0" />
-                </font>
-                <VBox.margin>
-                  <Insets top="10.0" />
-                </VBox.margin>
-              </CheckBox>
-            </children>
-          </VBox>
-        </right>
         <top>
-          <VBox minHeight="55.0" prefHeight="95.0" prefWidth="600.0">
-            <children>
-              <Label alignment="CENTER" prefHeight="50.0" prefWidth="1010.0" text="VIA Bus" textAlignment="CENTER">
-                <font>
-                  <Font size="20.0" />
-                </font>
-                <VBox.margin>
-                  <Insets />
-                </VBox.margin>
-              </Label>
-              <Label alignment="CENTER" prefWidth="1010.0" text="Create Tour">
-                <VBox.margin>
-                  <Insets bottom="10.0" fx:id="x2" />
-                </VBox.margin>
-              </Label>
-            </children>
-            <padding>
-              <Insets bottom="20.0" />
-            </padding>
-          </VBox>
+            <MenuBar fx:id="menu">
+                <Menu mnemonicParsing="false" text="Home">
+                    <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Home" fx:id="homeHome"/>
+                    <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Create tour" fx:id="homeTour"/>
+                    <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Make reservation"
+                              fx:id="homeReserve"/>
+                    <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Search" fx:id="homeSearch"/>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Bus List">
+                    <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" fx:id="homeBus"/>
+                    <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" fx:id="homeBusAdd"/>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Chaffeur list">
+                    <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Chaffeur list"
+                              fx:id="homeDriver"/>
+                    <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add chaffeur"
+                              fx:id="homeDriverAdd"/>
+                </Menu>
+            </MenuBar>
         </top>
-      </BorderPane>
-    </center>
-    <top>
-      <MenuBar fx:id="menu">
-        <Menu mnemonicParsing="false" text="Home">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Home" fx:id="homeHome" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Create tour" fx:id="homeTour" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Make reservation" fx:id="homeReserve" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Search" fx:id="homeSearch" />
-        </Menu>
-        <Menu mnemonicParsing="false" text="Bus List">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" fx:id="homeBus" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" fx:id="homeBusAdd" />
-        </Menu>
-        <Menu mnemonicParsing="false" text="Chaffeur list">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Chaffeur list" fx:id="homeDriver" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add chaffeur" fx:id="homeDriverAdd" />
-        </Menu>
-      </MenuBar>
-    </top>
-  </BorderPane>
+    </BorderPane>
 </AnchorPane>

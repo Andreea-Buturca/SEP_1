@@ -1,4 +1,4 @@
-package main;
+package main.Model;
 
 /**
  * Created by MartinNtb on 15-Nov-16.

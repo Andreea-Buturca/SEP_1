@@ -35,13 +35,13 @@
                           <Label text="Name:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                           <Label text="Address:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
                           <Label text="Email:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-                          <Label text="Phone num:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                          <Label text="Phone nr:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
                           <Label text="Company name:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                          <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                          <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                          <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                          <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                          <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                          <TextField fx:id="fieldNameCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                          <TextField fx:id="fieldNameCompany" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                          <TextField fx:id="fieldAddressCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                          <TextField fx:id="fieldEmailCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                          <TextField fx:id="fieldPhoneCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         </children>
                         <columnConstraints>
                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="0.0" prefWidth="55.0" />
@@ -68,10 +68,10 @@
                           <Label text="Address:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                           <Label text="Email:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
                           <Label text="Seat nr:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-                          <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                          <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                          <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                          <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                          <TextField fx:id="fieldNamePassenger" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                          <TextField fx:id="fieldAddressPassenger" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                          <TextField fx:id="fieldEmailPassenger" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                          <TextField fx:id="fieldSeatNr" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         </children>
                         <columnConstraints>
                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="11.0" />
@@ -99,9 +99,9 @@
                       <Label text="Discount:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
                       <Label text="Tax: " GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
                       <Label text="Total:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-                      <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                      <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                      <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                      <TextField fx:id="fieldDefaultPrice" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                      <TextField fx:id="fieldExtraServices" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                      <TextField fx:id="fieldDiscount" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                       <Label text="25%" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                       <Label text="0 DKK" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                     </children>

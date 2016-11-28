@@ -46,15 +46,15 @@
                     <children>
                       <Label text="Destination:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
                       <Label text="Departure: " GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                      <Label text="Num of passengers:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-                      <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                      <Label text="Nr of passengers:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                      <TextField fx:id="fieldDestination" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                         <GridPane.margin>
                           <Insets left="50.0" fx:id="x2" />
                         </GridPane.margin>
                       </TextField>
-                      <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="1" />
-                      <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="3" />
-                      <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="2" />
+                      <TextField id="fieldDep" fx:id="fieldDeparture" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="1" />
+                      <TextField fx:id="fieldNrPassengers" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="3" />
+                      <TextField fx:id="fieldArrival" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="2" />
                       <Label text="Arrival: " GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                     </children>
                     <columnConstraints>

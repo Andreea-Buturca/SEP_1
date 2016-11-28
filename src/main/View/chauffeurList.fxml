@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.BusController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.ChauffeurController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -32,7 +32,7 @@
                   <Insets />
                 </VBox.margin>
               </Label>
-              <Label alignment="CENTER" prefWidth="990.0" text="Bus List">
+              <Label alignment="CENTER" prefWidth="990.0" text="Chauffeur List">
                 <VBox.margin>
                   <Insets bottom="10.0" fx:id="x2" />
                 </VBox.margin>
@@ -40,13 +40,13 @@
               <ListView prefHeight="402.0" prefWidth="990.0" />
               <BorderPane prefHeight="77.0" prefWidth="990.0">
                 <left>
-                  <Button id="addBus" fx:id="addBus" mnemonicParsing="false" onMouseClicked="#changeView" text="Add Bus" />
+                  <Button fx:id="addChauffeur" mnemonicParsing="false" onMouseClicked="#changeView" text="Add Chauffeur " />
                 </left>
                 <padding>
                   <Insets left="350.0" right="350.0" top="30.0" />
                 </padding>
                 <right>
-                  <Button mnemonicParsing="false" text="Delete Bus" />
+                  <Button mnemonicParsing="false" text="Delete Chauffeur " />
                 </right>
               </BorderPane>
             </children>

@@ -33,19 +33,16 @@ public class Controller implements Initializable {
 
     //bus list
     public Button addBus;
-    public CheckBox checkPrivateTrip;
     public ToggleButton toggleHours;
 
+    //chauffeur list
+    public Button addChauffeur;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        if (!(null == checkPrivateTrip)) {
-            checkPrivateTrip.setOnAction(event -> {
-                System.out.println("test");
-            });
-            toggleHours.setOnAction(event -> toggleHours.setText((toggleHours.getText().equals("Hours")) ? "Days" : "Hours"));
-        }
+        if (toggleHours != null)
+        toggleHours.setOnAction(event -> toggleHours.setText((toggleHours.getText().equals("Hours")) ? "Days" : "Hours"));
 
     }
 
@@ -54,18 +51,29 @@ public class Controller implements Initializable {
         Stage stage;
         Parent root;
 
+
+        //main
         if ((mouseEvent.getSource() == createTour)) {
             stage = (Stage) createTour.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/createTour.fxml"));
-        } else if ((mouseEvent.getSource() == addBus)) {
-            stage = (Stage) addBus.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../View/addBus.fxml"));
-        }else if ((mouseEvent.getSource() == mkReservation)) {
+        } else if ((mouseEvent.getSource() == mkReservation)) {
             stage = (Stage) mkReservation.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/makeReservation.fxml"));
-        }else if ((mouseEvent.getSource() == findTrip)) {
+        } else if ((mouseEvent.getSource() == findTrip)) {
             stage = (Stage) findTrip.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/search.fxml"));
+        }
+
+        //bus view
+        else if ((mouseEvent.getSource() == addBus)) {
+            stage = (Stage) addBus.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../View/addBus.fxml"));
+        }
+
+        //chauffeur view
+        else if ((mouseEvent.getSource() == addChauffeur)) {
+            stage = (Stage) addChauffeur.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../View/AddChauffeur.fxml"));
         } else {
             stage = (Stage) createTour.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
@@ -93,18 +101,13 @@ public class Controller implements Initializable {
             root = FXMLLoader.load(getClass().getResource("../View/addBus.fxml"));
         } else if ((actionEvent.getSource() == homeReserve)) {
             root = FXMLLoader.load(getClass().getResource("../View/makeReservation.fxml"));
-        }else if ((actionEvent.getSource() == homeSearch)) {
+        } else if ((actionEvent.getSource() == homeSearch)) {
             root = FXMLLoader.load(getClass().getResource("../View/search.fxml"));
-        }
-
-
-
-/*
-        public MenuItem homeDriver;
-        public MenuItem homeDriverAdd;*/
-
-
-        else {
+        } else if ((actionEvent.getSource() == homeDriver)) {
+            root = FXMLLoader.load(getClass().getResource("../View/chauffeurList.fxml"));
+        } else if ((actionEvent.getSource() == homeDriverAdd)) {
+            root = FXMLLoader.load(getClass().getResource("../View/addChauffeur.fxml"));
+        } else {
             root = FXMLLoader.load(getClass().getResource("./View/mainScreen.fxml"));
         }
 

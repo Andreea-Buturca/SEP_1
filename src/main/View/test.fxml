@@ -10,6 +10,6 @@
   <children>
     <Button fx:id="testbtn" layoutX="305.0" layoutY="135.0" mnemonicParsing="false" onAction="#test" text="Button" />
     <CheckBox fx:id="testcheck" layoutX="262.0" layoutY="263.0" mnemonicParsing="false" text="CheckBox" />
-    <TextField fx:id="testtext" layoutX="115.0" layoutY="178.0" prefWidth="200.0" />
+    <TextField fx:id="testtext" layoutX="115.0" layoutY="178.0" onAction="#novva" prefWidth="200.0" />
   </children>
 </AnchorPane>

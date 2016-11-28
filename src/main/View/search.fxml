@@ -126,9 +126,9 @@
           <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" fx:id="homeBus" />
           <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" fx:id="homeBusAdd" />
         </Menu>
-        <Menu mnemonicParsing="false" text="Chaffeur list">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Chaffeur list" fx:id="homeDriver" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add chaffeur" fx:id="homeDriverAdd" />
+        <Menu mnemonicParsing="false" text="Chauffeur list">
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Chauffeur list" fx:id="homeDriver" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add chauffeur" fx:id="homeDriverAdd" />
         </Menu>
       </MenuBar>
     </top>

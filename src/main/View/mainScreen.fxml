@@ -38,6 +38,18 @@
         </Button>
         <Button fx:id="mkReservation" font="$x1" mnemonicParsing="false" onMouseClicked="#changeView" prefHeight="50.0" prefWidth="1010.0" text="Make reservation" VBox.margin="$x2" />
         <Button fx:id="findTrip" font="$x1" mnemonicParsing="false" onMouseClicked="#changeView" prefHeight="50.0" prefWidth="1010.0" text="Find Reservation / Trip" VBox.margin="$x2" />
+        <TableView prefHeight="161.0" prefWidth="990.0">
+          <columns>
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="Destination" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="Departure" />
+            <TableColumn prefWidth="160.0" text="Arrival" />
+            <TableColumn prefWidth="160.0" text="Chauffeur" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="Bus Type" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="70.0" text="Free places" />
+            <TableColumn prefWidth="60.0" text="Price" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="106.0" text="Departure" />
+          </columns>
+        </TableView>
       </VBox>
     </center>
     <top>

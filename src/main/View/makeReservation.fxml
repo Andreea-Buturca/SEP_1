@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.Controller">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.ReservationController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -68,7 +68,7 @@
                       <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
-                  <Button fx:id="mkReservationView" mnemonicParsing="false" prefWidth="271.0" text="Make a reservation" />
+                  <Button fx:id="mkReservationView" mnemonicParsing="false" onAction="#controlData" prefWidth="271.0" text="Make a reservation" />
                 </children>
                 <HBox.margin>
                   <Insets bottom="10.0" fx:id="x3" />
@@ -92,7 +92,7 @@
                   <Insets />
                 </VBox.margin>
               </Label>
-              <Label alignment="CENTER" prefWidth="1010.0" text="Create Tour">
+              <Label alignment="CENTER" prefWidth="1010.0" text="Make reservation">
                 <VBox.margin>
                   <Insets bottom="10.0" fx:id="x2" />
                 </VBox.margin>

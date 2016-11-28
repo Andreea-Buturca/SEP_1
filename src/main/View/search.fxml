@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.SearchController">
+  <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
+    <bottom>
+      <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
+        <BorderPane.margin>
+          <Insets right="10.0" fx:id="x1" />
+        </BorderPane.margin>
+      </Label>
+    </bottom>
+    <center>
+      <BorderPane prefHeight="360.0" prefWidth="600.0">
+        <bottom>
+          <HBox prefHeight="184.0" prefWidth="990.0">
+            <children>
+              <ListView prefHeight="100.0" prefWidth="495.0" />
+              <ListView prefHeight="100.0" prefWidth="495.0" />
+            </children>
+          </HBox>
+        </bottom>
+        <center>
+          <HBox prefHeight="269.0" prefWidth="990.0" BorderPane.alignment="CENTER">
+            <children>
+              <GridPane alignment="TOP_CENTER" hgap="10.0" prefHeight="465.0" prefWidth="495.0">
+                <children>
+                  <Label text="Trip" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <font>
+                      <Font size="16.0" fx:id="x3" />
+                    </font>
+                  </Label>
+                  <Label text="Destination:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                  <Label text="Arrival" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <Label text="Date:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                  <Label text="Departure:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                </children>
+                <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="0.0" prefWidth="55.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="156.0" />
+                </columnConstraints>
+                <rowConstraints>
+                  <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+              </GridPane>
+              <GridPane alignment="TOP_CENTER" hgap="10.0" prefHeight="284.0" prefWidth="495.0">
+                <children>
+                  <Label font="$x3" text="Customer" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <Label text="Name:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                  <Label text="Address:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <Label text="Email:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                  <Label text="Phone num:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                  <Label text="Company name:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                </children>
+                <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="0.0" prefWidth="55.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="156.0" />
+                </columnConstraints>
+                <rowConstraints>
+                  <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+              </GridPane>
+            </children>
+          </HBox>
+        </center>
+        <padding>
+          <Insets left="10.0" right="10.0" />
+        </padding>
+        <top>
+          <VBox minHeight="55.0" prefHeight="95.0" prefWidth="600.0">
+            <children>
+              <Label alignment="CENTER" prefHeight="50.0" prefWidth="1010.0" text="VIA Bus" textAlignment="CENTER">
+                <font>
+                  <Font size="20.0" />
+                </font>
+                <VBox.margin>
+                  <Insets />
+                </VBox.margin>
+              </Label>
+              <Label alignment="CENTER" prefWidth="1010.0" text="Search">
+                <VBox.margin>
+                  <Insets bottom="10.0" fx:id="x2" />
+                </VBox.margin>
+              </Label>
+            </children>
+            <padding>
+              <Insets bottom="20.0" />
+            </padding>
+          </VBox>
+        </top>
+      </BorderPane>
+    </center>
+    <top>
+      <MenuBar fx:id="menu">
+        <Menu mnemonicParsing="false" text="Home">
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Home" fx:id="homeHome" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Create tour" fx:id="homeTour" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Make reservation" fx:id="homeReserve" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Search" fx:id="homeSearch" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Bus List">
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" fx:id="homeBus" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" fx:id="homeBusAdd" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Chaffeur list">
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Chaffeur list" fx:id="homeDriver" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add chaffeur" fx:id="homeDriverAdd" />
+        </Menu>
+      </MenuBar>
+    </top>
+  </BorderPane>
+</AnchorPane>

@@ -63,6 +63,9 @@ public class Controller implements Initializable {
         }else if ((mouseEvent.getSource() == mkReservation)) {
             stage = (Stage) mkReservation.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/makeReservation.fxml"));
+        }else if ((mouseEvent.getSource() == findTrip)) {
+            stage = (Stage) findTrip.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../View/search.fxml"));
         } else {
             stage = (Stage) createTour.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
@@ -90,13 +93,13 @@ public class Controller implements Initializable {
             root = FXMLLoader.load(getClass().getResource("../View/addBus.fxml"));
         } else if ((actionEvent.getSource() == homeReserve)) {
             root = FXMLLoader.load(getClass().getResource("../View/makeReservation.fxml"));
+        }else if ((actionEvent.getSource() == homeSearch)) {
+            root = FXMLLoader.load(getClass().getResource("../View/search.fxml"));
         }
 
 
 
 /*
-        public MenuItem homeReserve;
-        public MenuItem homeSearch;
         public MenuItem homeDriver;
         public MenuItem homeDriverAdd;*/
 

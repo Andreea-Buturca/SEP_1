@@ -10,6 +10,7 @@ public class Customer extends Person {
     private boolean isCompany;
     private String responsiblePerson;
     private ArrayList<Passenger> passengers = new ArrayList<>();
+    private int numberOgTrips;
 
     private int points;
 
@@ -39,4 +40,11 @@ public class Customer extends Person {
     public boolean checkIfFrequenntCustomer(Customer customer){
         return true;
     }
+
+    public boolean isFrequent(){
+        return numberOgTrips>5;
+        // TODO: 28-Nov-16 how many trips is frequent?
+    }
+
+
 }

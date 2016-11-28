@@ -5,14 +5,15 @@ package main.Model;
  */
 public class Chauffeur extends Person {
 
-    private String EmployeeID;
+    private int EmployeeID;
     private int prefferedDistance;
     private String prefferedTripType;
     private int workedHours;
     private boolean isVikar;
 
-    public Chauffeur(String name, String adress, String email, String phone, String employeeID, int prefferedDistance, String prefferedTripType, int workedHours, boolean isVikar) {
+    public Chauffeur(String name, String adress, String email, String phone, int employeeID, int prefferedDistance, String prefferedTripType, int workedHours, boolean isVikar) {
         super(name, adress, email, phone);
+        // TODO: 28-Nov-16 check if employeeid is 5-digit number.
         EmployeeID = employeeID;
         this.prefferedDistance = prefferedDistance;
         this.prefferedTripType = prefferedTripType;
@@ -20,7 +21,7 @@ public class Chauffeur extends Person {
         this.isVikar = isVikar;
     }
 
-    public Chauffeur(String name, String adress, String email, String phone, MyDate dateOfBirth, String employeeID, int prefferedDistance, String prefferedTripType, int workedHours, boolean isVikar) {
+    public Chauffeur(String name, String adress, String email, String phone, MyDate dateOfBirth, int employeeID, int prefferedDistance, String prefferedTripType, int workedHours, boolean isVikar) {
         super(name, adress, email, phone, dateOfBirth);
         EmployeeID = employeeID;
         this.prefferedDistance = prefferedDistance;

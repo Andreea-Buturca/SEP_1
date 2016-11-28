@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 public class BusList {
 
+
+
     ArrayList<Bus> buses = new ArrayList<>();
 
     public BusList() {
@@ -14,5 +16,16 @@ public class BusList {
 
     public void addBus(Bus bus) {
         buses.add(bus);
+    }
+
+    public ArrayList<Bus> getBuses() {
+        return buses;
+    }
+
+    public ArrayList<Bus> getAllAvailable(int seats){// TODO: 28-Nov-16 Finish
+         return null;}
+
+    public void removeBus(Bus bus){
+        buses.remove(bus);
     }
 }

@@ -12,6 +12,12 @@ public class MyDate {
         set(hour, minute, day, month, year);
     }
 
+    public MyDate(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
     public void set(int hour, int minute, int day, int month, int year) {
 
         //@TODO make better set with hours and minutes, exceptions if not valid

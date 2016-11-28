@@ -6,32 +6,32 @@ package main.Model;
 public class Chauffeur extends Person {
 
     private int EmployeeID;
-    private int prefferedDistance;
-    private String prefferedTripType;
+    private int preferredDistance;
+    private String preferredTripType;
     private int workedHours;
     private boolean isVikar;
 
-    public Chauffeur(String name, String adress, String email, String phone, int employeeID, int prefferedDistance, String prefferedTripType, int workedHours, boolean isVikar) {
-        super(name, adress, email, phone);
+    public Chauffeur(String name, String address, String email, String phone, int employeeID, int preferredDistance, String preferredTripType, int workedHours, boolean isVikar) {
+        super(name, address, email, phone);
         // TODO: 28-Nov-16 check if employeeid is 5-digit number.
         EmployeeID = employeeID;
-        this.prefferedDistance = prefferedDistance;
-        this.prefferedTripType = prefferedTripType;
+        this.preferredDistance = preferredDistance;
+        this.preferredTripType = preferredTripType;
         this.workedHours = workedHours;
         this.isVikar = isVikar;
     }
 
-    public Chauffeur(String name, String adress, String email, String phone, MyDate dateOfBirth, int employeeID, int prefferedDistance, String prefferedTripType, int workedHours, boolean isVikar) {
-        super(name, adress, email, phone, dateOfBirth);
+    public Chauffeur(String name, String address, String email, String phone, MyDate dateOfBirth, int employeeID, int preferredDistance, String preferredTripType, int workedHours, boolean isVikar) {
+        super(name, address, email, phone, dateOfBirth);
         EmployeeID = employeeID;
-        this.prefferedDistance = prefferedDistance;
-        this.prefferedTripType = prefferedTripType;
+        this.preferredDistance = preferredDistance;
+        this.preferredTripType = preferredTripType;
         this.workedHours = workedHours;
         this.isVikar = isVikar;
     }
 
-    public Chauffeur(String name, String adress, String email, String phone, int workedHours, boolean isVikar) {
-        super(name, adress, email, phone);
+    public Chauffeur(String name, String address, String email, String phone, int workedHours, boolean isVikar) {
+        super(name, address, email, phone);
         this.workedHours = workedHours;
         this.isVikar = isVikar;
     }

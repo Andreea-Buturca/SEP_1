@@ -5,7 +5,7 @@ package main.Model;
  */
 public class Chauffeur extends Person {
 
-    private int EmployeeID;
+    private int employeeID;
     private int preferredDistance;
     private String preferredTripType;
     private int workedHours;
@@ -14,7 +14,7 @@ public class Chauffeur extends Person {
     public Chauffeur(String name, String address, String email, String phone, int employeeID, int preferredDistance, String preferredTripType, int workedHours, boolean isVikar) {
         super(name, address, email, phone);
         // TODO: 28-Nov-16 check if employeeid is 5-digit number.
-        EmployeeID = employeeID;
+        this.employeeID = employeeID;
         this.preferredDistance = preferredDistance;
         this.preferredTripType = preferredTripType;
         this.workedHours = workedHours;
@@ -23,7 +23,7 @@ public class Chauffeur extends Person {
 
     public Chauffeur(String name, String address, String email, String phone, MyDate dateOfBirth, int employeeID, int preferredDistance, String preferredTripType, int workedHours, boolean isVikar) {
         super(name, address, email, phone, dateOfBirth);
-        EmployeeID = employeeID;
+        this.employeeID = employeeID;
         this.preferredDistance = preferredDistance;
         this.preferredTripType = preferredTripType;
         this.workedHours = workedHours;
@@ -36,4 +36,23 @@ public class Chauffeur extends Person {
         this.isVikar = isVikar;
     }
 
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    public int getPreferredDistance() {
+        return preferredDistance;
+    }
+
+    public String getPreferredTripType() {
+        return preferredTripType;
+    }
+
+    public int getWorkedHours() {
+        return workedHours;
+    }
+
+    public boolean isVikar() {
+        return isVikar;
+    }
 }

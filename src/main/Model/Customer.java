@@ -15,14 +15,14 @@ public class Customer extends Person {
     private int points;
 
 
-    public Customer(String name, String adress, String email, String phone, boolean isCompany, String responsiblePerson) {
-        super(name, adress, email, phone);
+    public Customer(String name, String address, String email, String phone, boolean isCompany, String responsiblePerson) {
+        super(name, address, email, phone);
         this.isCompany = isCompany;
         this.responsiblePerson = responsiblePerson;
     }
 
-    public Customer(String name, String adress, String email, String phone, boolean isCompany) {
-        super(name, adress, email, phone);
+    public Customer(String name, String address, String email, String phone, boolean isCompany) {
+        super(name, address, email, phone);
         this.isCompany = isCompany;
     }
 
@@ -37,7 +37,7 @@ public class Customer extends Person {
 
     public void addPointToCustomer() { points = points++; }
 
-    public boolean checkIfFrequenntCustomer(Customer customer){
+    public boolean checkIfFrequentCustomer(Customer customer){
         return true;
     }
 

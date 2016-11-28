@@ -9,8 +9,10 @@ public class Bus {
     private int seatPlaces;
 
 
+
     public Bus(String registrationPlate, int seatPlaces) {
         this.registrationPlate = registrationPlate;
         this.seatPlaces = seatPlaces;
     }
+
 }

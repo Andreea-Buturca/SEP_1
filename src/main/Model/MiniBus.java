@@ -8,4 +8,9 @@ public class MiniBus extends Bus {
     public MiniBus(String registrationPlate, int seatPlaces) {
         super(registrationPlate, seatPlaces);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

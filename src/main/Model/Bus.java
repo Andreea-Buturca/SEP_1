@@ -27,4 +27,20 @@ public class Bus {
 
     // TODO: 28-Nov-16  Solve when is available and when not! Solved
 
+    public String toString() {
+        return registrationPlate + ", " + seatPlaces + " seats";
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bus)) return false;
+
+        Bus bus = (Bus) o;
+
+        if (seatPlaces != bus.seatPlaces) return false;
+        return registrationPlate.equals(bus.registrationPlate);
+    }
+
 }

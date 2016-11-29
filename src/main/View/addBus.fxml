@@ -19,7 +19,7 @@
     <center>
       <BorderPane prefHeight="485.0" prefWidth="1010.0">
         <bottom>
-          <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="212.0" text="Add bus" BorderPane.alignment="CENTER">
+          <Button fx:id="addBus" mnemonicParsing="false" onAction="#addBus" prefHeight="35.0" prefWidth="212.0" text="Add bus" BorderPane.alignment="CENTER">
             <BorderPane.margin>
               <Insets bottom="15.0" />
             </BorderPane.margin>
@@ -31,17 +31,18 @@
               <Label alignment="CENTER_LEFT" text="Type:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
               <Label alignment="CENTER_LEFT" text="Registration plate:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
               <Label alignment="CENTER_LEFT" text="Number of seats:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-              <ChoiceBox prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+              <ChoiceBox fx:id="typeChoice" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                 <items>
                   <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Item 1" />
-                    <String fx:value="Item 2" />
-                    <String fx:value="Item 3" />
+                    <String fx:value="Classic Bus" />
+                    <String fx:value="Mini Bus" />
+                    <String fx:value="Party Bus" />
+                    <String fx:value="Luxury Bus" />
                   </FXCollections>
                 </items>
               </ChoiceBox>
-              <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-              <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+              <TextField fx:id="regPlate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+              <TextField fx:id="seatNumber" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             </children>
             <columnConstraints>
               <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="408.0" />

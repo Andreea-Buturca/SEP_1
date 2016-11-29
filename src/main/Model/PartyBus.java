@@ -10,7 +10,16 @@ public class PartyBus extends Bus{
 
     public PartyBus(String registrationPlate, int seatPlaces, boolean bar, boolean dj) {
         super(registrationPlate, seatPlaces);
-        this.bar = bar;
+        this.bar = bar;  // TODO: 29-Nov-16 Same as with luxury bus?
         this.dj = dj;
+    }
+
+    public PartyBus(String registrationPlate, int seatPlaces) {
+        super(registrationPlate, seatPlaces);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

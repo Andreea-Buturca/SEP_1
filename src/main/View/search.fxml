@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.SearchController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.SearchController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -43,7 +53,7 @@
                   <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           <DatePicker prefHeight="25.0" prefWidth="219.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 </children>
                 <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="0.0" prefWidth="55.0" />
@@ -117,18 +127,18 @@
     <top>
       <MenuBar fx:id="menu">
         <Menu mnemonicParsing="false" text="Home">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Home" fx:id="homeHome" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Create tour" fx:id="homeTour" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Make reservation" fx:id="homeReserve" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Search" fx:id="homeSearch" />
+          <MenuItem fx:id="homeHome" mnemonicParsing="false" onAction="#changeViewMenu" text="Home" />
+          <MenuItem fx:id="homeTour" mnemonicParsing="false" onAction="#changeViewMenu" text="Create tour" />
+          <MenuItem fx:id="homeReserve" mnemonicParsing="false" onAction="#changeViewMenu" text="Make reservation" />
+          <MenuItem fx:id="homeSearch" mnemonicParsing="false" onAction="#changeViewMenu" text="Search" />
         </Menu>
         <Menu mnemonicParsing="false" text="Bus List">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" fx:id="homeBus" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" fx:id="homeBusAdd" />
+          <MenuItem fx:id="homeBus" mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" />
+          <MenuItem fx:id="homeBusAdd" mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" />
         </Menu>
         <Menu mnemonicParsing="false" text="Chauffeur list">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Chauffeur list" fx:id="homeDriver" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add chauffeur" fx:id="homeDriverAdd" />
+          <MenuItem fx:id="homeDriver" mnemonicParsing="false" onAction="#changeViewMenu" text="Chauffeur list" />
+          <MenuItem fx:id="homeDriverAdd" mnemonicParsing="false" onAction="#changeViewMenu" text="Add chauffeur" />
         </Menu>
       </MenuBar>
     </top>

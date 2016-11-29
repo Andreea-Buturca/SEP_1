@@ -39,9 +39,9 @@ public class ReservationController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-
-
         // starts labels for makeReservation
+
+        if (fieldDestination != null) {
 
             fieldDestination.focusedProperty().addListener((arg0, oldValue, newValue) -> {
                 if (!newValue) { // when focus lost
@@ -79,12 +79,11 @@ public class ReservationController extends Controller implements Initializable {
                     }
                 }
             });
+        }
 
+        // starts labels for makeReservationDate
 
-
-
-
-            // starts labels for makeReservationDate
+        if (fieldNameCustomer != null) {
             fieldNameCustomer.focusedProperty().addListener((arg0, oldValue, newValue) -> {
                 if (!newValue) { // when focus lost
                     if (fieldNameCustomer.getText().equals("xx.xx.xxxx")) {
@@ -195,6 +194,7 @@ public class ReservationController extends Controller implements Initializable {
             });
         }
     }
+
 
     public void controlData(ActionEvent actionEvent) throws IOException {
 

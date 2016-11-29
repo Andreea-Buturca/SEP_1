@@ -119,6 +119,29 @@ public class Controller implements Initializable {
     }
 
 
+
+    private boolean validateEmptyField (TextField textField) {
+        if (!textField.getText().isEmpty()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
+
+    private boolean validateEmptyDate (TextField textField) {
+        if (!textField.getText().isEmpty()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
+
     //@TODO move it to another class
 
     /*public void loadFile(String filename){

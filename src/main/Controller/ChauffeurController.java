@@ -18,66 +18,61 @@ public class ChauffeurController extends Controller implements Initializable {
     public TextField fieldChauffeurAddEmail;
     public TextField fieldChauffeurAddName;
     public TextField fieldChauffeurAddPhone;
-    public TextField fieldChauffeurAddBirthday;
+
     public TextField fieldChauffeurAddId;
 
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        fieldChauffeurAddAddress.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldChauffeurAddAddress.getText().equals("xx.xx.xxxx")) {
-                    fieldChauffeurAddAddress.getStyleClass().add("error");
-                } else {
-                    fieldChauffeurAddAddress.getStyleClass().remove("error");
+
+        //add chauffeur view
+        if (fieldChauffeurAddAddress != null) {
+            fieldChauffeurAddAddress.focusedProperty().addListener((arg0, oldValue, newValue) -> {
+                if (!newValue) { // when focus lost
+                    if (fieldChauffeurAddAddress.getText().equals("xx.xx.xxxx")) {
+                        fieldChauffeurAddAddress.getStyleClass().add("error");
+                    } else {
+                        fieldChauffeurAddAddress.getStyleClass().remove("error");
+                    }
                 }
-            }
-        });
-        fieldChauffeurAddEmail.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldChauffeurAddEmail.getText().equals("xx.xx.xxxx")) {
-                    fieldChauffeurAddEmail.getStyleClass().add("error");
-                } else {
-                    fieldChauffeurAddEmail.getStyleClass().remove("error");
+            });
+            fieldChauffeurAddEmail.focusedProperty().addListener((arg0, oldValue, newValue) -> {
+                if (!newValue) { // when focus lost
+                    if (fieldChauffeurAddEmail.getText().equals("xx.xx.xxxx")) {
+                        fieldChauffeurAddEmail.getStyleClass().add("error");
+                    } else {
+                        fieldChauffeurAddEmail.getStyleClass().remove("error");
+                    }
                 }
-            }
-        });
-        fieldChauffeurAddName.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldChauffeurAddName.getText().equals("xx.xx.xxxx")) {
-                    fieldChauffeurAddName.getStyleClass().add("error");
-                } else {
-                    fieldChauffeurAddName.getStyleClass().remove("error");
+            });
+            fieldChauffeurAddName.focusedProperty().addListener((arg0, oldValue, newValue) -> {
+                if (!newValue) { // when focus lost
+                    if (fieldChauffeurAddName.getText().equals("xx.xx.xxxx")) {
+                        fieldChauffeurAddName.getStyleClass().add("error");
+                    } else {
+                        fieldChauffeurAddName.getStyleClass().remove("error");
+                    }
                 }
-            }
-        });
-        fieldChauffeurAddPhone.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldChauffeurAddPhone.getText().equals("xx.xx.xxxx")) {
-                    fieldChauffeurAddPhone.getStyleClass().add("error");
-                } else {
-                    fieldChauffeurAddPhone.getStyleClass().remove("error");
+            });
+            fieldChauffeurAddPhone.focusedProperty().addListener((arg0, oldValue, newValue) -> {
+                if (!newValue) { // when focus lost
+                    if (fieldChauffeurAddPhone.getText().equals("xx.xx.xxxx")) {
+                        fieldChauffeurAddPhone.getStyleClass().add("error");
+                    } else {
+                        fieldChauffeurAddPhone.getStyleClass().remove("error");
+                    }
                 }
-            }
-        });
-        fieldChauffeurAddBirthday.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldChauffeurAddBirthday.getText().equals("xx.xx.xxxx")) {
-                    fieldChauffeurAddBirthday.getStyleClass().add("error");
-                } else {
-                    fieldChauffeurAddBirthday.getStyleClass().remove("error");
+            });
+            fieldChauffeurAddId.focusedProperty().addListener((arg0, oldValue, newValue) -> {
+                if (!newValue) { // when focus lost
+                    if (fieldChauffeurAddId.getText().equals("xx.xx.xxxx")) {
+                        fieldChauffeurAddId.getStyleClass().add("error");
+                    } else {
+                        fieldChauffeurAddId.getStyleClass().remove("error");
+                    }
                 }
-            }
-        });
-        fieldChauffeurAddId.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldChauffeurAddId.getText().equals("xx.xx.xxxx")) {
-                    fieldChauffeurAddId.getStyleClass().add("error");
-                } else {
-                    fieldChauffeurAddId.getStyleClass().remove("error");
-                }
-            }
-        });
+            });
+        }
     }
     public String[] getInput() {
         String[] input = new String[6];
@@ -85,7 +80,7 @@ public class ChauffeurController extends Controller implements Initializable {
         input[1] = fieldChauffeurAddEmail.getText();
         input[2] = fieldChauffeurAddName.getText();
         input[3] = fieldChauffeurAddPhone.getText();
-        input[4] = fieldChauffeurAddBirthday.getText();
+        //input[4] = fieldChauffeurAddBirthday.getText();
         input[5] = fieldChauffeurAddId.getText();
                return input;
     }
@@ -96,7 +91,7 @@ public class ChauffeurController extends Controller implements Initializable {
         fieldChauffeurAddEmail.setText("");
         fieldChauffeurAddName.setText("");
         fieldChauffeurAddPhone.setText("");
-        fieldChauffeurAddBirthday.setText("");
+        //fieldChauffeurAddBirthday.setText("");
         fieldChauffeurAddId.setText("");
     //   errorLabel.setText("");
      //   textFieldPanelForStudent.getTextField(0).requestFocus();

@@ -14,10 +14,7 @@ import java.util.ResourceBundle;
 public class TripController extends Controller implements Initializable {
 
 
-
-    public TextField fieldStartDate;
     public TextField fieldStartTime;
-    public TextField fieldEndDate;
     public TextField fieldEndTime;
     public TextField fieldDuration;
     public ComboBox fieldDestination;
@@ -33,16 +30,8 @@ public class TripController extends Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        fieldStartDate.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldStartDate.getText().equals("xx.xx.xxxx") ) {
-                    fieldStartDate.getStyleClass().add("error");
-                }
-                else {
-                    fieldStartDate.getStyleClass().remove("error");
-                }
-            }
-        });
+        System.out.println("print");
+
         fieldStartTime.focusedProperty().addListener((arg0, oldValue, newValue) -> {
             if (!newValue) { // when focus lost
                 if (fieldStartTime.getText().equals("xx.xx.xxxx") ) {
@@ -50,17 +39,6 @@ public class TripController extends Controller implements Initializable {
                 }
                 else {
                     fieldStartTime.getStyleClass().remove("error");
-                }
-            }
-        });
-
-        fieldEndDate.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldEndDate.getText().equals("xx.xx.xxxx") ) {
-                    fieldEndDate.getStyleClass().add("error");
-                }
-                else {
-                    fieldEndDate.getStyleClass().remove("error");
                 }
             }
         });

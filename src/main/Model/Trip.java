@@ -7,16 +7,30 @@ import java.util.ArrayList;
  */
 public class Trip {
 
-    private ArrayList<Bus> buses = new ArrayList<>();
+    private ArrayList<Customer> customers = new ArrayList<>();
 
-    private Customer customer;
+    private Bus bus;
     private Destination pickUpPoint;
     private ArrayList<Destination> stops;
     private MyDate timeStart;
     private MyDate timeEnd;
-    private ArrayList<String> note;
+    private ArrayList<String> notes;  // TODO: 29-Nov-16 so do we need it?
+
+    public Trip(Bus bus, Destination pickUpPoint, ArrayList<Destination> stops, MyDate timeStart, MyDate timeEnd) {
+        this.bus = bus;
+        this.pickUpPoint = pickUpPoint;
+        this.stops = stops;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+        this. notes = new ArrayList<>();
+        this.customers = new ArrayList<>();
+    }
 
     public void addNote(String note){
+        notes.add(note);
+    }
 
+    public void addCustomer(Customer customer){
+        customers.add(customer);
     }
 }

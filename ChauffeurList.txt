@@ -1,0 +1,12 @@
+Michael Thomsen, Horsens - Kalkbrænderivej 6, 123@yahoo.com, 56475634, 12345, 400, predefined trips, 37, false
+Nikolay Guldahl, Horsens - Allegade 121, street@yahoo.com, 24657878, 12346, 4000, customed travel, 45, false
+Daniel Kim, Aarhus - Strandvej 23, tweety@yahoo.com, 90805913, 12347, 400, predefined trips, 37, false
+Daniels Christensen, Aarhus - Sundvej 33, reakky@via.dk, 12427486, 12348, 1000, customed travel, 45, false
+Romans Feldt, Vejle - Langballe 9, story@via.dk, 56352617, 12349, 500, predefined trips, 37, false
+Denis Poulsen, Kolding - Ternevej 265, flori@yahoo.com, 11856328, 12350, 500, predefined trips, 37, false
+Mihai Malec, Torsted - Beringsvej 89, kk@yahoo.com, 32530905, 12351, 350, predefined trips, 37, false
+Sedin Subo, Silkeborg - Snerlevej 67, miau@yahoo.com, 89462894, 12352, 3500, customed travels, 45, false
+Flemming Nielsen, Viborg - Nordevej 100, werry@gmail.com, 70705043, 12353, 3500, customed travels, 45, false
+Dennis Dam, Viborg - Skovbrynet 4, sun@gmail.com, 12425263, 12354, 500, predefined trip, 37, false
+Josip Kaspersen, Alborg - Lystrupvej 57, caruu@via.dk, 34478595, 12355, 450, custom trip, 37, false
+Antony Charles, Tim - Buen 36, 2344@via.dk, 34596125, 12356, 500, predefined trips, 37, false

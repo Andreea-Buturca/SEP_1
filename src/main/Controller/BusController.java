@@ -12,7 +12,9 @@ import main.Model.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.text.ParseException;
+import java.util.ResourceBundle;
 
 /**
  * Created by MartinNtb on 28-Nov-16.
@@ -20,41 +22,38 @@ import java.text.ParseException;
 public class BusController extends Controller {
 
 
-    public ListView busList;
+    public ListView busListview;
     public Button deleteBus;
     public Button addBusInList;
-    public Button buttonAddBus;
     public TextField regPlate;
     public TextField seatNumber;
     public ChoiceBox typeChoice;
 
-
-    public void changeSceneToAddBus(ActionEvent actionEvent) throws IOException, ParseException {
-        /*Stage stage;
-        Parent root;
-        stage = (Stage) addBusInList.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("../View/addBus.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();*/ //working
-
-
-        busList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        BusFile file = new BusFile("BusList.txt");
-        BusList buslist = file.readFile();
-        ObservableList<String> items = FXCollections.observableArrayList();
-        for (int i = 0; i < buslist.getSize(); i++) {
-            items.add(buslist.getAtIndex(i).toString());
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if (busListview != null) {  // BusController is shared between buslist and add bus,
+                                    // in add bus there is no listview so i have to use that condition
+            try {
+                busListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                BusFile file = new BusFile("BusList.txt");
+                BusList buslist = file.readFile();
+                ObservableList<String> items = FXCollections.observableArrayList();
+                for (int i = 0; i < buslist.getSize(); i++) {
+                    items.add(buslist.getAtIndex(i).toString());
+                }
+                busListview.setItems(items);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-        busList.setItems(items);
-
-        // TODO: 29-Nov-16 This is working but it needs to be initialized at begining
-
     }
+
 
     public void deleteBus(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         ObservableList<String> selected;
-        selected = busList.getSelectionModel().getSelectedItems();
+        selected = busListview.getSelectionModel().getSelectedItems();
         BusFile file = new BusFile("BusList.txt");
         BusList buslist = file.readFile();
         for (int i = 0; i < selected.size(); i++) {
@@ -64,17 +63,51 @@ public class BusController extends Controller {
             buslist.removeBus(bus);
         }
         file.writeTextFile(buslist);
+        try {
+            buslist = file.readFile();
+            ObservableList<String> items = FXCollections.observableArrayList();
+            for (int i = 0; i < buslist.getSize(); i++) {
+                items.add(buslist.getAtIndex(i).toString());
+            }
+            busListview.setItems(items);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void addBus(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
-        BusFile file = new BusFile("BusList.txt");
-        BusList buslist = file.readFile();
 
-       // String type = (String) typeChoice.getSelectionModel().getSelectedItem();
-        String regplate = regPlate.getText();
-        int seats = Integer.parseInt(seatNumber.getText());
-        Bus bus = new Bus(regplate,seats);
+    public void addBus(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+        if (!validateEmptyField(regPlate) || !validateNumberField(regPlate)) alert += "Registration plate, ";
+        if (!validateEmptyField(seatNumber) || !validateNumberField(seatNumber)) alert += "Number of seats, ";
+
+        if (length == alert.length()) {
+
+            BusFile file = new BusFile("BusList.txt");
+            BusList buslist = file.readFile();
+
+            // String type = (String) typeChoice.getSelectionModel().getSelectedItem();
+            String regplate = regPlate.getText();
+            int seats = Integer.parseInt(seatNumber.getText());
+            Bus bus = new Bus(regplate, seats);
+
+            buslist.addBus(bus);
+            file.writeTextFile(buslist);
+
+            successdisplay("Success", "Bus was created.");
+
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
+        }
+
+
 
       /*  int seats = Integer.parseInt(seatNumber.getTypeSelector());
         if (type.equals("Classic Bus")) {
@@ -88,23 +121,8 @@ public class BusController extends Controller {
         }*/
         // TODO: 29-Nov-16 if we are going to use more classes than we have to solve this also.
 
-        buslist.addBus(bus);
-       // System.out.println(buslist);
-        file.writeTextFile(buslist);
 
-        // TODO: 29-Nov-16 throws a lot of exceptions
 
-        String alert = "There are some mistakes: ";
-        int length = alert.length();
 
-        if (!validateEmptyField(regPlate) || !validateNumberField(regPlate)) alert += "Registration plate, ";
-        if (!validateEmptyField(seatNumber) || !validateNumberField(seatNumber)) alert += "Number of seats, ";
-
-        if (length == alert.length()) {
-            //save it DataHandler. .....
-        } else {
-            //alert
-            alertdisplay("Wrong Input", alert);
-        }
     }
 }

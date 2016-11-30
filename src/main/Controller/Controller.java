@@ -49,6 +49,8 @@ public class Controller implements Initializable {
 
     }
 
+    //todo how much he paid, times
+
     public void changeView(MouseEvent mouseEvent) throws IOException {
 
         Stage stage;
@@ -171,6 +173,16 @@ public class Controller implements Initializable {
     protected void alertdisplay(String title, String message) {
 
         Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
+    protected void successdisplay(String title, String message) {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

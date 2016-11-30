@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ChauffeurController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ChauffeurController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -30,7 +30,7 @@
     <center>
       <BorderPane prefHeight="485.0" prefWidth="1010.0">
         <bottom>
-          <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="212.0" text="Add chauffeur" BorderPane.alignment="CENTER">
+          <Button fx:id="buttonAddChauffeur" mnemonicParsing="false" onAction="#addChauffeur" prefHeight="35.0" prefWidth="212.0" text="Add chauffeur" BorderPane.alignment="CENTER">
             <BorderPane.margin>
               <Insets bottom="15.0" />
             </BorderPane.margin>
@@ -85,7 +85,7 @@
                   </HBox>
                 </children>
               </HBox>
-                     <DatePicker prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     <DatePicker fx:id="birthdayPicker" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             </children>
             <columnConstraints>
               <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="153.0" />

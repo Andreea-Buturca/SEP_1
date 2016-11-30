@@ -23,7 +23,7 @@ public class BusController extends Controller {
     public ListView busList;
     public Button deleteBus;
     public Button addBusInList;
-    public Button addBus;
+    public Button buttonAddBus;
     public TextField regPlate;
     public TextField seatNumber;
     public ChoiceBox typeChoice;
@@ -93,5 +93,18 @@ public class BusController extends Controller {
         file.writeTextFile(buslist);
 
         // TODO: 29-Nov-16 throws a lot of exceptions
+
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+        if (!validateEmptyField(regPlate) || !validateNumberField(regPlate)) alert += "Registration plate, ";
+        if (!validateEmptyField(seatNumber) || !validateNumberField(seatNumber)) alert += "Number of seats, ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
+        }
     }
 }

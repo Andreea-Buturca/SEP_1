@@ -29,6 +29,7 @@ public class BusList {
         return buses.get(index);
     }
 
+
     public void removeBus(Bus bus){
         buses.remove(bus);
     }
@@ -36,6 +37,7 @@ public class BusList {
     public int getSize(){
         return buses.size();
     }
+
     public Bus findByRegplate(String regPlate){
         for (int i=0; i<buses.size();i++){
             if (buses.get(i).getRegistrationPlate().equals(regPlate))

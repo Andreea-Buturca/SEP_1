@@ -28,6 +28,7 @@ public class ChauffeurController extends Controller implements Initializable {
     public TextField fieldChauffeurAddId;
     public Button buttonAddChauffeur;
     public DatePicker birthdayPicker;
+    public Button buttonDeleteChauffeur;
 
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -97,15 +98,18 @@ public class ChauffeurController extends Controller implements Initializable {
         String alert = "There are some mistakes: ";
         int length = alert.length();
 
-        if (!validateEmptyField(fieldChauffeurAddName) ) alert += "Name, ";
-        if (!validateEmptyField(fieldChauffeurAddAddress) ) alert += "Address, ";
-        if (!validateEmptyField(fieldChauffeurAddEmail) ) alert += "Email, ";
-        if (!validateEmptyField(fieldChauffeurAddPhone) || !validateNumberField(fieldChauffeurAddPhone)) alert += "Phone, ";
-        if (!validateEmptyField(fieldChauffeurAddId) || !validateNumberField(fieldChauffeurAddId)) alert += "Chauffeur ID, ";
+        if (!validateEmptyField(fieldChauffeurAddName)) alert += "Name, ";
+        if (!validateEmptyField(fieldChauffeurAddAddress)) alert += "Address, ";
+        if (!validateEmptyField(fieldChauffeurAddEmail)) alert += "Email, ";
+        if (!validateEmptyField(fieldChauffeurAddPhone) || !validateNumberField(fieldChauffeurAddPhone))
+            alert += "Phone, ";
+        if (!validateEmptyField(fieldChauffeurAddId) || !validateNumberField(fieldChauffeurAddId))
+            alert += "Employee ID, ";
         if (!validateEmptyDate(birthdayPicker)) alert += "Birthday, ";
 
         if (length == alert.length()) {
             //save it DataHandler. .....
+            successdisplay("Success", "Chauffeur was added.");
         } else {
             //alert
             alertdisplay("Wrong Input", alert);
@@ -113,4 +117,7 @@ public class ChauffeurController extends Controller implements Initializable {
     }
 
 
+    public void deleteChauffeur(ActionEvent actionEvent) throws IOException {
+        successdisplay("Success", "Chauffeur was deleted.");
+    }
 }

@@ -16,4 +16,19 @@ public class CustomerList {
     public void addCustomer(Customer customer) {
         customers.add(customer);
     }
+
+    public Customer findByName(String name){
+        for (int i=0; i<customers.size();i++){
+            if (customers.get(i).getName().equals(name))
+                return customers.get(i);
+        }
+        return null;
+    }
+    public Customer findByPhone(String phone){
+        for (int i=0; i<customers.size();i++){
+            if (customers.get(i).getPhone().equals(phone))
+                return customers.get(i);
+        }
+        return null;
+    }
 }

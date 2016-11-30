@@ -27,3 +27,17 @@ public class Main extends Application {
         launch(args);
     }
 }
+/*NOTES and Qs:
+1. Do we have to handle all the exceptions?
+
+
+
+
+
+
+
+
+
+
+
+ */

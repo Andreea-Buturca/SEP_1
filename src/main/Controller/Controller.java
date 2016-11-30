@@ -36,7 +36,7 @@ public class Controller implements Initializable {
     public Button findTrip;
 
     //bus list
-    public Button addBus;
+    public Button addBusView;
 
     //chauffeur list
     public Button addChauffeur;
@@ -68,8 +68,8 @@ public class Controller implements Initializable {
         }
 
         //bus view
-        else if ((mouseEvent.getSource() == addBus)) {
-            stage = (Stage) addBus.getScene().getWindow();
+        else if ((mouseEvent.getSource() == addBusView)) {
+            stage = (Stage) addBusView.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/addBus.fxml"));
         }
 

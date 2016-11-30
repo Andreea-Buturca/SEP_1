@@ -8,8 +8,7 @@ import java.util.ArrayList;
 public class DestinationList {
     private ArrayList<Destination> list;
 
-    public DestinationList(ArrayList<Destination> list) {
-        this.list = list;
+    public DestinationList() {
     }
 
 

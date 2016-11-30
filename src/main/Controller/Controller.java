@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -11,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.Main;
 import main.Model.DataHandler;
 
 import java.io.IOException;
@@ -54,47 +56,38 @@ public class Controller implements Initializable {
 
     public void changeView(MouseEvent mouseEvent) throws IOException {
 
-        Stage stage;
         Parent root;
-
 
         //main
         if ((mouseEvent.getSource() == createTour)) {
-            stage = (Stage) createTour.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/createTour.fxml"));
         } else if ((mouseEvent.getSource() == mkReservation)) {
-            stage = (Stage) mkReservation.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/makeReservation.fxml"));
         } else if ((mouseEvent.getSource() == findTrip)) {
-            stage = (Stage) findTrip.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/search.fxml"));
         }
 
         //bus view
         else if ((mouseEvent.getSource() == addBusView)) {
-            stage = (Stage) addBusView.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/addBus.fxml"));
         }
 
         //chauffeur view
         else if ((mouseEvent.getSource() == addChauffeur)) {
-            stage = (Stage) addChauffeur.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/AddChauffeur.fxml"));
         } else {
-            stage = (Stage) createTour.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
         }
 
-
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+        Main.stage.setScene(scene);
+        Main.stage.show();
     }
 
 
     public void changeViewMenu(ActionEvent actionEvent) throws IOException {
 
-        Stage stage = (Stage) menu.getScene().getWindow();
         Parent root;
 
         if ((actionEvent.getSource() == homeHome)) {
@@ -119,8 +112,8 @@ public class Controller implements Initializable {
 
 
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Main.stage.setScene(scene);
+        Main.stage.show();
 
     }
 

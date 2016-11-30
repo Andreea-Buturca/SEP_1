@@ -42,7 +42,7 @@
               <Label alignment="CENTER_LEFT" text="Type:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
               <Label alignment="CENTER_LEFT" text="Registration plate:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
               <Label alignment="CENTER_LEFT" text="Number of seats:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-              <ChoiceBox fx:id="typeChoice" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+              <ChoiceBox fx:id="typeChoice" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" value="Classic Bus">
                 <items>
                   <FXCollections fx:factory="observableArrayList">
                     <String fx:value="Classic Bus" />

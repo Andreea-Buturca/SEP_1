@@ -32,50 +32,31 @@ public class BusController extends Controller {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (busListview != null) {  // BusController is shared between buslist and add bus,
-                                    // in add bus there is no listview so i have to use that condition
-            try {
-                busListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-                BusFile file = new BusFile("BusList.txt");
-                BusList buslist = file.readFile();
-                ObservableList<String> items = FXCollections.observableArrayList();
-                for (int i = 0; i < buslist.getSize(); i++) {
-                    items.add(buslist.getAtIndex(i).toString());
-                }
-                busListview.setItems(items);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            // in add bus there is no listview so i have to use that condition
+            loadList();
         }
+    }
+
+    public void loadList() {
+        busListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (Bus bus : DataHandler.getBusList().getBuses()) {
+            items.add(bus.toString());
+        }
+        busListview.setItems(items);
     }
 
 
     public void deleteBus(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         ObservableList<String> selected;
         selected = busListview.getSelectionModel().getSelectedItems();
-        BusFile file = new BusFile("BusList.txt");
-        BusList buslist = file.readFile();
-        for (int i = 0; i < selected.size(); i++) {
-            String[] lineToken = selected.get(i).split(", ");
+        for (String aSelected : selected) {
+            String[] lineToken = aSelected.split(", ");
             String regPlate = lineToken[0].trim();
-            Bus bus = buslist.findByRegplate(regPlate);
-            buslist.removeBus(bus);
-        }
-        file.writeTextFile(buslist);
-        try {
-            buslist = file.readFile();
-            ObservableList<String> items = FXCollections.observableArrayList();
-            for (int i = 0; i < buslist.getSize(); i++) {
-                items.add(buslist.getAtIndex(i).toString());
-            }
-            busListview.setItems(items);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            DataHandler.getBusList().removeBus(DataHandler.getBusList().findByRegplate(regPlate));
         }
 
+        loadList();
     }
 
 
@@ -88,17 +69,18 @@ public class BusController extends Controller {
         if (!validateEmptyField(seatNumber) || !validateNumberField(seatNumber)) alert += "Number of seats, ";
 
         if (length == alert.length()) {
-
-            BusFile file = new BusFile("BusList.txt");
-            BusList buslist = file.readFile();
-
-            // String type = (String) typeChoice.getSelectionModel().getSelectedItem();
             String regplate = regPlate.getText();
             int seats = Integer.parseInt(seatNumber.getText());
-            Bus bus = new Bus(regplate, seats);
 
-            buslist.addBus(bus);
-            file.writeTextFile(buslist);
+            if (typeChoice.getValue().equals("Classic Bus")) {
+                DataHandler.getBusList().addBus(new ClasicBus(regplate, seats));
+            } else if (typeChoice.getValue().equals("Mini Bus")) {
+                DataHandler.getBusList().addBus(new MiniBus(regplate, seats));
+            } else if (typeChoice.getValue().equals("Luxury Bus")) {
+                DataHandler.getBusList().addBus(new LuxuryBus(regplate, seats));
+            } else {
+                DataHandler.getBusList().addBus(new PartyBus(regplate, seats));
+            }
 
             successdisplay("Success", "Bus was created.");
 
@@ -106,23 +88,5 @@ public class BusController extends Controller {
             //alert
             alertdisplay("Wrong Input", alert);
         }
-
-
-
-      /*  int seats = Integer.parseInt(seatNumber.getTypeSelector());
-        if (type.equals("Classic Bus")) {
-            bus = new ClasicBus(regplate,seats);
-        } else if (type.equals("Mini Bus")) {
-            bus = new MiniBus(regplate,seats);
-        } else if (type.equals("Party Bus")) {
-            bus = new PartyBus(regplate,seats);
-        } else if (type.equals("Luxury Bus")) {
-            bus = new LuxuryBus(regplate,seats);
-        }*/
-        // TODO: 29-Nov-16 if we are going to use more classes than we have to solve this also.
-
-
-
-
     }
 }

@@ -11,6 +11,8 @@ import java.lang.*;
 
 public class Main extends Application {
 
+    public static Stage stage;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("./View/mainScreen.fxml"));
@@ -20,10 +22,14 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
+        stage = primaryStage;
     }
 
 
     public static void main(String[] args) {
+
+//for now just creating empty objects
+        DataHandler.testCreate();
 
 
         // TODO: 30-Nov-16 make load from file when done

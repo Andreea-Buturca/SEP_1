@@ -44,10 +44,19 @@ public class DataHandler {
         return destinationList;
     }
 
+    public static void testCreate() {
+        trips = new ArrayList<>();
+        busList = new BusList();
+        chauffeurList = new ChauffeurList();
+        customerList = new CustomerList();
+        destinationList = new DestinationList();
+    }
+
     public static void testData() {
+
         //todo create test date here
         //new trip in to array, new bus in to bus list, and so....
-        //than data are accesible from everywhere
+        //than data are accessible from everywhere
         //just call example DataHandler.getChauffeurList().methods in list....
     }
 

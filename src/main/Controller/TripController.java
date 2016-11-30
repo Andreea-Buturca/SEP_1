@@ -2,9 +2,9 @@ package main.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,76 +21,44 @@ public class TripController extends Controller implements Initializable {
     public ComboBox fieldDeparture;
     public TextField fieldDistance;
     public TextField fieldPrice;
-
-    public void test(ActionEvent actionEvent) {
-
-
-    }
+    public DatePicker startDatePicker;
+    public DatePicker endDatePicker;
+    public CheckBox checkPrivateTrip;
+    public Button CreateTourBtn;
+    public ToggleButton toggleHours;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        System.out.println("print");
+        toggleHours.setOnAction(event -> toggleHours.setText((toggleHours.getText().equals("Hours")) ? "Days" : "Hours"));
 
-        fieldStartTime.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldStartTime.getText().equals("xx.xx.xxxx") ) {
-                    fieldStartTime.getStyleClass().add("error");
-                }
-                else {
-                    fieldStartTime.getStyleClass().remove("error");
-                }
-            }
-        });
-        fieldEndTime.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldEndTime.getText().equals("xx.xx.xxxx") ) {
-                    fieldEndTime.getStyleClass().add("error");
-                }
-                else {
-                    fieldEndTime.getStyleClass().remove("error");
-                }
-            }
-        });
-        fieldDuration.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldDuration.getText().equals("xx.xx.xxxx") ) {
-                    fieldDuration.getStyleClass().add("error");
-                }
-                else {
-                    fieldDuration.getStyleClass().remove("error");
-                }
-            }
-        });
-        fieldDeparture.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldDeparture.getValue().equals("xx.xx.xxxx") ) {
-                    fieldDeparture.getStyleClass().add("error");
-                }
-                else {
-                    fieldDeparture.getStyleClass().remove("error");
-                }
-            }
-        });
-        fieldDistance.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldDistance.getText().equals("xx.xx.xxxx") ) {
-                    fieldDistance.getStyleClass().add("error");
-                }
-                else {
-                    fieldDistance.getStyleClass().remove("error");
-                }
-            }
-        });
-        fieldPrice.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-            if (!newValue) { // when focus lost
-                if (fieldPrice.getText().equals("xx.xx.xxxx") ) {
-                    fieldPrice.getStyleClass().add("error");
-                }
-                else {
-                    fieldPrice.getStyleClass().remove("error");
-                }
-            }
-        });
+        //TODO call datahandler to add data to list, combos, ...
+
+    }
+
+    public void createTour(ActionEvent actionEvent) throws IOException {
+
+
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+        if (!validateEmptyField(fieldStartTime) || !validateTimeField(fieldStartTime)) alert += "Start time, ";
+        if (!validateEmptyField(fieldEndTime) || !validateTimeField(fieldEndTime)) alert += "End time, ";
+        if (!validateEmptyField(fieldDuration) || !validateNumberField(fieldDuration)) alert += "Duration, ";
+        if (!validateEmptyField(fieldDistance) || !validateNumberField(fieldDistance)) alert += "Distance, ";
+        if (!validateEmptyField(fieldPrice) || !validateNumberField(fieldPrice)) alert += "Price, ";
+
+        if (!validateEmptyDate(startDatePicker)) alert += "Start Date, ";
+        if (!validateEmptyDate(endDatePicker)) alert += "End Date, ";
+
+        if (!validateEmptyCombo(fieldDestination)) alert += "Destination, ";
+        if (!validateEmptyCombo(fieldDeparture)) alert += "Departure, ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
+        }
     }
 }

@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.Model.Systemm;
+import main.Model.DataHandler;
 
 import java.lang.*;
 
@@ -25,9 +25,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
-        Systemm systemm = new Systemm();
-
-
     }
 }

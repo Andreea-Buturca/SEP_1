@@ -36,7 +36,7 @@
     <center>
       <BorderPane prefHeight="360.0" prefWidth="600.0">
         <bottom>
-          <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="1010.0" text="Overview">
+          <Button fx:id="CreateTourBtn" mnemonicParsing="false" onAction="#createTour" prefHeight="35.0" prefWidth="1010.0" text="Create">
             <font>
               <Font size="18.0" />
             </font>
@@ -58,8 +58,8 @@
                       <Label alignment="CENTER_RIGHT" prefWidth="166.0" text="Start" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                       <Label alignment="CENTER_RIGHT" prefWidth="200.0" text="End" GridPane.rowIndex="1" />
                       <TextField fx:id="fieldEndTime" prefWidth="140.0" promptText="Time" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                 <DatePicker prefWidth="236.0" GridPane.columnIndex="1" />
-                                 <DatePicker prefHeight="25.0" prefWidth="234.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 <DatePicker fx:id="startDatePicker" prefWidth="236.0" GridPane.columnIndex="1" />
+                                 <DatePicker fx:id="endDatePicker" prefHeight="25.0" prefWidth="234.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="75.0" />
@@ -188,9 +188,9 @@
           <VBox prefHeight="230.0" prefWidth="182.0">
             <children>
               <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="182.0" text="Chauffeur" textAlignment="CENTER" />
-              <ListView prefHeight="357.9998779296875" prefWidth="182.0" />
+              <ListView prefHeight="183.0" prefWidth="182.0" />
               <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="182.0" text="Bus" textAlignment="CENTER" />
-              <ListView prefHeight="357.9998779296875" prefWidth="182.0" />
+              <ListView prefHeight="164.0" prefWidth="182.0" />
               <CheckBox fx:id="checkPrivateTrip" mnemonicParsing="false" prefHeight="24.0" prefWidth="182.0" text="Private Trip" VBox.vgrow="ALWAYS">
                 <font>
                   <Font size="16.0" />

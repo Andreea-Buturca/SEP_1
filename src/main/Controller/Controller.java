@@ -3,11 +3,15 @@ package main.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.Model.DataHandler;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,16 +37,15 @@ public class Controller implements Initializable {
 
     //bus list
     public Button addBus;
-    public ToggleButton toggleHours;
 
     //chauffeur list
     public Button addChauffeur;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        if (toggleHours != null)
-        toggleHours.setOnAction(event -> toggleHours.setText((toggleHours.getText().equals("Hours")) ? "Days" : "Hours"));
+        DataHandler.print();
 
     }
 
@@ -119,26 +122,59 @@ public class Controller implements Initializable {
     }
 
 
-
-    private boolean validateEmptyField (TextField textField) {
+    protected boolean validateEmptyField(TextField textField) {
         if (!textField.getText().isEmpty()) {
             return true;
+        } else {
+            return false;
         }
-        else {
+
+    }
+
+    protected boolean validateNumberField(TextField textField) {
+        if (textField.getText().matches("[0-9]+")) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    protected boolean validateTimeField(TextField textField) {
+        if (textField.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    protected boolean validateEmptyDate(DatePicker datePicker) {
+        if (datePicker.getValue() != null) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    protected boolean validateEmptyCombo(ComboBox comboBox) {
+        if (comboBox.getValue() != null) {
+            return true;
+        } else {
             return false;
         }
 
     }
 
 
-    private boolean validateEmptyDate (TextField textField) {
-        if (!textField.getText().isEmpty()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    protected void alertdisplay(String title, String message) {
 
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 

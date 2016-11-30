@@ -263,9 +263,9 @@ public class ReservationController extends Controller implements Initializable {
         String alert = "There are some mistakes: ";
         int length = alert.length();
 
-        if (!validateEmptyField(fieldNamePassenger) || !validateNumberField(fieldNamePassenger)) alert += "Passenger Name, ";
-        if (!validateEmptyField(fieldAddressPassenger) || !validateNumberField(fieldAddressPassenger)) alert += "Passenger address, ";
-        if (!validateEmptyField(fieldEmailPassenger) || !validateNumberField(fieldEmailPassenger)) alert += "Passenger Email, ";
+        if (!validateEmptyField(fieldNamePassenger) ) alert += "Passenger Name, ";
+        if (!validateEmptyField(fieldAddressPassenger) ) alert += "Passenger address, ";
+        if (!validateEmptyField(fieldEmailPassenger) ) alert += "Passenger Email, ";
         if (!validateEmptyField(fieldSeatNr) || !validateNumberField(fieldSeatNr)) alert += "Seat number, ";
 
         if (length == alert.length()) {

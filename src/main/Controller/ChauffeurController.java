@@ -97,9 +97,9 @@ public class ChauffeurController extends Controller implements Initializable {
         String alert = "There are some mistakes: ";
         int length = alert.length();
 
-        if (!validateEmptyField(fieldChauffeurAddName) || !validateNumberField(fieldChauffeurAddName)) alert += "Name, ";
-        if (!validateEmptyField(fieldChauffeurAddAddress) || !validateNumberField(fieldChauffeurAddAddress)) alert += "Address, ";
-        if (!validateEmptyField(fieldChauffeurAddEmail) || !validateNumberField(fieldChauffeurAddEmail)) alert += "Email, ";
+        if (!validateEmptyField(fieldChauffeurAddName) ) alert += "Name, ";
+        if (!validateEmptyField(fieldChauffeurAddAddress) ) alert += "Address, ";
+        if (!validateEmptyField(fieldChauffeurAddEmail) ) alert += "Email, ";
         if (!validateEmptyField(fieldChauffeurAddPhone) || !validateNumberField(fieldChauffeurAddPhone)) alert += "Phone, ";
         if (!validateEmptyField(fieldChauffeurAddId) || !validateNumberField(fieldChauffeurAddId)) alert += "Chauffeur ID, ";
         if (!validateEmptyDate(birthdayPicker)) alert += "Birthday, ";

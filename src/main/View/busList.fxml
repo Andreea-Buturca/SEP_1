@@ -37,10 +37,10 @@
                   <Insets bottom="10.0" fx:id="x2" />
                 </VBox.margin>
               </Label>
-              <ListView fx:id="busList" prefHeight="402.0" prefWidth="990.0" />
+              <ListView fx:id="busListview" prefHeight="402.0" prefWidth="990.0" />
               <BorderPane prefHeight="77.0" prefWidth="990.0">
                 <left>
-                  <Button id="addBus" fx:id="addBusInList" mnemonicParsing="false" onAction="#changeSceneToAddBus" onMouseClicked="#changeView" text="Add Bus" />
+                  <Button id="addBus" fx:id="addBusView" mnemonicParsing="false" onMouseClicked="#changeView" text="Add Bus" />
                 </left>
                 <padding>
                   <Insets left="350.0" right="350.0" top="30.0" />

@@ -1,6 +1,7 @@
 package main.Controller;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import main.Model.MyDate;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +26,8 @@ public class ChauffeurController extends Controller implements Initializable {
     public TextField fieldChauffeurAddName;
     public TextField fieldChauffeurAddPhone;
     public TextField fieldChauffeurAddId;
+    public Button buttonAddChauffeur;
+    public DatePicker birthdayPicker;
 
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -88,23 +92,25 @@ public class ChauffeurController extends Controller implements Initializable {
         return input;
     }
 
-    /*private void executeAdd() {
-        String[] input = getInput();
-        try {
-            String name = input[0].trim();
-            String address = input[1].trim();
-            String email = input[2].trim();
-            String phone = input[3].trim();
-            int employeeID = Integer.parseInt(input[4].trim());
+    public void addChauffeur(ActionEvent actionEvent) throws IOException {
 
-            Chauffeur chauffeur = new Chauffeur(name, address, email, phone, workedHours, isVikar);
-            model.addChauffeur(chauffeur);
-            *//*gui.setText("Added: " + chauffeur);
-            gui.setMode(StudentGUI.SHOW_MODE);*//*
-        } catch (Exception e) {
-            // gui.setErrorText("Wrong input format: " + e.getMessage());
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+        if (!validateEmptyField(fieldChauffeurAddName) || !validateNumberField(fieldChauffeurAddName)) alert += "Name, ";
+        if (!validateEmptyField(fieldChauffeurAddAddress) || !validateNumberField(fieldChauffeurAddAddress)) alert += "Address, ";
+        if (!validateEmptyField(fieldChauffeurAddEmail) || !validateNumberField(fieldChauffeurAddEmail)) alert += "Email, ";
+        if (!validateEmptyField(fieldChauffeurAddPhone) || !validateNumberField(fieldChauffeurAddPhone)) alert += "Phone, ";
+        if (!validateEmptyField(fieldChauffeurAddId) || !validateNumberField(fieldChauffeurAddId)) alert += "Chauffeur ID, ";
+        if (!validateEmptyDate(birthdayPicker)) alert += "Birthday, ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
         }
-    }*/
+    }
 
 
 }

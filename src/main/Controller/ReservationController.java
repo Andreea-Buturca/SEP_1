@@ -35,6 +35,11 @@ public class ReservationController extends Controller implements Initializable {
     public TextField fieldDefaultPrice;
     public TextField fieldExtraServices;
     public TextField fieldDiscount;
+    public Button buttonAddCustomer;
+    public Button buttonAddPassenger;
+    public Button buttonRemovePassenger;
+    public Button buttonSaveReservation;
+    public Button buttonCancelReservation;
 
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -216,6 +221,66 @@ public class ReservationController extends Controller implements Initializable {
         stage.show();
 
 
+    }
+    public void saveReservation(ActionEvent actionEvent) throws IOException {
+
+
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+
+        if (!validateEmptyField(fieldDefaultPrice) || !validateNumberField(fieldDefaultPrice)) alert += "Price, ";
+        if (!validateEmptyField(fieldExtraServices) || !validateNumberField(fieldExtraServices)) alert += "Extra services, ";
+        if (!validateEmptyField(fieldDiscount) || !validateNumberField(fieldDiscount)) alert += "Discount, ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
+        }
+    }
+
+    public void addCustomer(ActionEvent actionEvent) throws IOException{
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+        if (!validateEmptyField(fieldNameCustomer) || !validateNumberField(fieldNameCustomer)) alert += "Customer Name, ";
+        if (!validateEmptyField(fieldNameCompany) || !validateNumberField(fieldNameCompany)) alert += "Company name, ";
+        if (!validateEmptyField(fieldAddressCustomer) || !validateNumberField(fieldAddressCustomer)) alert += "Customer Address, ";
+        if (!validateEmptyField(fieldEmailCustomer) || !validateNumberField(fieldEmailCustomer)) alert += "Customer Email, ";
+        if (!validateEmptyField(fieldPhoneCustomer) || !validateNumberField(fieldPhoneCustomer)) alert += "Customer phone, ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
+        }
+    }
+
+    public void addPassenger(ActionEvent actionEvent) throws IOException {
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+        if (!validateEmptyField(fieldNamePassenger) || !validateNumberField(fieldNamePassenger)) alert += "Passenger Name, ";
+        if (!validateEmptyField(fieldAddressPassenger) || !validateNumberField(fieldAddressPassenger)) alert += "Passenger address, ";
+        if (!validateEmptyField(fieldEmailPassenger) || !validateNumberField(fieldEmailPassenger)) alert += "Passenger Email, ";
+        if (!validateEmptyField(fieldSeatNr) || !validateNumberField(fieldSeatNr)) alert += "Seat number, ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
+        }
+    }
+
+
+    public void removePassenger(ActionEvent actionEvent) throws IOException {
+    }
+
+    public void cancelReservation(ActionEvent actionEvent) throws IOException {
     }
 }
 

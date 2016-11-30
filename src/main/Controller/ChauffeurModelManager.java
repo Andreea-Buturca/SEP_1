@@ -20,7 +20,7 @@ public class ChauffeurModelManager {
             file = new ChauffeurFile(FILENAME);
 
             list = file.readTextFile();
-            list.sortByName();
+            list.sortByChauffeurName();
         }
         catch (ParseException | FileNotFoundException e)
         {
@@ -30,25 +30,25 @@ public class ChauffeurModelManager {
 
     public int getSize()
     {
-        return list.size();
+        return list.getSize();
     }
 
     public Chauffeur getChauffeur(int index)
     {
-        return list.get(index);
+        return list.getChauffeurByIndex(index);
     }
 
     public Chauffeur removeChauffeur(int index)
     {
         Chauffeur c = getChauffeur(index);
-        list.remove(index);
+        list.removeChauffeur(index);
         return c;
     }
 
     public void addChauffeur(Chauffeur chauffeur)
     {
         list.add(chauffeur);
-        list.sortByName();
+        list.sortByChauffeurName();
     }
 
     public String toString()

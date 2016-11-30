@@ -42,7 +42,7 @@
                   <Insets bottom="10.0" fx:id="x2" />
                 </VBox.margin>
               </Label>
-              <ListView prefHeight="402.0" prefWidth="990.0" />
+              <ListView fx:id="listViewChauffeurList" prefHeight="402.0" prefWidth="990.0" />
               <BorderPane prefHeight="77.0" prefWidth="990.0">
                 <left>
                   <Button fx:id="addChauffeur" mnemonicParsing="false" onMouseClicked="#changeView" text="Add Chauffeur " />

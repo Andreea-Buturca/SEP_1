@@ -6,58 +6,66 @@ import java.util.ArrayList;
  * Created by andreea on 11/28/2016.
  */
 public class ChauffeurList {
-    private ArrayList<Chauffeur> list;
+    private ArrayList<Chauffeur> chauffeurList;
 
     public ChauffeurList()
     {
-        list = new ArrayList<Chauffeur>();
+        chauffeurList = new ArrayList<Chauffeur>();
     }
 
-    public int size()
+    public int getSize()
     {
-        return list.size();
+        return chauffeurList.size();
     }
 
     public void add(Chauffeur chauffeur)
     {
-        list.add(chauffeur);
+        chauffeurList.add(chauffeur);
     }
 
-    public void remove(int index)
+    public void removeChauffeur(int index)
     {
-        list.remove(index);
+        chauffeurList.remove(index);
     }
 
-    public Chauffeur get(int index)
+    public Chauffeur getChauffeurByIndex(int index)
     {
-        return list.get(index);
+        return chauffeurList.get(index);
     }
 
-       public void sortByName()
+    public Chauffeur getChauffeur(Chauffeur chauffeur){
+        for (int i=0; i<chauffeurList.size();i++){
+            if (chauffeurList.get(i).equals(chauffeur))
+                return chauffeurList.get(i);
+        }
+        return null;
+    }
+
+       public void sortByChauffeurName()
     {
         ArrayList<Chauffeur> sorted = new ArrayList<>();
-        while (list.size() > 0)
+        while (chauffeurList.size() > 0)
         {
             int minIndex = 0;
-            for (int i = 0; i < list.size(); i++)
+            for (int i = 0; i < chauffeurList.size(); i++)
             {
-                if (list.get(i).getName().compareTo(list.get(minIndex).getName()) < 0)
+                if (chauffeurList.get(i).getName().compareTo(chauffeurList.get(minIndex).getName()) < 0)
                 {
                     minIndex = i;
                 }
             }
-            sorted.add(list.get(minIndex));
-            list.remove(minIndex);
+            sorted.add(chauffeurList.get(minIndex));
+            chauffeurList.remove(minIndex);
         }
-        list = sorted;
+        chauffeurList = sorted;
     }
    public String toString()
     {
         String s = "";
-        for (int i = 0; i < list.size(); i++)
+        for (int i = 0; i < chauffeurList.size(); i++)
         {
-            s += list.get(i);
-            if (i < list.size() - 1)
+            s += chauffeurList.get(i);
+            if (i < chauffeurList.size() - 1)
                 s += "\n";
         }
         return s;

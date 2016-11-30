@@ -82,16 +82,16 @@ public class ChauffeurFile {
             try
             {
                 out = new PrintWriter(file);
-                for (int i = 0; i < chauffeurs.size(); i++)
+                for (int i = 0; i < chauffeurs.getSize(); i++)
                 {
-                    out.println(chauffeurs.get(i).getName() + ", "
-                            + chauffeurs.get(i).getAddress() + ", "
-                            + chauffeurs.get(i).getEmail() + ", "
-                            + chauffeurs.get(i).getPhone()+ ", "
-                            + chauffeurs.get(i).getEmployeeID()+ ", "
-                            + chauffeurs.get(i).getPreferredDistance()+ ", "
-                            + chauffeurs.get(i).getPreferredTripType()+ ", "
-                            + chauffeurs.get(i).getWorkedHours());
+                    out.println(chauffeurs.getChauffeurByIndex(i).getName() + ", "
+                            + chauffeurs.getChauffeurByIndex(i).getAddress() + ", "
+                            + chauffeurs.getChauffeurByIndex(i).getEmail() + ", "
+                            + chauffeurs.getChauffeurByIndex(i).getPhone()+ ", "
+                            + chauffeurs.getChauffeurByIndex(i).getEmployeeID()+ ", "
+                            + chauffeurs.getChauffeurByIndex(i).getPreferredDistance()+ ", "
+                            + chauffeurs.getChauffeurByIndex(i).getPreferredTripType()+ ", "
+                            + chauffeurs.getChauffeurByIndex(i).getWorkedHours());
                 }
                 out.flush();
             }

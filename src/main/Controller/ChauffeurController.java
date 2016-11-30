@@ -1,18 +1,24 @@
 package main.Controller;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import main.Model.BusList;
 import main.Model.Chauffeur;
+import main.Model.ChauffeurList;
 import main.Model.MyDate;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 
 /**
@@ -29,9 +35,25 @@ public class ChauffeurController extends Controller implements Initializable {
     public Button buttonAddChauffeur;
     public DatePicker birthdayPicker;
     public Button buttonDeleteChauffeur;
+    public ListView listViewChauffeurList;
 
     public void initialize(URL location, ResourceBundle resources) {
-
+        if (listViewChauffeurList != null) {
+            try {
+                listViewChauffeurList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                ChauffeurFile file = new ChauffeurFile("ChauffeurList.txt");
+                ChauffeurList chauffeurlist = file.readTextFile();
+                ObservableList<String> items = FXCollections.observableArrayList();
+                for (int i = 0; i < chauffeurlist.getSize(); i++) {
+                    items.add(chauffeurlist.getChauffeurByIndex(i).toString());
+                }
+                listViewChauffeurList.setItems(items);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
         //add chauffeur view
         if (fieldChauffeurAddAddress != null) {
@@ -83,7 +105,7 @@ public class ChauffeurController extends Controller implements Initializable {
         }
     }
 
-    public String[] getInput() {
+   /* public String[] getInput() {
         String[] input = new String[5];
         input[0] = fieldChauffeurAddName.getText();
         input[1] = fieldChauffeurAddAddress.getText();
@@ -91,7 +113,7 @@ public class ChauffeurController extends Controller implements Initializable {
         input[3] = fieldChauffeurAddPhone.getText();
         input[4] = fieldChauffeurAddId.getText();
         return input;
-    }
+    }*/
 
     public void addChauffeur(ActionEvent actionEvent) throws IOException {
 

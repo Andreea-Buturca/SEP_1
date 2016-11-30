@@ -24,6 +24,12 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+
+
+        // TODO: 30-Nov-16 make load from file when done
+        // TODO: 30-Nov-16 override onclose to make backup
+        //DataHandler.load();
+
         launch(args);
     }
 }

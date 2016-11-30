@@ -46,6 +46,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         DataHandler.print();
+        //DataHandler.getBusList().addBus();
 
     }
 

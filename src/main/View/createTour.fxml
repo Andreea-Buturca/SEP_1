@@ -190,7 +190,7 @@
               <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="182.0" text="Chauffeur" textAlignment="CENTER" />
               <ListView prefHeight="183.0" prefWidth="182.0" />
               <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="182.0" text="Bus" textAlignment="CENTER" />
-              <ListView prefHeight="164.0" prefWidth="182.0" />
+              <ListView fx:id="busListview" prefHeight="164.0" prefWidth="182.0" />
               <CheckBox fx:id="checkPrivateTrip" mnemonicParsing="false" prefHeight="24.0" prefWidth="182.0" text="Private Trip" VBox.vgrow="ALWAYS">
                 <font>
                   <Font size="16.0" />

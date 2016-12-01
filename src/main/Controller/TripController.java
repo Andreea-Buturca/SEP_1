@@ -1,5 +1,7 @@
 package main.Controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +13,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import main.Model.Bus;
+import main.Model.DataHandler;
+import main.Model.Trip;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,12 +43,21 @@ public class TripController extends Controller implements Initializable {
     public ToggleButton toggleHours;
     public TextField tests;
     public Button saveCustomerBtn;
+    public ListView busListview;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         if (toggleHours != null) {
             toggleHours.setOnAction(event -> toggleHours.setText((toggleHours.getText().equals("Hours")) ? "Days" : "Hours"));
+
+
+            busListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+            ObservableList<String> items = FXCollections.observableArrayList();
+            for (Bus bus : DataHandler.getBusList().getBuses()) {
+                items.add(bus.toString());
+            }
+            busListview.setItems(items);
         }
 
         if (checkPrivateTrip != null) {
@@ -97,7 +111,7 @@ public class TripController extends Controller implements Initializable {
 
         if (!validateEmptyCombo(fieldDestination)) alert += "Destination, ";
         if (!validateEmptyCombo(fieldDeparture)) alert += "Departure, ";
-
+        if (busListview.getSelectionModel().getSelectedItem() == null) alert += "Bus, ";
 
         if (checkPrivateTrip.isSelected()) {
             System.out.println(tests.getText());
@@ -107,6 +121,12 @@ public class TripController extends Controller implements Initializable {
 
         if (length == alert.length()) {
             //save it DataHandler. .....
+            String[] lineToken = busListview.getSelectionModel().getSelectedItem().toString().split(", ");
+            String regPlate = lineToken[0].trim();
+            // TODO: 01-Dec-16 finish creating trip
+           // DataHandler.getTrips().add(new Trip(DataHandler.getBusList().findByRegplate(regPlate), ));
+
+
         } else {
             //alert
             alertdisplay("Wrong Input", alert);

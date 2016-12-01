@@ -56,7 +56,7 @@ public class Controller implements Initializable {
 
     public void changeView(MouseEvent mouseEvent) throws IOException {
 
-        Parent root;
+        Parent root = null;
 
         //main
         if ((mouseEvent.getSource() == createTour)) {
@@ -76,19 +76,21 @@ public class Controller implements Initializable {
         else if ((mouseEvent.getSource() == addChauffeur)) {
             root = FXMLLoader.load(getClass().getResource("../View/AddChauffeur.fxml"));
         } else {
-            root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+           // root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
         }
 
-        Scene scene = new Scene(root);
+        if (root != null) {
+            Scene scene = new Scene(root);
 
-        Main.stage.setScene(scene);
-        Main.stage.show();
+            Main.stage.setScene(scene);
+            Main.stage.show();
+        }
     }
 
 
     public void changeViewMenu(ActionEvent actionEvent) throws IOException {
 
-        Parent root;
+        Parent root = null;
 
         if ((actionEvent.getSource() == homeHome)) {
             root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
@@ -107,13 +109,15 @@ public class Controller implements Initializable {
         } else if ((actionEvent.getSource() == homeDriverAdd)) {
             root = FXMLLoader.load(getClass().getResource("../View/addChauffeur.fxml"));
         } else {
-            root = FXMLLoader.load(getClass().getResource("./View/mainScreen.fxml"));
+            //root = FXMLLoader.load(getClass().getResource("./View/mainScreen.fxml"));
         }
 
 
-        Scene scene = new Scene(root);
-        Main.stage.setScene(scene);
-        Main.stage.show();
+        if (root != null) {
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
+        }
 
     }
 
@@ -135,8 +139,9 @@ public class Controller implements Initializable {
         }
 
     }
-    protected boolean validate5Digit(TextField textField) {
-        if (textField.getText().length() == 5) {
+    protected boolean validateLength(TextField textField, int length) {
+        if (length < 1) length = length*(-1);
+        if (textField.getText().length() == length) {
             return true;
         } else {
             return false;

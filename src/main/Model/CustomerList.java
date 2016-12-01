@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class CustomerList {
 
-    ArrayList<Customer> customers = new ArrayList<>();
+   private ArrayList<Customer> customers = new ArrayList<>();
 
 
     public CustomerList() {

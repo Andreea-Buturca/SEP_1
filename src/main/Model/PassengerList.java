@@ -47,6 +47,14 @@ public class PassengerList {
     public ArrayList<Passenger> getPassengers() {
         return passengers;
     }
+
+    public void removePassenger(Passenger passenger) {
+        for (int i = 0; i < passengers.size(); i++) {
+            if (passengers.get(i).equals(passenger))
+                passengers.remove(passenger);
+        }
+    }
+
     public String toString()
     {
         String s = "";

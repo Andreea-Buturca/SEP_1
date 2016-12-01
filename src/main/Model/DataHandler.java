@@ -14,6 +14,7 @@ public class DataHandler {
     private static ChauffeurList chauffeurList;
     private static CustomerList customerList;
     private static PassengerList passengerList;
+    private static ReservationList reservationList;
     private static DestinationList destinationList;
    // public static
 
@@ -43,6 +44,7 @@ public class DataHandler {
     public static PassengerList getPassengerList() {
         return passengerList;
     }
+    public static  ReservationList getReservationList(){return reservationList;}
     public static DestinationList getDestinationList() {
         return destinationList;
     }
@@ -53,6 +55,7 @@ public class DataHandler {
         chauffeurList = new ChauffeurList();
         customerList = new CustomerList();
         passengerList = new PassengerList();
+        reservationList = new ReservationList();
         destinationList = new DestinationList();
     }
 
@@ -81,6 +84,7 @@ public class DataHandler {
             out.writeObject(chauffeurList);
             out.writeObject(customerList);
             out.writeObject(passengerList);
+            out.writeObject(reservationList);
             out.writeObject(destinationList);
         }
         catch (IOException e)
@@ -115,6 +119,7 @@ public class DataHandler {
             chauffeurList = (ChauffeurList) in.readObject();
             customerList = (CustomerList) in.readObject();
             passengerList = (PassengerList) in.readObject();
+            reservationList = (ReservationList) in.readObject();
             destinationList = (DestinationList) in.readObject();
         }
 

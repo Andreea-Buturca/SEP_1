@@ -49,11 +49,7 @@ public class ReservationController extends Controller implements Initializable {
     public ListView listViewPassenger;
     public Label labelTotalPrice;
 
-    int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
-
-    public void controlData(ActionEvent actionEvent) throws IOException {
-
-
+       public void controlData(ActionEvent actionEvent) throws IOException {
         Stage stage;
         Parent root;
 
@@ -64,7 +60,6 @@ public class ReservationController extends Controller implements Initializable {
             stage = (Stage) mkReservationView.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
         }
-
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -102,7 +97,8 @@ public class ReservationController extends Controller implements Initializable {
     }
 
     public void addPassenger(ActionEvent actionEvent) throws IOException {
-        for(int i=0;i<nrPassengers;i++) {
+        int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
+        for (int i = 0; i < nrPassengers; i++) {
             String alert = "There are some mistakes: ";
             int length = alert.length();
 
@@ -178,11 +174,12 @@ public class ReservationController extends Controller implements Initializable {
             int price = Integer.parseInt(fieldDefaultPrice.getText());
             int extraServices = Integer.parseInt(fieldExtraServices.getText());
             int discount = Integer.parseInt(fieldDiscount.getText());
+            int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
             double finalPrice = ((price+extraServices)-discount) * nrPassengers;
-           /* Customer customer = DataHandler.getCustomerList().getCustomers();
+            Customer customer ;
             ArrayList<Passenger> passengers = DataHandler.getPassengerList().getPassengers();
             String trip = fieldDestination.getText();
-            DataHandler.getReservationList().addReservation(new Reservation(trip, customer, passengers, finalPrice));*/
+         //   DataHandler.getReservationList().addReservation(new Reservation(trip, customer, passengers, finalPrice));
         } else {
             //alert
             alertdisplay("Wrong Input", alert);

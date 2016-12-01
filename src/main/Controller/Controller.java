@@ -135,6 +135,14 @@ public class Controller implements Initializable {
         }
 
     }
+    protected boolean validate5Digit(TextField textField) {
+        if (textField.getText().length() == 5) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
     protected boolean validateTimeField(TextField textField) {
         if (textField.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")) {

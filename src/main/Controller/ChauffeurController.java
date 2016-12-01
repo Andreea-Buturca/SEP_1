@@ -8,10 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import main.Model.BusList;
-import main.Model.Chauffeur;
-import main.Model.ChauffeurList;
-import main.Model.MyDate;
+import main.Model.*;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -19,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
@@ -36,86 +34,34 @@ public class ChauffeurController extends Controller implements Initializable {
     public DatePicker birthdayPicker;
     public Button buttonDeleteChauffeur;
     public ListView listViewChauffeurList;
+    public CheckBox checkBoxVikar;
+    public CheckBox checkBoxDistanceLong;
+    public CheckBox checkBoxDistanceMedium;
+    public CheckBox checkBoxDistanceShort;
+    public CheckBox checkBoxClasicBus;
+    public CheckBox checkBoxMiniBus;
+    public CheckBox checkBoxPartyBus;
+    public CheckBox checkboxLuxuryBus;
+    public CheckBox checkBoxWeekend;
+    public CheckBox checkBoxWeek;
+    private Chauffeur chauffeur;
+
+    public void loadList() {
+        listViewChauffeurList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (Chauffeur chauffeur : DataHandler.getChauffeurList().getChauffeurList()) {
+            items.add(chauffeur.toString());
+        }
+        listViewChauffeurList.setItems(items);
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
         if (listViewChauffeurList != null) {
-            try {
-                listViewChauffeurList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-                ChauffeurFile file = new ChauffeurFile("ChauffeurList.txt");
-                ChauffeurList chauffeurlist = file.readTextFile();
-                ObservableList<String> items = FXCollections.observableArrayList();
-                for (int i = 0; i < chauffeurlist.getSize(); i++) {
-                    items.add(chauffeurlist.getChauffeurByIndex(i).toString());
-                }
-                listViewChauffeurList.setItems(items);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //add chauffeur view
-        if (fieldChauffeurAddAddress != null) {
-            fieldChauffeurAddAddress.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldChauffeurAddAddress.getText().equals("xx.xx.xxxx")) {
-                        fieldChauffeurAddAddress.getStyleClass().add("error");
-                    } else {
-                        fieldChauffeurAddAddress.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldChauffeurAddEmail.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldChauffeurAddEmail.getText().equals("xx.xx.xxxx")) {
-                        fieldChauffeurAddEmail.getStyleClass().add("error");
-                    } else {
-                        fieldChauffeurAddEmail.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldChauffeurAddName.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldChauffeurAddName.getText().equals("xx.xx.xxxx")) {
-                        fieldChauffeurAddName.getStyleClass().add("error");
-                    } else {
-                        fieldChauffeurAddName.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldChauffeurAddPhone.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldChauffeurAddPhone.getText().equals("xx.xx.xxxx")) {
-                        fieldChauffeurAddPhone.getStyleClass().add("error");
-                    } else {
-                        fieldChauffeurAddPhone.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldChauffeurAddId.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldChauffeurAddId.getText().equals("xx.xx.xxxx")) {
-                        fieldChauffeurAddId.getStyleClass().add("error");
-                    } else {
-                        fieldChauffeurAddId.getStyleClass().remove("error");
-                    }
-                }
-            });
+            loadList();
         }
     }
 
-   /* public String[] getInput() {
-        String[] input = new String[5];
-        input[0] = fieldChauffeurAddName.getText();
-        input[1] = fieldChauffeurAddAddress.getText();
-        input[2] = fieldChauffeurAddEmail.getText();
-        input[3] = fieldChauffeurAddPhone.getText();
-        input[4] = fieldChauffeurAddId.getText();
-        return input;
-    }*/
-
-    public void addChauffeur(ActionEvent actionEvent) throws IOException {
+    public void addChauffeur(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
 
         String alert = "There are some mistakes: ";
         int length = alert.length();
@@ -125,13 +71,75 @@ public class ChauffeurController extends Controller implements Initializable {
         if (!validateEmptyField(fieldChauffeurAddEmail)) alert += "Email, ";
         if (!validateEmptyField(fieldChauffeurAddPhone) || !validateNumberField(fieldChauffeurAddPhone))
             alert += "Phone, ";
-        if (!validateEmptyField(fieldChauffeurAddId) || !validateNumberField(fieldChauffeurAddId))
-            alert += "Employee ID, ";
+        if (!validateEmptyField(fieldChauffeurAddId) || !validate5Digit(fieldChauffeurAddId))
+            alert += "Employee ID(5 digit nr), ";
         if (!validateEmptyDate(birthdayPicker)) alert += "Birthday, ";
 
         if (length == alert.length()) {
-            //save it DataHandler. .....
-            successdisplay("Success", "Chauffeur was added.");
+
+            //save it DataHandler.
+            String name = fieldChauffeurAddName.getText();
+            String address = fieldChauffeurAddAddress.getText();
+            String email = fieldChauffeurAddEmail.getText();
+            String phone = fieldChauffeurAddPhone.getText();
+            MyDate birthday = new MyDate(birthdayPicker.getValue());
+            int chauffeurID = Integer.parseInt(fieldChauffeurAddId.getText());
+            boolean isVikar = false;
+            int preferredDistance = 0;
+            String preferredTourType = "";
+            int workedHours = 0;
+            String bus = "";
+
+            if (!checkBoxVikar.isSelected()) {
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, birthday, chauffeurID, isVikar));
+            }
+            else if (checkBoxVikar.isSelected()) {
+                isVikar = true;
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, birthday, chauffeurID, isVikar));
+            }
+           /* if (checkBoxDistanceShort.isSelected()) {
+                chauffeur.setPreferredShortDistance(400);
+                preferredDistance = chauffeur.getPreferredDistance();
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+            }
+            if (checkBoxDistanceMedium.isSelected()) {
+                chauffeur.setPreferredMediumDistance(1000);
+                preferredDistance = chauffeur.getPreferredDistance();
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+            }
+            if (checkBoxDistanceLong.isSelected()) {
+                chauffeur.setPreferredLongDistance(3001);
+                preferredDistance = chauffeur.getPreferredDistance();
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+            }
+            if (checkBoxClasicBus.isSelected()) {
+                bus = "Clasic Bus";
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+            }
+            if (checkboxLuxuryBus.isSelected()) {
+                bus = "Luxury Bus";
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+            }
+            if (checkBoxPartyBus.isSelected()) {
+                bus = "Party Bus";
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+            }
+            if (checkBoxMiniBus.isSelected()) {
+                bus = "Mini Bus";
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+            }
+            if (checkBoxWeekend.isSelected()) {
+                chauffeur.setPreferredWeekendHours(10);
+                workedHours = chauffeur.getPreferredWorkedHours();
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+            }
+            if (checkBoxWeek.isSelected()) {
+                chauffeur.setPreferredWeekHours();
+                workedHours = chauffeur.getPreferredWorkedHours();
+                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+            }*/
+
+           successdisplay("Success", "Chauffeur was added.");
         } else {
             //alert
             alertdisplay("Wrong Input", alert);
@@ -139,7 +147,15 @@ public class ChauffeurController extends Controller implements Initializable {
     }
 
 
-    public void deleteChauffeur(ActionEvent actionEvent) throws IOException {
+    public void deleteChauffeur(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+        ObservableList<String> selected;
+        selected = listViewChauffeurList.getSelectionModel().getSelectedItems();
+        for (String aSelected : selected) {
+            String[] lineToken = aSelected.split(", ");
+            String name = lineToken[0].trim();
+            DataHandler.getChauffeurList().removeChauffeur(DataHandler.getChauffeurList().getChauffeurByName(name));
+        }
+        loadList();
         successdisplay("Success", "Chauffeur was deleted.");
     }
 }

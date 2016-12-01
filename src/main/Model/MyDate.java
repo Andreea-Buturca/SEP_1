@@ -1,6 +1,8 @@
 package main.Model;
 
 
+import java.time.LocalDate;
+
 public class MyDate {
     private int hour;
     private int minute;
@@ -12,10 +14,10 @@ public class MyDate {
         set(hour, minute, day, month, year);
     }
 
-    public MyDate(int day, int month, int year) {
-        this.day = day;
-        this.month = month;
-        this.year = year;
+    public MyDate(LocalDate localDate) {
+        this.day = localDate.getDayOfMonth();
+        this.month = localDate.getMonthValue();
+        this.year = localDate.getYear();
     }
 
     public void set(int hour, int minute, int day, int month, int year) {

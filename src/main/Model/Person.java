@@ -45,4 +45,8 @@ public class Person {
     public MyDate getDateOfBirth() {
         return dateOfBirth;
     }
+
+    public String toString() {
+        return this.name + ", address: " + this.address + ", email: " + this.email + ", phone: " + this.phone + ", birthday: " + this.dateOfBirth;
+    }
 }

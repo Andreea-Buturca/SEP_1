@@ -52,7 +52,7 @@
               <Label alignment="CENTER_LEFT" text="Employee ID:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
               <Label alignment="CENTER_LEFT" text="Vikar Chauffeur:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
               <Label alignment="CENTER_LEFT" text="Not preffered:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
-              <CheckBox mnemonicParsing="false" text="" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+              <CheckBox fx:id="checkBoxVikar" mnemonicParsing="false" text="" GridPane.columnIndex="1" GridPane.rowIndex="6" />
               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                 <children>
                   <VBox minHeight="46.0" prefHeight="47.0" prefWidth="444.0">
@@ -60,18 +60,18 @@
                       <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="353.0" spacing="10.0">
                         <children>
                           <Label prefWidth="84.0" text="Distance:" />
-                          <CheckBox mnemonicParsing="false" text="Long" />
-                          <CheckBox mnemonicParsing="false" prefWidth="97.0" text="Medium" />
-                          <CheckBox mnemonicParsing="false" text="Short" />
+                          <CheckBox fx:id="checkBoxDistanceLong" mnemonicParsing="false" text="Long" />
+                          <CheckBox fx:id="checkBoxDistanceMedium" mnemonicParsing="false" prefWidth="97.0" text="Medium" />
+                          <CheckBox fx:id="checkBoxDistanceShort" mnemonicParsing="false" text="Short" />
                         </children>
                       </HBox>
                       <HBox prefHeight="72.0" prefWidth="311.0" spacing="10.0">
                         <children>
                           <Label prefWidth="83.0" text="Bus Type:" />
-                          <CheckBox mnemonicParsing="false" text="Normal" />
-                          <CheckBox mnemonicParsing="false" text="Mini" />
-                          <CheckBox mnemonicParsing="false" prefWidth="-1.0" text="Party" />
-                          <CheckBox mnemonicParsing="false" text="Luxury" />
+                          <CheckBox fx:id="checkBoxClasicBus" mnemonicParsing="false" text="Clasic" />
+                          <CheckBox fx:id="checkBoxMiniBus" mnemonicParsing="false" text="Mini" />
+                          <CheckBox fx:id="CheckBoxPartyBus" mnemonicParsing="false" prefWidth="-1.0" text="Party" />
+                          <CheckBox fx:id="checkboxLuxuryBus" mnemonicParsing="false" text="Luxury" />
                         </children>
                       </HBox>
                     </children>
@@ -79,8 +79,8 @@
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="357.0" spacing="10.0">
                     <children>
                       <Label prefWidth="104.0" text="Work time:" />
-                      <CheckBox mnemonicParsing="false" prefWidth="133.0" text="Weekend" />
-                      <CheckBox mnemonicParsing="false" text="Week" />
+                      <CheckBox fx:id="checkBoxWeekend" mnemonicParsing="false" prefWidth="133.0" text="Weekend" />
+                      <CheckBox fx:id="checkBoxWeek" mnemonicParsing="false" text="Week" />
                     </children>
                   </HBox>
                 </children>

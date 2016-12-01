@@ -90,8 +90,8 @@ public class ChauffeurFile {
                             + chauffeurs.getChauffeurByIndex(i).getPhone()+ ", "
                             + chauffeurs.getChauffeurByIndex(i).getEmployeeID()+ ", "
                             + chauffeurs.getChauffeurByIndex(i).getPreferredDistance()+ ", "
-                            + chauffeurs.getChauffeurByIndex(i).getPreferredTripType()+ ", "
-                            + chauffeurs.getChauffeurByIndex(i).getWorkedHours());
+                            + chauffeurs.getChauffeurByIndex(i).getPreferredTourType()+ ", "
+                            + chauffeurs.getChauffeurByIndex(i).getPreferredWorkedHours());
                 }
                 out.flush();
             }

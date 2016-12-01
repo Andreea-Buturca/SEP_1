@@ -1,16 +1,25 @@
 package main.Controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.Model.Customer;
+import main.Model.DataHandler;
+import main.Model.Passenger;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 
 /**
@@ -40,168 +49,10 @@ public class ReservationController extends Controller implements Initializable {
     public Button buttonRemovePassenger;
     public Button buttonSaveReservation;
     public Button buttonCancelReservation;
+    public ListView listViewCustomer;
+    public ListView listViewPassenger;
 
-    public void initialize(URL location, ResourceBundle resources) {
-
-
-        // starts labels for makeReservation
-
-        if (fieldDestination != null) {
-
-            fieldDestination.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldDestination.getText().equals("xx.xx.xxxx")) {
-                        fieldDestination.getStyleClass().add("error");
-                    } else {
-                        fieldDestination.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldDeparture.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldDeparture.getText().equals("xx.xx.xxxx")) {
-                        fieldDeparture.getStyleClass().add("error");
-                    } else {
-                        fieldDeparture.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldNrPassengers.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldNrPassengers.getText().equals("xx.xx.xxxx")) {
-                        fieldNrPassengers.getStyleClass().add("error");
-                    } else {
-                        fieldNrPassengers.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldArrival.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldArrival.getText().equals("xx.xx.xxxx")) {
-                        fieldArrival.getStyleClass().add("error");
-                    } else {
-                        fieldArrival.getStyleClass().remove("error");
-                    }
-                }
-            });
-        }
-
-        // starts labels for makeReservationDate
-
-        if (fieldNameCustomer != null) {
-            fieldNameCustomer.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldNameCustomer.getText().equals("xx.xx.xxxx")) {
-                        fieldNameCustomer.getStyleClass().add("error");
-                    } else {
-                        fieldNameCustomer.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldNameCompany.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldNameCompany.getText().equals("xx.xx.xxxx")) {
-                        fieldNameCompany.getStyleClass().add("error");
-                    } else {
-                        fieldNameCompany.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldAddressCustomer.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldAddressCustomer.getText().equals("xx.xx.xxxx")) {
-                        fieldAddressCustomer.getStyleClass().add("error");
-                    } else {
-                        fieldAddressCustomer.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldEmailCustomer.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldEmailCustomer.getText().equals("xx.xx.xxxx")) {
-                        fieldEmailCustomer.getStyleClass().add("error");
-                    } else {
-                        fieldEmailCustomer.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldPhoneCustomer.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldPhoneCustomer.getText().equals("xx.xx.xxxx")) {
-                        fieldPhoneCustomer.getStyleClass().add("error");
-                    } else {
-                        fieldPhoneCustomer.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldNamePassenger.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldNamePassenger.getText().equals("xx.xx.xxxx")) {
-                        fieldNamePassenger.getStyleClass().add("error");
-                    } else {
-                        fieldNamePassenger.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldAddressPassenger.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldAddressPassenger.getText().equals("xx.xx.xxxx")) {
-                        fieldAddressPassenger.getStyleClass().add("error");
-                    } else {
-                        fieldAddressPassenger.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldEmailPassenger.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldEmailPassenger.getText().equals("xx.xx.xxxx")) {
-                        fieldEmailPassenger.getStyleClass().add("error");
-                    } else {
-                        fieldEmailPassenger.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldSeatNr.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldSeatNr.getText().equals("xx.xx.xxxx")) {
-                        fieldSeatNr.getStyleClass().add("error");
-                    } else {
-                        fieldSeatNr.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldDefaultPrice.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldDefaultPrice.getText().equals("xx.xx.xxxx")) {
-                        fieldDefaultPrice.getStyleClass().add("error");
-                    } else {
-                        fieldDefaultPrice.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldExtraServices.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldExtraServices.getText().equals("xx.xx.xxxx")) {
-                        fieldExtraServices.getStyleClass().add("error");
-                    } else {
-                        fieldExtraServices.getStyleClass().remove("error");
-                    }
-                }
-            });
-            fieldDiscount.focusedProperty().addListener((arg0, oldValue, newValue) -> {
-                if (!newValue) { // when focus lost
-                    if (fieldDiscount.getText().equals("xx.xx.xxxx")) {
-                        fieldDiscount.getStyleClass().add("error");
-                    } else {
-                        fieldDiscount.getStyleClass().remove("error");
-                    }
-                }
-            });
-        }
-    }
-
-
-    public void controlData(ActionEvent actionEvent) throws IOException {
+       public void controlData(ActionEvent actionEvent) throws IOException {
 
 
         Stage stage;
@@ -219,8 +70,85 @@ public class ReservationController extends Controller implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+ public void addCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
 
+        if (!validateEmptyField(fieldNameCustomer) ) alert += "Name, ";
+      //  if (!validateEmptyField(fieldNameCompany) ) alert += "Company name, ";
+        if (!validateEmptyField(fieldAddressCustomer) ) alert += "Address, ";
+        if (!validateEmptyField(fieldEmailCustomer) ) alert += "Email, ";
+        if (!validateEmptyField(fieldPhoneCustomer) || !validateLength(fieldPhoneCustomer, 8)) alert += "Phone, ";
 
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+            String name = fieldNameCustomer.getText();
+            String address = fieldAddressCustomer.getText();
+            String email = fieldEmailCustomer.getText();
+            String phone = fieldPhoneCustomer.getText();
+            boolean isCompany=false;
+            if(isCompany) {
+                DataHandler.getCustomerList().addCustomer(new Customer(name, address, email, phone));
+            }
+            else if(isCompany==true)
+            {
+            String companyName = fieldNameCompany.getText();
+            DataHandler.getCustomerList().addCustomer(new Customer(name, address, email, phone, isCompany, companyName));
+            }
+
+            successdisplay("Success", "Customer was created.");
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
+        }
+    }
+
+    public void addPassenger(ActionEvent actionEvent) throws IOException {
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+        if (!validateEmptyField(fieldNamePassenger) ) alert += "Name, ";
+        if (!validateEmptyField(fieldAddressPassenger) ) alert += "Address, ";
+        if (!validateEmptyField(fieldEmailPassenger) ) alert += "Email, ";
+        if (!validateEmptyField(fieldSeatNr) || !validateNumberField(fieldSeatNr)) alert += "Seat number, ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
+        }
+    }
+
+    public void loadCustomerList() {
+        listViewCustomer.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (Customer customer : DataHandler.getCustomerList().getCustomers()) {
+            items.add(customer.toString());
+        }
+        listViewCustomer.setItems(items);
+    }
+    public void loadPassengerList() {
+        listViewPassenger.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (Passenger passenger : DataHandler.getPassengerList().getPassengers()) {
+            items.add(passenger.toString());
+        }
+        listViewPassenger.setItems(items);
+    }
+    public void initialize(URL location, ResourceBundle resources) {
+        if (listViewCustomer != null) {
+            loadCustomerList();
+        }
+        if (listViewPassenger != null) {
+            loadPassengerList();
+        }
+    }
+
+    public void removePassenger(ActionEvent actionEvent) throws IOException {
+    }
+    public void cancelReservation(ActionEvent actionEvent) throws IOException {
     }
     public void saveReservation(ActionEvent actionEvent) throws IOException {
 
@@ -241,47 +169,6 @@ public class ReservationController extends Controller implements Initializable {
         }
     }
 
-    public void addCustomer(ActionEvent actionEvent) throws IOException{
-        String alert = "There are some mistakes: ";
-        int length = alert.length();
-
-        if (!validateEmptyField(fieldNameCustomer) || !validateNumberField(fieldNameCustomer)) alert += "Customer Name, ";
-        if (!validateEmptyField(fieldNameCompany) || !validateNumberField(fieldNameCompany)) alert += "Company name, ";
-        if (!validateEmptyField(fieldAddressCustomer) || !validateNumberField(fieldAddressCustomer)) alert += "Customer Address, ";
-        if (!validateEmptyField(fieldEmailCustomer) || !validateNumberField(fieldEmailCustomer)) alert += "Customer Email, ";
-        if (!validateEmptyField(fieldPhoneCustomer) || !validateNumberField(fieldPhoneCustomer)) alert += "Customer phone, ";
-
-        if (length == alert.length()) {
-            //save it DataHandler. .....
-        } else {
-            //alert
-            alertdisplay("Wrong Input", alert);
-        }
-    }
-
-    public void addPassenger(ActionEvent actionEvent) throws IOException {
-        String alert = "There are some mistakes: ";
-        int length = alert.length();
-
-        if (!validateEmptyField(fieldNamePassenger) ) alert += "Passenger Name, ";
-        if (!validateEmptyField(fieldAddressPassenger) ) alert += "Passenger address, ";
-        if (!validateEmptyField(fieldEmailPassenger) ) alert += "Passenger Email, ";
-        if (!validateEmptyField(fieldSeatNr) || !validateNumberField(fieldSeatNr)) alert += "Seat number, ";
-
-        if (length == alert.length()) {
-            //save it DataHandler. .....
-        } else {
-            //alert
-            alertdisplay("Wrong Input", alert);
-        }
-    }
-
-
-    public void removePassenger(ActionEvent actionEvent) throws IOException {
-    }
-
-    public void cancelReservation(ActionEvent actionEvent) throws IOException {
-    }
 }
 
 

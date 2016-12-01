@@ -31,4 +31,18 @@ public class CustomerList {
         }
         return null;
     }
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+    public String toString()
+    {
+        String s = "";
+        for (int i = 0; i < customers.size(); i++)
+        {
+            s += customers.get(i);
+            if (i < customers.size() - 1)
+                s += "\n";
+        }
+        return s;
+    }
 }

@@ -8,22 +8,21 @@ import java.util.ArrayList;
 public class Customer extends Person {
 
     private boolean isCompany;
-    private String responsiblePerson;
+    private String companyName;
     private ArrayList<Passenger> passengers = new ArrayList<>();
-    private int numberOgTrips;
+    private int numberOfTrips;
 
     private int points;
 
 
-    public Customer(String name, String address, String email, String phone, boolean isCompany, String responsiblePerson) {
+    public Customer(String name, String address, String email, String phone, boolean isCompany,String companyName) {
         super(name, address, email, phone);
         this.isCompany = isCompany;
-        this.responsiblePerson = responsiblePerson;
-    }
+        this.companyName=companyName;
+         }
 
-    public Customer(String name, String address, String email, String phone, boolean isCompany) {
+    public Customer(String name, String address, String email, String phone) {
         super(name, address, email, phone);
-        this.isCompany = isCompany;
     }
 
     @Override
@@ -42,9 +41,15 @@ public class Customer extends Person {
     }
 
     public boolean isFrequent(){
-        return numberOgTrips>5;
+        return numberOfTrips>5;
         // TODO: 28-Nov-16 how many trips is frequent?
     }
-
+public String toString()
+{
+    String x="";
+    if(isCompany)
+    {x+=" is Company ";}
+    return super.toString()+x+", Company name: "+ this.companyName;
+}
 
 }

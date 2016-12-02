@@ -1,6 +1,7 @@
 package main.Model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by andreea on 11/28/2016.
@@ -115,6 +116,23 @@ public class ChauffeurList {
                 s += "\n";
         }
         return s;
+    }
+
+    public ChauffeurList getAvailable(Date from, Date to) {
+        ChauffeurList result = new ChauffeurList();
+        ArrayList<Trip> trips = DataHandler.getTrips();
+        for (int i = 0; i < trips.size(); i++) {
+            for (int j = 0; j < chauffeurs.size(); j++) {
+                if (chauffeurs.get(j).equals(trips.get(i).getBus())) {
+                    if (((from.before(trips.get(i).getTimeStart())) && (to.before(trips.get(i).getTimeStart())))
+                            || ((from.after(trips.get(i).getTimeStart())) && (to.after(trips.get(i).getTimeStart()))))
+                    {
+                        result.add(chauffeurs.get(j));
+                    }
+                }
+            }
+        }
+        return result;
     }
 
 }

@@ -6,11 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
-import main.Model.BusList;
-import main.Model.CustomerList;
-import main.Model.DataHandler;
-
-import main.Model.Trip;
+import main.Model.*;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -120,7 +116,7 @@ public class SearchController extends Controller {
     print
      */
 
-    private void test (){
+    /*private void test (){
         TripTempController.edit(new Trip(DataHandler.getBusList().getAtIndex(0), DataHandler.getDestinationList().getAtIndex(0), null, new Date(2012, 1, 1, 1, 1), new Date(2012, 1, 1, 1, 1)));
-    }
+    }*/
 }

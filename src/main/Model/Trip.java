@@ -11,36 +11,52 @@ public class Trip {
     private ArrayList<Customer> customers = new ArrayList<>();
 
     private Bus bus;
+    private Chauffeur chauffeur;
     private Destination pickUpPoint;
     private ArrayList<Destination> stops;
     private Date timeStart;
     private Date timeEnd;
     private ArrayList<String> notes;  // TODO: 29-Nov-16 so do we need it?
 
-    public Trip(Bus bus, Destination pickUpPoint, ArrayList<Destination> stops, Date timeStart, Date timeEnd) {
+    public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, ArrayList<Destination> stops, Date timeStart, Date timeEnd) {
         this.bus = bus;
         this.pickUpPoint = pickUpPoint;
         this.stops = stops;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
-        this. notes = new ArrayList<>();
+        this.notes = new ArrayList<>();
         this.customers = new ArrayList<>();
+        this.chauffeur = chauffeur;
+
     }
 
-    public Trip(Bus bus, Destination pickUpPoint, Date timeStart, Date timeEnd) {
+    public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Date timeStart, Date timeEnd) {
         this.bus = bus;
         this.pickUpPoint = pickUpPoint;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
-        this. notes = new ArrayList<>();
+        this.notes = new ArrayList<>();
         this.customers = new ArrayList<>();
+        this.chauffeur = chauffeur;
     }
 
-    public void addNote(String note){
+    public Bus getBus() {
+        return bus;
+    }
+
+    public Date getTimeStart() {
+        return timeStart;
+    }
+
+    public Date getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void addNote(String note) {
         notes.add(note);
     }
 
-    public void addCustomer(Customer customer){
+    public void addCustomer(Customer customer) {
         customers.add(customer);
     }
 }

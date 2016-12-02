@@ -1,6 +1,8 @@
 package main.Model;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -80,6 +82,23 @@ public class BusList {
         String result = "";
         for (int i = 0; i < buses.size(); i++) {
             result += buses.get(i).toString() + "\n";
+        }
+        return result;
+    }
+
+    public BusList getAvailable(Date from, Date to) {
+        BusList result = new BusList();
+        ArrayList<Trip> trips = DataHandler.getTrips();
+        for (int i = 0; i < trips.size(); i++) {
+            for (int j = 0; j < buses.size(); j++) {
+                if (buses.get(j).equals(trips.get(i).getBus())) {
+                    if (((from.before(trips.get(i).getTimeStart())) && (to.before(trips.get(i).getTimeStart())))
+                            || ((from.after(trips.get(i).getTimeStart())) && (to.after(trips.get(i).getTimeStart()))))
+                    {
+                        result.add(buses.get(j));
+                    }
+                }
+            }
         }
         return result;
     }

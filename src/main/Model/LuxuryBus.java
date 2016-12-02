@@ -18,6 +18,8 @@ public class LuxuryBus extends Bus {
         super(registrationPlate, seatPlaces);
     }
 
+    public String getBusType(){ return "Luxury Bus";}
+
     public String toString() {
         return super.toString() + ", Type: Luxury Bus";
     }

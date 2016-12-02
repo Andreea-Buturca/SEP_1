@@ -92,17 +92,17 @@ public class Chauffeur extends Person {
         return preferredTourType;
     }
 
-    /*public String getPreferredBusType(String bus){
-    if (this.bus.getBusType.equals(bus))
+    public String getPreferredBusType(String bus){
+    if (this.bus.getBusType().equals(bus))
         return "Clasic Bus";
-    else if (this.bus.getBusType.equals(bus))
+    else if (this.bus.getBusType().equals(bus))
         return "Mini Bus";
-    else if (this.bus.getBusType.equals(bus))
+    else if (this.bus.getBusType().equals(bus))
         return "Party Bus";
-    else if (this.bus.getBusType.equals(bus))
+    else if (this.bus.getBusType().equals(bus))
         return "Luxury Bus";
     else return null;
-}*/
+}
     public void setPreferredWeekHours() {
         this.workedHours = 37;
     }

@@ -3,7 +3,7 @@ package main.Model;
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public class Bus {
+public abstract class Bus {
 
     // TODO: 28-Nov-16 how do you know if there's enough free seats Solved
 
@@ -42,5 +42,5 @@ public class Bus {
         if (seatPlaces != bus.seatPlaces) return false;
         return registrationPlate.equals(bus.registrationPlate);
     }
-
+    public abstract String getBusType();
 }

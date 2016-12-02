@@ -16,6 +16,7 @@ import java.util.Date;
  * Created by MartinNtb on 27-Nov-16.
  */
 public class SearchController extends Controller {
+
 /*
 
     public ListView matchingCustomers;
@@ -33,62 +34,15 @@ public class SearchController extends Controller {
                     if (email != null) {
                         if (phone != null) {
                             if (matchingCustomers != null) {
-
-                                CustomerList customers = DataHandler.getCustomerList();
-                                CustomerList matching = new CustomerList();
-                                if (name.getText() != null && (!name.getText().equals(""))) {
-                                    String nameString = name.getText();
-                                    matching = customers.findAllByAddress(nameString);
-                                    if (address.getText() != null && (!address.getText().equals(""))) {
-                                        String addressString = address.getText();
-                                        matching = customers.findAllByAddress(addressString);
-                                        if (email.getText() != null && (!email.getText().equals(""))) {
-                                            String emailString = email.getText();
-                                            matching = customers.findAllByEmail(emailString);
-                                            if (phone.getText() != null && (!phone.getText().equals(""))) {
-                                                String phoneString = phone.getText();
-                                                matching = customers.findAllByPhone(phoneString);
-                                            }
-                                        }
-                                    }
-                                } else if (companyName.getText() != null && (!companyName.getText().equals(""))) {
-                                    String companynameString = companyName.getText();
-                                    matching = customers.findAllByCompanyName(companynameString);
-                                    if (address.getText() != null && (!address.getText().equals(""))) {
-                                        String addressString = address.getText();
-                                        matching = customers.findAllByAddress(addressString);
-                                        if (email.getText() != null && (!email.getText().equals(""))) {
-                                            String emailString = email.getText();
-                                            matching = customers.findAllByEmail(emailString);
-                                            if (phone.getText() != null && (!phone.getText().equals(""))) {
-                                                String phoneString = phone.getText();
-                                                matching = customers.findAllByPhone(phoneString);
-                                            }
-                                        }
-                                    }
-                                } else if (address.getText() != null && (!address.getText().equals(""))) {
-                                    String addressString = address.getText();
-                                    matching = customers.findAllByAddress(addressString);
-                                    if (email.getText() != null && (!email.getText().equals(""))) {
-                                        String emailString = email.getText();
-                                        matching = customers.findAllByEmail(emailString);
-                                        if (phone.getText() != null && (!phone.getText().equals(""))) {
-                                            String phoneString = phone.getText();
-                                            matching = customers.findAllByPhone(phoneString);
-                                        }
-                                    }
-                                } else if (email.getText() != null && (!email.getText().equals(""))) {
-                                    String emailString = email.getText();
-                                    matching = customers.findAllByEmail(emailString);
-
-                                    if (phone.getText() != null && (!phone.getText().equals(""))) {
-                                        String phoneString = phone.getText();
-                                        matching = customers.findAllByPhone(phoneString);
-                                    }
-                                } else if (phone.getText() != null && (!phone.getText().equals(""))) {
-                                    String phoneString = phone.getText();
-                                    matching = customers.findAllByPhone(phoneString);
-                                }
+                                CustomerList matching = DataHandler.getCustomerList();
+                                if (name.getText() != null && (!name.getText().equals("")))
+                                    matching = matching.findAllByName(name.getText());
+                                if (address.getText() != null && (!address.getText().equals("")))
+                                    matching = matching.findAllByAddress(address.getText());
+                                if (email.getText() != null && (!email.getText().equals("")))
+                                    matching = matching.findAllByEmail(email.getText());
+                                if (phone.getText() != null && (!phone.getText().equals("")))
+                                    matching = matching.findAllByPhone(phone.getText());
 
                                 ObservableList<String> items = FXCollections.observableArrayList();
                                 for (int i = 0; i < matching.getSize(); i++) {
@@ -101,7 +55,8 @@ public class SearchController extends Controller {
                 }
             }
         }
-    }*/
+    }
+*/
 
 //make on key method in panel
 // create new object of list then call methot find by.... save it on saved call it again

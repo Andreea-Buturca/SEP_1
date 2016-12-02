@@ -78,10 +78,9 @@ public class ChauffeurController extends Controller implements Initializable {
             String address = fieldChauffeurAddAddress.getText();
             String email = fieldChauffeurAddEmail.getText();
             String phone = fieldChauffeurAddPhone.getText();
-            Date birthday = new Date(birthdayPicker.getValue().getYear(),birthdayPicker.getValue().getMonthValue(),birthdayPicker.getValue().getDayOfMonth());
+            Date birthday = new Date(birthdayPicker.getValue().getYear()-1900,birthdayPicker.getValue().getMonthValue(),birthdayPicker.getValue().getDayOfMonth());
             int chauffeurID = Integer.parseInt(fieldChauffeurAddId.getText());
             boolean isVikar = false;
-            String bus = "";
 
             if (!checkBoxVikar.isSelected()) {
                 DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, birthday, chauffeurID, isVikar));
@@ -93,26 +92,25 @@ public class ChauffeurController extends Controller implements Initializable {
                     chauffeur.setPreferredMediumDistance(1000);
                 }
                 if (checkBoxDistanceLong.isSelected()) {
-                    chauffeur.setPreferredLongDistance(3001);
+                    chauffeur.setPreferredLongDistance(3200);
                 }
                 if (checkBoxWeekend.isSelected()) {
-                    chauffeur.setPreferredWeekendHours(10);
+                    chauffeur.setPreferredWeekendHours(16);
                 }
                 if (checkBoxWeek.isSelected()) {
-                    chauffeur.setPreferredWeekHours(36);
+                    chauffeur.setPreferredWeekHours(37);
                 }
                 if (checkBoxClasicBus.isSelected()) {
-                    bus = "Clasic Bus";
-                    //      chauffeur.s
+                   chauffeur.setPreferredBusType("Classic Bus");
                 }
                 if (checkboxLuxuryBus.isSelected()) {
-                    bus = "Luxury Bus";
+                    chauffeur.setPreferredBusType("Luxury Bus");
                 }
                 if (checkBoxPartyBus.isSelected()) {
-                    bus = "Party Bus";
+                    chauffeur.setPreferredBusType("Party Bus");
                 }
                 if (checkBoxMiniBus.isSelected()) {
-                    bus = "Mini Bus";
+                    chauffeur.setPreferredBusType("Mini Bus");
                 }
             } else if (checkBoxVikar.isSelected()) {
                 isVikar = true;

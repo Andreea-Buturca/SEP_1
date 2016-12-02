@@ -80,7 +80,8 @@ public class ReservationController extends Controller implements Initializable {
             String address = fieldAddressCustomer.getText();
             String email = fieldEmailCustomer.getText();
             String phone = fieldPhoneCustomer.getText();
-            boolean isCompany = validateEmptyField(fieldNameCompany);
+            boolean isCompany = true;
+            isCompany = validateEmptyField(fieldNameCompany);
 
             if (isCompany == false) {
                 DataHandler.getCustomerList().add(new Customer(name, address, email, phone));

@@ -1,6 +1,7 @@
 package main.Model;
 
-import java.util.Date;
+        import java.util.ArrayList;
+        import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -8,12 +9,11 @@ import java.util.Date;
 public class Chauffeur extends Person {
 
     private int employeeID;
-    private int preferredDistance;
+    private ArrayList<Integer> preferredDistance;
     private int workedHours;
     private boolean isVikar;
     private Bus bus;
-    private String busType;
-
+    private ArrayList<String> busType;
 
 
     public Chauffeur(String name, String address, String email, String phone, Date dateOfBirth, int employeeID, boolean isVikar) {
@@ -22,10 +22,11 @@ public class Chauffeur extends Person {
             this.employeeID = employeeID;
         }
         this.employeeID = employeeID;
-        this.bus=null;
+        this.bus = null;
         this.isVikar = isVikar;
-        this.preferredDistance=0;
-        this.workedHours=0;
+        this.preferredDistance = new ArrayList<>();
+        this.busType = new ArrayList<>();
+        this.workedHours = 0;
     }
 
     public void setWorkedHours(int workedHours) {
@@ -53,42 +54,43 @@ public class Chauffeur extends Person {
     }
 
     public void setPreferredShortDistance(int distance) {
-        if (distance <= 400)
-            this.preferredDistance = distance;
+        if (distance <= 400 && distance > 0)
+            this.preferredDistance.add(distance);
     }
 
     public void setPreferredMediumDistance(int distance) {
-        if (distance > 400 && distance <= 3000)
-            this.preferredDistance = 3000;
+        if (distance > 400 && distance < 2500)
+            this.preferredDistance.add(distance);
     }
 
     public void setPreferredLongDistance(int distance) {
-        if (distance > 3000)
-            this.preferredDistance = distance;
+        if (distance >= 2500)
+            this.preferredDistance.add(distance);
     }
 
-    public int getPreferredDistance() {
+    public ArrayList<Integer> getPreferredDistance() {
         return preferredDistance;
     }
 
-    public String getPreferredBusType(String bus){
-    if (this.bus.getBusType().equals(bus))
-        return "Classic Bus";
-    else if (this.bus.getBusType().equals(bus))
-        return "Mini Bus";
-    else if (this.bus.getBusType().equals(bus))
-        return "Party Bus";
-    else if (this.bus.getBusType().equals(bus))
-        return "Luxury Bus";
-    else return null;
-}
- public void setPreferredBusType(String bus) {
-         this.busType = bus;
- }
+    public String getPreferredBusType(String bus) {
+        if (this.bus.getBusType().equals(bus))
+            return "Classic Bus";
+        else if (this.bus.getBusType().equals(bus))
+            return "Mini Bus";
+        else if (this.bus.getBusType().equals(bus))
+            return "Party Bus";
+        else if (this.bus.getBusType().equals(bus))
+            return "Luxury Bus";
+        else return null;
+    }
+
+    public void setPreferredBusType(String bus) {
+        this.busType.add(bus);
+    }
 
     public void setPreferredWeekHours(int hours) {
-        if(hours>17)
-        this.workedHours = hours;
+        if (hours > 17)
+            this.workedHours = hours;
     }
 
     public void setPreferredWeekendHours(int hours) {
@@ -105,24 +107,20 @@ public class Chauffeur extends Person {
     }
 
     public String toString() {
-        String preferredDistance="";
-        if(this.preferredDistance != 0)
-        {
-            preferredDistance += ", Preferred distance: " + this.preferredDistance +" km";
+        String preferredDistance = "";
+        for (int i = 0; i < this.preferredDistance.size(); i++) {
+            preferredDistance += ", Preferred distance: " + this.preferredDistance.get(i) + " km";
         }
-        String preferredHours="";
-        if(this.workedHours < 17 && this.workedHours > 0)
-        {
-            preferredHours = ", Preferred working hours: " + this.workedHours +"h, in weekends ";
+        String preferredHours = "";
+        if (this.workedHours < 17 && this.workedHours > 0) {
+            preferredHours += ", Preferred working hours: " + this.workedHours + "h, in weekends ";
         }
-        if(this.workedHours > 17)
-        {
-            preferredHours = ", Preferred working hours: " + this.workedHours +"h, during the week ";
+        if (this.workedHours > 17) {
+            preferredHours += ", Preferred working hours: " + this.workedHours + "h, during the week ";
         }
-        String preferredBusType="";
-        if(this.busType != null)
-        {
-            preferredBusType=", Preferred bus Type: "+this.busType;
+        String preferredBusType = "";
+        for (int i = 0; i < this.busType.size(); i++) {
+            preferredBusType += ", Preferred bus Type: " + this.busType.get(i) + "";
         }
         String vikar = "";
         if (this.isVikar) {

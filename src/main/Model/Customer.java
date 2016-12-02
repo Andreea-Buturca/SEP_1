@@ -54,8 +54,8 @@ public class Customer extends Person {
     public String toString() {
         String x = "";
         if (isCompany) {
-            x += " is Company ";
+            x += "," + x + ", Company name: " + this.companyName;
         }
-        return super.toString() + x + ", Company name: " + this.companyName;
+        return super.toString();
     }
 }

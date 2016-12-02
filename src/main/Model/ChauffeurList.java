@@ -125,7 +125,7 @@ public class ChauffeurList {
             for (int j = 0; j < chauffeurs.size(); j++) {
                 if (chauffeurs.get(j).equals(trips.get(i).getBus())) {
                     if (((from.before(trips.get(i).getTimeStart())) && (to.before(trips.get(i).getTimeStart())))
-                            || ((from.after(trips.get(i).getTimeStart())) && (to.after(trips.get(i).getTimeStart()))))
+                            || ((from.after(trips.get(i).getTimeEnd())) && (to.after(trips.get(i).getTimeEnd()))))
                     {
                         result.add(chauffeurs.get(j));
                     }

@@ -83,10 +83,10 @@ public class ReservationController extends Controller implements Initializable {
             boolean isCompany = validateEmptyField(fieldNameCompany);
 
             if (isCompany == false) {
-                DataHandler.getCustomerList().addCustomer(new Customer(name, address, email, phone));
+                DataHandler.getCustomerList().add(new Customer(name, address, email, phone));
             } else if (isCompany == true) {
                 String companyName = fieldNameCompany.getText();
-                DataHandler.getCustomerList().addCustomer(new Customer(name, address, email, phone, isCompany, companyName));
+                DataHandler.getCustomerList().add(new Customer(name, address, email, phone, isCompany, companyName));
             }
 
             successdisplay("Success", "Customer was created.");
@@ -183,7 +183,7 @@ public class ReservationController extends Controller implements Initializable {
             int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
             double finalPrice = ((price + extraServices) - discount) * nrPassengers;
             Customer customer;
-            ArrayList<Passenger> passengers = DataHandler.getPassengerList().getPassengers();
+            ArrayList<Passenger> passengers = DataHandler.getPassengerList().getArrayPassenger();
             String trip = fieldDestination.getText();
          //   DataHandler.getReservationList().add(new Reservation(trip, customer, passengers, finalPrice));
         } else {

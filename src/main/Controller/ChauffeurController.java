@@ -84,7 +84,7 @@ public class ChauffeurController extends Controller implements Initializable {
 
             if (!checkBoxVikar.isSelected()) {
                 DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, birthday, chauffeurID, isVikar));
-                Chauffeur chauffeur = DataHandler.getChauffeurList().getChauffeurByName(name);
+                Chauffeur chauffeur = DataHandler.getChauffeurList().getByName(name);
                 if (checkBoxDistanceShort.isSelected()) {
                     chauffeur.setPreferredShortDistance(400);
                 }

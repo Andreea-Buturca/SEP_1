@@ -12,7 +12,7 @@ public class PassengerList {
     public PassengerList() {
     }
 
-    public void addPassenger(Passenger passenger) {
+    public void add(Passenger passenger) {
         this.passengers.add(passenger);
     }
 
@@ -44,7 +44,7 @@ public class PassengerList {
         }
         return null;
     }
-    public ArrayList<Passenger> getPassengers() {
+    public ArrayList<Passenger> getArrayPassenger() {
         return passengers;
     }
 

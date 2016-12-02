@@ -13,7 +13,7 @@ public class ReservationList {
         this.reservations = new ArrayList<>();
     }
 
-    public void addReservation(Reservation reservation) {
+    public void add(Reservation reservation) {
         reservations.add(reservation);
     }
 
@@ -32,7 +32,7 @@ public class ReservationList {
         return null;
     }
 
-    public ArrayList<Reservation> getReservations() {
+    public ArrayList<Reservation> getArrayReservation() {
         return this.reservations;
     }
 

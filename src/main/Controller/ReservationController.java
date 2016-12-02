@@ -81,12 +81,12 @@ public class ReservationController extends Controller implements Initializable {
             String phone = fieldPhoneCustomer.getText();
             boolean isCompany=false;
             if(isCompany) {
-                DataHandler.getCustomerList().addCustomer(new Customer(name, address, email, phone));
+                DataHandler.getCustomerList().add(new Customer(name, address, email, phone));
             }
             else if(isCompany==true)
             {
             String companyName = fieldNameCompany.getText();
-            DataHandler.getCustomerList().addCustomer(new Customer(name, address, email, phone, isCompany, companyName));
+            DataHandler.getCustomerList().add(new Customer(name, address, email, phone, isCompany, companyName));
             }
 
             successdisplay("Success", "Customer was created.");
@@ -114,7 +114,7 @@ public class ReservationController extends Controller implements Initializable {
                 int seatNr = Integer.parseInt(fieldSeatNr.getText());
           /*  MyDate birthday = new MyDate(birthdayPicker.getValue());
             String phone = fieldPhonePassenger.getText;
-            DataHandler.getPassengerList().addPassenger(new Passenger(name, address, email, phone, birthday, boolean subscribed, seatNr));*/
+            DataHandler.getPassengerList().add(new Passenger(name, address, email, phone, birthday, boolean subscribed, seatNr));*/
                 successdisplay("Success", "Passenger was added.");
             } else {
                 //alert
@@ -126,7 +126,7 @@ public class ReservationController extends Controller implements Initializable {
     public void loadCustomerList() {
         listViewCustomer.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (Customer customer : DataHandler.getCustomerList().getCustomers()) {
+        for (Customer customer : DataHandler.getCustomerList().getArrayCustomer()) {
             items.add(customer.toString());
         }
         listViewCustomer.setItems(items);
@@ -134,7 +134,7 @@ public class ReservationController extends Controller implements Initializable {
     public void loadPassengerList() {
         listViewPassenger.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (Passenger passenger : DataHandler.getPassengerList().getPassengers()) {
+        for (Passenger passenger : DataHandler.getPassengerList().getArrayPassenger()) {
             items.add(passenger.toString());
         }
         listViewPassenger.setItems(items);
@@ -177,9 +177,9 @@ public class ReservationController extends Controller implements Initializable {
             int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
             double finalPrice = ((price+extraServices)-discount) * nrPassengers;
             Customer customer ;
-            ArrayList<Passenger> passengers = DataHandler.getPassengerList().getPassengers();
+            ArrayList<Passenger> passengers = DataHandler.getPassengerList().getArrayPassenger();
             String trip = fieldDestination.getText();
-         //   DataHandler.getReservationList().addReservation(new Reservation(trip, customer, passengers, finalPrice));
+         //   DataHandler.getReservationList().add(new Reservation(trip, customer, passengers, finalPrice));
         } else {
             //alert
             alertdisplay("Wrong Input", alert);

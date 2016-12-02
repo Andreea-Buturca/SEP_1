@@ -61,24 +61,24 @@ public class DataHandler {
 
     public static void testData() {
 
-        getBusList().addBus(new PartyBus("AD1234", 12));
-        getBusList().addBus(new PartyBus("AD1234", 12));
-        getBusList().addBus(new ClassicBus("AD1454", 52));
-        getBusList().addBus(new ClassicBus("AD1454", 52));
-        getBusList().addBus(new ClassicBus("AD1454", 52));
-        getBusList().addBus(new MiniBus("DD1254", 9));
-        getBusList().addBus(new MiniBus("DD1254", 9));
-        getBusList().addBus(new MiniBus("DD1254", 9));
-        getBusList().addBus(new LuxuryBus("DD1254", 9));
-        getBusList().addBus(new LuxuryBus("DD1254", 9));
-        getBusList().addBus(new LuxuryBus("DD1254", 9));
+        getBusList().add(new PartyBus("AD1234", 12));
+        getBusList().add(new PartyBus("AD1234", 12));
+        getBusList().add(new ClassicBus("AD1454", 52));
+        getBusList().add(new ClassicBus("AD1454", 52));
+        getBusList().add(new ClassicBus("AD1454", 52));
+        getBusList().add(new MiniBus("DD1254", 9));
+        getBusList().add(new MiniBus("DD1254", 9));
+        getBusList().add(new MiniBus("DD1254", 9));
+        getBusList().add(new LuxuryBus("DD1254", 9));
+        getBusList().add(new LuxuryBus("DD1254", 9));
+        getBusList().add(new LuxuryBus("DD1254", 9));
 
 
-        getDestinationList().getDestinationList().add(new Destination("Place 1"));
-        getDestinationList().getDestinationList().add(new Destination("Place 2"));
-        getDestinationList().getDestinationList().add(new Destination("Place 3"));
-        getDestinationList().getDestinationList().add(new Destination("Place 4"));
-        getDestinationList().getDestinationList().add(new Destination("Place 5"));
+        getDestinationList().getArrayDestination().add(new Destination("Place 1"));
+        getDestinationList().getArrayDestination().add(new Destination("Place 2"));
+        getDestinationList().getArrayDestination().add(new Destination("Place 3"));
+        getDestinationList().getArrayDestination().add(new Destination("Place 4"));
+        getDestinationList().getArrayDestination().add(new Destination("Place 5"));
 
 
         getChauffeurList().add(new Chauffeur("name1", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
@@ -87,18 +87,18 @@ public class DataHandler {
         getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
         getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
 
-        getCustomerList().addCustomer(new Customer("name1", "address", "email", "123456"));
-        getCustomerList().addCustomer(new Customer("name2", "address", "email", "123456"));
-        getCustomerList().addCustomer(new Customer("name3", "address", "email", "123456"));
-        getCustomerList().addCustomer(new Customer("name4", "address", "email", "123456"));
-        getCustomerList().addCustomer(new Customer("name5", "address", "email", "123456"));
+        getCustomerList().add(new Customer("name1", "address", "email", "123456"));
+        getCustomerList().add(new Customer("name2", "address", "email", "123456"));
+        getCustomerList().add(new Customer("name3", "address", "email", "123456"));
+        getCustomerList().add(new Customer("name4", "address", "email", "123456"));
+        getCustomerList().add(new Customer("name5", "address", "email", "123456"));
 
 
 
         //todo create test date here
         //new trip in to array, new bus in to bus list, and so....
         //than data are accessible from everywhere
-        //just call example DataHandler.getChauffeurList().methods in list....
+        //just call example DataHandler.getArrayChauffeur().methods in list....
     }
 
     public static void save() {

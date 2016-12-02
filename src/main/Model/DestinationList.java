@@ -12,11 +12,11 @@ public class DestinationList {
     public DestinationList() {
     }
 
-    public void addDestination(Destination destination) {
+    public void add(Destination destination) {
         destinations.add(destination);
     }
 
-    public ArrayList<Destination> getDestinationList() {
+    public ArrayList<Destination> getArrayDestination() {
         return destinations;
     }
 

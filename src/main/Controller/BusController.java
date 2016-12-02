@@ -35,7 +35,7 @@ public class BusController extends Controller {
     public void loadList() {
         busListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (Bus bus : DataHandler.getBusList().getBuses()) {
+        for (Bus bus : DataHandler.getBusList().getArrayBuses()) {
             items.add(bus.toString());
         }
         busListview.setItems(items);
@@ -68,13 +68,13 @@ public class BusController extends Controller {
             int seats = Integer.parseInt(seatNumber.getText());
 
             if (typeChoice.getValue().equals("Classic Bus")) {
-                DataHandler.getBusList().addBus(new ClassicBus(regplate, seats));
+                DataHandler.getBusList().add(new ClassicBus(regplate, seats));
             } else if (typeChoice.getValue().equals("Mini Bus")) {
-                DataHandler.getBusList().addBus(new MiniBus(regplate, seats));
+                DataHandler.getBusList().add(new MiniBus(regplate, seats));
             } else if (typeChoice.getValue().equals("Luxury Bus")) {
-                DataHandler.getBusList().addBus(new LuxuryBus(regplate, seats));
+                DataHandler.getBusList().add(new LuxuryBus(regplate, seats));
             } else {
-                DataHandler.getBusList().addBus(new PartyBus(regplate, seats));
+                DataHandler.getBusList().add(new PartyBus(regplate, seats));
             }
 
             successdisplay("Success", "Bus was created.");

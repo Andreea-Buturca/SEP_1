@@ -69,7 +69,7 @@ public class TripController extends Controller implements Initializable {
             loadChauffeurList();
 
             ObservableList<String> destinationItems = FXCollections.observableArrayList();
-            for (Destination destination : DataHandler.getDestinationList().getDestinationList()) {
+            for (Destination destination : DataHandler.getDestinationList().getArrayDestination()) {
                 destinationItems.add(destination.toString());
             }
             fieldDestination.setItems(destinationItems);
@@ -183,7 +183,7 @@ public class TripController extends Controller implements Initializable {
 
         chauffeurList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (Chauffeur chauffeur : chauffeurs.getChauffeurList()) {
+        for (Chauffeur chauffeur : chauffeurs.getArrayChauffeur()) {
             items.add(chauffeur.getName());
         }
         chauffeurList.setItems(items);
@@ -234,7 +234,7 @@ public class TripController extends Controller implements Initializable {
                 customerItems.add(customer.toString());
             }
         } else {
-            for (Customer customer : customers.getCustomers()) {
+            for (Customer customer : customers.getArrayCustomer()) {
                 customerItems.add(customer.toString());
             }
         }
@@ -244,7 +244,7 @@ public class TripController extends Controller implements Initializable {
 
     public void handleStops(ActionEvent actionEvent) {
         if (actionEvent.getSource() == addStopBtn && validateNumberField(stopTimeField)) {
-            stops.addDestination(new Destination(stopName.getValue().toString(), stopTimeField.getText()));
+            stops.add(new Destination(stopName.getValue().toString(), stopTimeField.getText()));
         }
 
         if (actionEvent.getSource() == removeStopBtn && stopsList.getSelectionModel().getSelectedItem() != null) {
@@ -255,7 +255,7 @@ public class TripController extends Controller implements Initializable {
 
 
         ObservableList<String> destinationItems = FXCollections.observableArrayList();
-        for (Destination destination : stops.getDestinationList()) {
+        for (Destination destination : stops.getArrayDestination()) {
             destinationItems.add(destination.getStopString());
         }
         stopsList.setItems(destinationItems);

@@ -42,5 +42,6 @@ public abstract class Bus {
         if (seatPlaces != bus.seatPlaces) return false;
         return registrationPlate.equals(bus.registrationPlate);
     }
+
     public abstract String getBusType();
 }

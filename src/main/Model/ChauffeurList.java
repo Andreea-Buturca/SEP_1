@@ -1,5 +1,5 @@
 package main.Model;
-import java.io.Serializable;
+
 import java.util.ArrayList;
 
 /**
@@ -7,118 +7,111 @@ import java.util.ArrayList;
  */
 public class ChauffeurList {
 
-    private ArrayList<Chauffeur> chauffeurList;
+    private ArrayList<Chauffeur> chauffeurs;
 
-    public ChauffeurList()
-    {
-        chauffeurList = new ArrayList<Chauffeur>();
+    public ChauffeurList() {
+        chauffeurs = new ArrayList<Chauffeur>();
     }
 
-    public int getSize()
-    {
-        return chauffeurList.size();
+    public int getSize() {
+        return chauffeurs.size();
     }
 
-    public void add(Chauffeur chauffeur)
-    {
-        chauffeurList.add(chauffeur);
+    public void add(Chauffeur chauffeur) {
+        chauffeurs.add(chauffeur);
     }
 
-    public void removeChauffeur(int index)
-    {
-        chauffeurList.remove(index);
+    public void removeChauffeur(int index) {
+        chauffeurs.remove(index);
     }
 
     public void removeChauffeur(Chauffeur chauffeur) {
-        for (int i = 0; i < chauffeurList.size(); i++) {
-            if (chauffeurList.get(i).equals(chauffeur))
-                chauffeurList.remove(chauffeur);
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).equals(chauffeur))
+                chauffeurs.remove(chauffeur);
         }
     }
 
-    public Chauffeur getChauffeurByIndex(int index)
-    {
-        return chauffeurList.get(index);
+    public Chauffeur getChauffeurByIndex(int index) {
+        return chauffeurs.get(index);
     }
 
-    public ArrayList<Chauffeur> getChauffeurList() {
-        return chauffeurList;
+    public ArrayList<Chauffeur> getArrayChauffeur() {
+        return chauffeurs;
     }
 
-    public Chauffeur getChauffeur(Chauffeur chauffeur){
-        for (int i=0; i<chauffeurList.size();i++){
-            if (chauffeurList.get(i).equals(chauffeur))
-                return chauffeurList.get(i);
+    public Chauffeur getChauffeur(Chauffeur chauffeur) {
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).equals(chauffeur))
+                return chauffeurs.get(i);
         }
         return null;
     }
-    public Chauffeur getChauffeurByName(String name){
-        for (int i=0; i<chauffeurList.size();i++){
-            if (chauffeurList.get(i).getName().equals(name))
-                return chauffeurList.get(i);
+
+    public Chauffeur getByName(String name) {
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).getName().equals(name))
+                return chauffeurs.get(i);
         }
         return null;
     }
-    public Chauffeur getChauffeurByID(int ID){
-        for (int i=0; i<chauffeurList.size();i++){
-            if (chauffeurList.get(i).getEmployeeID()==ID)
-                return chauffeurList.get(i);
+
+    public ChauffeurList getAllByName(String name) {
+        ChauffeurList result = new ChauffeurList();
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).getName().equals(name))
+                result.add(chauffeurs.get(i));
+        }
+        return result;
+    }
+
+    public ChauffeurList getAllByPrefferedDistance(int prefferedDistance) {
+        ChauffeurList result = new ChauffeurList();
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).getPreferredDistance() == prefferedDistance)
+                result.add(chauffeurs.get(i));
+        }
+        return result;
+    }
+
+
+    public Chauffeur getChauffeurByID(int ID) {
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).getEmployeeID() == ID)
+                return chauffeurs.get(i);
         }
         return null;
     }
-    public Chauffeur getChauffeurByPreferredDistance(int preferredDistance){
-        for (int i=0; i<chauffeurList.size();i++){
-            if (chauffeurList.get(i).getEmployeeID()== preferredDistance)
-                return chauffeurList.get(i);
+
+    public Chauffeur getChauffeurByPreferredDistance(int preferredDistance) {
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).getEmployeeID() == preferredDistance)
+                return chauffeurs.get(i);
         }
         return null;
     }
-    public Chauffeur getChauffeurByPreferredTourType(String preferredTourType){
-        for (int i=0; i<chauffeurList.size();i++){
-            if (chauffeurList.get(i).getPreferredTourType().equals(preferredTourType))
-                return chauffeurList.get(i);
-        }
-        return null;
-    }
-    public Chauffeur getChauffeurByWorkedHours(int workedHours){
-        for (int i=0; i<chauffeurList.size();i++){
-            if (chauffeurList.get(i).getPreferredWorkedHours() == workedHours)
-                return chauffeurList.get(i);
-        }
-        return null;
-    }
-    public Chauffeur getChauffeurIfIsVikar(boolean isVikar){
-        for (int i=0; i<chauffeurList.size();i++){
-            if (chauffeurList.get(i).isVikar() == isVikar) // TODO: 11/30/2016  leave it or delete it
-                return chauffeurList.get(i);
-        }
-        return null;
-    }
-       public void sortByChauffeurName()
-    {
+
+
+    public void sortByChauffeurName() {
         ArrayList<Chauffeur> sorted = new ArrayList<>();
-        while (chauffeurList.size() > 0)
-        {
+        while (chauffeurs.size() > 0) {
             int minIndex = 0;
-            for (int i = 0; i < chauffeurList.size(); i++)
-            {
-                if (chauffeurList.get(i).getName().compareTo(chauffeurList.get(minIndex).getName()) < 0)
-                {
+            for (int i = 0; i < chauffeurs.size(); i++) {
+                if (chauffeurs.get(i).getName().compareTo(chauffeurs.get(minIndex).getName()) < 0) {
                     minIndex = i;
                 }
             }
-            sorted.add(chauffeurList.get(minIndex));
-            chauffeurList.remove(minIndex);
+            sorted.add(chauffeurs.get(minIndex));
+            chauffeurs.remove(minIndex);
         }
-        chauffeurList = sorted;
+        chauffeurs = sorted;
     }
-   public String toString()
-    {
+
+    public String toString() {
         String s = "";
-        for (int i = 0; i < chauffeurList.size(); i++)
-        {
-            s += chauffeurList.get(i);
-            if (i < chauffeurList.size() - 1)
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            s += chauffeurs.get(i);
+            if (i < chauffeurs.size() - 1)
                 s += "\n";
         }
         return s;

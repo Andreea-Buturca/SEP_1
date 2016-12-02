@@ -1,7 +1,6 @@
 package main.Model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -14,11 +13,11 @@ public class BusList {
     public BusList() {
     }
 
-    public void addBus(Bus bus) {
+    public void add(Bus bus) {
         buses.add(bus);
     }
 
-    public ArrayList<Bus> getBuses() {
+    public ArrayList<Bus> getArrayBuses() {
         return buses;
     }
 
@@ -48,6 +47,16 @@ public class BusList {
         }
         return null;
     }
+
+    public BusList findAllByRegplate(String regPlate) {
+        BusList result = new BusList();
+        for (int i = 0; i < buses.size(); i++) {
+            if (buses.get(i).getRegistrationPlate().equals(regPlate))
+                result.add(buses.get(i));
+        }
+        return result;
+    }
+
 
     public ArrayList<Bus> searchByType(String name) {
         ArrayList<Bus> busTemp = new ArrayList<>();

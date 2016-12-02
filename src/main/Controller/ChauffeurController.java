@@ -10,13 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.Model.*;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
@@ -49,7 +45,7 @@ public class ChauffeurController extends Controller implements Initializable {
     public void loadList() {
         listViewChauffeurList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (Chauffeur chauffeur : DataHandler.getChauffeurList().getChauffeurList()) {
+        for (Chauffeur chauffeur : DataHandler.getChauffeurList().getArrayChauffeur()) {
             items.add(chauffeur.toString());
         }
         listViewChauffeurList.setItems(items);
@@ -98,43 +94,43 @@ public class ChauffeurController extends Controller implements Initializable {
            /* if (checkBoxDistanceShort.isSelected()) {
                 chauffeur.setPreferredShortDistance(400);
                 preferredDistance = chauffeur.getPreferredDistance();
-                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }
             if (checkBoxDistanceMedium.isSelected()) {
                 chauffeur.setPreferredMediumDistance(1000);
                 preferredDistance = chauffeur.getPreferredDistance();
-                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }
             if (checkBoxDistanceLong.isSelected()) {
                 chauffeur.setPreferredLongDistance(3001);
                 preferredDistance = chauffeur.getPreferredDistance();
-                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }
             if (checkBoxClasicBus.isSelected()) {
                 bus = "Clasic Bus";
-                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }
             if (checkboxLuxuryBus.isSelected()) {
                 bus = "Luxury Bus";
-                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }
             if (checkBoxPartyBus.isSelected()) {
                 bus = "Party Bus";
-                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }
             if (checkBoxMiniBus.isSelected()) {
                 bus = "Mini Bus";
-                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }
             if (checkBoxWeekend.isSelected()) {
                 chauffeur.setPreferredWeekendHours(10);
                 workedHours = chauffeur.getPreferredWorkedHours();
-                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }
             if (checkBoxWeek.isSelected()) {
                 chauffeur.setPreferredWeekHours();
                 workedHours = chauffeur.getPreferredWorkedHours();
-                DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
+                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }*/
 
             successdisplay("Success", "Chauffeur was added.");
@@ -151,7 +147,7 @@ public class ChauffeurController extends Controller implements Initializable {
         for (String aSelected : selected) {
             String[] lineToken = aSelected.split(", ");
             String name = lineToken[0].trim();
-            DataHandler.getChauffeurList().removeChauffeur(DataHandler.getChauffeurList().getChauffeurByName(name));
+            DataHandler.getChauffeurList().removeChauffeur(DataHandler.getChauffeurList().getByName(name));
         }
         loadList();
         successdisplay("Success", "Chauffeur was deleted.");

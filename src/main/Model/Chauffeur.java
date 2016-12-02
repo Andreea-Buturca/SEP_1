@@ -7,33 +7,11 @@ public class Chauffeur extends Person {
 
     private int employeeID;
     private int preferredDistance;
-    private String preferredTourType;
     private int workedHours;
     private boolean isVikar;
     private Bus bus;
 
-    public Chauffeur(String name, String address, String email, String phone, int employeeID, int preferredDistance, String preferredTourType, int workedHours, boolean isVikar) {
-        super(name, address, email, phone);
-        if (this.employeeID >= 10000 & this.employeeID <= 99999) {
-            this.employeeID = employeeID;
-        }
-        this.preferredDistance = preferredDistance;
-        this.preferredTourType = preferredTourType;
-        this.workedHours = workedHours;
-        this.isVikar = isVikar;
-    }
 
-    public Chauffeur(String name, String address, String email, String phone, MyDate dateOfBirth, int employeeID, int preferredDistance, String preferredTourType, int workedHours, boolean isVikar) {
-        super(name, address, email, phone, dateOfBirth);
-        if (this.employeeID >= 10000 & this.employeeID <= 99999) {
-            this.employeeID = employeeID;
-        }
-        this.employeeID = employeeID;
-        this.preferredDistance = preferredDistance;
-        this.preferredTourType = preferredTourType;
-        this.workedHours = workedHours;
-        this.isVikar = isVikar;
-    }
 
     public Chauffeur(String name, String address, String email, String phone, MyDate dateOfBirth, int employeeID, boolean isVikar) {
         super(name, address, email, phone, dateOfBirth);
@@ -42,6 +20,18 @@ public class Chauffeur extends Person {
         }
         this.employeeID = employeeID;
         this.isVikar = isVikar;
+    }
+
+    public void setPreferredDistance(int preferredDistance) {
+        this.preferredDistance = preferredDistance;
+    }
+
+    public void setWorkedHours(int workedHours) {
+        this.workedHours = workedHours;
+    }
+
+    public void setBus(Bus bus) {
+        this.bus = bus;
     }
 
     public String getName() {
@@ -86,12 +76,6 @@ public class Chauffeur extends Person {
     public void setPreferredTourType() {
     }
 
-    ;
-
-    public String getPreferredTourType() {
-        return preferredTourType;
-    }
-
     public String getPreferredBusType(String bus){
     if (this.bus.getBusType().equals(bus))
         return "Clasic Bus";
@@ -125,6 +109,6 @@ public class Chauffeur extends Person {
         if (this.isVikar) {
             vikar = ", Vikar employee";
         }
-        return super.toString() + ", chauffeur ID: " + this.employeeID + ", Preferred distance: " + this.preferredDistance + ", Preferred Tour type: " + this.preferredTourType + ", Preferred worked hours: " + this.workedHours + vikar;
+        return super.toString() + ", chauffeur ID: " + this.employeeID + ", Preferred distance: " + this.preferredDistance + ", Preferred worked hours: " + this.workedHours + vikar;
     }
 }

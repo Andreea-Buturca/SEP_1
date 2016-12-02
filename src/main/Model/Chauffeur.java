@@ -73,9 +73,6 @@ public class Chauffeur extends Person {
         return preferredDistance;
     }
 
-    public void setPreferredTourType() {
-    }
-
     public String getPreferredBusType(String bus){
     if (this.bus.getBusType().equals(bus))
         return "Clasic Bus";
@@ -86,6 +83,13 @@ public class Chauffeur extends Person {
     else if (this.bus.getBusType().equals(bus))
         return "Luxury Bus";
     else return null;
+}
+ public void setPreferredClassicBus() {
+    if (this.bus instanceof ClassicBus) {
+        ClassicBus classicBus = (ClassicBus) this.bus;
+        if (classicBus.getBusType().equals("Clasic Bus"))
+            this.bus = classicBus;
+    }
 }
 
     public void setPreferredWeekHours(int hours) {
@@ -106,15 +110,21 @@ public class Chauffeur extends Person {
     }
 
     public String toString() {
- //       String preferredDistance=false;
+        String preferredDistance="";
         if(this.preferredDistance != 0)
         {
-
+            preferredDistance = ", Preferred distance: " + this.preferredDistance;
         }
+        String preferredHours="";
+        if(this.workedHours != 0)
+        {
+            preferredHours = ", Preferred worked hours: " + this.workedHours;
+        }
+
         String vikar = "";
         if (this.isVikar) {
             vikar = ", Vikar employee";
         }
-        return super.toString() + ", chauffeur ID: " + this.employeeID + ", Preferred distance: " + this.preferredDistance + ", Preferred worked hours: " + this.workedHours + vikar;
+        return super.toString() + ", chauffeur ID: " + this.employeeID + preferredDistance + preferredHours + vikar;
     }
 }

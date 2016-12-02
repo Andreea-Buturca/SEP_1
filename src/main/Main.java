@@ -25,6 +25,12 @@ public class Main extends Application {
         stage = primaryStage;
     }
 
+    //// TODO: 02-Dec-16 For Marek
+    //refactor models
+    //don't call getChauffeur list whet it return Array call it return
+    //make some name convection
+    //add methods to every list, findBy... make for all values !important
+    //add method to Chauffeur list and Bus list getAvailable we pass in method 2 dates with time
 
     public static void main(String[] args) {
 

@@ -34,11 +34,11 @@
                 <Label text="Email:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
                 <Label text="Phone nr:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
                 <Label text="Company name:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                <TextField id="fieldNameCustomer" fx:id="tests" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <TextField id="fieldNameCompany" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextField id="fieldAddressCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <TextField id="fieldEmailCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <TextField id="fieldPhoneCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <TextField id="fieldNameCustomer" fx:id="fieldCustomerName" onKeyReleased="#callCustomerList" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField id="fieldNameCompany" fx:id="fieldCustomerCompany" onKeyReleased="#callCustomerList" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField id="fieldAddressCustomer" fx:id="fieldCustomerAddress" onKeyReleased="#callCustomerList" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField id="fieldEmailCustomer" fx:id="fieldCustomerEmail" onKeyReleased="#callCustomerList" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <TextField id="fieldPhoneCustomer" fx:id="fieldCustomerPhone" onKeyReleased="#callCustomerList" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
               </children>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="0.0" prefWidth="55.0" />
@@ -53,7 +53,7 @@
                 <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <ListView prefHeight="278.0" prefWidth="284.0" />
+            <ListView fx:id="customerList" prefHeight="278.0" prefWidth="284.0" />
           </children>
           <padding>
             <Insets bottom="10.0" />

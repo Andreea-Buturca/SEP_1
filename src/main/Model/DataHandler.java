@@ -87,6 +87,13 @@ public class DataHandler {
         getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
         getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
 
+        getCustomerList().addCustomer(new Customer("name1", "address", "email", "123456"));
+        getCustomerList().addCustomer(new Customer("name2", "address", "email", "123456"));
+        getCustomerList().addCustomer(new Customer("name3", "address", "email", "123456"));
+        getCustomerList().addCustomer(new Customer("name4", "address", "email", "123456"));
+        getCustomerList().addCustomer(new Customer("name5", "address", "email", "123456"));
+
+
 
         //todo create test date here
         //new trip in to array, new bus in to bus list, and so....

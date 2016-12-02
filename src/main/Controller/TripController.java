@@ -37,8 +37,6 @@ public class TripController extends Controller implements Initializable {
     public CheckBox checkPrivateTrip;
     public Button CreateTourBtn;
     public ToggleButton toggleHours;
-    public TextField tests;
-    public Button saveCustomerBtn;
     public ListView busListview;
     public ChoiceBox busType;
     public ComboBox stopName;
@@ -48,6 +46,16 @@ public class TripController extends Controller implements Initializable {
     public TextField stopTimeField;
     public ListView chauffeurList;
 
+    //Add customer
+    public TextField fieldCustomerName;
+    public TextField fieldCustomerCompany;
+    public TextField fieldCustomerAddress;
+    public TextField fieldCustomerEmail;
+    public TextField fieldCustomerPhone;
+    public ListView customerList;
+    public Button saveCustomerBtn;
+
+    //list for stops
     private DestinationList stops = new DestinationList();
 
 
@@ -57,8 +65,8 @@ public class TripController extends Controller implements Initializable {
         if (toggleHours != null) {
             toggleHours.setOnAction(event -> toggleHours.setText((toggleHours.getText().equals("Hours")) ? "Days" : "Hours"));
 
-            LoadBusList();
-            LoadChauffeurList();
+            loadBusList();
+            loadChauffeurList();
 
             ObservableList<String> destinationItems = FXCollections.observableArrayList();
             for (Destination destination : DataHandler.getDestinationList().getDestinationList()) {
@@ -87,20 +95,22 @@ public class TripController extends Controller implements Initializable {
                     window.setMinHeight(400);
                     window.setResizable(false);
 
+
                     // TODO: 30-Nov-16 get somehow data from here
+
 
                     Scene scene = new Scene(root);
                     window.setScene(scene);
-                    window.showAndWait();
+                    window.show();
 
 
                 }
             });
         }
-        //TODO call datahandler to add data to list, combos, ...
+
+        if (customerList != null) loadCustomerList();
 
     }
-
 
 
     public void createTour(ActionEvent actionEvent) throws IOException {
@@ -109,21 +119,20 @@ public class TripController extends Controller implements Initializable {
         String alert = "There are some mistakes: ";
         int length = alert.length();
 
+        if (!validateEmptyDate(startDatePicker)) alert += "Start Date, ";
+        if (!validateEmptyDate(endDatePicker)) alert += "End Date, ";
         if (!validateEmptyField(fieldStartTime) || !validateTimeField(fieldStartTime)) alert += "Start time, ";
         if (!validateEmptyField(fieldEndTime) || !validateTimeField(fieldEndTime)) alert += "End time, ";
         if (!validateEmptyField(fieldDuration) || !validateNumberField(fieldDuration)) alert += "Duration, ";
         if (!validateEmptyField(fieldDistance) || !validateNumberField(fieldDistance)) alert += "Distance, ";
         if (!validateEmptyField(fieldPrice) || !validateNumberField(fieldPrice)) alert += "Price, ";
-
-        if (!validateEmptyDate(startDatePicker)) alert += "Start Date, ";
-        if (!validateEmptyDate(endDatePicker)) alert += "End Date, ";
-
         if (!validateEmptyCombo(fieldDestination)) alert += "Destination, ";
         if (!validateEmptyCombo(fieldDeparture)) alert += "Departure, ";
         if (busListview.getSelectionModel().getSelectedItem() == null) alert += "Bus, ";
+        if (chauffeurList.getSelectionModel().getSelectedItem() == null) alert += "Chauffeur, ";
 
         if (checkPrivateTrip.isSelected()) {
-            System.out.println(tests.getText());
+            //System.out.println(tests.getText());
         }
 
         // TODO: 30-Nov-16 check if selected bus and chauffeur from list
@@ -133,7 +142,7 @@ public class TripController extends Controller implements Initializable {
             String[] lineToken = busListview.getSelectionModel().getSelectedItem().toString().split(", ");
             String regPlate = lineToken[0].trim();
             // TODO: 01-Dec-16 finish creating trip
-           // DataHandler.getTrips().add(new Trip(DataHandler.getBusList().findByRegplate(regPlate), ));
+            // DataHandler.getTrips().add(new Trip(DataHandler.getBusList().findByRegplate(regPlate), ));
 
 
         } else {
@@ -145,23 +154,27 @@ public class TripController extends Controller implements Initializable {
     public void addCustomerData(ActionEvent actionEvent) {
 
         Window window = saveCustomerBtn.getScene().getWindow();
-        System.out.println(tests.getText());
+        //System.out.println(tests.getText());
         window.getOnCloseRequest();
     }
 
 
     public void getDataChoice(ActionEvent actionEvent) {
-        LoadBusList();
-        LoadChauffeurList();
+        loadBusList();
+        loadChauffeurList();
     }
 
     public void getDataFromField(KeyEvent keyEvent) {
 
-        LoadBusList();
-        LoadChauffeurList();
+        loadBusList();
+        loadChauffeurList();
     }
 
-    private void LoadChauffeurList() {
+    public void callCustomerList(KeyEvent keyEvent) {
+        loadCustomerList();
+    }
+
+    private void loadChauffeurList() {
         ChauffeurList chauffeurs;
 
         chauffeurs = DataHandler.getChauffeurList();
@@ -176,13 +189,16 @@ public class TripController extends Controller implements Initializable {
         chauffeurList.setItems(items);
     }
 
-    private void LoadBusList() {
+    private void loadBusList() {
 
         ArrayList<Bus> busArray;
 
-        if (busType.getValue().equals("Mini Bus")) busArray = DataHandler.getBusList().searchByType("main.Model.MiniBus");
-        else if (busType.getValue().equals("Party Bus")) busArray = DataHandler.getBusList().searchByType("main.Model.PartyBus");
-        else if (busType.getValue().equals("Luxury Bus")) busArray = DataHandler.getBusList().searchByType("main.Model.LuxuryBus");
+        if (busType.getValue().equals("Mini Bus"))
+            busArray = DataHandler.getBusList().searchByType("main.Model.MiniBus");
+        else if (busType.getValue().equals("Party Bus"))
+            busArray = DataHandler.getBusList().searchByType("main.Model.PartyBus");
+        else if (busType.getValue().equals("Luxury Bus"))
+            busArray = DataHandler.getBusList().searchByType("main.Model.LuxuryBus");
         else busArray = DataHandler.getBusList().searchByType("main.Model.ClassicBus");
 
         // TODO: 02-Dec-16 waiting for bus model
@@ -195,6 +211,32 @@ public class TripController extends Controller implements Initializable {
         busListview.setItems(items);
 
 
+    }
+
+    public void loadCustomerList() {
+        CustomerList customers = DataHandler.getCustomerList();
+        ArrayList<Customer> searchedCustomers = new ArrayList<>();
+
+        if (validateEmptyField(fieldCustomerName))
+            searchedCustomers.add(customers.findByName(fieldCustomerName.getText()));
+        else if (validateEmptyField(fieldCustomerPhone))
+            searchedCustomers.add(customers.findByPhone(fieldCustomerPhone.getText()));
+        else if (validateEmptyField(fieldCustomerCompany))
+            searchedCustomers.add(customers.findByCompany(fieldCustomerCompany.getText()));
+
+        ObservableList<String> customerItems = FXCollections.observableArrayList();
+
+        if (searchedCustomers.size() != 0) {
+            for (Customer customer : searchedCustomers) {
+                customerItems.add(customer.toString());
+            }
+        } else {
+            for (Customer customer : customers.getCustomers()) {
+                customerItems.add(customer.toString());
+            }
+        }
+
+        customerList.setItems(customerItems);
     }
 
     public void handleStops(ActionEvent actionEvent) {

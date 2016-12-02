@@ -15,11 +15,11 @@ public class Customer extends Person {
     private int points;
 
 
-    public Customer(String name, String address, String email, String phone, boolean isCompany,String companyName) {
+    public Customer(String name, String address, String email, String phone, boolean isCompany, String companyName) {
         super(name, address, email, phone);
         this.isCompany = isCompany;
-        this.companyName=companyName;
-         }
+        this.companyName = companyName;
+    }
 
     public Customer(String name, String address, String email, String phone) {
         super(name, address, email, phone);
@@ -34,22 +34,28 @@ public class Customer extends Person {
         passengers.add(passenger);
     }
 
-    public void addPointToCustomer() { points = points++; }
+    public void addPointToCustomer() {
+        points = points++;
+    }
 
-    public boolean checkIfFrequentCustomer(Customer customer){
+    public boolean checkIfFrequentCustomer(Customer customer) {
         return true;
     }
 
-    public boolean isFrequent(){
-        return numberOfTrips>5;
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public boolean isFrequent() {
+        return numberOfTrips > 5;
         // TODO: 28-Nov-16 how many trips is frequent?
     }
-public String toString()
-{
-    String x="";
-    if(isCompany)
-    {x+=" is Company ";}
-    return super.toString()+x+", Company name: "+ this.companyName;
-}
 
+    public String toString() {
+        String x = "";
+        if (isCompany) {
+            x += " is Company ";
+        }
+        return super.toString() + x + ", Company name: " + this.companyName;
+    }
 }

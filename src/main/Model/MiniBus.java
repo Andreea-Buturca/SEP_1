@@ -9,6 +9,8 @@ public class MiniBus extends Bus {
         super(registrationPlate, seatPlaces);
     }
 
+    public String getBusType(){ return "Mini Bus";}
+
     @Override
     public String toString() {
         return super.toString() + ", Type: Mini Bus";

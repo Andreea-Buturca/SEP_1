@@ -18,6 +18,8 @@ public class PartyBus extends Bus {
         super(registrationPlate, seatPlaces);
     }
 
+    public String getBusType(){ return "Party Bus";}
+
     @Override
     public String toString() {
         return super.toString() + ", Type: Party Bus";

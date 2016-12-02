@@ -32,7 +32,6 @@ public class Main extends Application {
     //add methods to every list, findBy... make for all values !important
     //add method to Chauffeur list and Bus list getAvailable we pass in method 2 dates with time
 
-
     public static void main(String[] args) {
 
 //for now just creating empty objects

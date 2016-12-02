@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
@@ -17,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ReservationController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ReservationController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -81,7 +82,7 @@
                           <TextField fx:id="fieldNamePassenger" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                           <TextField fx:id="fieldAddressPassenger" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                           <TextField fx:id="fieldEmailPassenger" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                          <TextField fx:id="fieldBirthday" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                       <DatePicker fx:id="datepickerBirthday" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         </children>
                         <columnConstraints>
                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="11.0" />

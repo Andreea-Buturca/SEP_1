@@ -26,6 +26,15 @@ public class Trip {
         this.customers = new ArrayList<>();
     }
 
+    public Trip(Bus bus, Destination pickUpPoint, MyDate timeStart, MyDate timeEnd) {
+        this.bus = bus;
+        this.pickUpPoint = pickUpPoint;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+        this. notes = new ArrayList<>();
+        this.customers = new ArrayList<>();
+    }
+
     public void addNote(String note){
         notes.add(note);
     }

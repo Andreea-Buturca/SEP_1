@@ -45,6 +45,9 @@ public class Main extends Application {
         // TODO: 02-Dec-16 todo
         //make edit for reservation
         //make edit for trip
+        //make regplate
+        //make method in makereservation for search
+        //make method to price
 
         // TODO: 30-Nov-16 make load from file when done
         // TODO: 30-Nov-16 override onclose to make backup

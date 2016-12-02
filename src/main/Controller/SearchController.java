@@ -1,10 +1,3 @@
-
-
-/**
- * Created by MartinNtb on 27-Nov-16.
- */
-
-
 package main.Controller;
 
 import javafx.collections.FXCollections;
@@ -16,6 +9,8 @@ import javafx.scene.control.TextField;
 import main.Model.BusList;
 import main.Model.CustomerList;
 import main.Model.DataHandler;
+import main.Model.MyDate;
+import main.Model.Trip;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -126,3 +121,7 @@ public class SearchController extends Controller {
     print
      */
 
+    private void test (){
+        TripTempController.edit(new Trip(DataHandler.getBusList().getAtIndex(0), DataHandler.getDestinationList().getAtIndex(0), null, new MyDate(1, 1, 1, 1, 2012), new MyDate(1, 1, 1, 1, 2012)));
+    }
+}

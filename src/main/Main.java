@@ -56,7 +56,14 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+
+
 /*NOTES and Qs:
+
+Date Constructor Date(int year, int month, int date)
+or Date(int year, int month, int date, int hrs, int min)
+
 1. Do we have to handle all the exceptions?
 2. What about testclass? We test in main and the whole program.
 

@@ -31,6 +31,9 @@ public class Main extends Application {
 //for now just creating empty objects
         DataHandler.testCreate();
 
+        //creating test data
+        DataHandler.testData();
+
 
         // TODO: 30-Nov-16 make load from file when done
         // TODO: 30-Nov-16 override onclose to make backup

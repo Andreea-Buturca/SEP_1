@@ -3,15 +3,10 @@ package main.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import main.Model.*;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ResourceBundle;
@@ -73,7 +68,7 @@ public class BusController extends Controller {
             int seats = Integer.parseInt(seatNumber.getText());
 
             if (typeChoice.getValue().equals("Classic Bus")) {
-                DataHandler.getBusList().addBus(new ClasicBus(regplate, seats));
+                DataHandler.getBusList().addBus(new ClassicBus(regplate, seats));
             } else if (typeChoice.getValue().equals("Mini Bus")) {
                 DataHandler.getBusList().addBus(new MiniBus(regplate, seats));
             } else if (typeChoice.getValue().equals("Luxury Bus")) {

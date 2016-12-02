@@ -6,22 +6,34 @@ import java.util.ArrayList;
  * Created by MartinNtb on 30-Nov-16.
  */
 public class DestinationList {
-    private ArrayList<Destination> list;
+
+    private ArrayList<Destination> destinations = new ArrayList<>();
 
     public DestinationList() {
     }
 
+    public void addDestination(Destination destination) {
+        destinations.add(destination);
+    }
 
     public ArrayList<Destination> getDestinationList() {
-        return list;
+        return destinations;
     }
 
-    public Destination getDestination() {
-        return list.get(0);
-        // TODO: 30-Nov-16 just for test
+    public Destination getAtIndex(int index) {
+        return destinations.get(index);
     }
 
+    public void removeDestination(Destination destination) {
+        destinations.remove(destination);
+    }
 
+    public Destination findByName(String name) {
+        for (Destination destination : destinations) {
+            if (destination.getPlace().equals(name)) return destination;
+        }
+        return null;
+    }
 
 
 }

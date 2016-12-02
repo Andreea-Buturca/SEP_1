@@ -46,10 +46,6 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        DataHandler.print();
-        //DataHandler.getBusList().addBus();
-
     }
 
     //todo how much he paid, times

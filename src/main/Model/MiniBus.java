@@ -11,6 +11,6 @@ public class MiniBus extends Bus {
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + ", Type: Mini Bus";
     }
 }

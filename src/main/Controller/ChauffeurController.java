@@ -91,8 +91,7 @@ public class ChauffeurController extends Controller implements Initializable {
 
             if (!checkBoxVikar.isSelected()) {
                 DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, birthday, chauffeurID, isVikar));
-            }
-            else if (checkBoxVikar.isSelected()) {
+            } else if (checkBoxVikar.isSelected()) {
                 isVikar = true;
                 DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, birthday, chauffeurID, isVikar));
             }
@@ -138,7 +137,7 @@ public class ChauffeurController extends Controller implements Initializable {
                 DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
             }*/
 
-           successdisplay("Success", "Chauffeur was added.");
+            successdisplay("Success", "Chauffeur was added.");
         } else {
             //alert
             alertdisplay("Wrong Input", alert);

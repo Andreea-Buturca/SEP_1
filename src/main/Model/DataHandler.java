@@ -16,15 +16,10 @@ public class DataHandler {
     private static PassengerList passengerList;
     private static ReservationList reservationList;
     private static DestinationList destinationList;
-   // public static
+    // public static
 
 
     //todo bin handling saving loading, .....
-
-    public static void print() {
-        System.out.println("test");
-    }
-
 
     public static ArrayList<Trip> getTrips() {
         return trips;
@@ -41,10 +36,15 @@ public class DataHandler {
     public static CustomerList getCustomerList() {
         return customerList;
     }
+
     public static PassengerList getPassengerList() {
         return passengerList;
     }
-    public static  ReservationList getReservationList(){return reservationList;}
+
+    public static ReservationList getReservationList() {
+        return reservationList;
+    }
+
     public static DestinationList getDestinationList() {
         return destinationList;
     }
@@ -61,6 +61,33 @@ public class DataHandler {
 
     public static void testData() {
 
+        getBusList().addBus(new PartyBus("AD1234", 12));
+        getBusList().addBus(new PartyBus("AD1234", 12));
+        getBusList().addBus(new ClassicBus("AD1454", 52));
+        getBusList().addBus(new ClassicBus("AD1454", 52));
+        getBusList().addBus(new ClassicBus("AD1454", 52));
+        getBusList().addBus(new MiniBus("DD1254", 9));
+        getBusList().addBus(new MiniBus("DD1254", 9));
+        getBusList().addBus(new MiniBus("DD1254", 9));
+        getBusList().addBus(new LuxuryBus("DD1254", 9));
+        getBusList().addBus(new LuxuryBus("DD1254", 9));
+        getBusList().addBus(new LuxuryBus("DD1254", 9));
+
+
+        getDestinationList().getDestinationList().add(new Destination("Place 1"));
+        getDestinationList().getDestinationList().add(new Destination("Place 2"));
+        getDestinationList().getDestinationList().add(new Destination("Place 3"));
+        getDestinationList().getDestinationList().add(new Destination("Place 4"));
+        getDestinationList().getDestinationList().add(new Destination("Place 5"));
+
+
+        getChauffeurList().add(new Chauffeur("name1", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
+        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
+        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
+        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
+        getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
+
+
         //todo create test date here
         //new trip in to array, new bus in to bus list, and so....
         //than data are accessible from everywhere
@@ -74,8 +101,7 @@ public class DataHandler {
         // TODO: 30-Nov-16 first time needed to construct all data 
 
         ObjectOutputStream out = null;
-        try
-        {
+        try {
             File file = new File(filename);
             FileOutputStream fos = new FileOutputStream(file);
             out = new ObjectOutputStream(fos);
@@ -86,19 +112,12 @@ public class DataHandler {
             out.writeObject(passengerList);
             out.writeObject(reservationList);
             out.writeObject(destinationList);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("Exception: " + filename);
-        }
-        finally
-        {
-            try
-            {
+        } finally {
+            try {
                 out.close();
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -109,8 +128,7 @@ public class DataHandler {
     public static void load() {
         String filename = "test.bin";
         ObjectInputStream in = null;
-        try
-        {
+        try {
             File file = new File(filename);
             FileInputStream fis = new FileInputStream(file);
             in = new ObjectInputStream(fis);
@@ -121,22 +139,14 @@ public class DataHandler {
             passengerList = (PassengerList) in.readObject();
             reservationList = (ReservationList) in.readObject();
             destinationList = (DestinationList) in.readObject();
-        }
-
-        catch (IOException | ClassNotFoundException e)
-        {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            try
-            {
+        } finally {
+            try {
                 if (in != null) {
                     in.close();
                 }
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

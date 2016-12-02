@@ -5,23 +5,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import main.Model.Bus;
-import main.Model.DataHandler;
-import main.Model.Trip;
+import main.Model.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import static java.awt.SystemColor.window;
 
 /**
  * Created by andreea on 11/28/2016.
@@ -44,6 +40,16 @@ public class TripController extends Controller implements Initializable {
     public TextField tests;
     public Button saveCustomerBtn;
     public ListView busListview;
+    public ChoiceBox busType;
+    public ComboBox stopName;
+    public Button addStopBtn;
+    public Button removeStopBtn;
+    public ListView stopsList;
+    public TextField stopTimeField;
+    public ListView chauffeurList;
+
+    private DestinationList stops = new DestinationList();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,21 +57,22 @@ public class TripController extends Controller implements Initializable {
         if (toggleHours != null) {
             toggleHours.setOnAction(event -> toggleHours.setText((toggleHours.getText().equals("Hours")) ? "Days" : "Hours"));
 
+            LoadBusList();
+            LoadChauffeurList();
 
-            busListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-            ObservableList<String> items = FXCollections.observableArrayList();
-            for (Bus bus : DataHandler.getBusList().getBuses()) {
-                items.add(bus.toString());
+            ObservableList<String> destinationItems = FXCollections.observableArrayList();
+            for (Destination destination : DataHandler.getDestinationList().getDestinationList()) {
+                destinationItems.add(destination.toString());
             }
-            busListview.setItems(items);
+            fieldDestination.setItems(destinationItems);
+            fieldDeparture.setItems(destinationItems);
+            stopName.setItems(destinationItems);
+
         }
 
         if (checkPrivateTrip != null) {
             checkPrivateTrip.setOnAction(event -> {
-                System.out.println(checkPrivateTrip.isSelected());
                 if (checkPrivateTrip.isSelected()) {
-                    System.out.println("selected");
-
                     Stage window = new Stage();
                     Parent root = null;
                     try {
@@ -93,6 +100,8 @@ public class TripController extends Controller implements Initializable {
         //TODO call datahandler to add data to list, combos, ...
 
     }
+
+
 
     public void createTour(ActionEvent actionEvent) throws IOException {
 
@@ -138,5 +147,72 @@ public class TripController extends Controller implements Initializable {
         Window window = saveCustomerBtn.getScene().getWindow();
         System.out.println(tests.getText());
         window.getOnCloseRequest();
+    }
+
+
+    public void getDataChoice(ActionEvent actionEvent) {
+        LoadBusList();
+        LoadChauffeurList();
+    }
+
+    public void getDataFromField(KeyEvent keyEvent) {
+
+        LoadBusList();
+        LoadChauffeurList();
+    }
+
+    private void LoadChauffeurList() {
+        ChauffeurList chauffeurs;
+
+        chauffeurs = DataHandler.getChauffeurList();
+
+        // TODO: 02-Dec-16 waiting for bus model
+
+        chauffeurList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (Chauffeur chauffeur : chauffeurs.getChauffeurList()) {
+            items.add(chauffeur.getName());
+        }
+        chauffeurList.setItems(items);
+    }
+
+    private void LoadBusList() {
+
+        ArrayList<Bus> busArray;
+
+        if (busType.getValue().equals("Mini Bus")) busArray = DataHandler.getBusList().searchByType("main.Model.MiniBus");
+        else if (busType.getValue().equals("Party Bus")) busArray = DataHandler.getBusList().searchByType("main.Model.PartyBus");
+        else if (busType.getValue().equals("Luxury Bus")) busArray = DataHandler.getBusList().searchByType("main.Model.LuxuryBus");
+        else busArray = DataHandler.getBusList().searchByType("main.Model.ClassicBus");
+
+        // TODO: 02-Dec-16 waiting for bus model
+
+        busListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (Bus bus : busArray) {
+            items.add(bus.toString());
+        }
+        busListview.setItems(items);
+
+
+    }
+
+    public void handleStops(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == addStopBtn && validateNumberField(stopTimeField)) {
+            stops.addDestination(new Destination(stopName.getValue().toString(), stopTimeField.getText()));
+        }
+
+        if (actionEvent.getSource() == removeStopBtn && stopsList.getSelectionModel().getSelectedItem() != null) {
+            String[] lineToken = stopsList.getSelectionModel().getSelectedItem().toString().split(", ");
+            String stopNameTemp = lineToken[0].trim();
+            stops.removeDestination(stops.findByName(stopNameTemp));
+        }
+
+
+        ObservableList<String> destinationItems = FXCollections.observableArrayList();
+        for (Destination destination : stops.getDestinationList()) {
+            destinationItems.add(destination.getStopString());
+        }
+        stopsList.setItems(destinationItems);
     }
 }

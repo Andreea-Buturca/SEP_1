@@ -28,8 +28,8 @@ public class Person {
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
     }
-    public String getName()
-    {
+
+    public String getName() {
         return name;
     }
 
@@ -50,7 +50,12 @@ public class Person {
     }
 
     public String toString() {
-        SimpleDateFormat ft = new SimpleDateFormat ("dd/MM/yyyy");
-        return this.name + ", address: " + this.address + ", email: " + this.email + ", phone: " + this.phone + ", birthday: " + ft.format(this.dateOfBirth);
+        if (this.dateOfBirth != null) {
+            SimpleDateFormat ft = new SimpleDateFormat("dd/MM/yyyy");
+            return this.name + ", address: " + this.address + ", email: " + this.email + ", phone: " + this.phone + ", birthday: " + ft.format(this.dateOfBirth);
+        } else {
+            return this.name + ", address: " + this.address + ", email: " + this.email + ", phone: " + this.phone;
+        }
+        // TODO: 02-Dec-16 probable check for null in companyname
     }
 }

@@ -58,6 +58,7 @@ public class Main extends Application {
 }
 /*NOTES and Qs:
 1. Do we have to handle all the exceptions?
+2. What about testclass? We test in main and the whole program.
 
 
 

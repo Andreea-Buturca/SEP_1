@@ -51,7 +51,7 @@
               <Label alignment="CENTER_LEFT" text="Date of Birthday:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
               <Label alignment="CENTER_LEFT" text="Employee ID:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
               <Label alignment="CENTER_LEFT" text="Vikar Chauffeur:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-              <Label alignment="CENTER_LEFT" text="Not preffered:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+              <Label alignment="CENTER_LEFT" text="Preferred:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
               <CheckBox fx:id="checkBoxVikar" mnemonicParsing="false" text="" GridPane.columnIndex="1" GridPane.rowIndex="6" />
               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                 <children>
@@ -70,7 +70,7 @@
                           <Label prefWidth="83.0" text="Bus Type:" />
                           <CheckBox fx:id="checkBoxClasicBus" mnemonicParsing="false" text="Clasic" />
                           <CheckBox fx:id="checkBoxMiniBus" mnemonicParsing="false" text="Mini" />
-                          <CheckBox fx:id="CheckBoxPartyBus" mnemonicParsing="false" prefWidth="-1.0" text="Party" />
+                          <CheckBox fx:id="checkBoxPartyBus" mnemonicParsing="false" prefWidth="-1.0" text="Party" />
                           <CheckBox fx:id="checkboxLuxuryBus" mnemonicParsing="false" text="Luxury" />
                         </children>
                       </HBox>

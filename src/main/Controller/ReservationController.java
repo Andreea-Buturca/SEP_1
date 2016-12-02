@@ -49,7 +49,7 @@ public class ReservationController extends Controller implements Initializable {
     public ListView listViewPassenger;
     public Label labelTotalPrice;
 
-       public void controlData(ActionEvent actionEvent) throws IOException {
+    public void controlData(ActionEvent actionEvent) throws IOException {
         Stage stage;
         Parent root;
 
@@ -65,12 +65,13 @@ public class ReservationController extends Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
- public void addCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+
+    public void addCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         String alert = "There are some mistakes: ";
         int length = alert.length();
 
-        if (!validateEmptyField(fieldNameCustomer) ) alert += "Name, ";
-        if (!validateEmptyField(fieldAddressCustomer) ) alert += "Address, ";
+        if (!validateEmptyField(fieldNameCustomer)) alert += "Name, ";
+        if (!validateEmptyField(fieldAddressCustomer)) alert += "Address, ";
         if (!validateEmptyField(fieldPhoneCustomer) || !validateLength(fieldPhoneCustomer, 8)) alert += "Phone, ";
 
         if (length == alert.length()) {
@@ -79,17 +80,17 @@ public class ReservationController extends Controller implements Initializable {
             String address = fieldAddressCustomer.getText();
             String email = fieldEmailCustomer.getText();
             String phone = fieldPhoneCustomer.getText();
-            boolean isCompany=false;
-            if(isCompany) {
-                DataHandler.getCustomerList().add(new Customer(name, address, email, phone));
-            }
-            else if(isCompany==true)
-            {
-            String companyName = fieldNameCompany.getText();
-            DataHandler.getCustomerList().add(new Customer(name, address, email, phone, isCompany, companyName));
+            boolean isCompany = validateEmptyField(fieldNameCompany);
+
+            if (isCompany == false) {
+                DataHandler.getCustomerList().addCustomer(new Customer(name, address, email, phone));
+            } else if (isCompany == true) {
+                String companyName = fieldNameCompany.getText();
+                DataHandler.getCustomerList().addCustomer(new Customer(name, address, email, phone, isCompany, companyName));
             }
 
             successdisplay("Success", "Customer was created.");
+            loadCustomerList();
         } else {
             //alert
             alertdisplay("Wrong Input", alert);
@@ -131,6 +132,7 @@ public class ReservationController extends Controller implements Initializable {
         }
         listViewCustomer.setItems(items);
     }
+
     public void loadPassengerList() {
         listViewPassenger.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<String> items = FXCollections.observableArrayList();
@@ -139,6 +141,7 @@ public class ReservationController extends Controller implements Initializable {
         }
         listViewPassenger.setItems(items);
     }
+
     public void initialize(URL location, ResourceBundle resources) {
         if (listViewCustomer != null) {
             loadCustomerList();
@@ -148,7 +151,7 @@ public class ReservationController extends Controller implements Initializable {
         }
     }
 
-    public void removePassenger(ActionEvent actionEvent) throws FileNotFoundException, ParseException{
+    public void removePassenger(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         ObservableList<String> selected;
         selected = listViewPassenger.getSelectionModel().getSelectedItems();
         for (String aSelected : selected) {
@@ -158,15 +161,18 @@ public class ReservationController extends Controller implements Initializable {
         }
         loadPassengerList();
     }
+
     public void cancelReservation(ActionEvent actionEvent) throws IOException {
         System.exit(0);
     }
+
     public void saveReservation(ActionEvent actionEvent) throws IOException {
         String alert = "There are some mistakes: ";
         int length = alert.length();
 
         if (!validateEmptyField(fieldDefaultPrice) || !validateNumberField(fieldDefaultPrice)) alert += "Price, ";
-        if (!validateEmptyField(fieldExtraServices) || !validateNumberField(fieldExtraServices)) alert += "Extra services, ";
+        if (!validateEmptyField(fieldExtraServices) || !validateNumberField(fieldExtraServices))
+            alert += "Extra services, ";
         if (!validateEmptyField(fieldDiscount) || !validateNumberField(fieldDiscount)) alert += "Discount, ";
 
         if (length == alert.length()) {
@@ -175,9 +181,9 @@ public class ReservationController extends Controller implements Initializable {
             int extraServices = Integer.parseInt(fieldExtraServices.getText());
             int discount = Integer.parseInt(fieldDiscount.getText());
             int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
-            double finalPrice = ((price+extraServices)-discount) * nrPassengers;
-            Customer customer ;
-            ArrayList<Passenger> passengers = DataHandler.getPassengerList().getArrayPassenger();
+            double finalPrice = ((price + extraServices) - discount) * nrPassengers;
+            Customer customer;
+            ArrayList<Passenger> passengers = DataHandler.getPassengerList().getPassengers();
             String trip = fieldDestination.getText();
          //   DataHandler.getReservationList().add(new Reservation(trip, customer, passengers, finalPrice));
         } else {

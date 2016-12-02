@@ -80,58 +80,43 @@ public class ChauffeurController extends Controller implements Initializable {
             MyDate birthday = new MyDate(birthdayPicker.getValue());
             int chauffeurID = Integer.parseInt(fieldChauffeurAddId.getText());
             boolean isVikar = false;
-            int preferredDistance = 0;
-            String preferredTourType = "";
-            int workedHours = 0;
             String bus = "";
 
             if (!checkBoxVikar.isSelected()) {
                 DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, birthday, chauffeurID, isVikar));
+                Chauffeur chauffeur = DataHandler.getChauffeurList().getChauffeurByName(name);
+                if (checkBoxDistanceShort.isSelected()) {
+                    chauffeur.setPreferredShortDistance(400);
+                }
+                if (checkBoxDistanceMedium.isSelected()) {
+                    chauffeur.setPreferredMediumDistance(1000);
+                }
+                if (checkBoxDistanceLong.isSelected()) {
+                    chauffeur.setPreferredLongDistance(3001);
+                }
+                if (checkBoxWeekend.isSelected()) {
+                    chauffeur.setPreferredWeekendHours(10);
+                }
+                if (checkBoxWeek.isSelected()) {
+                    chauffeur.setPreferredWeekHours(36);
+                }
+                if (checkBoxClasicBus.isSelected()) {
+                    bus = "Clasic Bus";
+                    //      chauffeur.s
+                }
+                if (checkboxLuxuryBus.isSelected()) {
+                    bus = "Luxury Bus";
+                }
+                if (checkBoxPartyBus.isSelected()) {
+                    bus = "Party Bus";
+                }
+                if (checkBoxMiniBus.isSelected()) {
+                    bus = "Mini Bus";
+                }
             } else if (checkBoxVikar.isSelected()) {
                 isVikar = true;
                 DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, birthday, chauffeurID, isVikar));
             }
-           /* if (checkBoxDistanceShort.isSelected()) {
-                chauffeur.setPreferredShortDistance(400);
-                preferredDistance = chauffeur.getPreferredDistance();
-                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
-            }
-            if (checkBoxDistanceMedium.isSelected()) {
-                chauffeur.setPreferredMediumDistance(1000);
-                preferredDistance = chauffeur.getPreferredDistance();
-                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
-            }
-            if (checkBoxDistanceLong.isSelected()) {
-                chauffeur.setPreferredLongDistance(3001);
-                preferredDistance = chauffeur.getPreferredDistance();
-                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
-            }
-            if (checkBoxClasicBus.isSelected()) {
-                bus = "Clasic Bus";
-                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
-            }
-            if (checkboxLuxuryBus.isSelected()) {
-                bus = "Luxury Bus";
-                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
-            }
-            if (checkBoxPartyBus.isSelected()) {
-                bus = "Party Bus";
-                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
-            }
-            if (checkBoxMiniBus.isSelected()) {
-                bus = "Mini Bus";
-                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
-            }
-            if (checkBoxWeekend.isSelected()) {
-                chauffeur.setPreferredWeekendHours(10);
-                workedHours = chauffeur.getPreferredWorkedHours();
-                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
-            }
-            if (checkBoxWeek.isSelected()) {
-                chauffeur.setPreferredWeekHours();
-                workedHours = chauffeur.getPreferredWorkedHours();
-                DataHandler.getArrayChauffeur().add(new Chauffeur(name, address, email, phone, chauffeurID, preferredDistance, preferredTourType, workedHours, isVikar));
-            }*/
 
             successdisplay("Success", "Chauffeur was added.");
         } else {

@@ -87,12 +87,13 @@ public class Chauffeur extends Person {
         return "Luxury Bus";
     else return null;
 }
-    public void setPreferredWeekHours() {
-        this.workedHours = 37;
+
+    public void setPreferredWeekHours(int hours) {
+        this.workedHours = hours;
     }
 
     public void setPreferredWeekendHours(int hours) {
-        if (hours < 17)
+        if (hours < 19)
             this.workedHours = hours;
     }
 
@@ -105,6 +106,11 @@ public class Chauffeur extends Person {
     }
 
     public String toString() {
+ //       String preferredDistance=false;
+        if(this.preferredDistance != 0)
+        {
+
+        }
         String vikar = "";
         if (this.isVikar) {
             vikar = ", Vikar employee";

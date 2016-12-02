@@ -32,6 +32,7 @@ public class Main extends Application {
     //add methods to every list, findBy... make for all values !important
     //add method to Chauffeur list and Bus list getAvailable we pass in method 2 dates with time
 
+
     public static void main(String[] args) {
 
 //for now just creating empty objects
@@ -40,6 +41,9 @@ public class Main extends Application {
         //creating test data
         DataHandler.testData();
 
+        // TODO: 02-Dec-16 todo
+        //make edit for reservation
+        //make edit for trip
 
         // TODO: 30-Nov-16 make load from file when done
         // TODO: 30-Nov-16 override onclose to make backup

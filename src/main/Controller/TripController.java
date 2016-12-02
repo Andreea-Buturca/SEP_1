@@ -218,11 +218,14 @@ public class TripController extends Controller implements Initializable {
         ArrayList<Customer> searchedCustomers = new ArrayList<>();
 
         if (validateEmptyField(fieldCustomerName))
-            searchedCustomers.add(customers.findByName(fieldCustomerName.getText()));
-        else if (validateEmptyField(fieldCustomerPhone))
-            searchedCustomers.add(customers.findByPhone(fieldCustomerPhone.getText()));
-        else if (validateEmptyField(fieldCustomerCompany))
-            searchedCustomers.add(customers.findByCompany(fieldCustomerCompany.getText()));
+            if (customers.findByName(fieldCustomerName.getText()) != null)
+                searchedCustomers.add(customers.findByName(fieldCustomerName.getText()));
+        if (validateEmptyField(fieldCustomerPhone))
+            if (customers.findByPhone(fieldCustomerPhone.getText()) != null)
+                searchedCustomers.add(customers.findByPhone(fieldCustomerPhone.getText()));
+        if (validateEmptyField(fieldCustomerCompany))
+            if (customers.findByCompany(fieldCustomerCompany.getText()) != null)
+                searchedCustomers.add(customers.findByCompany(fieldCustomerCompany.getText()));
 
         ObservableList<String> customerItems = FXCollections.observableArrayList();
 

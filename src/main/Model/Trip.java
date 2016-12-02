@@ -1,6 +1,7 @@
 package main.Model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -12,11 +13,11 @@ public class Trip {
     private Bus bus;
     private Destination pickUpPoint;
     private ArrayList<Destination> stops;
-    private MyDate timeStart;
-    private MyDate timeEnd;
+    private Date timeStart;
+    private Date timeEnd;
     private ArrayList<String> notes;  // TODO: 29-Nov-16 so do we need it?
 
-    public Trip(Bus bus, Destination pickUpPoint, ArrayList<Destination> stops, MyDate timeStart, MyDate timeEnd) {
+    public Trip(Bus bus, Destination pickUpPoint, ArrayList<Destination> stops, Date timeStart, Date timeEnd) {
         this.bus = bus;
         this.pickUpPoint = pickUpPoint;
         this.stops = stops;
@@ -26,7 +27,7 @@ public class Trip {
         this.customers = new ArrayList<>();
     }
 
-    public Trip(Bus bus, Destination pickUpPoint, MyDate timeStart, MyDate timeEnd) {
+    public Trip(Bus bus, Destination pickUpPoint, Date timeStart, Date timeEnd) {
         this.bus = bus;
         this.pickUpPoint = pickUpPoint;
         this.timeStart = timeStart;

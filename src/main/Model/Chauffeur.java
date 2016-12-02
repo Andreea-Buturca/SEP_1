@@ -1,5 +1,7 @@
 package main.Model;
 
+import java.util.Date;
+
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
@@ -13,7 +15,7 @@ public class Chauffeur extends Person {
 
 
 
-    public Chauffeur(String name, String address, String email, String phone, MyDate dateOfBirth, int employeeID, boolean isVikar) {
+    public Chauffeur(String name, String address, String email, String phone, Date dateOfBirth, int employeeID, boolean isVikar) {
         super(name, address, email, phone, dateOfBirth);
         if (this.employeeID >= 10000 & this.employeeID <= 99999) {
             this.employeeID = employeeID;

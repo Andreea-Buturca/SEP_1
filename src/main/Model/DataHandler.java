@@ -2,6 +2,7 @@ package main.Model;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -81,11 +82,11 @@ public class DataHandler {
         getDestinationList().getArrayDestination().add(new Destination("Place 5"));
 
 
-        getChauffeurList().add(new Chauffeur("name1", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
-        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
-        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
-        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
-        getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", new MyDate(1, 1, 1, 1, 2001) , 5221, true));
+        getChauffeurList().add(new Chauffeur("name1", "addres", "sda", "sad", new Date(2012-1900, 1, 1) , 5221, true));
+        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad", new Date(2012-1900, 1, 1) , 5221, true));
+        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad", new Date(2012-1900, 1, 1) , 5221, true));
+        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", new Date(2012-1900, 1, 1) , 5221, true));
+        getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", new Date(2012-1900, 1, 1) , 5221, true));
 
         getCustomerList().add(new Customer("name1", "address", "email", "123456"));
         getCustomerList().add(new Customer("name2", "address", "email", "123456"));

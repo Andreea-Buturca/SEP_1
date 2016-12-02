@@ -9,11 +9,12 @@ import javafx.scene.control.TextField;
 import main.Model.BusList;
 import main.Model.CustomerList;
 import main.Model.DataHandler;
-import main.Model.MyDate;
+
 import main.Model.Trip;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
+import java.util.Date;
 
 /**
  * Created by MartinNtb on 27-Nov-16.
@@ -120,6 +121,6 @@ public class SearchController extends Controller {
      */
 
     private void test (){
-        TripTempController.edit(new Trip(DataHandler.getBusList().getAtIndex(0), DataHandler.getDestinationList().getAtIndex(0), null, new MyDate(1, 1, 1, 1, 2012), new MyDate(1, 1, 1, 1, 2012)));
+        TripTempController.edit(new Trip(DataHandler.getBusList().getAtIndex(0), DataHandler.getDestinationList().getAtIndex(0), null, new Date(2012, 1, 1, 1, 1), new Date(2012, 1, 1, 1, 1)));
     }
 }

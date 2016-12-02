@@ -62,6 +62,7 @@ public class Main extends Application {
 /*NOTES and Qs:
 
 Date Constructor Date(int year, int month, int date)
+!!! (year + 1900, month, date)
 or Date(int year, int month, int date, int hrs, int min)
 
 1. Do we have to handle all the exceptions?

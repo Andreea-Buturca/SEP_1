@@ -26,8 +26,18 @@ public class Customer extends Person {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer)) return false;
+
+        Customer customer = (Customer) o;
+
+        if (isCompany != customer.isCompany) return false;
+        if (numberOfTrips != customer.numberOfTrips) return false;
+        if (points != customer.points) return false;
+        if (companyName != null ? !companyName.equals(customer.companyName) : customer.companyName != null)
+            return false;
+        return passengers.equals(customer.passengers);
     }
 
     public void addPassenger(Passenger passenger) {
@@ -56,6 +66,7 @@ public class Customer extends Person {
         if (isCompany) {
             x += ", Company name: " + this.companyName;
         }
-        return super.toString() +x;
+        return super.toString() + x;
     }
+    // TODO: 03-Dec-16 probably add number of trips?
 }

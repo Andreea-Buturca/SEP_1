@@ -9,7 +9,9 @@ public class ClassicBus extends Bus {
         super(registrationPlate, seatPlaces);
     }
 
-    public String getBusType(){ return "Clasic Bus";}
+    public String getBusType() {
+        return "Clasic Bus";
+    }
 
     public String toString() {
         return super.toString() + ", Type: Classic Bus";

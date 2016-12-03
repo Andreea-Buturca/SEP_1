@@ -8,9 +8,9 @@ import java.util.Date;
  */
 public class Passenger extends Person {
 
-       public Passenger(String name, String address, String email, Date dateOfBirth) {
+    public Passenger(String name, String address, String email, Date dateOfBirth) {
         super(name, address, email, dateOfBirth);
-         }
+    }
 
     public String toString() {
         return super.toString();

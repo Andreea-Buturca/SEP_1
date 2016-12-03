@@ -24,6 +24,7 @@ public class ReservationList {
         }
         return null;
     }
+
     public Reservation getReservationByDestination(Trip trip) {
         for (int i = 0; i < reservations.size(); i++) {
             if (reservations.get(i).getReservationByTrip().equals(trip))

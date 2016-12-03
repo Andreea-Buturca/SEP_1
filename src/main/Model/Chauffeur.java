@@ -1,7 +1,7 @@
 package main.Model;
 
-        import java.util.ArrayList;
-        import java.util.Date;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -110,6 +110,8 @@ public class Chauffeur extends Person {
         String preferredDistance = "";
         for (int i = 0; i < this.preferredDistance.size(); i++) {
             preferredDistance += ", Preferred distance: " + this.preferredDistance.get(i) + " km";
+            if (i < this.preferredDistance.size() - 1)
+                preferredDistance += ", ";
         }
         String preferredHours = "";
         if (this.workedHours < 17 && this.workedHours > 0) {
@@ -121,6 +123,8 @@ public class Chauffeur extends Person {
         String preferredBusType = "";
         for (int i = 0; i < this.busType.size(); i++) {
             preferredBusType += ", Preferred bus Type: " + this.busType.get(i) + "";
+            if (i < this.busType.size() - 1)
+                preferredBusType += ", ";
         }
         String vikar = "";
         if (this.isVikar) {

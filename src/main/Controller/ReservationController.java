@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.Model.*;
 
@@ -200,17 +202,21 @@ public class ReservationController extends Controller implements Initializable {
             int discount = Integer.parseInt(fieldDiscount.getText());
             int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
             double finalPrice = ((price + extraServices) - discount) * nrPassengers;
-            Customer customer;
+            //   Customer customer = DataHandler.getCustomerList().getCustomer();
             ArrayList<Passenger> passengers = DataHandler.getPassengerList().getArrayPassenger();
             String trip = fieldDestination.getText();
-            //   DataHandler.getReservationList().add(new Reservation(trip, customer, passengers, finalPrice));
+
+            //  DataHandler.getReservationList().add(new Reservation(trip, customer, passengers, finalPrice));
         } else {
             //alert
             alertdisplay("Wrong Input", alert);
         }
     }
 
-}
+    }
+
+
+
 
 
 

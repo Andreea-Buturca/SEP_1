@@ -9,13 +9,12 @@ public class Reservation {
     private Trip trip;
     private Customer customer;
     private ArrayList<Passenger> passengers;
-
     private double defaultPricePerson;
     private double finalPrice;
     private double priceExtraServices;
     private double discount;
 
-    public Reservation(Trip trip, Customer customer, ArrayList<Passenger> passengers, int price) {
+    public Reservation(Trip trip, Customer customer, ArrayList<Passenger> passengers, double price) {
         this.trip = trip;
         this.customer = customer;
         this.passengers = passengers;

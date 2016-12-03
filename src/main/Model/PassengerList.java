@@ -37,14 +37,7 @@ public class PassengerList {
         }
         return null;
     }
-    public Passenger findBySeatNr(int seatNr){
-        for (int i=0; i<passengers.size();i++){
-            if (passengers.get(i).getSeatNumber() == seatNr)
-                return passengers.get(i);
-        }
-        return null;
-    }
-    public ArrayList<Passenger> getArrayPassenger() {
+   public ArrayList<Passenger> getArrayPassenger() {
         return passengers;
     }
 

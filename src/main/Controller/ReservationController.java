@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -48,8 +49,17 @@ public class ReservationController extends Controller implements Initializable {
     public ListView listViewCustomer;
     public ListView listViewPassenger;
     public Label labelTotalPrice;
+    public DatePicker datepickerBirthday;
 
     public void controlData(ActionEvent actionEvent) throws IOException {
+        /*String alert = "There are some mistakes: ";
+        int length = alert.length();
+        if (!validateEmptyField(fieldNrPassengers)) alert += "Nr of passengers ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+            String nrOfPassengers = fieldNrPassengers.getText();
+        }*/
         Stage stage;
         Parent root;
 
@@ -99,31 +109,30 @@ public class ReservationController extends Controller implements Initializable {
     }
 
     public void addPassenger(ActionEvent actionEvent) throws IOException {
-        int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
-        for (int i = 0; i < nrPassengers; i++) {
-            String alert = "There are some mistakes: ";
-            int length = alert.length();
+        //   int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
+        //  for (int i = 0; i < nrPassengers; i++) {
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
 
-            if (!validateEmptyField(fieldNamePassenger)) alert += "Name, ";
-            if (!validateEmptyField(fieldAddressPassenger)) alert += "Address, ";
-            if (!validateEmptyField(fieldSeatNr) || !validateNumberField(fieldSeatNr)) alert += "Seat number, ";
+        if (!validateEmptyField(fieldNamePassenger)) alert += "Name, ";
+        if (!validateEmptyField(fieldAddressPassenger)) alert += "Address, ";
+        if (!validateEmptyDate(datepickerBirthday)) alert += "Birthday, ";
 
-            if (length == alert.length()) {
-                //save it DataHandler. .....
-                String name = fieldNamePassenger.getText();
-                String address = fieldAddressPassenger.getText();
-                String email = fieldEmailPassenger.getText();
-                int seatNr = Integer.parseInt(fieldSeatNr.getText());
-          /*  MyDate birthday = new MyDate(birthdayPicker.getValue());
-            String phone = fieldPhonePassenger.getText;
-            DataHandler.getPassengerList().add(new Passenger(name, address, email, phone, birthday, boolean subscribed, seatNr));*/
-                successdisplay("Success", "Passenger was added.");
-            } else {
-                //alert
-                alertdisplay("Wrong Input", alert);
-            }
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+            String name = fieldNamePassenger.getText();
+            String address = fieldAddressPassenger.getText();
+            String email = fieldEmailPassenger.getText();
+            Date birthday = new Date(datepickerBirthday.getValue().getYear() - 1900, datepickerBirthday.getValue().getMonthValue(), datepickerBirthday.getValue().getDayOfMonth());
+            DataHandler.getPassengerList().add(new Passenger(name, address, email, birthday));
+            successdisplay("Success", "Passenger was added.");
+            loadPassengerList();
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
         }
     }
+    //   }
 
     public void loadCustomerList() {
         listViewCustomer.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -164,7 +173,15 @@ public class ReservationController extends Controller implements Initializable {
     }
 
     public void cancelReservation(ActionEvent actionEvent) throws IOException {
-        System.exit(0);
+        Stage stage = null;
+        Parent root = null;
+        if (actionEvent.getSource() == buttonCancelReservation) {
+            stage = (Stage) buttonCancelReservation.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void saveReservation(ActionEvent actionEvent) throws IOException {
@@ -186,7 +203,7 @@ public class ReservationController extends Controller implements Initializable {
             Customer customer;
             ArrayList<Passenger> passengers = DataHandler.getPassengerList().getArrayPassenger();
             String trip = fieldDestination.getText();
-         //   DataHandler.getReservationList().add(new Reservation(trip, customer, passengers, finalPrice));
+            //   DataHandler.getReservationList().add(new Reservation(trip, customer, passengers, finalPrice));
         } else {
             //alert
             alertdisplay("Wrong Input", alert);

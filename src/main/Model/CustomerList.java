@@ -1,6 +1,6 @@
 package main.Model;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -25,9 +25,13 @@ public class CustomerList {
         return null;
     }
 
-    public int getSize(){return customers.size();}
+    public int getSize() {
+        return customers.size();
+    }
 
-    public Customer getCustomer(int index){ return customers.get(index);}
+    public Customer getCustomer(int index) {
+        return customers.get(index);
+    }
 
     public CustomerList findAllByName(String name) {
         CustomerList result = new CustomerList();

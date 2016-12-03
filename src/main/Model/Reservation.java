@@ -6,10 +6,10 @@ import java.util.ArrayList;
  * Created by andreea on 12/1/2016.
  */
 public class Reservation {
+
     private Trip trip;
     private Customer customer;
     private ArrayList<Passenger> passengers;
-
     private double defaultPricePerson;
     private double finalPrice;
     private double priceExtraServices;
@@ -71,10 +71,9 @@ public class Reservation {
 
     public String toString() {
         String passsengers = "";
-        for(int i=0;i<passengers.size();i++)
-        {
-            passsengers += " , for passenger nr: "+(i+1)+ this.passengers.get(i).toString();
+        for (int i = 0; i < passengers.size(); i++) {
+            passsengers += " , for passenger nr: " + (i + 1) + this.passengers.get(i).toString();
         }
-        return "Tour to: " + this.trip + " , price: " + this.finalPrice+ " , reserved by customer: " + this.customer + passsengers;
+        return "Tour to: " + this.trip + " , price: " + this.finalPrice + " , reserved by customer: " + this.customer + passsengers;
     }
 }

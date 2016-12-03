@@ -1,7 +1,7 @@
 package main.Model;
 
-        import java.util.ArrayList;
-        import java.util.Date;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.

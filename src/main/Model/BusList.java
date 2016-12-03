@@ -10,7 +10,7 @@ import java.util.Date;
 public class BusList {
 
 
-    ArrayList<Bus> buses = new ArrayList<>();
+    private ArrayList<Bus> buses = new ArrayList<>();
 
     public BusList() {
     }
@@ -23,11 +23,12 @@ public class BusList {
         return buses;
     }
 
-    public ArrayList<Bus> getAllAvailable(int seats) {// TODO: 28-Nov-16 Finish
+   /* public ArrayList<Bus> getAllAvailable(int seats) {// TODO: 28-Nov-16 Finish
 
-        // TODO: 02-Dec-16 make it pass arguments start date with time, end date with time just these two
+        // TODO: 02-Dec-16 make it pass arguments start date with time, end date with time just these two //Done
+
         return null;
-    }
+    }*/
 
     public Bus getAtIndex(int index) {
         return buses.get(index);
@@ -93,8 +94,7 @@ public class BusList {
             for (int j = 0; j < buses.size(); j++) {
                 if (buses.get(j).equals(trips.get(i).getBus())) {
                     if (((from.before(trips.get(i).getTimeStart())) && (to.before(trips.get(i).getTimeStart())))
-                            || ((from.after(trips.get(i).getTimeEnd())) && (to.after(trips.get(i).getTimeEnd()))))
-                    {
+                            || ((from.after(trips.get(i).getTimeEnd())) && (to.after(trips.get(i).getTimeEnd())))) {
                         result.add(buses.get(j));
                     }
                 }

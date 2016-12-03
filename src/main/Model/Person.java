@@ -28,11 +28,12 @@ public class Person {
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
     }
+
     public Person(String name, String address, String email, Date dateOfBirth) {
         this.name = name;
         this.address = address;
         this.email = email;
-        this.dateOfBirth =  dateOfBirth;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getName() {
@@ -57,13 +58,11 @@ public class Person {
 
     public String toString() {
         String email = "";
-        if (this.email != null)
-        {
+        if (this.email != null) {
             email += ", email: " + this.email;
         }
         String phone = "";
-        if (this.phone != null)
-        {
+        if (this.phone != null) {
             phone += ", phone: " + this.phone;
         }
         if (this.dateOfBirth != null) {

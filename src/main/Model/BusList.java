@@ -24,13 +24,6 @@ public class BusList implements Serializable {
         return buses;
     }
 
-   /* public ArrayList<Bus> getAllAvailable(int seats) {// TODO: 28-Nov-16 Finish
-
-        // TODO: 02-Dec-16 make it pass arguments start date with time, end date with time just these two //Done
-
-        return null;
-    }*/
-
     public Bus getAtIndex(int index) {
         return buses.get(index);
     }

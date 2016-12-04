@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.Controller">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.Controller">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -37,17 +44,17 @@
           </VBox.margin>
         </Button>
         <Button fx:id="mkReservation" font="$x1" mnemonicParsing="false" onMouseClicked="#changeView" prefHeight="50.0" prefWidth="1010.0" text="Make reservation" VBox.margin="$x2" />
-        <Button fx:id="findTrip" font="$x1" mnemonicParsing="false" onMouseClicked="#changeView" prefHeight="50.0" prefWidth="1010.0" text="Find Reservation / Trip" VBox.margin="$x2" />
-        <TableView prefHeight="161.0" prefWidth="990.0">
+        <Button fx:id="findTrip" font="$x1" mnemonicParsing="false" onMouseClicked="#changeView" prefHeight="50.0" prefWidth="1010.0" text="Find Reservation / Tour" VBox.margin="$x2" />
+        <TableView fx:id="tripsTable" prefHeight="161.0" prefWidth="990.0">
           <columns>
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="Destination" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="Departure" />
-            <TableColumn prefWidth="160.0" text="Arrival" />
-            <TableColumn prefWidth="160.0" text="Chauffeur" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="Bus Type" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="70.0" text="Free places" />
-            <TableColumn prefWidth="60.0" text="Price" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="106.0" text="Departure" />
+            <TableColumn fx:id="departureCol" maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="Departure" />
+            <TableColumn fx:id="destinationCol" maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="Destination" />
+            <TableColumn fx:id="durationCol" prefWidth="83.0" text="Duration" />
+            <TableColumn fx:id="chauffeurCol" prefWidth="160.0" text="Chauffeur" />
+            <TableColumn fx:id="busCol" maxWidth="5000.0" minWidth="10.0" prefWidth="131.0" text="Bus Type" />
+            <TableColumn fx:id="tourCol" maxWidth="5000.0" minWidth="10.0" prefWidth="133.0" text="Type of Tour" />
+            <TableColumn fx:id="freeCol" maxWidth="5000.0" minWidth="10.0" prefWidth="72.0" text="Free places" />
+            <TableColumn fx:id="priceCol" prefWidth="90.0" text="Price" />
           </columns>
         </TableView>
       </VBox>
@@ -55,18 +62,18 @@
     <top>
       <MenuBar fx:id="menu">
         <Menu mnemonicParsing="false" text="Home">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Home" fx:id="homeHome" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Create tour" fx:id="homeTour" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Make reservation" fx:id="homeReserve" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Search" fx:id="homeSearch" />
+          <MenuItem fx:id="homeHome" mnemonicParsing="false" onAction="#changeViewMenu" text="Home" />
+          <MenuItem fx:id="homeTour" mnemonicParsing="false" onAction="#changeViewMenu" text="Create tour" />
+          <MenuItem fx:id="homeReserve" mnemonicParsing="false" onAction="#changeViewMenu" text="Make reservation" />
+          <MenuItem fx:id="homeSearch" mnemonicParsing="false" onAction="#changeViewMenu" text="Search" />
         </Menu>
         <Menu mnemonicParsing="false" text="Bus List">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" fx:id="homeBus" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" fx:id="homeBusAdd" />
+          <MenuItem fx:id="homeBus" mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" />
+          <MenuItem fx:id="homeBusAdd" mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" />
         </Menu>
         <Menu mnemonicParsing="false" text="Chauffeur list">
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Chauffeur list" fx:id="homeDriver" />
-          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add chauffeur" fx:id="homeDriverAdd" />
+          <MenuItem fx:id="homeDriver" mnemonicParsing="false" onAction="#changeViewMenu" text="Chauffeur list" />
+          <MenuItem fx:id="homeDriverAdd" mnemonicParsing="false" onAction="#changeViewMenu" text="Add chauffeur" />
         </Menu>
       </MenuBar>
     </top>

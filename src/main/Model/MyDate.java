@@ -22,8 +22,6 @@ public class MyDate {
 
     public void set(int hour, int minute, int day, int month, int year) {
 
-        //@TODO make better set with hours and minutes, exceptions if not valid
-
         this.hour = hour;
         this.minute = minute;
 

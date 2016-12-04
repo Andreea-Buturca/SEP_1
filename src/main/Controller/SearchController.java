@@ -29,7 +29,6 @@ public class SearchController extends Controller {
     public TextField phone;
     public TextField destination;
     public TextField departure;
-    public TextField arrival;
     public DatePicker date;
     public ListView matchingTrips;
 

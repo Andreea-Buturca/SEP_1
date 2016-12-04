@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.Model.*;
@@ -78,6 +79,27 @@ public class ReservationController extends Controller implements Initializable {
         stage.show();
     }
 
+
+    private void calculatePrice(){
+        double price = 0;
+
+        if (validateEmptyField(fieldDefaultPrice) && validateNumberField(fieldDefaultPrice)) {
+            price = Integer.parseInt(fieldDefaultPrice.getText());
+        }
+        if (validateEmptyField(fieldExtraServices) && validateNumberField(fieldExtraServices)) {
+            price = price + Integer.parseInt(fieldExtraServices.getText());
+        }
+        if (validateEmptyField(fieldDiscount) && validateNumberField(fieldDiscount)) {
+            price = price - Integer.parseInt(fieldDiscount.getText());
+        }
+
+        price = price*listViewPassenger.getItems().size();
+
+        labelTotalPrice.setText(price + "DKK");
+
+
+    }
+
     public void addCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         String alert = "There are some mistakes: ";
         int length = alert.length();
@@ -129,6 +151,7 @@ public class ReservationController extends Controller implements Initializable {
             DataHandler.getPassengerList().add(new Passenger(name, address, email, birthday));
             successdisplay("Success", "Passenger was added.");
             loadPassengerList();
+            calculatePrice();
         } else {
             //alert
             alertdisplay("Wrong Input", alert);
@@ -213,7 +236,10 @@ public class ReservationController extends Controller implements Initializable {
         }
     }
 
+    public void priceListener(KeyEvent keyEvent) {
+        calculatePrice();
     }
+}
 
 
 

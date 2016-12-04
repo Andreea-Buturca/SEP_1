@@ -36,12 +36,24 @@ public class Controller implements Initializable {
     public Button createTour;
     public Button mkReservation;
     public Button findTrip;
+    //tripList
+    public TableView tripsTable;
+    public TableColumn departureCol;
+    public TableColumn destinationCol;
+    public TableColumn durationCol;
+    public TableColumn chauffeurCol;
+    public TableColumn busCol;
+    public TableColumn tourCol;
+    public TableColumn freeCol;
+    public TableColumn priceCol;
+
 
     //bus list
     public Button addBusView;
 
     //chauffeur list
     public Button addChauffeur;
+
 
 
     @Override
@@ -72,7 +84,7 @@ public class Controller implements Initializable {
         else if ((mouseEvent.getSource() == addChauffeur)) {
             root = FXMLLoader.load(getClass().getResource("../View/AddChauffeur.fxml"));
         } else {
-           // root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+            // root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
         }
 
         if (root != null) {
@@ -146,7 +158,7 @@ public class Controller implements Initializable {
     }
 
     protected boolean validateLength(TextField textField, int length) {
-        if (length < 1) length = length*(-1);
+        if (length < 1) length = length * (-1);
         if (textField.getText().length() == length) {
             return true;
         } else {
@@ -201,50 +213,5 @@ public class Controller implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-
-    //@TODO move it to another class
-
-    /*public void loadFile(String filename){
-
-    }
-    public int getNumberOfSeatsAvailable(Bus bus){
-        return 0;
-    }
-    public void showList(){
-
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-    public void modifyReservation(Trip reservation){
-
-    }
-    public void saveReservationToFile(String file, Trip reservation){
-
-    }
-    public void deleteReservation(Trip reservation){
-
-    }
-    public void hireEmployee(){
-
-    }
-    public void makeReservatioon(){
-
-    }
-    public void findCustomer(Customer customer){
-
-    }
-    public void pickSeat(){
-
-    }
-    public void giveDiscount(double percentge){
-
-    }
-    public void RentBusAndChauffeur(){
-
-    }*/
 }
 

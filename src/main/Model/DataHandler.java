@@ -85,11 +85,11 @@ public class DataHandler implements Serializable {
         getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", new Date(2012 - 1900, 1, 1), 5221, true));
         getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", new Date(2012 - 1900, 1, 1), 5221, true));
 
-        getCustomerList().add(new Customer("name1", "address", "email", "123456"));
-        getCustomerList().add(new Customer("name2", "address", "email", "123456"));
-        getCustomerList().add(new Customer("name3", "address", "email", "123456"));
-        getCustomerList().add(new Customer("name4", "address", "email", "123456"));
-        getCustomerList().add(new Customer("name5", "address", "email", "123456"));
+        getCustomerList().add(new Customer("name1", "address", "email", "25447"));
+        getCustomerList().add(new Customer("name2", "address", "email", "444446"));
+        getCustomerList().add(new Customer("name3", "address", "email", "2554556"));
+        getCustomerList().add(new Customer("name4", "address", "email", "128216"));
+        getCustomerList().add(new Customer("name5", "address", "email", "118416"));
 
         getPassengerList().add(new Passenger("name1", "address", "email", new Date(2012 - 1900, 1, 1)));
         getPassengerList().add(new Passenger("name1", "address", "email", new Date(2012 - 1900, 1, 1)));

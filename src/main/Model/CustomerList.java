@@ -18,6 +18,10 @@ public class CustomerList implements Serializable {
         customers.add(customer);
     }
 
+    public void remove(Customer customer) {
+        customers.remove(customer);
+    }
+
     public Customer findByName(String name) {
         for (int i = 0; i < customers.size(); i++) {
             if (customers.get(i).getName().equals(name))
@@ -53,12 +57,15 @@ public class CustomerList implements Serializable {
     }
 
     public Customer findByPhone(String phone) {
+        System.out.println(phone);
         for (int i = 0; i < customers.size(); i++) {
+            System.out.println(customers.get(i).getPhone());
             if (customers.get(i).getPhone().equals(phone))
+                System.out.println(customers.get(i));
                 return customers.get(i);
         }
         return null;
-    }
+    } // TODO: 05-Dec-16 this has weird behavior
 
     public CustomerList findAllByPhone(String phone) {
         CustomerList result = new CustomerList();

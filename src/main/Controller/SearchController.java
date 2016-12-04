@@ -87,9 +87,23 @@ public class SearchController extends Controller {
 
 
     public void removeTrip(ActionEvent actionEvent) {
+        ObservableList<String> selected;
+        selected = matchingTrips.getSelectionModel().getSelectedItems();
+        for (String aSelected : selected) {
+            System.out.println(aSelected.toString());
+            DataHandler.getTrips().remove(DataHandler.getTrips().findByToString(aSelected.toString()));
+        }
     }
 
     public void removeReservation(ActionEvent actionEvent) {
+        ObservableList<String> selected;
+        selected = matchingCustomers.getSelectionModel().getSelectedItems();
+        for (String aSelected : selected) {
+            String[] lineToken = aSelected.split(":");
+            String phone = lineToken[3].trim();
+            System.out.println(phone);
+            DataHandler.getCustomerList().remove(DataHandler.getCustomerList().findByPhone(phone));
+        }
     }
 }
 

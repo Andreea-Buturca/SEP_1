@@ -67,6 +67,15 @@ public class TripList implements Serializable {
         return result;
     }
 
+    public Trip findByToString(String tripToString){
+        for (int i = 0; i < trips.size(); i++) {
+            if (trips.get(i).toString().equals(tripToString)) {
+                return trips.get(i);
+            }
+        }
+        return null;
+    }
+
     public String toString(){
         String result = "";
         for (int i=0;i<trips.size();i++)

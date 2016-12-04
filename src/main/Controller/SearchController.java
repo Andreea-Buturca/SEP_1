@@ -32,41 +32,42 @@ public class SearchController extends Controller {
     public ListView matchingTrips;
 
     /*public void searchCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
-            if (name != null) {
-                if (companyName != null) {
-                    if (address != null) {
-                        if (email != null) {
-                            if (phone != null) {
-                                if (matchingCustomers != null) {
-                                    CustomerList matching = DataHandler.getCustomerList();
-                                    if (name.getText() != null && (!name.getText().equals("")))
-                                        matching = matching.findAllByName(name.getText());
-                                    if (address.getText() != null && (!address.getText().equals("")))
-                                        matching = matching.findAllByAddress(address.getText());
-                                    if (email.getText() != null && (!email.getText().equals("")))
-                                        matching = matching.findAllByEmail(email.getText());
-                                    if (phone.getText() != null && (!phone.getText().equals("")))
-                                        matching = matching.findAllByPhone(phone.getText());
+        if (name != null) {
+            if (companyName != null) {
+                if (address != null) {
+                    if (email != null) {
+                        if (phone != null) {
+                            if (matchingCustomers != null) {
+                                CustomerList matching = DataHandler.getCustomerList();
+                                if (name.getText() != null && (!name.getText().equals("")))
+                                    matching = matching.findAllByName(name.getText());
+                                if (address.getText() != null && (!address.getText().equals("")))
+                                    matching = matching.findAllByAddress(address.getText());
+                                if (email.getText() != null && (!email.getText().equals("")))
+                                    matching = matching.findAllByEmail(email.getText());
+                                if (phone.getText() != null && (!phone.getText().equals("")))
+                                    matching = matching.findAllByPhone(phone.getText());
 
-                                    ObservableList<String> items = FXCollections.observableArrayList();
-                                    for (int i = 0; i < matching.getSize(); i++) {
-                                        items.add(matching.getCustomer(i).toString());
-                                    }
-                                    matchingCustomers.setItems(items);
+                                ObservableList<String> items = FXCollections.observableArrayList();
+                                for (int i = 0; i < matching.getSize(); i++) {
+                                    items.add(matching.getCustomer(i).toString());
                                 }
+                                matchingCustomers.setItems(items);
                             }
                         }
                     }
                 }
             }
         }
-    */
+    }*/
+
     public void searchTrip(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         if (destination != null) {
             if (departure != null) {
                 if (date != null) {
                     if (matchingTrips != null) {
                         TripList matching = DataHandler.getTrips();
+                        System.out.println(matching);
                         if (destination.getText() != null && (!destination.getText().equals("")))
                             matching = matching.findAllByDestination(destination.getText());
                         if (departure.getText() != null && (!departure.getText().equals("")))
@@ -74,11 +75,13 @@ public class SearchController extends Controller {
                         if (date.getValue() != null)
                             matching = matching.findAllByDate(date.getValue());
                         // TODO: 03-Dec-16 add methods to find trips, where?
+                        System.out.println("ready");
+                        System.out.println(matching);
                         ObservableList<String> items = FXCollections.observableArrayList();
                         for (int i = 0; i < matching.getSize(); i++) {
                             items.add(matching.get(i).toString());
                         }
-                        matchingCustomers.setItems(items);
+                        matchingTrips.setItems(items);
                     }
                 }
 

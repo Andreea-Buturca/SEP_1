@@ -1,9 +1,12 @@
 package main.Model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -100,5 +103,16 @@ public class Trip implements Serializable {
 
     public Destination getDestination() {
         return destination;
+    }
+
+    public String toString(){
+        String result = "";
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getTimeStart());
+        int year =(cal.get(Calendar.YEAR));
+        int month =(cal.get(Calendar.MONTH));
+        int day =(cal.get(Calendar.DAY_OF_MONTH));
+        result+= day+"/"+month+"/"+year + " from " + pickUpPoint + " to " + destination;
+        return result;
     }
 }

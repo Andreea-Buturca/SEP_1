@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.SearchController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.SearchController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -34,7 +34,7 @@
             <children>
                      <VBox prefHeight="184.0" prefWidth="500.0" spacing="5.0">
                         <children>
-                    <ListView prefHeight="248.0" prefWidth="495.0" />
+                    <ListView fx:id="matchingTrips" prefHeight="248.0" prefWidth="495.0" />
                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                               <children>
                                  <Button mnemonicParsing="false" text="Edit Trip" />
@@ -70,9 +70,9 @@
                   <Label text="Destination:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                   <Label text="Date:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
                   <Label text="Departure:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                           <DatePicker prefHeight="25.0" prefWidth="219.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="destination" onAction="#searchTrip" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="departure" onAction="#searchTrip" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           <DatePicker fx:id="date" onAction="#searchTrip" prefHeight="25.0" prefWidth="219.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 </children>
                 <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="0.0" prefWidth="55.0" />

@@ -4,6 +4,7 @@ import javax.lang.model.util.TypeKindVisitor7;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Marek on 04-Dec-16.
@@ -35,9 +36,11 @@ public class TripList implements Serializable {
     public TripList findAllByDate(LocalDate date){
         TripList result = new TripList();
         for (int i=0;i<trips.size();i++){
-            if ((trips.get(i).getTimeStart().getYear()==date.getYear())
-                    &&(trips.get(i).getTimeStart().getMonth()==date.getMonthValue())
-                    &&(trips.get(i).getTimeStart().getDay()==date.getDayOfMonth())){
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(trips.get(i).getTimeStart());
+            if ((cal.get(Calendar.YEAR)==date.getYear())
+                    &&(cal.get(Calendar.MONTH)==date.getMonthValue())
+                    &&(cal.get(Calendar.DAY_OF_MONTH)==date.getDayOfMonth())){
                 result.add(trips.get(i));
             }
         }
@@ -61,6 +64,13 @@ public class TripList implements Serializable {
                 result.add(trips.get(i));
             }
         }
+        return result;
+    }
+
+    public String toString(){
+        String result = "";
+        for (int i=0;i<trips.size();i++)
+            result+=trips.get(i).toString() + "\n";
         return result;
     }
 }

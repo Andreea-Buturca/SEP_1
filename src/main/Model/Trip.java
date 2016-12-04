@@ -93,5 +93,11 @@ public class Trip {
         notes.add(note);
     }
 
+    public Destination getPickUpPoint() {
+        return pickUpPoint;
+    }
 
+    public Destination getDestination() {
+        return destination;
+    }
 }

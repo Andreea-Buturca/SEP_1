@@ -11,7 +11,7 @@ import java.util.Date;
 public class DataHandler implements Serializable {
 
 
-    private static ArrayList<Trip> trips;
+    private static TripList trips;
     private static BusList busList;
     private static ChauffeurList chauffeurList;
     private static CustomerList customerList;
@@ -19,7 +19,7 @@ public class DataHandler implements Serializable {
     private static ReservationList reservationList;
     private static DestinationList destinationList;
 
-    public static ArrayList<Trip> getTrips() {
+    public static TripList getTrips() {
         return trips;
     }
 
@@ -48,7 +48,7 @@ public class DataHandler implements Serializable {
     }
 
     public static void testCreate() {
-        trips = new ArrayList<>();
+        trips = new TripList();
         busList = new BusList();
         chauffeurList = new ChauffeurList();
         customerList = new CustomerList();
@@ -91,16 +91,10 @@ public class DataHandler implements Serializable {
         getCustomerList().add(new Customer("name4", "address", "email", "123456"));
         getCustomerList().add(new Customer("name5", "address", "email", "123456"));
 
-        getPassengerList().add(new Passenger("name1", "address", "email", new Date(2012 - 1900, 1, 1)));
-        getPassengerList().add(new Passenger("name1", "address", "email", new Date(2012 - 1900, 1, 1)));
-        getPassengerList().add(new Passenger("name1", "address", "email", new Date(2012 - 1900, 1, 1)));
-        getPassengerList().add(new Passenger("name1", "address", "email", new Date(2012 - 1900, 1, 1)));
-        getPassengerList().add(new Passenger("name1", "address", "email", new Date(2012 - 1900, 1, 1)));
-
-        getTrips().add(new Trip(getBusList().getAtIndex(0), getChauffeurList().getChauffeurByIndex(0), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", "50"));
-        getTrips().add(new Trip(getBusList().getAtIndex(1), getChauffeurList().getChauffeurByIndex(1), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", "50"));
-        getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", "50"));
-        getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", "50"));
+        getTrips().add(new Trip(getBusList().getAtIndex(0), getChauffeurList().getChauffeurByIndex(0), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
+        getTrips().add(new Trip(getBusList().getAtIndex(1), getChauffeurList().getChauffeurByIndex(1), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
+        getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
+        getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
     }
 
     public static void save() {
@@ -141,7 +135,7 @@ public class DataHandler implements Serializable {
             File file = new File(filename);
             FileInputStream fis = new FileInputStream(file);
             in = new ObjectInputStream(fis);
-            trips = (ArrayList<Trip>) in.readObject();
+            trips = (TripList) in.readObject();
             busList = (BusList) in.readObject();
             chauffeurList = (ChauffeurList) in.readObject();
             customerList = (CustomerList) in.readObject();

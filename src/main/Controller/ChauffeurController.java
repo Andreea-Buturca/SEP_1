@@ -59,17 +59,17 @@ public class ChauffeurController extends Controller implements Initializable {
     }
 
     public void addChauffeur(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
-        String alert = "There are some mistakes: ";
+        String alert = "There are some mistakes: \n";
         int length = alert.length();
 
-        if (!validateEmptyField(fieldChauffeurAddName)) alert += "Name, ";
-        if (!validateEmptyField(fieldChauffeurAddAddress)) alert += "Address, ";
-        if (!validateEmptyField(fieldChauffeurAddEmail)) alert += "Email, ";
+        if (!validateEmptyField(fieldChauffeurAddName)) alert += "Name \n";
+        if (!validateEmptyField(fieldChauffeurAddAddress)) alert += "Address \n";
+        if (!validateEmptyField(fieldChauffeurAddEmail)) alert += "Email \n";
         if (!validateEmptyField(fieldChauffeurAddPhone) || !validateLength(fieldChauffeurAddPhone, 8))
-            alert += "Phone, ";
+            alert += "Phone \n";
         if (!validateEmptyField(fieldChauffeurAddId) || !validateLength(fieldChauffeurAddId, 5))
-            alert += "Employee ID(5 digit nr), ";
-        if (!validateEmptyDate(birthdayPicker)) alert += "Birthday, ";
+            alert += "Employee ID(5 digit nr) \n";
+        if (!validateEmptyDate(birthdayPicker)) alert += "Birthday \n";
 
         if (length == alert.length()) {
 

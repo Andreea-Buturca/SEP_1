@@ -57,11 +57,11 @@ public class BusController extends Controller {
 
     public void addBus(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
 
-        String alert = "There are some mistakes: ";
+        String alert = "There are some mistakes: \n";
         int length = alert.length();
 
-        if (!validateEmptyField(regPlate) || !validateNumberField(regPlate)) alert += "Registration plate, ";
-        if (!validateEmptyField(seatNumber) || !validateNumberField(seatNumber)) alert += "Number of seats, ";
+        if (!validateEmptyField(regPlate) || !validateNumberField(regPlate)) alert += "Registration plate \n";
+        if (!validateEmptyField(seatNumber) || !validateNumberField(seatNumber)) alert += "Number of seats \n";
 
         if (length == alert.length()) {
             String regplate = regPlate.getText();

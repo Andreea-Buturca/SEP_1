@@ -12,6 +12,7 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import main.Main;
 import main.Model.*;
 
 import java.io.FileNotFoundException;
@@ -31,7 +32,6 @@ public class ReservationController extends Controller implements Initializable {
     public TextField fieldDestination;
     public TextField fieldDeparture;
     public TextField fieldNrPassengers;
-    public TextField fieldArrival;
     public TextField fieldNameCustomer;
     public TextField fieldNameCompany;
     public TextField fieldAddressCustomer;
@@ -40,7 +40,6 @@ public class ReservationController extends Controller implements Initializable {
     public TextField fieldNamePassenger;
     public TextField fieldAddressPassenger;
     public TextField fieldEmailPassenger;
-    public TextField fieldSeatNr;
     public TextField fieldDefaultPrice;
     public TextField fieldExtraServices;
     public TextField fieldDiscount;
@@ -53,32 +52,34 @@ public class ReservationController extends Controller implements Initializable {
     public ListView listViewPassenger;
     public Label labelTotalPrice;
     public DatePicker datepickerBirthday;
+    public TableView tableTrips;
 
     public void controlData(ActionEvent actionEvent) throws IOException {
-        /*String alert = "There are some mistakes: ";
+        String alert = "There are some mistakes: \n";
         int length = alert.length();
-        if (!validateEmptyField(fieldNrPassengers)) alert += "Nr of passengers ";
+        if (!validateNumberField(fieldNrPassengers)) alert += "Nr of passengers \n";
+        if (tableTrips.getSelectionModel().getSelectedItem() == null) alert += "Select trip \n";
 
         if (length == alert.length()) {
-            //save it DataHandler. .....
-            String nrOfPassengers = fieldNrPassengers.getText();
-        }*/
-        Stage stage;
-        Parent root;
+            Stage stage;
+            Parent root;
 
-        if ((actionEvent.getSource() == mkReservationView)) {
-            stage = (Stage) mkReservationView.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../View/makeReservationDate.fxml"));
+            if ((actionEvent.getSource() == mkReservationView)) {
+                stage = (Stage) mkReservationView.getScene().getWindow();
+                root = FXMLLoader.load(getClass().getResource("../View/makeReservationDate.fxml"));
+            } else {
+                stage = (Stage) mkReservationView.getScene().getWindow();
+                root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+            }
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } else {
-            stage = (Stage) mkReservationView.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+            //alert
+            alertdisplay("Wrong Input", alert);
         }
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
-
 
     private void calculatePrice(){
         double price = 0;
@@ -133,14 +134,14 @@ public class ReservationController extends Controller implements Initializable {
     }
 
     public void addPassenger(ActionEvent actionEvent) throws IOException {
-        //   int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
-        //  for (int i = 0; i < nrPassengers; i++) {
+      //    int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
+     //    for (int i = 0; i < nrPassengers; i++) {
         String alert = "There are some mistakes: ";
         int length = alert.length();
 
         if (!validateEmptyField(fieldNamePassenger)) alert += "Name, ";
         if (!validateEmptyField(fieldAddressPassenger)) alert += "Address, ";
-        if (!validateEmptyDate(datepickerBirthday)) alert += "Birthday, ";
+        if (!validateEmptyDate(datepickerBirthday)) alert += "Birthday ";
 
         if (length == alert.length()) {
             //save it DataHandler. .....
@@ -157,7 +158,7 @@ public class ReservationController extends Controller implements Initializable {
             alertdisplay("Wrong Input", alert);
         }
     }
-    //   }
+
 
     private void loadCustomerList() {
         listViewCustomer.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -176,6 +177,15 @@ public class ReservationController extends Controller implements Initializable {
         }
         listViewPassenger.setItems(items);
     }
+    public void loadTrips(){
+        tableTrips.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        TableView<String> table = new TableView<String>();
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (Trip trip : DataHandler.getTrips().getArrayTrip()) {
+            items.add(trip.toString());
+        }
+        tableTrips.setItems(items);
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
         if (listViewCustomer != null) {
@@ -183,6 +193,9 @@ public class ReservationController extends Controller implements Initializable {
         }
         if (listViewPassenger != null) {
             loadPassengerList();
+        }
+        if (tableTrips != null) {
+            loadTrips();
         }
     }
 
@@ -195,6 +208,7 @@ public class ReservationController extends Controller implements Initializable {
             DataHandler.getPassengerList().removePassenger(DataHandler.getPassengerList().findByName(name));
         }
         loadPassengerList();
+        calculatePrice();
     }
 
     public void cancelReservation(ActionEvent actionEvent) throws IOException {
@@ -210,26 +224,28 @@ public class ReservationController extends Controller implements Initializable {
     }
 
     public void saveReservation(ActionEvent actionEvent) throws IOException {
-        String alert = "There are some mistakes: ";
+        String alert = "There are some mistakes: \n";
         int length = alert.length();
-
-        if (!validateEmptyField(fieldDefaultPrice) || !validateNumberField(fieldDefaultPrice)) alert += "Price, ";
-        if (!validateEmptyField(fieldExtraServices) || !validateNumberField(fieldExtraServices))
-            alert += "Extra services, ";
-        if (!validateEmptyField(fieldDiscount) || !validateNumberField(fieldDiscount)) alert += "Discount, ";
+        if(listViewCustomer.getSelectionModel().getSelectedItem() == null) alert += "Select Customer \n";
+        if(!validateEmptyField(fieldNamePassenger)) alert += "Add passenger \n";
+        if (!validateEmptyField(fieldDefaultPrice) || !validateNumberField(fieldDefaultPrice)) alert += "Price \n";
 
         if (length == alert.length()) {
             //save it DataHandler. .....
-            int price = Integer.parseInt(fieldDefaultPrice.getText());
-            int extraServices = Integer.parseInt(fieldExtraServices.getText());
-            int discount = Integer.parseInt(fieldDiscount.getText());
-            int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
-            double finalPrice = ((price + extraServices) - discount) * nrPassengers;
-            //   Customer customer = DataHandler.getCustomerList().getCustomer();
+            Customer customer = DataHandler.getCustomerList().findByName(listViewCustomer.getSelectionModel().getSelectedItem().toString());
             ArrayList<Passenger> passengers = DataHandler.getPassengerList().getArrayPassenger();
-            String trip = fieldDestination.getText();
+            Trip trip = DataHandler.getTrips().getTrip((Trip) tableTrips.getSelectionModel().getSelectedItem()); // TODO: 12/4/2016 getters from the table!!
+            double price = Double.parseDouble(labelTotalPrice.getText());
 
-            //  DataHandler.getReservationList().add(new Reservation(trip, customer, passengers, finalPrice));
+            Reservation reservation = new Reservation(trip, customer, passengers, price);
+            DataHandler.getReservationList().add(reservation);
+            successdisplay("Created", "Reservation created.");
+
+            Parent root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
+
         } else {
             //alert
             alertdisplay("Wrong Input", alert);

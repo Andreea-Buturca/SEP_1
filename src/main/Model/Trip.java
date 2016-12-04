@@ -2,10 +2,8 @@ package main.Model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -25,11 +23,11 @@ public class Trip implements Serializable {
     private Customer customer;
     private boolean isPrivate;
     private int distance;
-    private int price;
+    private double price;
     private String duration;;
 
     public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Destination destination, int distance,
-                LocalDate dateStart, String timeStart, LocalDate dateEnd, String timeEnd, String price) {
+                LocalDate dateStart, String timeStart, LocalDate dateEnd, String timeEnd, double price) {
        this.bus = bus;
        this.chauffeur = chauffeur;
        this.pickUpPoint = pickUpPoint;
@@ -44,7 +42,7 @@ public class Trip implements Serializable {
        minutes = Integer.parseInt(lineToken[1]);
        this.timeEnd = new Date(dateEnd.getYear()-1900, dateEnd.getMonthValue(), dateEnd.getDayOfMonth(), hours, minutes);
        this.duration = this.getDuration(this.timeStart, this.timeEnd);
-       this.price = Integer.parseInt(price);
+       this.price = price;
     }
 
     public String getDuration(Date start, Date end) {
@@ -100,5 +98,15 @@ public class Trip implements Serializable {
 
     public Destination getDestination() {
         return destination;
+    }
+    public void setPrice(double price)
+    {this.price=price;}
+    public double getPrice()
+    {
+        return price;
+    }
+
+    public String toString(){
+        return this.bus.toString() +" "+ this.chauffeur.toString() +" "+ this.pickUpPoint.toString()+" "+this.destination+" "+this.distance+" "+ this.timeStart+" "+this.timeEnd+this.price;
     }
 }

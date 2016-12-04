@@ -34,6 +34,7 @@ public class Main extends Application {
 
     //Change all to java Date
 
+
     public static void main(String[] args) {
 
 //for now just creating empty objects
@@ -45,9 +46,10 @@ public class Main extends Application {
         // TODO: 02-Dec-16 todo
         //make edit for reservation
         //make edit for trip
-        //make regplate
+        //make regplate -- done
         //make method in makereservation for search
         //make method to price
+
 
         // TODO: 30-Nov-16 make load from file when done
         // TODO: 30-Nov-16 override onclose to make backup
@@ -60,6 +62,10 @@ public class Main extends Application {
 
 
 /*NOTES and Qs:
+
+
+Discuss
+create view duration
 
 Date Constructor Date(int year, int month, int date)
 !!! (year + 1900, month, date)

@@ -55,6 +55,8 @@ public class TripController extends Controller implements Initializable {
     public ListView customerList;
     public Button saveCustomerBtn;
 
+    private Customer customer = null;
+
     //list for stops
     private DestinationList stops = new DestinationList();
 
@@ -139,8 +141,37 @@ public class TripController extends Controller implements Initializable {
 
         if (length == alert.length()) {
             //save it DataHandler. .....
-            String[] lineToken = busListview.getSelectionModel().getSelectedItem().toString().split(", ");
-            String regPlate = lineToken[0].trim();
+            String[] lineBus = busListview.getSelectionModel().getSelectedItem().toString().split(", ");
+            String regPlate = lineBus[0].trim();
+
+            Bus bus = DataHandler.getBusList().findByRegplate(regPlate);
+            Chauffeur chauffeur = DataHandler.getChauffeurList().getByName(chauffeurList.getSelectionModel().getSelectedItem().toString());
+
+            if (DataHandler.getDestinationList().findByName(fieldDeparture.getValue().toString()) != null) {
+                Destination pickUp = DataHandler.getDestinationList().findByName(fieldDeparture.getValue().toString());
+            }
+            else {
+                Destination pickUp = new Destination(fieldDeparture.getValue().toString());
+                DataHandler.getDestinationList().add(pickUp);
+            }
+
+            if (DataHandler.getDestinationList().findByName(fieldDestination.getValue().toString()) != null) {
+                Destination destination = DataHandler.getDestinationList().findByName(fieldDestination.getValue().toString());
+            }
+            else {
+                Destination destination = new Destination(fieldDestination.getValue().toString());
+                DataHandler.getDestinationList().add(destination);
+            }
+
+
+
+
+
+
+            //Trip trip = new Trip(bus, chauffeur, )
+
+          //  DataHandler.getTrips().add(trip);
+
             // TODO: 01-Dec-16 finish creating trip
             // DataHandler.getTrips().add(new Trip(DataHandler.getBusList().findByRegplate(regPlate), ));
 
@@ -150,14 +181,6 @@ public class TripController extends Controller implements Initializable {
             alertdisplay("Wrong Input", alert);
         }
     }
-
-    public void addCustomerData(ActionEvent actionEvent) {
-
-        Window window = saveCustomerBtn.getScene().getWindow();
-        //System.out.println(tests.getText());
-        window.getOnCloseRequest();
-    }
-
 
     public void getDataChoice(ActionEvent actionEvent) {
         loadBusList();
@@ -213,28 +236,27 @@ public class TripController extends Controller implements Initializable {
 
     }
 
-    public void loadCustomerList() {
+    private void loadCustomerList() {
         CustomerList customers = DataHandler.getCustomerList();
-        ArrayList<Customer> searchedCustomers = new ArrayList<>();
 
         if (validateEmptyField(fieldCustomerName))
-            if (customers.findByName(fieldCustomerName.getText()) != null)
-                searchedCustomers.add(customers.findByName(fieldCustomerName.getText()));
+            if (customers.findAllByName(fieldCustomerName.getText()) != null)
+                customers = customers.findAllByName(fieldCustomerName.getText());
         if (validateEmptyField(fieldCustomerPhone))
-            if (customers.findByPhone(fieldCustomerPhone.getText()) != null)
-                searchedCustomers.add(customers.findByPhone(fieldCustomerPhone.getText()));
+            if (customers.findAllByPhone(fieldCustomerPhone.getText()) != null)
+                customers = customers.findAllByPhone(fieldCustomerPhone.getText());
         if (validateEmptyField(fieldCustomerCompany))
-            if (customers.findByCompany(fieldCustomerCompany.getText()) != null)
-                searchedCustomers.add(customers.findByCompany(fieldCustomerCompany.getText()));
+            if (customers.findAllByCompanyName(fieldCustomerCompany.getText()) != null)
+                customers = customers.findAllByCompanyName(fieldCustomerCompany.getText());
 
         ObservableList<String> customerItems = FXCollections.observableArrayList();
 
-        if (searchedCustomers.size() != 0) {
-            for (Customer customer : searchedCustomers) {
+        if (customers.getSize() != 0) {
+            for (Customer customer : customers.getArrayCustomer()) {
                 customerItems.add(customer.toString());
             }
         } else {
-            for (Customer customer : customers.getArrayCustomer()) {
+            for (Customer customer : DataHandler.getCustomerList().getArrayCustomer()) {
                 customerItems.add(customer.toString());
             }
         }
@@ -259,5 +281,54 @@ public class TripController extends Controller implements Initializable {
             destinationItems.add(destination.getStopString());
         }
         stopsList.setItems(destinationItems);
+    }
+
+    public void addCustomerData(ActionEvent actionEvent) {
+
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+        if (!validateEmptyField(fieldCustomerName)) alert += "Name, ";
+        if (!validateEmptyField(fieldCustomerAddress)) alert += "Address, ";
+        if (!validateEmptyField(fieldCustomerEmail)) alert += "Email, ";
+        if (!validateEmptyField(fieldCustomerPhone) || !validateLength(fieldCustomerPhone, 8)) alert += "Phone, ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+            boolean isCompany = validateEmptyField(fieldCustomerCompany);
+
+            if (!isCompany) {
+                DataHandler.getCustomerList().add(new Customer(fieldCustomerName.getText(), fieldCustomerAddress.getText(), fieldCustomerEmail.getText(), fieldCustomerPhone.getText()));
+            } else if (isCompany) {
+                DataHandler.getCustomerList().add(new Customer(fieldCustomerName.getText(), fieldCustomerAddress.getText(), fieldCustomerEmail.getText(), fieldCustomerPhone.getText(), isCompany, fieldCustomerCompany.getText()));
+
+
+                successdisplay("Success", "Customer was created.");
+                loadCustomerList();
+            } else {
+                //alert
+                alertdisplay("Wrong Input", alert);
+            }
+
+
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
+        }
+
+    }
+
+    public void chooseCustomer(ActionEvent actionEvent) {
+
+        if (customerList.getSelectionModel().getSelectedItem() != null) {
+            String[] line = customerList.getSelectionModel().getSelectedItem().toString().split(", ");
+            customer = DataHandler.getCustomerList().findByName(line[0]);
+
+            Stage stage = (Stage) saveCustomerBtn.getScene().getWindow();
+            stage.close();
+        }
+        else {
+            alertdisplay("No customer", "Please choose one Customer");
+        }
     }
 }

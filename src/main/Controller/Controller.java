@@ -135,6 +135,16 @@ public class Controller implements Initializable {
         }
 
     }
+
+    protected boolean validateNumberPlate(TextField textField) {
+        if (textField.getText().matches("[A-Z]{2}[0-9]{5}")) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     protected boolean validateLength(TextField textField, int length) {
         if (length < 1) length = length*(-1);
         if (textField.getText().length() == length) {

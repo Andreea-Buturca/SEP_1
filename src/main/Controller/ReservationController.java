@@ -136,7 +136,7 @@ public class ReservationController extends Controller implements Initializable {
     }
     //   }
 
-    public void loadCustomerList() {
+    private void loadCustomerList() {
         listViewCustomer.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<String> items = FXCollections.observableArrayList();
         for (Customer customer : DataHandler.getCustomerList().getArrayCustomer()) {

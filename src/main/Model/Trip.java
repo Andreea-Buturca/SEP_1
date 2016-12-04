@@ -13,14 +13,16 @@ public class Trip {
     private Bus bus;
     private Chauffeur chauffeur;
     private Destination pickUpPoint;
+    private Destination destination;
     private ArrayList<Destination> stops;
     private Date timeStart;
     private Date timeEnd;
     private ArrayList<String> notes;  // TODO: 29-Nov-16 so do we need it?
 
-    public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, ArrayList<Destination> stops, Date timeStart, Date timeEnd) {
+    public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Destination destination, ArrayList<Destination> stops, Date timeStart, Date timeEnd) {
         this.bus = bus;
         this.pickUpPoint = pickUpPoint;
+        this.destination = destination;
         this.stops = stops;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
@@ -30,9 +32,10 @@ public class Trip {
 
     }
 
-    public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Date timeStart, Date timeEnd) {
+    public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Destination destination, Date timeStart, Date timeEnd) {
         this.bus = bus;
         this.pickUpPoint = pickUpPoint;
+        this.destination = destination;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
         this.notes = new ArrayList<>();

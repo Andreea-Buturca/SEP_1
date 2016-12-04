@@ -70,13 +70,11 @@ public class SearchController extends Controller {
                             if (matchingTrips != null) {
                                 ArrayList<Trip> matching = DataHandler.getTrips();
                                 if (destination.getText() != null && (!destination.getText().equals("")))
-                                    matching = matching.findAllByDestination(destination.getText());
+                                    matching = findAllByDestination(matching);
                                 if (departure.getText() != null && (!departure.getText().equals("")))
-                                    matching = matching.findAllByDeparture(departure.getText());
-                                if (arrival.getText() != null && (!arrival.getText().equals("")))
-                                    matching = matching.findAllByArrival(arrival.getText());
+                                    matching = findAllByDeparture(matching);
                                 if (date.getValue() != null)
-                                    matching = matching.findAllByDate(date.getValue());
+                                    matching = findAllByDate(matching);
                                 // TODO: 03-Dec-16 add methods to find trips, where?
                                 ObservableList<String> items = FXCollections.observableArrayList();
                                 for (int i = 0; i < matching.size(); i++) {
@@ -108,4 +106,38 @@ public class SearchController extends Controller {
     /*private void test (){
         TripTempController.edit(new Trip(DataHandler.getBusList().getAtIndex(0), DataHandler.getDestinationList().getAtIndex(0), null, new Date(2012, 1, 1, 1, 1), new Date(2012, 1, 1, 1, 1)));
     }*/
+
+
+    public ArrayList<Trip> findAllByDate(ArrayList<Trip> trips){
+        ArrayList<Trip> result = new ArrayList<>();
+        for (int i=0;i<trips.size();i++){
+            if ((trips.get(i).getTimeStart().getYear()==date.getValue().getYear())
+                    &&(trips.get(i).getTimeStart().getMonth()==date.getValue().getMonthValue())
+                    &&(trips.get(i).getTimeStart().getDay()==date.getValue().getDayOfMonth())){
+                result.add(trips.get(i));
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Trip> findAllByDeparture(ArrayList<Trip> trips) {
+        ArrayList<Trip> result = new ArrayList<>();
+        for (int i = 0; i < trips.size(); i++) {
+            if (trips.get(i).getPickUpPoint().getPlace().equals(departure.getText())) {
+                result.add(trips.get(i));
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Trip> findAllByDestination(ArrayList<Trip> trips) {
+        ArrayList<Trip> result = new ArrayList<>();
+        for (int i = 0; i < trips.size(); i++) {
+            if (trips.get(i).getDestination().getPlace().equals(destination.getText())) {
+                result.add(trips.get(i));
+            }
+        }
+        return result;
+    }
+
 }

@@ -1,12 +1,13 @@
 package main.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public class Chauffeur extends Person {
+public class Chauffeur extends Person implements Serializable {
 
     private int employeeID;
     private ArrayList<Integer> preferredDistance;

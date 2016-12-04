@@ -1,9 +1,11 @@
 package main.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public class ClassicBus extends Bus {
+public class ClassicBus extends Bus implements Serializable {
 
     public ClassicBus(String registrationPlate, int seatPlaces) {
         super(registrationPlate, seatPlaces);

@@ -1,9 +1,11 @@
 package main.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public class LuxuryBus extends Bus {
+public class LuxuryBus extends Bus implements Serializable {
 
     private boolean snack;
     private boolean waiter;

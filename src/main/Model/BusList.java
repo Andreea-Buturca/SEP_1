@@ -1,13 +1,14 @@
 package main.Model;
 
 import javax.xml.crypto.Data;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public class BusList {
+public class BusList implements Serializable {
 
 
     private ArrayList<Bus> buses = new ArrayList<>();

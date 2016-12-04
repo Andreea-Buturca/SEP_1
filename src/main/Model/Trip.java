@@ -1,5 +1,6 @@
 package main.Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public class Trip {
+public class Trip implements Serializable {
 
 
 

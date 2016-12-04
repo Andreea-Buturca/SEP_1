@@ -1,9 +1,11 @@
 package main.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public class Destination {
+public class Destination implements Serializable {
 
     private String place;
     private String stopTime;

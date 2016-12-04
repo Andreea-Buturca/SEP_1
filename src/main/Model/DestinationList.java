@@ -1,11 +1,12 @@
 package main.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by MartinNtb on 30-Nov-16.
  */
-public class DestinationList {
+public class DestinationList implements Serializable {
 
     private ArrayList<Destination> destinations = new ArrayList<>();
 

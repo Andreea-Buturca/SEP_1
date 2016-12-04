@@ -1,11 +1,12 @@
 package main.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public class Customer extends Person {
+public class Customer extends Person implements Serializable {
 
     private boolean isCompany;
     private String companyName;

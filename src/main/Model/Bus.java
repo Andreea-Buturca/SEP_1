@@ -1,9 +1,11 @@
 package main.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public abstract class Bus {
+public abstract class Bus implements Serializable{
 
     // TODO: 28-Nov-16 how do you know if there's enough free seats Solved
 

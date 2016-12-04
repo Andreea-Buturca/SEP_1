@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public class DataHandler {
+public class DataHandler implements Serializable {
 
 
     private static ArrayList<Trip> trips;

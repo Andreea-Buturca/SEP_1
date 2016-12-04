@@ -1,12 +1,13 @@
 package main.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by andreea on 11/28/2016.
  */
-public class ChauffeurList {
+public class ChauffeurList implements Serializable {
 
     private ArrayList<Chauffeur> chauffeurs;
 

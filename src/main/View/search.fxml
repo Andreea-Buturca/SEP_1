@@ -45,7 +45,7 @@
                      </VBox>
                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="184.0" prefWidth="500.0" spacing="5.0">
                         <children>
-                    <ListView prefHeight="270.0" prefWidth="495.0" />
+                    <ListView fx:id="matchingCustomers" prefHeight="270.0" prefWidth="495.0" />
                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                               <children>
                                  <Button mnemonicParsing="false" text="Edit Reservation" />
@@ -93,11 +93,11 @@
                   <Label text="Email:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
                   <Label text="Phone num:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
                   <Label text="Company name:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="name" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="companyName" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="address" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="email" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="phone" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 </children>
                 <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="0.0" prefWidth="55.0" />

@@ -31,7 +31,7 @@ public class SearchController extends Controller {
     public DatePicker date;
     public ListView matchingTrips;
 
-    /*public void searchCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+    public void searchCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         if (name != null) {
             if (companyName != null) {
                 if (address != null) {
@@ -59,7 +59,7 @@ public class SearchController extends Controller {
                 }
             }
         }
-    }*/
+    }
 
     public void searchTrip(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         if (destination != null) {

@@ -12,11 +12,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import main.Main;
 import main.Model.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -137,8 +139,6 @@ public class TripController extends Controller implements Initializable {
             //System.out.println(tests.getText());
         }
 
-        // TODO: 30-Nov-16 check if selected bus and chauffeur from list
-
         if (length == alert.length()) {
             //save it DataHandler. .....
             String[] lineBus = busListview.getSelectionModel().getSelectedItem().toString().split(", ");
@@ -147,34 +147,44 @@ public class TripController extends Controller implements Initializable {
             Bus bus = DataHandler.getBusList().findByRegplate(regPlate);
             Chauffeur chauffeur = DataHandler.getChauffeurList().getByName(chauffeurList.getSelectionModel().getSelectedItem().toString());
 
+            Destination pickUp;
+            Destination destination;
+
             if (DataHandler.getDestinationList().findByName(fieldDeparture.getValue().toString()) != null) {
-                Destination pickUp = DataHandler.getDestinationList().findByName(fieldDeparture.getValue().toString());
-            }
-            else {
-                Destination pickUp = new Destination(fieldDeparture.getValue().toString());
+                pickUp = DataHandler.getDestinationList().findByName(fieldDeparture.getValue().toString());
+            } else {
+                pickUp = new Destination(fieldDeparture.getValue().toString());
                 DataHandler.getDestinationList().add(pickUp);
             }
 
             if (DataHandler.getDestinationList().findByName(fieldDestination.getValue().toString()) != null) {
-                Destination destination = DataHandler.getDestinationList().findByName(fieldDestination.getValue().toString());
-            }
-            else {
-                Destination destination = new Destination(fieldDestination.getValue().toString());
+                destination = DataHandler.getDestinationList().findByName(fieldDestination.getValue().toString());
+            } else {
+                destination = new Destination(fieldDestination.getValue().toString());
                 DataHandler.getDestinationList().add(destination);
             }
 
+            int distance = Integer.parseInt(fieldDistance.getText());
 
+            // TODO: 04-Dec-16 extra services
 
+            Trip trip = new Trip(bus, chauffeur, pickUp, destination,distance, startDatePicker.getValue(), fieldStartTime.getText(), endDatePicker.getValue(), fieldEndTime.getText(), fieldPrice.getText());
 
+            if (stops != null) {
+                trip.setStops(stops);
+            }
+            if (checkPrivateTrip.isSelected() && customer != null) {
+                trip.setCustomer(customer);
+            }
 
+            DataHandler.getTrips().add(trip);
 
-            //Trip trip = new Trip(bus, chauffeur, )
+            successdisplay("Created", "Trip was created.");
 
-          //  DataHandler.getTrips().add(trip);
-
-            // TODO: 01-Dec-16 finish creating trip
-            // DataHandler.getTrips().add(new Trip(DataHandler.getBusList().findByRegplate(regPlate), ));
-
+            Parent root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
 
         } else {
             //alert
@@ -326,8 +336,7 @@ public class TripController extends Controller implements Initializable {
 
             Stage stage = (Stage) saveCustomerBtn.getScene().getWindow();
             stage.close();
-        }
-        else {
+        } else {
             alertdisplay("No customer", "Please choose one Customer");
         }
     }

@@ -1,6 +1,7 @@
 package main.Model;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,10 +18,6 @@ public class DataHandler {
     private static PassengerList passengerList;
     private static ReservationList reservationList;
     private static DestinationList destinationList;
-    // public static
-
-
-    //todo bin handling saving loading, .....
 
     public static ArrayList<Trip> getTrips() {
         return trips;
@@ -100,10 +97,10 @@ public class DataHandler {
         getPassengerList().add(new Passenger("name1", "address", "email", new Date(2012 - 1900, 1, 1)));
         getPassengerList().add(new Passenger("name1", "address", "email", new Date(2012 - 1900, 1, 1)));
 
-        //todo create test date here
-        //new trip in to array, new bus in to bus list, and so....
-        //than data are accessible from everywhere
-        //just call example DataHandler.getArrayChauffeur().methods in list....
+        getTrips().add(new Trip(getBusList().getAtIndex(0), getChauffeurList().getChauffeurByIndex(0), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", "50"));
+        getTrips().add(new Trip(getBusList().getAtIndex(1), getChauffeurList().getChauffeurByIndex(1), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", "50"));
+        getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", "50"));
+        getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", "50"));
     }
 
     public static void save() {

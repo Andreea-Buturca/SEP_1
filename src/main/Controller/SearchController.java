@@ -3,12 +3,10 @@ package main.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import main.Model.*;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -30,6 +28,8 @@ public class SearchController extends Controller {
     public TextField departure;
     public DatePicker date;
     public ListView matchingTrips;
+    public Button removeReservation;
+    public Button removeTrip;
 
     public void searchCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         if (name != null) {
@@ -67,16 +67,12 @@ public class SearchController extends Controller {
                 if (date != null) {
                     if (matchingTrips != null) {
                         TripList matching = DataHandler.getTrips();
-                        System.out.println(matching);
                         if (destination.getText() != null && (!destination.getText().equals("")))
                             matching = matching.findAllByDestination(destination.getText());
                         if (departure.getText() != null && (!departure.getText().equals("")))
                             matching = matching.findAllByDeparture(departure.getText());
                         if (date.getValue() != null)
                             matching = matching.findAllByDate(date.getValue());
-                        // TODO: 03-Dec-16 add methods to find trips, where?
-                        System.out.println("ready");
-                        System.out.println(matching);
                         ObservableList<String> items = FXCollections.observableArrayList();
                         for (int i = 0; i < matching.getSize(); i++) {
                             items.add(matching.get(i).toString());
@@ -87,6 +83,13 @@ public class SearchController extends Controller {
 
             }
         }
+    }
+
+
+    public void removeTrip(ActionEvent actionEvent) {
+    }
+
+    public void removeReservation(ActionEvent actionEvent) {
     }
 }
 

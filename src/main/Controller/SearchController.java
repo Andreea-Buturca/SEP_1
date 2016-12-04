@@ -20,7 +20,6 @@ import java.util.Date;
 public class SearchController extends Controller {
 
 
-
     public ListView matchingCustomers;
     public TextField name;
     public TextField companyName;
@@ -32,63 +31,62 @@ public class SearchController extends Controller {
     public DatePicker date;
     public ListView matchingTrips;
 
-/*public void searchCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
-        if (name != null) {
-            if (companyName != null) {
-                if (address != null) {
-                    if (email != null) {
-                        if (phone != null) {
-                            if (matchingCustomers != null) {
-                                CustomerList matching = DataHandler.getCustomerList();
-                                if (name.getText() != null && (!name.getText().equals("")))
-                                    matching = matching.findAllByName(name.getText());
-                                if (address.getText() != null && (!address.getText().equals("")))
-                                    matching = matching.findAllByAddress(address.getText());
-                                if (email.getText() != null && (!email.getText().equals("")))
-                                    matching = matching.findAllByEmail(email.getText());
-                                if (phone.getText() != null && (!phone.getText().equals("")))
-                                    matching = matching.findAllByPhone(phone.getText());
+    /*public void searchCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+            if (name != null) {
+                if (companyName != null) {
+                    if (address != null) {
+                        if (email != null) {
+                            if (phone != null) {
+                                if (matchingCustomers != null) {
+                                    CustomerList matching = DataHandler.getCustomerList();
+                                    if (name.getText() != null && (!name.getText().equals("")))
+                                        matching = matching.findAllByName(name.getText());
+                                    if (address.getText() != null && (!address.getText().equals("")))
+                                        matching = matching.findAllByAddress(address.getText());
+                                    if (email.getText() != null && (!email.getText().equals("")))
+                                        matching = matching.findAllByEmail(email.getText());
+                                    if (phone.getText() != null && (!phone.getText().equals("")))
+                                        matching = matching.findAllByPhone(phone.getText());
 
-                                ObservableList<String> items = FXCollections.observableArrayList();
-                                for (int i = 0; i < matching.getSize(); i++) {
-                                    items.add(matching.getCustomer(i).toString());
+                                    ObservableList<String> items = FXCollections.observableArrayList();
+                                    for (int i = 0; i < matching.getSize(); i++) {
+                                        items.add(matching.getCustomer(i).toString());
+                                    }
+                                    matchingCustomers.setItems(items);
                                 }
-                                matchingCustomers.setItems(items);
                             }
                         }
                     }
                 }
             }
         }
-    }
-*/
-/*public void searchTrip(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+    */
+    public void searchTrip(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         if (destination != null) {
             if (departure != null) {
-                if (arrival != null) {
-                    if (date != null) {
-                            if (matchingTrips != null) {
-                                ArrayList<Trip> matching = DataHandler.getTrips();
-                                if (destination.getText() != null && (!destination.getText().equals("")))
-                                    matching = findAllByDestination(matching);
-                                if (departure.getText() != null && (!departure.getText().equals("")))
-                                    matching = findAllByDeparture(matching);
-                                if (date.getValue() != null)
-                                    matching = findAllByDate(matching);
-                                // TODO: 03-Dec-16 add methods to find trips, where?
-                                ObservableList<String> items = FXCollections.observableArrayList();
-                                for (int i = 0; i < matching.size(); i++) {
-                                    items.add(matching.get(i).toString());
-                                }
-                                matchingCustomers.setItems(items);
-                            }
+                if (date != null) {
+                    if (matchingTrips != null) {
+                        TripList matching = DataHandler.getTrips();
+                        if (destination.getText() != null && (!destination.getText().equals("")))
+                            matching = matching.findAllByDestination(destination.getText());
+                        if (departure.getText() != null && (!departure.getText().equals("")))
+                            matching = matching.findAllByDeparture(departure.getText());
+                        if (date.getValue() != null)
+                            matching = matching.findAllByDate(date.getValue());
+                        // TODO: 03-Dec-16 add methods to find trips, where?
+                        ObservableList<String> items = FXCollections.observableArrayList();
+                        for (int i = 0; i < matching.getSize(); i++) {
+                            items.add(matching.get(i).toString());
                         }
+                        matchingCustomers.setItems(items);
                     }
                 }
+
             }
         }
     }
-*/
+}
+
 
 //make on key method in panel
 // create new object of list then call methot find by.... save it on saved call it again
@@ -108,36 +106,6 @@ public class SearchController extends Controller {
     }*/
 
 
-    public ArrayList<Trip> findAllByDate(ArrayList<Trip> trips){
-        ArrayList<Trip> result = new ArrayList<>();
-        for (int i=0;i<trips.size();i++){
-            if ((trips.get(i).getTimeStart().getYear()==date.getValue().getYear())
-                    &&(trips.get(i).getTimeStart().getMonth()==date.getValue().getMonthValue())
-                    &&(trips.get(i).getTimeStart().getDay()==date.getValue().getDayOfMonth())){
-                result.add(trips.get(i));
-            }
-        }
-        return result;
-    }
 
-    public ArrayList<Trip> findAllByDeparture(ArrayList<Trip> trips) {
-        ArrayList<Trip> result = new ArrayList<>();
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).getPickUpPoint().getPlace().equals(departure.getText())) {
-                result.add(trips.get(i));
-            }
-        }
-        return result;
-    }
 
-    public ArrayList<Trip> findAllByDestination(ArrayList<Trip> trips) {
-        ArrayList<Trip> result = new ArrayList<>();
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).getDestination().getPlace().equals(destination.getText())) {
-                result.add(trips.get(i));
-            }
-        }
-        return result;
-    }
 
-}

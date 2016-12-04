@@ -29,7 +29,7 @@ public class Trip implements Serializable {
     private String duration;;
 
     public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Destination destination, int distance,
-                LocalDate dateStart, String timeStart, LocalDate dateEnd, String timeEnd, String price) {
+                LocalDate dateStart, String timeStart, LocalDate dateEnd, String timeEnd, int price) {
        this.bus = bus;
        this.chauffeur = chauffeur;
        this.pickUpPoint = pickUpPoint;
@@ -44,7 +44,7 @@ public class Trip implements Serializable {
        minutes = Integer.parseInt(lineToken[1]);
        this.timeEnd = new Date(dateEnd.getYear()-1900, dateEnd.getMonthValue(), dateEnd.getDayOfMonth(), hours, minutes);
        this.duration = this.getDuration(this.timeStart, this.timeEnd);
-       this.price = Integer.parseInt(price);
+       this.price = price;
     }
 
     public String getDuration(Date start, Date end) {

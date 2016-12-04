@@ -168,7 +168,7 @@ public class TripController extends Controller implements Initializable {
 
             // TODO: 04-Dec-16 extra services
 
-            Trip trip = new Trip(bus, chauffeur, pickUp, destination,distance, startDatePicker.getValue(), fieldStartTime.getText(), endDatePicker.getValue(), fieldEndTime.getText(), fieldPrice.getText());
+            Trip trip = new Trip(bus, chauffeur, pickUp, destination,distance, startDatePicker.getValue(), fieldStartTime.getText(), endDatePicker.getValue(), fieldEndTime.getText(), Integer.parseInt(fieldPrice.getText()));
 
             if (stops != null) {
                 trip.setStops(stops);

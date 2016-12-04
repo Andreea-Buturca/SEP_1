@@ -121,8 +121,8 @@ public class ChauffeurList implements Serializable {
 
     public ChauffeurList getAvailable(Date from, Date to) {
         ChauffeurList result = new ChauffeurList();
-        ArrayList<Trip> trips = DataHandler.getTrips();
-        for (int i = 0; i < trips.size(); i++) {
+        TripList trips = DataHandler.getTrips();
+        for (int i = 0; i < trips.getSize(); i++) {
             for (int j = 0; j < chauffeurs.size(); j++) {
                 if (chauffeurs.get(j).equals(trips.get(i).getBus())) {
                     if (((from.before(trips.get(i).getTimeStart())) && (to.before(trips.get(i).getTimeStart())))

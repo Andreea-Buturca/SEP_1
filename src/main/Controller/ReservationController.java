@@ -63,7 +63,7 @@ public class ReservationController extends Controller implements Initializable {
     public void controlData(ActionEvent actionEvent) throws IOException {
         String alert = "There are some mistakes: \n";
         int length = alert.length();
-        if (tableTrips.getSelectionModel().getSelectedItem() == null) alert += "Select trip \n";
+     //   if (tableTrips.getSelectionModel().getSelectedItem() == null) alert += "Select trip \n";
 
         if (length == alert.length()) {
             if (noteReservation != null) {

@@ -254,6 +254,42 @@ public class ReservationController extends Controller implements Initializable {
     public void priceListener(KeyEvent keyEvent) {
         calculatePrice();
     }
+
+    public void setEditData(Reservation reservation) {
+
+
+
+
+/*
+        public Button mkReservationView;
+        public TextField fieldDestination;
+        public TextField fieldDeparture;
+        public TextField fieldNrPassengers;
+        public TextField fieldArrival;
+        public TextField fieldNameCustomer;
+        public TextField fieldNameCompany;
+        public TextField fieldAddressCustomer;
+        public TextField fieldEmailCustomer;
+        public TextField fieldPhoneCustomer;
+        public TextField fieldNamePassenger;
+        public TextField fieldAddressPassenger;
+        public TextField fieldEmailPassenger;
+        public TextField fieldSeatNr;
+        public TextField fieldDefaultPrice;
+        public TextField fieldExtraServices;
+        public TextField fieldDiscount;
+        public Button buttonAddCustomer;
+        public Button buttonAddPassenger;
+        public Button buttonRemovePassenger;
+        public Button buttonSaveReservation;
+        public Button buttonCancelReservation;
+        public ListView listViewCustomer;
+        public ListView listViewPassenger;
+        public Label labelTotalPrice;
+        public DatePicker datepickerBirthday;
+        */
+
+    }
 }
 
 

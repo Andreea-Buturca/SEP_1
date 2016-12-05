@@ -132,6 +132,9 @@ public class Controller implements Initializable {
 
     }
 
+    protected void test(){
+    }
+
 
     protected boolean validateEmptyField(TextField textField) {
         if (!textField.getText().isEmpty()) {

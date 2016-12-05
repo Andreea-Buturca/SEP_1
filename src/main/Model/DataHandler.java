@@ -85,16 +85,22 @@ public class DataHandler implements Serializable {
         getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", new Date(2012 - 1900, 1, 1), 5221, true));
         getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", new Date(2012 - 1900, 1, 1), 5221, true));
 
-        getCustomerList().add(new Customer("name1", "address", "email", "123456"));
-        getCustomerList().add(new Customer("name2", "address", "email", "123456"));
-        getCustomerList().add(new Customer("name3", "address", "email", "123456"));
-        getCustomerList().add(new Customer("name4", "address", "email", "123456"));
-        getCustomerList().add(new Customer("name5", "address", "email", "123456"));
+        getCustomerList().add(new Customer("name1", "address", "email", "25447"));
+        getCustomerList().add(new Customer("name2", "address", "email", "444446"));
+        getCustomerList().add(new Customer("name3", "address", "email", "2554556"));
+        getCustomerList().add(new Customer("name4", "address", "email", "128216"));
+        getCustomerList().add(new Customer("name5", "address", "email", "118416"));
 
         getTrips().add(new Trip(getBusList().getAtIndex(0), getChauffeurList().getChauffeurByIndex(0), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
         getTrips().add(new Trip(getBusList().getAtIndex(1), getChauffeurList().getChauffeurByIndex(1), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
         getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
         getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
+
+        getTrips().get(0).setCustomer(getCustomerList().getCustomer(0));
+
+        getReservationList().add(new Reservation(getTrips().get(0), getCustomerList().getCustomer(0), getPassengerList().getArrayPassenger(), 500.50));
+        getReservationList().add(new Reservation(getTrips().get(0), getCustomerList().getCustomer(1), getPassengerList().getArrayPassenger(), 580.50));
+        getReservationList().add(new Reservation(getTrips().get(0), getCustomerList().getCustomer(2), getPassengerList().getArrayPassenger(), 850.50));
     }
 
     public static void save() {

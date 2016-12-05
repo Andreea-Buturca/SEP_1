@@ -3,13 +3,17 @@ package main.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import main.Model.*;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +34,8 @@ public class SearchController extends Controller {
     public TextField departure;
     public DatePicker date;
     public ListView matchingTrips;
+    public Button removeReservation;
+    public Button removeTrip;
 
     public void searchCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         if (name != null) {
@@ -67,16 +73,12 @@ public class SearchController extends Controller {
                 if (date != null) {
                     if (matchingTrips != null) {
                         TripList matching = DataHandler.getTrips();
-                        System.out.println(matching);
                         if (destination.getText() != null && (!destination.getText().equals("")))
                             matching = matching.findAllByDestination(destination.getText());
                         if (departure.getText() != null && (!departure.getText().equals("")))
                             matching = matching.findAllByDeparture(departure.getText());
                         if (date.getValue() != null)
                             matching = matching.findAllByDate(date.getValue());
-                        // TODO: 03-Dec-16 add methods to find trips, where?
-                        System.out.println("ready");
-                        System.out.println(matching);
                         ObservableList<String> items = FXCollections.observableArrayList();
                         for (int i = 0; i < matching.getSize(); i++) {
                             items.add(matching.get(i).toString());
@@ -87,6 +89,54 @@ public class SearchController extends Controller {
 
             }
         }
+    }
+
+    public void removeTrip(ActionEvent actionEvent) {
+        ObservableList<String> selected;
+        selected = matchingTrips.getSelectionModel().getSelectedItems();
+        for (String aSelected : selected) {
+            System.out.println(aSelected.toString());
+            DataHandler.getTrips().remove(DataHandler.getTrips().findByToString(aSelected.toString()));
+        }
+    }
+
+    public void removeReservation(ActionEvent actionEvent) {
+        ObservableList<String> selected;
+        selected = matchingCustomers.getSelectionModel().getSelectedItems();
+        for (String aSelected : selected) {
+            String[] lineToken = aSelected.split(":");
+            String phone = lineToken[3].trim();
+            System.out.println(phone);
+            DataHandler.getCustomerList().remove(DataHandler.getCustomerList().findByPhone(phone));
+        }
+    }
+
+    public void editReservation(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/makeReservationDate.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Scene scene = new Scene(root, 1000, 600);
+        Stage window = new Stage();
+        ReservationController reservationController = fxmlLoader.<ReservationController>getController();
+        reservationController.setEditData((Reservation) DataHandler.getReservationList().getArrayReservation().get(0));
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Edit trip");
+        window.setScene(scene);
+        window.setResizable(false);
+        window.showAndWait();
+    }
+
+    public void editTrip(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/createTour.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Scene scene = new Scene(root, 1000, 600);
+        Stage window = new Stage();
+        TripController tripController = fxmlLoader.<TripController>getController();
+        tripController.setEditData((Trip) DataHandler.getTrips().get(0));
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Edit trip");
+        window.setScene(scene);
+        window.setResizable(false);
+        window.showAndWait();
     }
 }
 

@@ -78,11 +78,11 @@ public class DataHandler implements Serializable {
         getDestinationList().getArrayDestination().add(new Destination("Place 5"));
 
 
-        getChauffeurList().add(new Chauffeur("name1", "addres", "sda", "sad", new Date(2012 - 1900, 1, 1), 5221, true));
-        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad", new Date(2012 - 1900, 1, 1), 5221, true));
-        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad", new Date(2012 - 1900, 1, 1), 5221, true));
-        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", new Date(2012 - 1900, 1, 1), 5221, true));
-        getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", new Date(2012 - 1900, 1, 1), 5221, true));
+        getChauffeurList().add(new Chauffeur("name1", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad",  LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad",  LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad",  LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
 
         getCustomerList().add(new Customer("name1", "address", "email", "25447"));
         getCustomerList().add(new Customer("name2", "address", "email", "444446"));

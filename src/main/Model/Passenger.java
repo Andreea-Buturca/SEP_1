@@ -2,6 +2,7 @@ package main.Model;
 
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  */
 public class Passenger extends Person implements Serializable {
 
-    public Passenger(String name, String address, String email, Date dateOfBirth) {
+    public Passenger(String name, String address, String email, LocalDate dateOfBirth) {
         super(name, address, email, dateOfBirth);
     }
 public String getPassengerName(){ return super.getName(); }

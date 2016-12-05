@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -173,7 +174,7 @@ public class ReservationController extends Controller implements Initializable {
             String name = fieldNamePassenger.getText();
             String address = fieldAddressPassenger.getText();
             String email = fieldEmailPassenger.getText();
-            Date birthday = new Date(datepickerBirthday.getValue().getYear() - 1900, datepickerBirthday.getValue().getMonthValue(), datepickerBirthday.getValue().getDayOfMonth());
+            LocalDate birthday = datepickerBirthday.getValue();
             DataHandler.getPassengerList().add(new Passenger(name, address, email, birthday));
             successdisplay("Success", "Passenger was added.");
             loadPassengerList();
@@ -287,14 +288,22 @@ public class ReservationController extends Controller implements Initializable {
     }
 
     public void setEditData(Reservation reservation) {
-fieldNameCustomer.setText(reservation.getCustomer().getName());
-fieldNameCompany.setText(reservation.getReservationByCompany());
-fieldAddressCustomer.setText(reservation.getReservationByCustomerAddress());
-fieldEmailCustomer.setText(reservation.getReservationByCustomerEmail());
-fieldPhoneCustomer.setText(reservation.getReservationByCustomerPhone());
-//fieldNamePassenger.setText(reservation.getReservationPassengers());
-
-
+        fieldNameCustomer.setText(reservation.getCustomer().getName());
+        fieldNameCompany.setText(reservation.getReservationByCompany());
+        fieldAddressCustomer.setText(reservation.getReservationByCustomerAddress());
+        fieldEmailCustomer.setText(reservation.getReservationByCustomerEmail());
+        fieldPhoneCustomer.setText(reservation.getReservationByCustomerPhone());
+        fieldNamePassenger.setText(reservation.getReservationByPassengerName());
+        fieldAddressPassenger.setText(reservation.getReservationByPassengerAddress());
+        fieldEmailPassenger.setText(reservation.getReservationByPassengerEmail());
+        datepickerBirthday.setValue(reservation.getReservationByPassengerBirthday());
+        fieldDefaultPrice.setText(String.valueOf((reservation.getDefaultPricePerson())));
+        if (reservation.getPriceExtraServices() != 0) {
+            fieldExtraServices.setText(String.valueOf(reservation.getPriceExtraServices()));
+        }
+        if (reservation.getDiscount() != 0) {
+            fieldDiscount.setText(String.valueOf(reservation.getDiscount()));
+        }
 /*
         public Button mkReservationView;
         public TextField fieldDestination;

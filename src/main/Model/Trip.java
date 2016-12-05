@@ -22,15 +22,17 @@ public class Trip implements Serializable {
     //private ArrayList<String> notes; // TODO: 29-Nov-16 so do we need it?
     private Customer customer;
     private boolean isPrivate;
+    private String privateString;
     private int distance;
-    private int price;
+    private Integer price;
     private String duration;
-
+    public Integer freeSpaces;
     private Date dateObjStart;
     private Date dateObjEnd;
 
     public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Destination destination, int distance, LocalDate dateStart, String timeStart, LocalDate dateEnd,  String timeEnd, int price) {
         this.bus = bus;
+        this.freeSpaces = this.bus.getSeatPlaces();
         this.chauffeur = chauffeur;
         this.pickUpPoint = pickUpPoint;
         this.destination = destination;
@@ -50,7 +52,7 @@ public class Trip implements Serializable {
         minutes = Integer.parseInt(lineToken[1]);
         this.dateObjEnd = new Date(dateEnd.getYear()-1900, dateEnd.getMonthValue(), dateEnd.getDayOfMonth(), hours, minutes);
         this.duration = this.getDuration(this.dateObjStart, this.dateObjEnd);
-
+        privateString = "False";
 
     }
 
@@ -82,7 +84,9 @@ public class Trip implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.isPrivate = true;
+        privateString = "True";
         this.customer = customer;
+        this.freeSpaces = 0;
     }
 
     public Bus getBus() {

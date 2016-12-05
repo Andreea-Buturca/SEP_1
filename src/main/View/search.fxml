@@ -45,7 +45,7 @@
                      </VBox>
                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="184.0" prefWidth="500.0" spacing="5.0">
                         <children>
-                    <ListView fx:id="matchingCustomers" prefHeight="270.0" prefWidth="495.0" />
+                    <ListView fx:id="matchingReservations" prefHeight="270.0" prefWidth="495.0" />
                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                               <children>
                                  <Button mnemonicParsing="false" onAction="#editReservation" text="Edit Reservation" />

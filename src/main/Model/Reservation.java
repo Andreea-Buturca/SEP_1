@@ -21,13 +21,14 @@ public class Reservation implements Serializable {
         this.trip = trip;
         this.customer = customer;
         this.passengers = passengers;
+        this.trip.freeSpaces -=this.passengers.size();
         this.defaultPricePerson = price;
         this.priceExtraServices = 0;
         this.discount = 0;
         this.finalPrice = 0;
     }
 
-    public Customer getReservationByCustomer() {
+    public Customer getCustomer() {
         return this.customer;
     }
 

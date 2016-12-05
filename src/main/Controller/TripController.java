@@ -98,7 +98,7 @@ public class TripController extends Controller implements Initializable {
                     window.setResizable(false);
 
 
-                    // TODO: 30-Nov-16 get somehow data from here
+                    // TODO: 30-Nov-16 getReservation somehow data from here
 
 
                     Scene scene = new Scene(root);

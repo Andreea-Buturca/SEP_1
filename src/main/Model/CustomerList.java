@@ -34,15 +34,8 @@ public class CustomerList implements Serializable {
         return customers.size();
     }
 
-    public Customer getCustomerByIndex(int index) {
+    public Customer getCustomer(int index) {
         return customers.get(index);
-    }
-    public Customer getCustomer(Customer customer){
-        for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).equals(customer))
-                return customers.get(i);
-        }
-        return null;
     }
 
     public CustomerList findAllByName(String name) {

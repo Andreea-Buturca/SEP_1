@@ -95,11 +95,11 @@ public class DataHandler implements Serializable {
         getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
         getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
 
-        //getTrips().get(0).setCustomer(getCustomerList().getCustomer(0));
+        //getTrips().getReservation(0).setCustomer(getCustomerList().getCustomer(0));
 
-        getReservationList().add(new Reservation(getTrips().getArrayTrip().get(0), getCustomerList().getCustomerByIndex(0), getPassengerList().getArrayPassenger(), 500.50));
-        getReservationList().add(new Reservation(getTrips().getArrayTrip().get(0), getCustomerList().getCustomerByIndex(1), getPassengerList().getArrayPassenger(), 580.50));
-        getReservationList().add(new Reservation(getTrips().getArrayTrip().get(0), getCustomerList().getCustomerByIndex(2), getPassengerList().getArrayPassenger(), 850.50));
+        getReservationList().add(new Reservation(getTrips().getArrayTrip().get(0), getCustomerList().getCustomer(0), getPassengerList().getArrayPassenger(), 500.50));
+        getReservationList().add(new Reservation(getTrips().getArrayTrip().get(0), getCustomerList().getCustomer(1), getPassengerList().getArrayPassenger(), 580.50));
+        getReservationList().add(new Reservation(getTrips().getArrayTrip().get(0), getCustomerList().getCustomer(2), getPassengerList().getArrayPassenger(), 850.50));
     }
 
     public static void save() {

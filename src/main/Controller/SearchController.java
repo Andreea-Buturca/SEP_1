@@ -11,12 +11,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.Model.*;
 
-import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by MartinNtb on 27-Nov-16.
@@ -24,7 +21,7 @@ import java.util.Date;
 public class SearchController extends Controller {
 
 
-    public ListView matchingCustomers;
+    public ListView matchingReservations;
     public TextField name;
     public TextField companyName;
     public TextField address;
@@ -38,12 +35,16 @@ public class SearchController extends Controller {
     public Button removeTrip;
 
     public void searchCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+        findReservations();
+    }
+
+    private void findReservations(){
         if (name != null) {
             if (companyName != null) {
                 if (address != null) {
                     if (email != null) {
                         if (phone != null) {
-                            if (matchingCustomers != null) {
+                            if (matchingReservations != null) {
                                 CustomerList matching = DataHandler.getCustomerList();
                                 if (name.getText() != null && (!name.getText().equals("")))
                                     matching = matching.findAllByName(name.getText());
@@ -53,12 +54,17 @@ public class SearchController extends Controller {
                                     matching = matching.findAllByEmail(email.getText());
                                 if (phone.getText() != null && (!phone.getText().equals("")))
                                     matching = matching.findAllByPhone(phone.getText());
-
-                                ObservableList<String> items = FXCollections.observableArrayList();
+                                ReservationList reservations = DataHandler.getReservationList();
+                                ObservableList<Reservation> items = FXCollections.observableArrayList();
                                 for (int i = 0; i < matching.getSize(); i++) {
-                                    items.add(matching.getArrayCustomer().get(i).toString());
+                                    for (int j=0;j<reservations.getSize();j++){
+                                        if (reservations.getReservation(j).getCustomer().equals(matching.getCustomer(i))){
+                                            items.add(reservations.getReservation(j));
+                                        }
+                                    }
+
                                 }
-                                matchingCustomers.setItems(items);
+                                matchingReservations.setItems(items);
                             }
                         }
                     }
@@ -102,7 +108,7 @@ public class SearchController extends Controller {
 
     public void removeReservation(ActionEvent actionEvent) {
         ObservableList<String> selected;
-        selected = matchingCustomers.getSelectionModel().getSelectedItems();
+        selected = matchingReservations.getSelectionModel().getSelectedItems();
         for (String aSelected : selected) {
             String[] lineToken = aSelected.split(":");
             String phone = lineToken[3].trim();

@@ -22,7 +22,7 @@ public class ReservationList implements Serializable {
 
     public Reservation getReservationByCustomer(Customer customer) {
         for (int i = 0; i < reservations.size(); i++) {
-            if (this.reservations.get(i).getReservationByCustomer().equals(customer))
+            if (this.reservations.get(i).getCustomer().equals(customer))
                 return this.reservations.get(i);
         }
         return null;
@@ -56,6 +56,14 @@ public class ReservationList implements Serializable {
             }
         }
         return result;
+    }
+
+    public int getSize(){
+        return reservations.size();
+    }
+
+    public Reservation getReservation(int index){
+        return reservations.get(index);
     }
 
     public ReservationList findAllReservationByDeparture(String departure) {

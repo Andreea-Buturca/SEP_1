@@ -37,13 +37,13 @@ public class Main extends Application {
 
 
     // TODO: 05-Dec-16 For Marek
-    //add get chauffeur by preffered bustype
+    //add getReservation chauffeur by preffered bustype
     //possible controlling days of weeks by prefference
     //always show vicar
 
     //chauffeur.getAllByPrefferedDistance errors there array
     //in createtour try to fill distance to show it
-    //make method in makereservation for search
+    //make method in makereservation for search -discuss
 
     //change items in combobox, choicebox to normal Object like Bus, Trip ...,  not object to strings and then to object
 

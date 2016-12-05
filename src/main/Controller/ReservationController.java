@@ -207,12 +207,12 @@ public class ReservationController extends Controller implements Initializable {
     public void loadTrips() {
         TripList trips;
         trips = DataHandler.getTrips();
-        tableTrips.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        tripListReservation.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<Trip> items = FXCollections.observableArrayList();
         if (trips.getSize() != 0) {
             items.addAll(trips.getArrayTrip());
         }
-        tableTrips.setItems(items);
+        tripListReservation.setItems(items);
     }
 
 
@@ -223,7 +223,7 @@ public class ReservationController extends Controller implements Initializable {
         if (listViewPassenger != null) {
             loadPassengerList();
         }
-        if (tableTrips != null) {
+        if (tripListReservation != null) {
             loadTrips();
         }
     }

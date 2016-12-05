@@ -61,6 +61,7 @@ public class Main extends Application {
         // TODO: 02-Dec-16 todo
         //make edit for reservation - waiting for completing normal reservation
         //make edit for trip - almost done
+        //specify number of customers
 
         // TODO: 30-Nov-16 make load from file when done
         // TODO: 30-Nov-16 override onclose to make backup

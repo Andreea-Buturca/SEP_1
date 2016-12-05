@@ -117,7 +117,7 @@ public class SearchController extends Controller {
         Scene scene = new Scene(root, 1000, 600);
         Stage window = new Stage();
         ReservationController reservationController = fxmlLoader.<ReservationController>getController();
-        reservationController.setEditData((Reservation) DataHandler.getTrips().get(0).getReservationList().getArrayReservation().get(0));
+        reservationController.setEditData((Reservation) DataHandler.getReservationList().getArrayReservation().get(0));
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Edit trip");
         window.setScene(scene);

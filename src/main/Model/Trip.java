@@ -2,7 +2,6 @@ package main.Model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -27,8 +26,6 @@ public class Trip implements Serializable {
     private int distance;
     private int price;
     private String duration;
-
-    private ReservationList reservationList = new ReservationList();
 
     private Date dateObjStart;
     private Date dateObjEnd;
@@ -123,11 +120,6 @@ public class Trip implements Serializable {
     public void setCustomer(Customer customer) {
         this.isPrivate = true;
         this.customer = customer;
-    }
-
-
-    public ReservationList getReservationList() {
-        return reservationList;
     }
 
     public Bus getBus() {

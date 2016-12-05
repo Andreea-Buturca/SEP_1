@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
- * Created by andreea on 11/28/2016.
+ * Created by MartinNtb on 11/28/2016.
  */
 public class TripController extends Controller implements Initializable {
 
@@ -135,10 +135,6 @@ public class TripController extends Controller implements Initializable {
         if (busListview.getSelectionModel().getSelectedItem() == null) alert += "Bus, ";
         if (chauffeurList.getSelectionModel().getSelectedItem() == null) alert += "Chauffeur, ";
 
-        if (checkPrivateTrip.isSelected()) {
-            //System.out.println(tests.getText());
-        }
-
         if (length == alert.length()) {
             //save it DataHandler. .....
             String[] lineBus = busListview.getSelectionModel().getSelectedItem().toString().split(", ");
@@ -168,7 +164,7 @@ public class TripController extends Controller implements Initializable {
 
             // TODO: 04-Dec-16 extra services
 
-            Trip trip = new Trip(bus, chauffeur, pickUp, destination,distance, startDatePicker.getValue(), fieldStartTime.getText(), endDatePicker.getValue(), fieldEndTime.getText(), Integer.parseInt(fieldPrice.getText()));
+            Trip trip = new Trip(bus, chauffeur, pickUp, destination, distance, startDatePicker.getValue(), fieldStartTime.getText(), endDatePicker.getValue(), fieldEndTime.getText(), Integer.parseInt(fieldPrice.getText()));
 
             if (stops != null) {
                 trip.setStops(stops);
@@ -212,33 +208,52 @@ public class TripController extends Controller implements Initializable {
 
         chauffeurs = DataHandler.getChauffeurList();
 
-        // TODO: 02-Dec-16 waiting for bus model
+        if (validateEmptyField(fieldDistance) && validateNumberField(fieldDistance)) {
+            // chauffeurs = chauffeurs.getAllByPrefferedDistance(Integer.parseInt(fieldDistance.getText()));
+        }
+
+
+        if (startDatePicker.getValue() != null && endDatePicker.getValue() != null && validateTimeField(fieldStartTime) && validateTimeField(fieldEndTime)) {
+            System.out.println("idem");
+            //chauffeurs.getAvailable()
+            //chauffeurs.byprefference
+            // TODO: 05-Dec-16 available by localdate
+        }
+
 
         chauffeurList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (Chauffeur chauffeur : chauffeurs.getArrayChauffeur()) {
-            items.add(chauffeur.getName());
+        if (chauffeurs.getSize() != 0) {
+            for (Chauffeur chauffeur : chauffeurs.getArrayChauffeur()) {
+                items.add(chauffeur.getName());
+            }
+        } else {
+            items.add("No Chauffeur");
         }
         chauffeurList.setItems(items);
     }
 
     private void loadBusList() {
 
-        ArrayList<Bus> busArray;
+        BusList buses;
 
         if (busType.getValue().equals("Mini Bus"))
-            busArray = DataHandler.getBusList().searchByType("main.Model.MiniBus");
+            buses = new BusList(DataHandler.getBusList().searchByType("main.Model.MiniBus"));
         else if (busType.getValue().equals("Party Bus"))
-            busArray = DataHandler.getBusList().searchByType("main.Model.PartyBus");
+            buses = new BusList(DataHandler.getBusList().searchByType("main.Model.PartyBus"));
         else if (busType.getValue().equals("Luxury Bus"))
-            busArray = DataHandler.getBusList().searchByType("main.Model.LuxuryBus");
-        else busArray = DataHandler.getBusList().searchByType("main.Model.ClassicBus");
+            buses = new BusList(DataHandler.getBusList().searchByType("main.Model.LuxuryBus"));
+        else buses = new BusList(DataHandler.getBusList().searchByType("main.Model.ClassicBus"));
 
-        // TODO: 02-Dec-16 waiting for bus model
+        if (startDatePicker.getValue() != null && endDatePicker.getValue() != null && validateTimeField(fieldStartTime) && validateTimeField(fieldEndTime)) {
+            System.out.println("idem");
+            //buses.getAvailable()
+            // TODO: 05-Dec-16 available by localdate 
+        }
 
         busListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (Bus bus : busArray) {
+        for (Bus bus : buses.getArrayBuses()) {
             items.add(bus.toString());
         }
         busListview.setItems(items);
@@ -274,6 +289,14 @@ public class TripController extends Controller implements Initializable {
         customerList.setItems(customerItems);
     }
 
+    private void loadStops() {
+        ObservableList<String> destinationItems = FXCollections.observableArrayList();
+        for (Destination destination : stops.getArrayDestination()) {
+            destinationItems.add(destination.getStopString());
+        }
+        stopsList.setItems(destinationItems);
+    }
+
     public void handleStops(ActionEvent actionEvent) {
         if (actionEvent.getSource() == addStopBtn && validateNumberField(stopTimeField)) {
             stops.add(new Destination(stopName.getValue().toString(), stopTimeField.getText()));
@@ -285,12 +308,7 @@ public class TripController extends Controller implements Initializable {
             stops.removeDestination(stops.findByName(stopNameTemp));
         }
 
-
-        ObservableList<String> destinationItems = FXCollections.observableArrayList();
-        for (Destination destination : stops.getArrayDestination()) {
-            destinationItems.add(destination.getStopString());
-        }
-        stopsList.setItems(destinationItems);
+        loadStops();
     }
 
     public void addCustomerData(ActionEvent actionEvent) {
@@ -339,5 +357,29 @@ public class TripController extends Controller implements Initializable {
         } else {
             alertdisplay("No customer", "Please choose one Customer");
         }
+    }
+
+    public void setEditData(Trip trip) {
+        fieldStartTime.setText(trip.getTimeStart());
+        fieldEndTime.setText(trip.getTimeEnd());
+        startDatePicker.setValue(trip.getDateStart());
+        endDatePicker.setValue(trip.getDateEnd());
+
+        // TODO: 05-Dec-16 after remake of data 
+        //fieldDestination.setValue(trip.getDestination());
+        //fieldDeparture.setValue(trip.getDeparture());
+        fieldDistance.setText(Integer.toString(trip.getDistance()));
+        fieldPrice.setText(Integer.toString(trip.getPrice()));
+        checkPrivateTrip.setSelected(trip.isPrivate());
+
+        //busListview.selectionModelProperty().setValue(trip.getBus());
+        busType.setValue(trip.getBus().getBusType());
+
+        if (trip.getStops() != null) {
+            stops = trip.getStops();
+            loadStops();
+        }
+
+        //chauffeurList.selectionModelProperty().setValue(trip.getChauffeur());
     }
 }

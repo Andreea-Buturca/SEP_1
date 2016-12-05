@@ -16,6 +16,10 @@ public class BusList implements Serializable {
     public BusList() {
     }
 
+    public BusList(ArrayList<Bus> buses) {
+        this.buses = buses;
+    }
+
     public void add(Bus bus) {
         buses.add(bus);
     }
@@ -87,8 +91,8 @@ public class BusList implements Serializable {
         for (int i = 0; i < trips.getSize(); i++) {
             for (int j = 0; j < buses.size(); j++) {
                 if (buses.get(j).equals(trips.get(i).getBus())) {
-                    if (((from.before(trips.get(i).getTimeStart())) && (to.before(trips.get(i).getTimeStart())))
-                            || ((from.after(trips.get(i).getTimeEnd())) && (to.after(trips.get(i).getTimeEnd())))) {
+                    if (((from.before(trips.get(i).getDateObjStart())) && (to.before(trips.get(i).getDateObjStart())))
+                            || ((from.after(trips.get(i).getDateObjEnd())) && (to.after(trips.get(i).getDateObjEnd())))) {
                         result.add(buses.get(j));
                     }
                 }

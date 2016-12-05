@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Reservation implements Serializable {
 
-    private Trip trip;
+    //private Trip trip;
     private Customer customer;
     private ArrayList<Passenger> passengers;
     private double defaultPricePerson;
@@ -16,8 +16,17 @@ public class Reservation implements Serializable {
     private double priceExtraServices;
     private double discount;
 
-    public Reservation(Trip trip, Customer customer, ArrayList<Passenger> passengers, double price) {
+    /*public Reservation(Trip trip, Customer customer, ArrayList<Passenger> passengers, double price) {
         this.trip = trip;
+        this.customer = customer;
+        this.passengers = passengers;
+        this.defaultPricePerson = price;
+        this.priceExtraServices = 0;
+        this.discount = 0;
+        this.finalPrice = 0;
+    }*/
+
+    public Reservation(Customer customer, ArrayList<Passenger> passengers, double price) {
         this.customer = customer;
         this.passengers = passengers;
         this.defaultPricePerson = price;
@@ -30,9 +39,9 @@ public class Reservation implements Serializable {
         return this.customer;
     }
 
-    public Trip getReservationByTrip() {
+    /*public Trip getReservationByTrip() {
         return this.trip;
-    }
+    }*/
 
     public ArrayList<Passenger> getReservationPassengers() {
         return this.passengers;
@@ -70,11 +79,19 @@ public class Reservation implements Serializable {
         this.finalPrice = ((getDefaultPricePerson() + getPriceExtraServices()) - getDiscount()) * this.passengers.size();
     }
 
-    public String toString() {
+   /* public String toString() {
         String passsengers = "";
         for (int i = 0; i < passengers.size(); i++) {
             passsengers += " , for passenger nr: " + (i + 1) + this.passengers.get(i).toString();
         }
         return "Tour to: " + this.trip + " , price: " + this.finalPrice + " , reserved by customer: " + this.customer + passsengers;
+    }
+    */
+    public String toString() {
+        String passsengers = "";
+        for (int i = 0; i < passengers.size(); i++) {
+            passsengers += " , for passenger nr: " + (i + 1) + this.passengers.get(i).toString();
+        }
+        return "Price: " + this.finalPrice + " , reserved by customer: " + this.customer + passsengers;
     }
 }

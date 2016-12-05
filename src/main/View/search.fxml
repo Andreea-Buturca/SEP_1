@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.SearchController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.SearchController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -37,7 +37,7 @@
                     <ListView fx:id="matchingTrips" prefHeight="248.0" prefWidth="495.0" />
                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                               <children>
-                                 <Button mnemonicParsing="false" text="Edit Trip" />
+                                 <Button mnemonicParsing="false" onAction="#editTrip" text="Edit Trip" />
                                  <Button fx:id="removeTrip" mnemonicParsing="false" onAction="#removeTrip" text="Remove Trip" />
                               </children>
                            </HBox>
@@ -48,7 +48,7 @@
                     <ListView fx:id="matchingCustomers" prefHeight="270.0" prefWidth="495.0" />
                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                               <children>
-                                 <Button mnemonicParsing="false" text="Edit Reservation" />
+                                 <Button mnemonicParsing="false" onAction="#editReservation" text="Edit Reservation" />
                                  <Button fx:id="removeReservation" mnemonicParsing="false" onAction="#removeReservation" text="RemoveReservation" />
                               </children>
                            </HBox>

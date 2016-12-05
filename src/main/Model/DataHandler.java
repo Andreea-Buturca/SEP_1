@@ -101,6 +101,10 @@ public class DataHandler implements Serializable {
         getTrips().add(new Trip(getBusList().getAtIndex(1), getChauffeurList().getChauffeurByIndex(1), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
         getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
         getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
+
+        getTrips().get(0).getReservationList().add(new Reservation(getCustomerList().getCustomer(0), getPassengerList().getArrayPassenger(), 500.50));
+        getTrips().get(0).getReservationList().add(new Reservation(getCustomerList().getCustomer(1), getPassengerList().getArrayPassenger(), 550.50));
+        getTrips().get(0).getReservationList().add(new Reservation(getCustomerList().getCustomer(2), getPassengerList().getArrayPassenger(), 570.50));
     }
 
     public static void save() {

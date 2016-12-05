@@ -25,13 +25,13 @@ public class ReservationList {
         return null;
     }
 
-    public Reservation getReservationByDestination(Trip trip) {
+    /*public Reservation getReservationByDestination(Trip trip) {
         for (int i = 0; i < reservations.size(); i++) {
             if (reservations.get(i).getReservationByTrip().equals(trip))
                 return this.reservations.get(i);
         }
         return null;
-    }
+    }*/
 
     public ArrayList<Reservation> getArrayReservation() {
         return this.reservations;

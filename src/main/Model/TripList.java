@@ -1,6 +1,5 @@
 package main.Model;
 
-import javax.lang.model.util.TypeKindVisitor7;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class TripList implements Serializable {
         TripList result = new TripList();
         for (int i=0;i<trips.size();i++){
             Calendar cal = Calendar.getInstance();
-            cal.setTime(trips.get(i).getTimeStart());
+            cal.setTime(trips.get(i).getDateObjStart());
             if ((cal.get(Calendar.YEAR)==date.getYear())
                     &&(cal.get(Calendar.MONTH)==date.getMonthValue())
                     &&(cal.get(Calendar.DAY_OF_MONTH)==date.getDayOfMonth())){

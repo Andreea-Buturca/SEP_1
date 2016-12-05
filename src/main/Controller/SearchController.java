@@ -3,11 +3,17 @@ package main.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import main.Model.*;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -85,7 +91,6 @@ public class SearchController extends Controller {
         }
     }
 
-
     public void removeTrip(ActionEvent actionEvent) {
         ObservableList<String> selected;
         selected = matchingTrips.getSelectionModel().getSelectedItems();
@@ -104,6 +109,34 @@ public class SearchController extends Controller {
             System.out.println(phone);
             DataHandler.getCustomerList().remove(DataHandler.getCustomerList().findByPhone(phone));
         }
+    }
+
+    public void editReservation(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/makeReservationDate.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Scene scene = new Scene(root, 1000, 600);
+        Stage window = new Stage();
+        ReservationController reservationController = fxmlLoader.<ReservationController>getController();
+        reservationController.setEditData((Reservation) DataHandler.getTrips().get(0).getReservationList().getArrayReservation().get(0));
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Edit trip");
+        window.setScene(scene);
+        window.setResizable(false);
+        window.showAndWait();
+    }
+
+    public void editTrip(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/createTour.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Scene scene = new Scene(root, 1000, 600);
+        Stage window = new Stage();
+        TripController tripController = fxmlLoader.<TripController>getController();
+        tripController.setEditData((Trip) DataHandler.getTrips().get(0));
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Edit trip");
+        window.setScene(scene);
+        window.setResizable(false);
+        window.showAndWait();
     }
 }
 

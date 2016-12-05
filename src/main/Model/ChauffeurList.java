@@ -125,8 +125,8 @@ public class ChauffeurList implements Serializable {
         for (int i = 0; i < trips.getSize(); i++) {
             for (int j = 0; j < chauffeurs.size(); j++) {
                 if (chauffeurs.get(j).equals(trips.get(i).getBus())) {
-                    if (((from.before(trips.get(i).getTimeStart())) && (to.before(trips.get(i).getTimeStart())))
-                            || ((from.after(trips.get(i).getTimeEnd())) && (to.after(trips.get(i).getTimeEnd()))))
+                    if (((from.before(trips.get(i).getDateObjStart())) && (to.before(trips.get(i).getDateObjStart())))
+                            || ((from.after(trips.get(i).getDateObjEnd())) && (to.after(trips.get(i).getDateObjEnd()))))
                     {
                         result.add(chauffeurs.get(j));
                     }

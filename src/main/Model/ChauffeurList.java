@@ -70,8 +70,12 @@ public class ChauffeurList implements Serializable {
     public ChauffeurList getAllByPrefferedDistance(int prefferedDistance) {
         ChauffeurList result = new ChauffeurList();
         for (int i = 0; i < chauffeurs.size(); i++) {
-            if (chauffeurs.get(i).getPreferredDistance().get(i) == prefferedDistance)
+            if (!chauffeurs.get(i).isVikar()) {
+                if (chauffeurs.get(i).getPreferredDistance().get(i) > prefferedDistance)
+                    result.add(chauffeurs.get(i));
+            }else{
                 result.add(chauffeurs.get(i));
+            }
         }
         return result;
     }

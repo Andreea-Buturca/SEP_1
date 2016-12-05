@@ -24,14 +24,6 @@ public class Main extends Application {
         stage = primaryStage;
     }
 
-    //// TODO: 02-Dec-16 For Marek
-    //refactor models
-    //don't call getChauffeur list whet it return Array call it return
-    //make some name convection
-    //add methods to every list, findBy... make for all values !important
-    //add method to Chauffeur list and Bus list getAvailable we pass in method 2 dates with time
-    //Change all to java Date
-
 
     // TODO: 05-Dec-16 For Marek
     //add getReservation chauffeur by preffered bustype
@@ -40,7 +32,7 @@ public class Main extends Application {
 
     //chauffeur.getAllByPrefferedDistance errors there array
     //in createtour try to fill distance to show it
-    //make method in makereservation for search -discuss
+
 
     //change items in combobox, choicebox to normal Object like Bus, Trip ...,  not object to strings and then to object
 

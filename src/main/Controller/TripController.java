@@ -211,7 +211,7 @@ public class TripController extends Controller implements Initializable {
         chauffeurs = DataHandler.getChauffeurList();
 
         if (validateEmptyField(fieldDistance) && validateNumberField(fieldDistance)) {
-            // chauffeurs = chauffeurs.getAllByPrefferedDistance(Integer.parseInt(fieldDistance.getText()));
+             chauffeurs = chauffeurs.getAllByPrefferedDistance(Integer.parseInt(fieldDistance.getText()));
         }
 
 

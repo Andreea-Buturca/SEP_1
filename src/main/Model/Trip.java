@@ -101,6 +101,9 @@ public class Trip implements Serializable {
         return timeEnd;
     }
 
+    public Integer getFreeSpaces() {
+        return freeSpaces;
+    }
 
     public Destination getPickUpPoint() {
         return pickUpPoint;

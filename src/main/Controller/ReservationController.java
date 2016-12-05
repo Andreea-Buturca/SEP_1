@@ -63,7 +63,7 @@ public class ReservationController extends Controller implements Initializable {
     public void controlData(ActionEvent actionEvent) throws IOException {
         String alert = "There are some mistakes: \n";
         int length = alert.length();
-     //   if (tableTrips.getSelectionModel().getSelectedItem() == null) alert += "Select trip \n";
+        //   if (tableTrips.getSelectionModel().getSelectedItem() == null) alert += "Select trip \n";
 
         if (length == alert.length()) {
             if (noteReservation != null) {
@@ -82,7 +82,6 @@ public class ReservationController extends Controller implements Initializable {
             if (note != null) {
                 openWindowedNote();
             }
-
 
 
         } else {
@@ -322,6 +321,32 @@ public class ReservationController extends Controller implements Initializable {
         */
 
     }
+
+    public void searchTrip(KeyEvent keyEvent) {
+        findTrip();
+    }
+
+    private void findTrip() {
+        if (tripListReservation != null) {
+            TripList matching = DataHandler.getTrips();
+            if (fieldDestination.getText() != null && (!fieldDestination.getText().equals("")))
+                matching = matching.findAllByDestination(fieldDestination.getText());
+            if (fieldDeparture.getText() != null && (!fieldDeparture.getText().equals("")))
+                matching = matching.findAllByDeparture(fieldDeparture.getText());
+            if (fieldNrPassengers.getText() != null && (!fieldNrPassengers.getText().equals(""))) {
+                if (validateNumberField(fieldNrPassengers)) {
+                    matching = matching.findAllByPassengers(fieldNrPassengers.getText());
+                }
+            }
+            ObservableList<Trip> items = FXCollections.observableArrayList();
+            for (int i = 0; i < matching.getSize(); i++) {
+                items.add(matching.get(i));
+            }
+            tripListReservation.setItems(items);
+        }
+
+    }
+
 }
 
 

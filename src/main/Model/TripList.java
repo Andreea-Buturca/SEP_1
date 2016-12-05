@@ -109,6 +109,17 @@ public class TripList implements Serializable {
         return result;
     }
 
+    public TripList findAllByPassengers(String nrOfPassangers) {
+        int passengers = Integer.parseInt(nrOfPassangers);
+        TripList result = new TripList();
+        for (int i = 0; i < trips.size(); i++) {
+            if (trips.get(i).getFreeSpaces()>passengers) {
+                result.add(trips.get(i));
+            }
+        }
+        return result;
+    }
+
     public Trip findByToString(String tripToString) {
         for (int i = 0; i < trips.size(); i++) {
             if (trips.get(i).toString().equals(tripToString)) {

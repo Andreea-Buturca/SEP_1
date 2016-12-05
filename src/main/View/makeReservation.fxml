@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -9,6 +12,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -16,9 +20,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ReservationController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.ReservationController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -29,6 +34,9 @@
     </bottom>
     <center>
       <BorderPane prefHeight="360.0" prefWidth="600.0">
+        <bottom>
+          <ListView fx:id="tripListReservation" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+        </bottom>
         <center>
           <HBox prefHeight="465.0" prefWidth="1000.0">
             <children>
@@ -44,14 +52,13 @@
                       <Label text="Destination:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
                       <Label text="Departure: " GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                       <Label text="Nr of passengers:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                      <TextField fx:id="fieldDestination" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                      <TextField fx:id="fieldDestination" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#searchTrip" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                         <GridPane.margin>
                           <Insets left="50.0" fx:id="x2" />
                         </GridPane.margin>
                       </TextField>
-                      <TextField id="fieldDep" fx:id="fieldDeparture" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="1" />
-                      <TextField fx:id="fieldNrPassengers" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="2" />
-                      <TextField fx:id="fieldNrPassengers" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="2" />
+                      <TextField id="fieldDep" fx:id="fieldDeparture" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#searchTrip" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="1" />
+                      <TextField fx:id="fieldNrPassengers" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#searchTrip" prefWidth="300.0" GridPane.columnIndex="1" GridPane.margin="$x2" GridPane.rowIndex="2" />
                     </children>
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="347.0" minWidth="10.0" prefWidth="134.0" />
@@ -99,26 +106,23 @@
             </padding>
           </VBox>
         </top>
-            <bottom>
-               <ListView fx:id="tripListReservation" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-            </bottom>
       </BorderPane>
     </center>
     <top>
       <MenuBar fx:id="menu">
         <Menu mnemonicParsing="false" text="Home">
-          <MenuItem fx:id="homeHome" mnemonicParsing="false" onAction="#changeViewMenu" text="Home" />
-          <MenuItem fx:id="homeTour" mnemonicParsing="false" onAction="#changeViewMenu" text="Create tour" />
-          <MenuItem fx:id="homeReserve" mnemonicParsing="false" onAction="#changeViewMenu" text="Make reservation" />
-          <MenuItem fx:id="homeSearch" mnemonicParsing="false" onAction="#changeViewMenu" text="Search" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Home" fx:id="homeHome" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Create tour" fx:id="homeTour" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Make reservation" fx:id="homeReserve" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Search" fx:id="homeSearch" />
         </Menu>
         <Menu mnemonicParsing="false" text="Bus List">
-          <MenuItem fx:id="homeBus" mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" />
-          <MenuItem fx:id="homeBusAdd" mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Bus List" fx:id="homeBus" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add bus" fx:id="homeBusAdd" />
         </Menu>
         <Menu mnemonicParsing="false" text="Chauffeur list">
-          <MenuItem fx:id="homeDriver" mnemonicParsing="false" onAction="#changeViewMenu" text="Chauffeur list" />
-          <MenuItem fx:id="homeDriverAdd" mnemonicParsing="false" onAction="#changeViewMenu" text="Add chauffeur" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Chauffeur list" fx:id="homeDriver" />
+          <MenuItem mnemonicParsing="false" onAction="#changeViewMenu" text="Add chauffeur" fx:id="homeDriverAdd" />
         </Menu>
       </MenuBar>
     </top>

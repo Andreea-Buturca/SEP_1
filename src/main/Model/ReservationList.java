@@ -1,7 +1,9 @@
 package main.Model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by andreea on 12/1/2016.
@@ -40,6 +42,40 @@ public class ReservationList implements Serializable {
 
     public int getReservationNumbers() {
         return this.reservations.size();
+    }
+
+    public ReservationList findAllReservationByDate(LocalDate date){
+        ReservationList result = new ReservationList();
+        for (int i=0;i<reservations.size();i++){
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(reservations.get(i).getReservationTimeStart());
+            if ((cal.get(Calendar.YEAR)==date.getYear())
+                    &&(cal.get(Calendar.MONTH)==date.getMonthValue())
+                    &&(cal.get(Calendar.DAY_OF_MONTH)==date.getDayOfMonth())){
+                result.add(reservations.get(i));
+            }
+        }
+        return result;
+    }
+
+    public ReservationList findAllReservationByDeparture(String departure) {
+        ReservationList other = new ReservationList();
+        for (int i = 0; i < reservations.size(); i++) {
+            if (reservations.get(i).getReservationPickUpPoint().equals(departure)) {
+                other.add(reservations.get(i));
+            }
+        }
+        return other;
+    }
+
+    public ReservationList findAllReservationByDestination(String destination) {
+        ReservationList result = new ReservationList();
+        for (int i = 0; i < reservations.size(); i++) {
+            if (reservations.get(i).getReservationDestination().equals(destination)) {
+                result.add(reservations.get(i));
+            }
+        }
+        return result;
     }
 
     public String toString() {

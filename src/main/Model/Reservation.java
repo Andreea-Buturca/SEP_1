@@ -2,6 +2,7 @@ package main.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by andreea on 12/1/2016.
@@ -28,6 +29,16 @@ public class Reservation implements Serializable {
 
     public Customer getReservationByCustomer() {
         return this.customer;
+    }
+
+    public Destination getReservationDestination() {
+        return this.trip.getDestination();
+    }
+    public Destination getReservationPickUpPoint() {
+        return this.trip.getPickUpPoint();
+    }
+    public Date getReservationTimeStart() {
+        return this.trip.getTimeStart();
     }
 
     public Trip getReservationByTrip() {

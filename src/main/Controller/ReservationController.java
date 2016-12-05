@@ -96,7 +96,7 @@ public class ReservationController extends Controller implements Initializable {
 
         price = price*listViewPassenger.getItems().size();
 
-        labelTotalPrice.setText(price + "DKK");
+        labelTotalPrice.setText(price + " DKK");
 
 
     }
@@ -179,7 +179,6 @@ public class ReservationController extends Controller implements Initializable {
     }
     public void loadTrips(){
         tableTrips.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        TableView<String> table = new TableView<String>();
         ObservableList<String> items = FXCollections.observableArrayList();
         for (Trip trip : DataHandler.getTrips().getArrayTrip()) {
             items.add(trip.toString());
@@ -234,7 +233,7 @@ public class ReservationController extends Controller implements Initializable {
             //save it DataHandler. .....
             Customer customer = DataHandler.getCustomerList().findByName(listViewCustomer.getSelectionModel().getSelectedItem().toString());
             ArrayList<Passenger> passengers = DataHandler.getPassengerList().getArrayPassenger();
-            Trip trip = DataHandler.getTrips().getTrip((Trip) tableTrips.getSelectionModel().getSelectedItem()); // TODO: 12/4/2016 getters from the table!!
+            Trip trip = DataHandler.getTrips().findByDestination(tableTrips.getSelectionModel().getSelectedItem().toString()); // TODO: 12/4/2016 getters from the table!!
             double price = Double.parseDouble(labelTotalPrice.getText());
 
             Reservation reservation = new Reservation(trip, customer, passengers, price);

@@ -11,13 +11,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import main.Main;
 import main.Model.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -29,7 +27,6 @@ public class TripController extends Controller implements Initializable {
 
     public TextField fieldStartTime;
     public TextField fieldEndTime;
-    public TextField fieldDuration;
     public ComboBox fieldDestination;
     public ComboBox fieldDeparture;
     public TextField fieldDistance;
@@ -38,7 +35,6 @@ public class TripController extends Controller implements Initializable {
     public DatePicker endDatePicker;
     public CheckBox checkPrivateTrip;
     public Button CreateTourBtn;
-    public ToggleButton toggleHours;
     public ListView busListview;
     public ChoiceBox busType;
     public ComboBox stopName;
@@ -66,9 +62,7 @@ public class TripController extends Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        if (toggleHours != null) {
-            toggleHours.setOnAction(event -> toggleHours.setText((toggleHours.getText().equals("Hours")) ? "Days" : "Hours"));
-
+        if (fieldStartTime != null) {
             loadBusList();
             loadChauffeurList();
 
@@ -125,7 +119,6 @@ public class TripController extends Controller implements Initializable {
         if (!validateEmptyDate(endDatePicker)) alert += "End Date, ";
         if (!validateEmptyField(fieldStartTime) || !validateTimeField(fieldStartTime)) alert += "Start time, ";
         if (!validateEmptyField(fieldEndTime) || !validateTimeField(fieldEndTime)) alert += "End time, ";
-        if (!validateEmptyField(fieldDuration) || !validateNumberField(fieldDuration)) alert += "Duration, ";
         if (!validateEmptyField(fieldDistance) || !validateNumberField(fieldDistance)) alert += "Distance, ";
         if (!validateEmptyField(fieldPrice) || !validateNumberField(fieldPrice)) alert += "Price, ";
         if (!validateEmptyCombo(fieldDestination)) alert += "Destination, ";

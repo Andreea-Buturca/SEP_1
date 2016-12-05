@@ -3,11 +3,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ReservationController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ReservationController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
       <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -30,20 +29,6 @@
     </bottom>
     <center>
       <BorderPane prefHeight="360.0" prefWidth="600.0">
-        <bottom>
-          <TableView fx:id="tableTrips" prefHeight="200.0" prefWidth="200.0">
-            <columns>
-              <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="Destination" />
-              <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="Departure" />
-              <TableColumn prefWidth="160.0" text="Arrival" />
-              <TableColumn prefWidth="160.0" text="Chauffeur" />
-              <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="Bus Type" />
-              <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="70.0" text="Free places" />
-              <TableColumn prefWidth="60.0" text="Price" />
-              <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="106.0" text="Departure" />
-            </columns>
-          </TableView>
-        </bottom>
         <center>
           <HBox prefHeight="465.0" prefWidth="1000.0">
             <children>
@@ -79,13 +64,13 @@
                       <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
-                  <Button fx:id="mkReservationView" mnemonicParsing="false" onAction="#controlData" prefWidth="271.0" text="Make a reservation" />
+                  <Button fx:id="mkReservationView" mnemonicParsing="false" onAction="#controlData" prefWidth="271.0" text="Choose Trip" />
                 </children>
                 <HBox.margin>
                   <Insets bottom="10.0" fx:id="x3" />
                 </HBox.margin>
               </VBox>
-              <TextArea prefHeight="255.0" prefWidth="495.0" promptText="Notes" wrapText="true" HBox.margin="$x3" />
+              <TextArea fx:id="noteReservation" prefHeight="255.0" prefWidth="495.0" promptText="Notes" wrapText="true" HBox.margin="$x3" />
             </children>
           </HBox>
         </center>
@@ -114,6 +99,9 @@
             </padding>
           </VBox>
         </top>
+            <bottom>
+               <ListView fx:id="tripListReservation" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            </bottom>
       </BorderPane>
     </center>
     <top>

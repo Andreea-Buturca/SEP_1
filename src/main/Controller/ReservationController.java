@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.Main;
 import main.Model.*;
@@ -53,6 +54,11 @@ public class ReservationController extends Controller implements Initializable {
     public Label labelTotalPrice;
     public DatePicker datepickerBirthday;
     public TableView tableTrips;
+    public TextArea noteReservation;
+    public TextArea noteReservationWindowed;
+    public ListView tripListReservation;
+
+    private String note;
 
     public void controlData(ActionEvent actionEvent) throws IOException {
         String alert = "There are some mistakes: \n";
@@ -60,27 +66,49 @@ public class ReservationController extends Controller implements Initializable {
         if (tableTrips.getSelectionModel().getSelectedItem() == null) alert += "Select trip \n";
 
         if (length == alert.length()) {
-            Stage stage;
-            Parent root;
-
-            if ((actionEvent.getSource() == mkReservationView)) {
-                stage = (Stage) mkReservationView.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("../View/makeReservationDate.fxml"));
-            } else {
-                stage = (Stage) mkReservationView.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+            if (noteReservation != null) {
+                if (noteReservation.getText() != null) {
+                    note = noteReservation.getText();
+                }
             }
+
+            Stage stage = (Stage) mkReservationView.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("../View/makeReservationDate.fxml"));
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+            if (note != null) {
+                openWindowedNote();
+            }
+
+
+
         } else {
             //alert
             alertdisplay("Wrong Input", alert);
         }
     }
 
-    private void calculatePrice(){
+    private void openWindowedNote() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/noteReservation.fxml"));
+        Parent parent = fxmlLoader.load();
+        Scene sceneNote = new Scene(parent);
+        Stage window = new Stage();
+        ReservationController reservationController = fxmlLoader.getController();
+        reservationController.setNote(note);
+        window.setTitle("Edit trip");
+        window.setScene(sceneNote);
+        window.setResizable(false);
+        window.showAndWait();
+    }
+
+    private void setNote(String note) {
+        noteReservationWindowed.setText(note);
+    }
+
+    private void calculatePrice() {
         double price = 0;
 
         if (validateEmptyField(fieldDefaultPrice) && validateNumberField(fieldDefaultPrice)) {
@@ -93,7 +121,7 @@ public class ReservationController extends Controller implements Initializable {
             price = price - Integer.parseInt(fieldDiscount.getText());
         }
 
-        price = price*listViewPassenger.getItems().size();
+        price = price * listViewPassenger.getItems().size();
 
         labelTotalPrice.setText(price + " DKK");
 
@@ -133,8 +161,8 @@ public class ReservationController extends Controller implements Initializable {
     }
 
     public void addPassenger(ActionEvent actionEvent) throws IOException {
-      //    int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
-     //    for (int i = 0; i < nrPassengers; i++) {
+        //    int nrPassengers = Integer.parseInt(fieldNrPassengers.getText());
+        //    for (int i = 0; i < nrPassengers; i++) {
         String alert = "There are some mistakes: ";
         int length = alert.length();
 
@@ -175,8 +203,9 @@ public class ReservationController extends Controller implements Initializable {
         }
         listViewPassenger.setItems(items);
     }
-    public void loadTrips(){
-        TripList trips ;
+
+    public void loadTrips() {
+        TripList trips;
         trips = DataHandler.getTrips();
         tableTrips.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<Trip> items = FXCollections.observableArrayList();
@@ -226,8 +255,8 @@ public class ReservationController extends Controller implements Initializable {
     public void saveReservation(ActionEvent actionEvent) throws IOException {
         String alert = "There are some mistakes: \n";
         int length = alert.length();
-        if(listViewCustomer.getSelectionModel().getSelectedItem() == null) alert += "Select Customer \n";
-        if(!validateEmptyField(fieldNamePassenger)) alert += "Add passenger \n";
+        if (listViewCustomer.getSelectionModel().getSelectedItem() == null) alert += "Select Customer \n";
+        if (!validateEmptyField(fieldNamePassenger)) alert += "Add passenger \n";
         if (!validateEmptyField(fieldDefaultPrice) || !validateNumberField(fieldDefaultPrice)) alert += "Price \n";
 
         if (length == alert.length()) {

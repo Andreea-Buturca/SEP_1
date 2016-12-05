@@ -57,7 +57,6 @@ public class ReservationController extends Controller implements Initializable {
     public void controlData(ActionEvent actionEvent) throws IOException {
         String alert = "There are some mistakes: \n";
         int length = alert.length();
-        if (!validateNumberField(fieldNrPassengers)) alert += "Nr of passengers \n";
         if (tableTrips.getSelectionModel().getSelectedItem() == null) alert += "Select trip \n";
 
         if (length == alert.length()) {
@@ -140,7 +139,6 @@ public class ReservationController extends Controller implements Initializable {
         int length = alert.length();
 
         if (!validateEmptyField(fieldNamePassenger)) alert += "Name, ";
-        if (!validateEmptyField(fieldAddressPassenger)) alert += "Address, ";
         if (!validateEmptyDate(datepickerBirthday)) alert += "Birthday ";
 
         if (length == alert.length()) {
@@ -178,13 +176,16 @@ public class ReservationController extends Controller implements Initializable {
         listViewPassenger.setItems(items);
     }
     public void loadTrips(){
+        TripList trips ;
+        trips = DataHandler.getTrips();
         tableTrips.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        ObservableList<String> items = FXCollections.observableArrayList();
-        for (Trip trip : DataHandler.getTrips().getArrayTrip()) {
-            items.add(trip.toString());
+        ObservableList<Trip> items = FXCollections.observableArrayList();
+        if (trips.getSize() != 0) {
+            items.addAll(trips.getArrayTrip());
         }
         tableTrips.setItems(items);
     }
+
 
     public void initialize(URL location, ResourceBundle resources) {
         if (listViewCustomer != null) {
@@ -237,6 +238,8 @@ public class ReservationController extends Controller implements Initializable {
             double price = Double.parseDouble(labelTotalPrice.getText());
 
             Reservation reservation = new Reservation(trip, customer, passengers, price);
+            reservation.setDiscount(Double.parseDouble(fieldDiscount.getText()));
+            reservation.setPriceExtraServices(Integer.parseInt(fieldExtraServices.getText()));
             DataHandler.getReservationList().add(reservation);
             successdisplay("Created", "Reservation created.");
 

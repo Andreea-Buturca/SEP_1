@@ -72,9 +72,9 @@
                     <Label text="Date:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3"/>
                     <Label text="Departure:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                            GridPane.rowIndex="2"/>
-                    <TextField fx:id="destination" onAction="#searchTrip" prefWidth="200.0" GridPane.columnIndex="1"
+                    <TextField fx:id="destination" onKeyReleased="#searchTrip" prefWidth="200.0" GridPane.columnIndex="1"
                                GridPane.rowIndex="1"/>
-                    <TextField fx:id="departure" onAction="#searchTrip" prefWidth="200.0" GridPane.columnIndex="1"
+                    <TextField fx:id="departure" onKeyReleased="#searchTrip" prefWidth="200.0" GridPane.columnIndex="1"
                                GridPane.rowIndex="2"/>
                     <DatePicker fx:id="date" onAction="#searchTrip" prefHeight="25.0" prefWidth="219.0"
                                 GridPane.columnIndex="1" GridPane.rowIndex="3"/>
@@ -100,15 +100,15 @@
                            GridPane.rowIndex="5"/>
                     <Label text="Company name:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                            GridPane.rowIndex="2"/>
-                    <TextField fx:id="name" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
+                    <TextField fx:id="name" onKeyReleased="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
                                GridPane.rowIndex="1"/>
-                    <TextField fx:id="companyName" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
+                    <TextField fx:id="companyName" onKeyReleased="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
                                GridPane.rowIndex="2"/>
-                    <TextField fx:id="address" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
+                    <TextField fx:id="address" onKeyReleased="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
                                GridPane.rowIndex="3"/>
-                    <TextField fx:id="email" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
+                    <TextField fx:id="email" onKeyReleased="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
                                GridPane.rowIndex="4"/>
-                    <TextField fx:id="phone" onAction="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
+                    <TextField fx:id="phone" onKeyReleased="#searchCustomer" prefWidth="200.0" GridPane.columnIndex="1"
                                GridPane.rowIndex="5"/>
                 </GridPane>
             </HBox>

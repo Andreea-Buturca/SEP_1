@@ -4,21 +4,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.Model.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.text.ParseException;
+import java.util.ResourceBundle;
 
 /**
  * Created by MartinNtb on 27-Nov-16.
  */
-public class SearchController extends Controller {
+public class SearchController extends Controller implements Initializable {
 
 
     public ListView matchingReservations;
@@ -34,7 +38,13 @@ public class SearchController extends Controller {
     public Button removeReservation;
     public Button removeTrip;
 
-    public void searchCustomer(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        findReservations();
+        findTrips();
+    }
+
+    public void searchCustomer(KeyEvent keyEvent) throws FileNotFoundException, ParseException {
         findReservations();
     }
 
@@ -73,7 +83,7 @@ public class SearchController extends Controller {
         }
     }
 
-    public void searchTrip(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+    public void searchTrip(KeyEvent keyEvent) throws FileNotFoundException, ParseException {
        findTrips();
     }
 

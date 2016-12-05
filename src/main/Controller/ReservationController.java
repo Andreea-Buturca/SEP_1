@@ -55,8 +55,11 @@ public class ReservationController extends Controller implements Initializable {
     public TextArea noteReservation;
     public TextArea noteReservationWindowed;
     public ListView tripListReservation;
+    public Label reservationLabel;
 
     private String note;
+    private Reservation editing;
+    private Trip trip;
 
     public void controlData(ActionEvent actionEvent) throws IOException {
         String alert = "There are some mistakes: \n";
@@ -71,7 +74,11 @@ public class ReservationController extends Controller implements Initializable {
             }
 
             Stage stage = (Stage) mkReservationView.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../View/makeReservationDate.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/makeReservationDate.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            ReservationController editReservation = fxmlLoader.getController();
+            editReservation.setTrip((Trip) tripListReservation.getSelectionModel().getSelectedItem());
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -80,7 +87,6 @@ public class ReservationController extends Controller implements Initializable {
             if (!note.equals("")) {
                 openWindowedNote();
             }
-
 
 
         } else {
@@ -261,19 +267,26 @@ public class ReservationController extends Controller implements Initializable {
             //save it DataHandler. .....
             Customer customer = DataHandler.getCustomerList().findByName(listViewCustomer.getSelectionModel().getSelectedItem().toString());
             ArrayList<Passenger> passengers = DataHandler.getPassengerList().getArrayPassenger();
-            Trip trip = DataHandler.getTrips().findByDestination(tableTrips.getSelectionModel().getSelectedItem().toString()); // TODO: 12/4/2016 getters from the table!!
-            double price = Double.parseDouble(labelTotalPrice.getText());
+            String [] priceLine = labelTotalPrice.getText().split(" ");
+            double price = Double.parseDouble(priceLine[0]);
+
+            if (editing != null) {
+                DataHandler.getReservationList().remove(editing);
+            }
 
             Reservation reservation = new Reservation(trip, customer, passengers, price);
             reservation.setDiscount(Double.parseDouble(fieldDiscount.getText()));
             reservation.setPriceExtraServices(Integer.parseInt(fieldExtraServices.getText()));
             DataHandler.getReservationList().add(reservation);
-            successdisplay("Created", "Reservation created.");
-
-            Parent root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+            if (editing != null) {
+                successdisplay("Edited", "Reservation edited.");
+            } else {
+                successdisplay("Created", "Reservation created.");
+            }
+            /*Parent root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
             Scene scene = new Scene(root);
             Main.stage.setScene(scene);
-            Main.stage.show();
+            Main.stage.show();*/
 
         } else {
             //alert
@@ -285,7 +298,15 @@ public class ReservationController extends Controller implements Initializable {
         calculatePrice();
     }
 
+    private void setTrip(Trip trip)  {
+        this.trip = trip;
+    }
+
     public void setEditData(Reservation reservation) {
+        menu.setVisible(false);
+        reservationLabel.setText("Edit Reservation");
+        buttonSaveReservation.setText("Edit Reservation");
+
         fieldNameCustomer.setText(reservation.getCustomer().getName());
         fieldNameCompany.setText(reservation.getReservationByCompany());
         fieldAddressCustomer.setText(reservation.getReservationByCustomerAddress());
@@ -302,6 +323,8 @@ public class ReservationController extends Controller implements Initializable {
         if (reservation.getDiscount() != 0) {
             fieldDiscount.setText(String.valueOf(reservation.getDiscount()));
         }
+
+        editing = reservation;
 /*
         public Button mkReservationView;
         public TextField fieldDestination;

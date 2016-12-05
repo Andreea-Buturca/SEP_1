@@ -55,21 +55,21 @@ public class Controller implements Initializable {
     public Button addChauffeur;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        showList();
+        if (tripList != null) {
+            showList();
+        }
+        System.out.println(DataHandler.getReservationList().getArrayReservation().toString());
     }
 
     private void showList() {
-        if (tripList!=null){
-            TripList trips = DataHandler.getTrips();
-            ObservableList<Trip> data = FXCollections.observableArrayList();
-            for(int i=0;i<trips.getSize();i++){
-                data.add(trips.get(i));
-            }
-            tripList.setItems(data);
+        TripList trips = DataHandler.getTrips();
+        ObservableList<Trip> data = FXCollections.observableArrayList();
+        for (int i = 0; i < trips.getSize(); i++) {
+            data.add(trips.get(i));
         }
+        tripList.setItems(data);
     }
 
     //todo how much he paid, times
@@ -141,7 +141,7 @@ public class Controller implements Initializable {
 
     }
 
-    protected void test(){
+    protected void test() {
     }
 
 

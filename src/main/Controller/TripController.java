@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import main.Main;
 import main.Model.*;
 
@@ -61,6 +62,8 @@ public class TripController extends Controller implements Initializable {
 
     //list for stops
     private DestinationList stops = new DestinationList();
+
+    private Trip oldTrip;
 
 
     @Override
@@ -154,8 +157,6 @@ public class TripController extends Controller implements Initializable {
 
             int distance = Integer.parseInt(fieldDistance.getText());
 
-            // TODO: 04-Dec-16 extra services
-
             Trip trip = new Trip(bus, chauffeur, pickUp, destination, distance, startDatePicker.getValue(), fieldStartTime.getText(), endDatePicker.getValue(), fieldEndTime.getText(), Integer.parseInt(fieldPrice.getText()));
 
             if (stops != null) {
@@ -176,9 +177,20 @@ public class TripController extends Controller implements Initializable {
                 trip.setTickets(true);
             }
 
-            DataHandler.getTrips().add(trip);
+            if (oldTrip != null) {
+                DataHandler.getTrips().remove(oldTrip);
+            }
 
-            successdisplay("Created", "Trip was created.");
+            DataHandler.getTrips().add(trip);
+            if (oldTrip != null) {
+                successdisplay("Edited", "Trip was edited.");
+
+                Stage stage = (Stage) accommodationCheckBox.getScene().getWindow();
+                stage.close();
+            }
+            else {
+                successdisplay("Created", "Trip was created.");
+            }
 
             Parent root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
             Scene scene = new Scene(root);
@@ -212,7 +224,7 @@ public class TripController extends Controller implements Initializable {
         chauffeurs = DataHandler.getChauffeurList();
 
         if (validateEmptyField(fieldDistance) && validateNumberField(fieldDistance)) {
-             chauffeurs = chauffeurs.getAllByPrefferedDistance(Integer.parseInt(fieldDistance.getText()));
+            chauffeurs = chauffeurs.getAllByPrefferedDistance(Integer.parseInt(fieldDistance.getText()));
         }
 
 
@@ -220,11 +232,11 @@ public class TripController extends Controller implements Initializable {
             String[] lineToken = fieldStartTime.getText().split(":");
             int hours = Integer.parseInt(lineToken[0]);
             int minutes = Integer.parseInt(lineToken[1]);
-            Date dateStart = new Date(startDatePicker.getValue().getYear()-1900, startDatePicker.getValue().getMonthValue(), startDatePicker.getValue().getDayOfMonth(), hours, minutes);
+            Date dateStart = new Date(startDatePicker.getValue().getYear() - 1900, startDatePicker.getValue().getMonthValue(), startDatePicker.getValue().getDayOfMonth(), hours, minutes);
             lineToken = fieldEndTime.getText().split(":");
             hours = Integer.parseInt(lineToken[0]);
             minutes = Integer.parseInt(lineToken[1]);
-            Date dateEnd = new Date(endDatePicker.getValue().getYear()-1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
+            Date dateEnd = new Date(endDatePicker.getValue().getYear() - 1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
             chauffeurs.getAvailable(dateStart, dateEnd);
             //chauffeurs.byprefference
         }
@@ -254,11 +266,11 @@ public class TripController extends Controller implements Initializable {
             String[] lineToken = fieldStartTime.getText().split(":");
             int hours = Integer.parseInt(lineToken[0]);
             int minutes = Integer.parseInt(lineToken[1]);
-            Date dateStart = new Date(startDatePicker.getValue().getYear()-1900, startDatePicker.getValue().getMonthValue(), startDatePicker.getValue().getDayOfMonth(), hours, minutes);
+            Date dateStart = new Date(startDatePicker.getValue().getYear() - 1900, startDatePicker.getValue().getMonthValue(), startDatePicker.getValue().getDayOfMonth(), hours, minutes);
             lineToken = fieldEndTime.getText().split(":");
             hours = Integer.parseInt(lineToken[0]);
             minutes = Integer.parseInt(lineToken[1]);
-            Date dateEnd = new Date(endDatePicker.getValue().getYear()-1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
+            Date dateEnd = new Date(endDatePicker.getValue().getYear() - 1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
             buses.getAvailable(dateStart, dateEnd);
         }
 
@@ -367,6 +379,8 @@ public class TripController extends Controller implements Initializable {
         menu.setVisible(false);
         tourLabel.setText("Edit Trip");
         CreateTourBtn.setText("Edit");
+
+        oldTrip = trip;
 
         fieldStartTime.setText(trip.getTimeStart());
         fieldEndTime.setText(trip.getTimeEnd());

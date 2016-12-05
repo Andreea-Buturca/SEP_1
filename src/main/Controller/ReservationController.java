@@ -287,7 +287,7 @@ public class ReservationController extends Controller implements Initializable {
     }
 
     public void setEditData(Reservation reservation) {
-fieldNameCustomer.setText(reservation.getReservationByCustomer().getName());
+fieldNameCustomer.setText(reservation.getCustomer().getName());
 fieldNameCompany.setText(reservation.getReservationByCompany());
 fieldAddressCustomer.setText(reservation.getReservationByCustomerAddress());
 fieldEmailCustomer.setText(reservation.getReservationByCustomerEmail());

@@ -29,7 +29,7 @@ public class ReservationList implements Serializable {
     }
     public Reservation getReservationByCompany(String companyName) {
         for (int i = 0; i < reservations.size(); i++) {
-            if (this.reservations.get(i).getReservationByCustomer().getCompanyName().equals(companyName))
+            if (this.reservations.get(i).getReservationByCompany().equals(companyName))
                 return this.reservations.get(i);
         }
         return null;

@@ -39,7 +39,7 @@ public class Reservation implements Serializable {
     }
     public String getReservationByCustomerEmail(){ return this.customer.getEmail(); }
     public String getReservationByCustomerPhone(){ return this.customer.getEmail(); }
-    //public Passenger getReservationByPassenger() { return this.passengers. }
+ //   public String getReservationByPassenger() { return this.passengers.g }
 
     public Destination getReservationDestination() {
         return this.trip.getDestination();

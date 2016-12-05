@@ -40,7 +40,7 @@ public class Controller implements Initializable {
     public Button mkReservation;
     public Button findTrip;
     //tripList
-    public TableView tripsTable;
+    public ListView tripList;
     public TableColumn departureCol;
     public TableColumn destinationCol;
     public TableColumn durationCol;

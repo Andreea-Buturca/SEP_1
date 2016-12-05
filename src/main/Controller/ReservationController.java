@@ -63,7 +63,7 @@ public class ReservationController extends Controller implements Initializable {
     public void controlData(ActionEvent actionEvent) throws IOException {
         String alert = "There are some mistakes: \n";
         int length = alert.length();
-     //   if (tableTrips.getSelectionModel().getSelectedItem() == null) alert += "Select trip \n";
+        //   if (tableTrips.getSelectionModel().getSelectedItem() == null) alert += "Select trip \n";
 
         if (length == alert.length()) {
             if (noteReservation != null) {
@@ -82,7 +82,6 @@ public class ReservationController extends Controller implements Initializable {
             if (note != null) {
                 openWindowedNote();
             }
-
 
 
         } else {
@@ -288,8 +287,12 @@ public class ReservationController extends Controller implements Initializable {
     }
 
     public void setEditData(Reservation reservation) {
-
-
+fieldNameCustomer.setText(reservation.getReservationByCustomer().getName());
+fieldNameCompany.setText(reservation.getReservationByCompany());
+fieldAddressCustomer.setText(reservation.getReservationByCustomerAddress());
+fieldEmailCustomer.setText(reservation.getReservationByCustomerEmail());
+fieldPhoneCustomer.setText(reservation.getReservationByCustomerPhone());
+//fieldNamePassenger.setText(reservation.getReservationPassengers());
 
 
 /*
@@ -322,9 +325,9 @@ public class ReservationController extends Controller implements Initializable {
         */
 
     }
+
+
 }
-
-
 
 
 

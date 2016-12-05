@@ -38,7 +38,7 @@ public class SearchController extends Controller {
         findReservations();
     }
 
-    private void findReservations(){
+    private void findReservations() {
         if (name != null) {
             if (companyName != null) {
                 if (address != null) {
@@ -57,8 +57,8 @@ public class SearchController extends Controller {
                                 ReservationList reservations = DataHandler.getReservationList();
                                 ObservableList<Reservation> items = FXCollections.observableArrayList();
                                 for (int i = 0; i < matching.getSize(); i++) {
-                                    for (int j=0;j<reservations.getSize();j++){
-                                        if (reservations.getReservation(j).getCustomer().equals(matching.getCustomer(i))){
+                                    for (int j = 0; j < reservations.getSize(); j++) {
+                                        if (reservations.getReservation(j).getCustomer().equals(matching.getCustomer(i))) {
                                             items.add(reservations.getReservation(j));
                                         }
                                     }
@@ -74,47 +74,42 @@ public class SearchController extends Controller {
     }
 
     public void searchTrip(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
-        if (destination != null) {
-            if (departure != null) {
-                if (date != null) {
-                    if (matchingTrips != null) {
-                        TripList matching = DataHandler.getTrips();
-                        if (destination.getText() != null && (!destination.getText().equals("")))
-                            matching = matching.findAllByDestination(destination.getText());
-                        if (departure.getText() != null && (!departure.getText().equals("")))
-                            matching = matching.findAllByDeparture(departure.getText());
-                        if (date.getValue() != null)
-                            matching = matching.findAllByDate(date.getValue());
-                        ObservableList<String> items = FXCollections.observableArrayList();
-                        for (int i = 0; i < matching.getSize(); i++) {
-                            items.add(matching.get(i).toString());
-                        }
-                        matchingTrips.setItems(items);
-                    }
-                }
+       findTrips();
+    }
 
+    private void findTrips(){
+        if (matchingTrips != null) {
+            TripList matching = DataHandler.getTrips();
+            if (destination.getText() != null && (!destination.getText().equals("")))
+                matching = matching.findAllByDestination(destination.getText());
+            if (departure.getText() != null && (!departure.getText().equals("")))
+                matching = matching.findAllByDeparture(departure.getText());
+            if (date.getValue() != null)
+                matching = matching.findAllByDate(date.getValue());
+            ObservableList<Trip> items = FXCollections.observableArrayList();
+            for (int i = 0; i < matching.getSize(); i++) {
+                items.add(matching.get(i));
             }
+            matchingTrips.setItems(items);
         }
     }
 
     public void removeTrip(ActionEvent actionEvent) {
-        ObservableList<String> selected;
+        ObservableList<Trip> selected;
         selected = matchingTrips.getSelectionModel().getSelectedItems();
-        for (String aSelected : selected) {
-            System.out.println(aSelected.toString());
-            DataHandler.getTrips().getArrayTrip().remove(DataHandler.getTrips().findByToString(aSelected.toString()));
+        for (Trip aSelected : selected) {
+            DataHandler.getTrips().getArrayTrip().remove(aSelected);
         }
+        findTrips();
     }
 
     public void removeReservation(ActionEvent actionEvent) {
-        ObservableList<String> selected;
+        ObservableList<Reservation> selected;
         selected = matchingReservations.getSelectionModel().getSelectedItems();
-        for (String aSelected : selected) {
-            String[] lineToken = aSelected.split(":");
-            String phone = lineToken[3].trim();
-            System.out.println(phone);
-            DataHandler.getCustomerList().remove(DataHandler.getCustomerList().findByPhone(phone));
+        for (Reservation aSelected : selected) {
+            DataHandler.getReservationList().remove(aSelected);
         }
+        findReservations();
     }
 
     public void editReservation(ActionEvent actionEvent) throws IOException {
@@ -132,17 +127,19 @@ public class SearchController extends Controller {
     }
 
     public void editTrip(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/createTour.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        Scene scene = new Scene(root, 1000, 600);
-        Stage window = new Stage();
-        TripController tripController = fxmlLoader.<TripController>getController();
-        tripController.setEditData((Trip) DataHandler.getTrips().get(0));
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Edit trip");
-        window.setScene(scene);
-        window.setResizable(false);
-        window.showAndWait();
+        if (matchingTrips.getSelectionModel().getSelectedItem() != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/createTour.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Scene scene = new Scene(root, 1000, 600);
+            Stage window = new Stage();
+            TripController tripController = fxmlLoader.<TripController>getController();
+            tripController.setEditData((Trip) matchingTrips.getSelectionModel().getSelectedItem());
+            window.initModality(Modality.APPLICATION_MODAL);
+            window.setTitle("Edit trip");
+            window.setScene(scene);
+            window.setResizable(false);
+            window.showAndWait();
+        }
     }
 }
 

@@ -64,6 +64,10 @@ public class ReservationList implements Serializable {
         return result;
     }
 
+    public void remove(Reservation reservation){
+        reservations.remove(reservation);
+    }
+
     public int getSize(){
         return reservations.size();
     }

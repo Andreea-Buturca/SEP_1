@@ -59,18 +59,23 @@ public class Person implements Serializable {
 
     public String toString() {
         String email = "";
-        if (this.email != null) {
+        System.out.println(this.email);
+        if (!this.email.equals("")) {
             email += ", email: " + this.email;
         }
         String phone = "";
         if (this.phone != null) {
             phone += ", phone: " + this.phone;
         }
+        String address = "";
+        if(!this.address.equals("")){
+            address +=  ", address: " + this.address;
+        }
         if (this.dateOfBirth != null) {
             SimpleDateFormat ft = new SimpleDateFormat("dd/MM/yyyy");
-            return this.name + ", address: " + this.address + email + phone + ", birthday: " + ft.format(this.dateOfBirth);
+            return this.name + address + email + phone + ", birthday: " + ft.format(this.dateOfBirth);
         } else {
-            return this.name + ", address: " + this.address + email + phone;
+            return this.name + address + email + phone;
         }
     }
 }

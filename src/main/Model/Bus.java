@@ -7,8 +7,8 @@ import java.io.Serializable;
  */
 public abstract class Bus implements Serializable{
 
-    private String registrationPlate;
-    private int seatPlaces;
+    private final String registrationPlate;
+    private final int seatPlaces;
 
 
     public Bus(String registrationPlate, int seatPlaces) {
@@ -37,8 +37,7 @@ public abstract class Bus implements Serializable{
 
         Bus bus = (Bus) o;
 
-        if (seatPlaces != bus.seatPlaces) return false;
-        return registrationPlate.equals(bus.registrationPlate);
+        return seatPlaces == bus.seatPlaces && registrationPlate.equals(bus.registrationPlate);
     }
 
     public abstract String getBusType();

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
+<?import javafx.scene.text.Font?>
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.BusController">
   <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
     <bottom>
@@ -23,36 +20,35 @@
         </padding>
         <top>
           <VBox minHeight="55.0" prefHeight="560.0" prefWidth="990.0">
-            <children>
-              <Label alignment="CENTER" prefHeight="50.0" prefWidth="1010.0" text="VIA Bus" textAlignment="CENTER">
-                <font>
-                  <Font size="20.0" />
-                </font>
-                <VBox.margin>
-                  <Insets />
-                </VBox.margin>
-              </Label>
-              <Label alignment="CENTER" prefWidth="990.0" text="Bus List">
-                <VBox.margin>
-                  <Insets bottom="10.0" fx:id="x2" />
-                </VBox.margin>
-              </Label>
-              <ListView fx:id="busListview" prefHeight="402.0" prefWidth="990.0" />
-              <BorderPane prefHeight="77.0" prefWidth="990.0">
-                <left>
-                  <Button id="addBus" fx:id="addBusView" mnemonicParsing="false" onMouseClicked="#changeView" text="Add Bus" />
-                </left>
-                <padding>
-                  <Insets left="350.0" right="350.0" top="30.0" />
-                </padding>
-                <right>
-                  <Button fx:id="deleteBus" mnemonicParsing="false" onAction="#deleteBus" text="Delete Bus" />
-                </right>
-              </BorderPane>
-            </children>
             <padding>
-              <Insets bottom="20.0" />
+              <Insets bottom="20.0"/>
             </padding>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="1010.0" text="VIA Bus" textAlignment="CENTER">
+              <font>
+                <Font size="20.0"/>
+              </font>
+              <VBox.margin>
+                <Insets/>
+              </VBox.margin>
+            </Label>
+            <Label alignment="CENTER" prefWidth="990.0" text="Bus List">
+              <VBox.margin>
+                <Insets bottom="10.0" fx:id="x2"/>
+              </VBox.margin>
+            </Label>
+            <ListView fx:id="busListview" prefHeight="402.0" prefWidth="990.0"/>
+            <BorderPane prefHeight="77.0" prefWidth="990.0">
+              <left>
+                <Button id="addBus" fx:id="addBusView" mnemonicParsing="false" onMouseClicked="#changeView"
+                        text="Add Bus"/>
+              </left>
+              <padding>
+                <Insets left="350.0" right="350.0" top="30.0"/>
+              </padding>
+              <right>
+                <Button fx:id="deleteBus" mnemonicParsing="false" onAction="#deleteBus" text="Delete Bus"/>
+              </right>
+            </BorderPane>
           </VBox>
         </top>
       </BorderPane>

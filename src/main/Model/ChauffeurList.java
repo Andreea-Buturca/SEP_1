@@ -12,7 +12,7 @@ public class ChauffeurList implements Serializable {
     private ArrayList<Chauffeur> chauffeurs;
 
     public ChauffeurList() {
-        chauffeurs = new ArrayList<Chauffeur>();
+        chauffeurs = new ArrayList<>();
     }
 
     public int getSize() {
@@ -43,26 +43,26 @@ public class ChauffeurList implements Serializable {
     }
 
     public Chauffeur getChauffeur(Chauffeur chauffeur) {
-        for (int i = 0; i < chauffeurs.size(); i++) {
-            if (chauffeurs.get(i).equals(chauffeur))
-                return chauffeurs.get(i);
+        for (Chauffeur chauffeur1 : chauffeurs) {
+            if (chauffeur1.equals(chauffeur))
+                return chauffeur1;
         }
         return null;
     }
 
     public Chauffeur getByName(String name) {
-        for (int i = 0; i < chauffeurs.size(); i++) {
-            if (chauffeurs.get(i).getName().equals(name))
-                return chauffeurs.get(i);
+        for (Chauffeur chauffeur : chauffeurs) {
+            if (chauffeur.getName().equals(name))
+                return chauffeur;
         }
         return null;
     }
 
     public ChauffeurList getAllByName(String name) {
         ChauffeurList result = new ChauffeurList();
-        for (int i = 0; i < chauffeurs.size(); i++) {
-            if (chauffeurs.get(i).getName().equals(name))
-                result.add(chauffeurs.get(i));
+        for (Chauffeur chauffeur : chauffeurs) {
+            if (chauffeur.getName().equals(name))
+                result.add(chauffeur);
         }
         return result;
     }
@@ -78,17 +78,17 @@ public class ChauffeurList implements Serializable {
 
 
     public Chauffeur getChauffeurByID(int ID) {
-        for (int i = 0; i < chauffeurs.size(); i++) {
-            if (chauffeurs.get(i).getEmployeeID() == ID)
-                return chauffeurs.get(i);
+        for (Chauffeur chauffeur : chauffeurs) {
+            if (chauffeur.getEmployeeID() == ID)
+                return chauffeur;
         }
         return null;
     }
 
     public Chauffeur getChauffeurByPreferredDistance(int preferredDistance) {
-        for (int i = 0; i < chauffeurs.size(); i++) {
-            if (chauffeurs.get(i).getEmployeeID() == preferredDistance)
-                return chauffeurs.get(i);
+        for (Chauffeur chauffeur : chauffeurs) {
+            if (chauffeur.getEmployeeID() == preferredDistance)
+                return chauffeur;
         }
         return null;
     }
@@ -123,12 +123,11 @@ public class ChauffeurList implements Serializable {
         ChauffeurList result = new ChauffeurList();
         TripList trips = DataHandler.getTrips();
         for (int i = 0; i < trips.getArrayTrip().size(); i++) {
-            for (int j = 0; j < chauffeurs.size(); j++) {
-                if (chauffeurs.get(j).equals(trips.getArrayTrip().get(i).getBus())) {
+            for (Chauffeur chauffeur : chauffeurs) {
+                if (chauffeur.equals(trips.getArrayTrip().get(i).getBus())) {
                     if (((from.before(trips.getArrayTrip().get(i).getDateObjStart())) && (to.before(trips.getArrayTrip().get(i).getDateObjStart())))
-                            || ((from.after(trips.getArrayTrip().get(i).getDateObjEnd())) && (to.after(trips.getArrayTrip().get(i).getDateObjEnd()))))
-                    {
-                        result.add(chauffeurs.get(j));
+                            || ((from.after(trips.getArrayTrip().get(i).getDateObjEnd())) && (to.after(trips.getArrayTrip().get(i).getDateObjEnd())))) {
+                        result.add(chauffeur);
                     }
                 }
             }

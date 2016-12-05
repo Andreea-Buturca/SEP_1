@@ -23,9 +23,9 @@ public class CustomerList implements Serializable {
     }
 
     public Customer findByName(String name) {
-        for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getName().equals(name))
-                return customers.get(i);
+        for (Customer customer : customers) {
+            if (customer.getName().equals(name))
+                return customer;
         }
         return null;
     }
@@ -40,64 +40,64 @@ public class CustomerList implements Serializable {
 
     public CustomerList findAllByName(String name) {
         CustomerList result = new CustomerList();
-        for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getName().equals(name))
-                result.add(customers.get(i));
+        for (Customer customer : customers) {
+            if (customer.getName().equals(name))
+                result.add(customer);
         }
         return result;
     }
 
     public CustomerList findAllByAddress(String address) {
         CustomerList result = new CustomerList();
-        for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getAddress().equals(address))
-                result.add(customers.get(i));
+        for (Customer customer : customers) {
+            if (customer.getAddress().equals(address))
+                result.add(customer);
         }
         return result;
     }
 
     public Customer findByPhone(String phone) {
         System.out.println(phone);
-        for (int i = 0; i < customers.size(); i++) {
-            System.out.println(customers.get(i).getPhone());
-            if (customers.get(i).getPhone().equals(phone))
-                System.out.println(customers.get(i));
-                return customers.get(i);
+        for (Customer customer : customers) {
+            System.out.println(customer.getPhone());
+            if (customer.getPhone().equals(phone))
+                System.out.println(customer);
+            return customer;
         }
         return null;
     } // TODO: 05-Dec-16 this has weird behavior
 
     public CustomerList findAllByPhone(String phone) {
         CustomerList result = new CustomerList();
-        for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getPhone().equals(phone))
-                result.add(customers.get(i));
+        for (Customer customer : customers) {
+            if (customer.getPhone().equals(phone))
+                result.add(customer);
         }
         return result;
     }
 
     public CustomerList findAllByEmail(String email) {
         CustomerList result = new CustomerList();
-        for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getEmail().equals(email))
-                result.add(customers.get(i));
+        for (Customer customer : customers) {
+            if (customer.getEmail().equals(email))
+                result.add(customer);
         }
         return result;
     }
 
     public CustomerList findAllByCompanyName(String companyName) {
         CustomerList result = new CustomerList();
-        for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getCompanyName().equals(companyName))
-                result.add(customers.get(i));
+        for (Customer customer : customers) {
+            if (customer.getCompanyName().equals(companyName))
+                result.add(customer);
         }
         return result;
     }
 
     public Customer findByCompany(String company) {
-        for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getCompanyName().equals(company))
-                return customers.get(i);
+        for (Customer customer : customers) {
+            if (customer.getCompanyName().equals(company))
+                return customer;
         }
         return null;
     }

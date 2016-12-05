@@ -114,11 +114,11 @@ public class SearchController extends Controller {
 
     public void editReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/makeReservationDate.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
+        Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1000, 600);
         Stage window = new Stage();
-        ReservationController reservationController = fxmlLoader.<ReservationController>getController();
-        reservationController.setEditData((Reservation) DataHandler.getReservationList().getArrayReservation().get(0));
+        ReservationController reservationController = fxmlLoader.getController();
+        reservationController.setEditData(DataHandler.getReservationList().getArrayReservation().get(0));
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Edit trip");
         window.setScene(scene);

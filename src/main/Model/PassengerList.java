@@ -18,25 +18,25 @@ public class PassengerList implements Serializable {
     }
 
     public Passenger findByName(String name) {
-        for (int i = 0; i < passengers.size(); i++) {
-            if (passengers.get(i).getName().equals(name))
-                return passengers.get(i);
+        for (Passenger passenger : passengers) {
+            if (passenger.getName().equals(name))
+                return passenger;
         }
         return null;
     }
 
     public Passenger findByPhone(String phone) {
-        for (int i = 0; i < passengers.size(); i++) {
-            if (passengers.get(i).getPhone().equals(phone))
-                return passengers.get(i);
+        for (Passenger passenger : passengers) {
+            if (passenger.getPhone().equals(phone))
+                return passenger;
         }
         return null;
     }
 
     public Passenger findByEmail(String email) {
-        for (int i = 0; i < passengers.size(); i++) {
-            if (passengers.get(i).getEmail().equals(email))
-                return passengers.get(i);
+        for (Passenger passenger : passengers) {
+            if (passenger.getEmail().equals(email))
+                return passenger;
         }
         return null;
     }

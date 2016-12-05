@@ -21,23 +21,23 @@ public class ReservationList implements Serializable {
     }
 
     public Reservation getReservationByCustomer(Customer customer) {
-        for (int i = 0; i < reservations.size(); i++) {
-            if (this.reservations.get(i).getCustomer().equals(customer))
-                return this.reservations.get(i);
+        for (Reservation reservation : reservations) {
+            if (reservation.getCustomer().equals(customer))
+                return reservation;
         }
         return null;
     }
     public Reservation getReservationByCompany(String companyName) {
-        for (int i = 0; i < reservations.size(); i++) {
-            if (this.reservations.get(i).getReservationByCompany().equals(companyName))
-                return this.reservations.get(i);
+        for (Reservation reservation : reservations) {
+            if (reservation.getReservationByCompany().equals(companyName))
+                return reservation;
         }
         return null;
     }
     public Reservation getReservationByDestination(Trip trip) {
-        for (int i = 0; i < reservations.size(); i++) {
-            if (reservations.get(i).getReservationByTrip().equals(trip))
-                return this.reservations.get(i);
+        for (Reservation reservation : reservations) {
+            if (reservation.getReservationByTrip().equals(trip))
+                return reservation;
         }
         return null;
     }
@@ -52,13 +52,13 @@ public class ReservationList implements Serializable {
 
     public ReservationList findAllReservationByDate(LocalDate date){
         ReservationList result = new ReservationList();
-        for (int i=0;i<reservations.size();i++){
+        for (Reservation reservation : reservations) {
             Calendar cal = Calendar.getInstance();
-            cal.setTime(reservations.get(i).getReservationTimeStart());
-            if ((cal.get(Calendar.YEAR)==date.getYear())
-                    &&(cal.get(Calendar.MONTH)==date.getMonthValue())
-                    &&(cal.get(Calendar.DAY_OF_MONTH)==date.getDayOfMonth())){
-                result.add(reservations.get(i));
+            cal.setTime(reservation.getReservationTimeStart());
+            if ((cal.get(Calendar.YEAR) == date.getYear())
+                    && (cal.get(Calendar.MONTH) == date.getMonthValue())
+                    && (cal.get(Calendar.DAY_OF_MONTH) == date.getDayOfMonth())) {
+                result.add(reservation);
             }
         }
         return result;
@@ -78,9 +78,9 @@ public class ReservationList implements Serializable {
 
     public ReservationList findAllReservationByDeparture(String departure) {
         ReservationList other = new ReservationList();
-        for (int i = 0; i < reservations.size(); i++) {
-            if (reservations.get(i).getReservationPickUpPoint().equals(departure)) {
-                other.add(reservations.get(i));
+        for (Reservation reservation : reservations) {
+            if (reservation.getReservationPickUpPoint().equals(departure)) {
+                other.add(reservation);
             }
         }
         return other;
@@ -88,9 +88,9 @@ public class ReservationList implements Serializable {
 
     public ReservationList findAllReservationByDestination(String destination) {
         ReservationList result = new ReservationList();
-        for (int i = 0; i < reservations.size(); i++) {
-            if (reservations.get(i).getReservationDestination().equals(destination)) {
-                result.add(reservations.get(i));
+        for (Reservation reservation : reservations) {
+            if (reservation.getReservationDestination().equals(destination)) {
+                result.add(reservation);
             }
         }
         return result;

@@ -38,69 +38,64 @@
         </bottom>
         <center>
           <GridPane alignment="CENTER" hgap="10.0" minHeight="29.0" prefHeight="404.0" prefWidth="879.0">
-            <children>
-              <Label alignment="CENTER_LEFT" text="Name:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
-              <Label alignment="CENTER_LEFT" text="Address:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-              <Label alignment="CENTER_LEFT" text="Email:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-              <TextField fx:id="fieldChauffeurAddAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-              <TextField fx:id="fieldChauffeurAddEmail" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-              <TextField fx:id="fieldChauffeurAddName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-              <TextField fx:id="fieldChauffeurAddPhone" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-              <TextField fx:id="fieldChauffeurAddId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-              <Label alignment="CENTER_LEFT" text="Phone:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-              <Label alignment="CENTER_LEFT" text="Date of Birthday:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-              <Label alignment="CENTER_LEFT" text="Employee ID:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-              <Label alignment="CENTER_LEFT" text="Vikar Chauffeur:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-              <Label alignment="CENTER_LEFT" text="Preferred:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
-              <CheckBox fx:id="checkBoxVikar" mnemonicParsing="false" text="" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                <children>
-                  <VBox minHeight="46.0" prefHeight="47.0" prefWidth="444.0">
-                    <children>
-                      <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="353.0" spacing="10.0">
-                        <children>
-                          <Label prefWidth="84.0" text="Distance:" />
-                          <CheckBox fx:id="checkBoxDistanceLong" mnemonicParsing="false" text="Long" />
-                          <CheckBox fx:id="checkBoxDistanceMedium" mnemonicParsing="false" prefWidth="97.0" text="Medium" />
-                          <CheckBox fx:id="checkBoxDistanceShort" mnemonicParsing="false" text="Short" />
-                        </children>
-                      </HBox>
-                      <HBox prefHeight="72.0" prefWidth="311.0" spacing="10.0">
-                        <children>
-                          <Label prefWidth="83.0" text="Bus Type:" />
-                          <CheckBox fx:id="checkBoxClasicBus" mnemonicParsing="false" text="Clasic" />
-                          <CheckBox fx:id="checkBoxMiniBus" mnemonicParsing="false" text="Mini" />
-                          <CheckBox fx:id="checkBoxPartyBus" mnemonicParsing="false" prefWidth="-1.0" text="Party" />
-                          <CheckBox fx:id="checkboxLuxuryBus" mnemonicParsing="false" text="Luxury" />
-                        </children>
-                      </HBox>
-                    </children>
-                  </VBox>
-                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="357.0" spacing="10.0">
-                    <children>
-                      <Label prefWidth="104.0" text="Work time:" />
-                      <CheckBox fx:id="checkBoxWeekend" mnemonicParsing="false" prefWidth="133.0" text="Weekend" />
-                      <CheckBox fx:id="checkBoxWeek" mnemonicParsing="false" text="Week" />
-                    </children>
-                  </HBox>
-                </children>
-              </HBox>
-                     <DatePicker fx:id="birthdayPicker" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            </children>
             <columnConstraints>
-              <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="153.0" />
-              <ColumnConstraints hgrow="SOMETIMES" maxWidth="845.0" minWidth="10.0" prefWidth="827.0" />
+              <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="153.0"/>
+              <ColumnConstraints hgrow="SOMETIMES" maxWidth="845.0" minWidth="10.0" prefWidth="827.0"/>
             </columnConstraints>
             <rowConstraints>
-              <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES"/>
+              <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES"/>
+              <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES"/>
+              <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES"/>
+              <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES"/>
+              <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES"/>
+              <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+              <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES"/>
             </rowConstraints>
+            <Label text="Name:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0"/>
+            <Label text="Address:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
+            <Label text="Email:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
+            <TextField fx:id="fieldChauffeurAddAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <TextField fx:id="fieldChauffeurAddEmail" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <TextField fx:id="fieldChauffeurAddName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <TextField fx:id="fieldChauffeurAddPhone" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <TextField fx:id="fieldChauffeurAddId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+            <Label text="Phone:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3"/>
+            <Label text="Date of Birthday:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4"/>
+            <Label text="Employee ID:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5"/>
+            <Label text="Vikar Chauffeur:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="6"/>
+            <Label text="Preferred:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="7"/>
+            <CheckBox fx:id="checkBoxVikar" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+              <VBox minHeight="46.0" prefHeight="47.0" prefWidth="444.0">
+                <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="353.0" spacing="10.0">
+                  <Label prefWidth="84.0" text="Distance:"/>
+                  <CheckBox fx:id="checkBoxDistanceLong" mnemonicParsing="false" text="Long"/>
+                  <CheckBox fx:id="checkBoxDistanceMedium" mnemonicParsing="false" prefWidth="97.0"
+                            text="Medium"/>
+                  <CheckBox fx:id="checkBoxDistanceShort" mnemonicParsing="false" text="Short"/>
+                </HBox>
+                <HBox prefHeight="72.0" prefWidth="311.0" spacing="10.0">
+                  <Label prefWidth="83.0" text="Bus Type:"/>
+                  <CheckBox fx:id="checkBoxClasicBus" mnemonicParsing="false" text="Clasic"/>
+                  <CheckBox fx:id="checkBoxMiniBus" mnemonicParsing="false" text="Mini"/>
+                  <CheckBox fx:id="checkBoxPartyBus" mnemonicParsing="false" text="Party"/>
+                  <CheckBox fx:id="checkboxLuxuryBus" mnemonicParsing="false" text="Luxury"/>
+                </HBox>
+              </VBox>
+              <HBox alignment="CENTER" prefHeight="70.0" prefWidth="357.0" spacing="10.0">
+                <Label prefWidth="104.0" text="Work time:"/>
+                <CheckBox fx:id="checkBoxWeekend" mnemonicParsing="false" prefWidth="133.0" text="Weekend"/>
+                <CheckBox fx:id="checkBoxWeek" mnemonicParsing="false" text="Week"/>
+              </HBox>
+            </HBox>
+            <DatePicker fx:id="birthdayPicker" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1"
+                        GridPane.rowIndex="4"/>
           </GridPane>
         </center>
         <padding>
@@ -108,24 +103,22 @@
         </padding>
         <top>
           <VBox minHeight="55.0" prefHeight="100.0" prefWidth="990.0">
-            <children>
-              <Label alignment="CENTER" prefHeight="50.0" prefWidth="1010.0" text="VIA Bus" textAlignment="CENTER">
-                <font>
-                  <Font size="20.0" />
-                </font>
-                <VBox.margin>
-                  <Insets />
-                </VBox.margin>
-              </Label>
-              <Label alignment="CENTER" prefWidth="1010.0" text="Add Chauffeur">
-                <VBox.margin>
-                  <Insets bottom="10.0" fx:id="x2" />
-                </VBox.margin>
-              </Label>
-            </children>
             <padding>
-              <Insets bottom="20.0" />
+              <Insets bottom="20.0"/>
             </padding>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="1010.0" text="VIA Bus" textAlignment="CENTER">
+              <font>
+                <Font size="20.0"/>
+              </font>
+              <VBox.margin>
+                <Insets/>
+              </VBox.margin>
+            </Label>
+            <Label alignment="CENTER" prefWidth="1010.0" text="Add Chauffeur">
+              <VBox.margin>
+                <Insets bottom="10.0" fx:id="x2"/>
+              </VBox.margin>
+            </Label>
           </VBox>
         </top>
       </BorderPane>

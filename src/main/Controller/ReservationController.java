@@ -8,10 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.Main;
 import main.Model.*;
@@ -80,7 +77,7 @@ public class ReservationController extends Controller implements Initializable {
             stage.setScene(scene);
             stage.show();
 
-            if (note != null) {
+            if (!note.equals("")) {
                 openWindowedNote();
             }
 

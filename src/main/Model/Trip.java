@@ -29,6 +29,9 @@ public class Trip implements Serializable {
     public Integer freeSpaces;
     private Date dateObjStart;
     private Date dateObjEnd;
+    private boolean food = false;
+    private boolean accommodation = false;
+    private boolean tickets  = false;
 
     public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Destination destination, int distance, LocalDate dateStart, String timeStart, LocalDate dateEnd,  String timeEnd, int price) {
         this.bus = bus;
@@ -87,6 +90,30 @@ public class Trip implements Serializable {
         privateString = "True";
         this.customer = customer;
         this.freeSpaces = 0;
+    }
+
+    public void setFood(boolean food) {
+        this.food = food;
+    }
+
+    public void setAccommodation(boolean accommodation) {
+        this.accommodation = accommodation;
+    }
+
+    public void setTickets(boolean tickets) {
+        this.tickets = tickets;
+    }
+
+    public boolean isFood() {
+        return food;
+    }
+
+    public boolean isAccommodation() {
+        return accommodation;
+    }
+
+    public boolean isTickets() {
+        return tickets;
     }
 
     public Bus getBus() {

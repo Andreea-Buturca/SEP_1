@@ -1,8 +1,6 @@
 package main.Model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -36,25 +34,25 @@ public class TripList implements Serializable {
     }
 
     public Trip findByDestination(String destination) {
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).getDestination().equals(destination))
-                return trips.get(i);
+        for (Trip trip : trips) {
+            if (trip.getDestination().equals(destination))
+                return trip;
         }
         return null;
     }
 
     public Trip findByStartDate(LocalDate date) {
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).getTimeStart().equals(date))
-                return trips.get(i);
+        for (Trip trip : trips) {
+            if (trip.getTimeStart().equals(date))
+                return trip;
         }
         return null;
     }
 
     public Trip findByPrice(double price) {
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).getPrice() == price)
-                return trips.get(i);
+        for (Trip trip : trips) {
+            if (trip.getPrice() == price)
+                return trip;
         }
         return null;
     }
@@ -64,9 +62,9 @@ public class TripList implements Serializable {
     }
 
     public Trip getTrip(Trip trip) {
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).equals(trip))
-                return trips.get(i);
+        for (Trip trip1 : trips) {
+            if (trip1.equals(trip))
+                return trip1;
         }
         return null;
     }
@@ -77,13 +75,13 @@ public class TripList implements Serializable {
 
     public TripList findAllByDate(LocalDate date) {
         TripList result = new TripList();
-        for (int i = 0; i < trips.size(); i++) {
+        for (Trip trip : trips) {
             Calendar cal = Calendar.getInstance();
-            cal.setTime(trips.get(i).getDateObjStart());
+            cal.setTime(trip.getDateObjStart());
             if ((cal.get(Calendar.YEAR) == date.getYear())
                     && (cal.get(Calendar.MONTH) == date.getMonthValue())
                     && (cal.get(Calendar.DAY_OF_MONTH) == date.getDayOfMonth())) {
-                result.add(trips.get(i));
+                result.add(trip);
             }
         }
         return result;
@@ -91,9 +89,9 @@ public class TripList implements Serializable {
 
     public TripList findAllByDeparture(String departure) {
         TripList result = new TripList();
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).getPickUpPoint().getPlace().equals(departure)) {
-                result.add(trips.get(i));
+        for (Trip trip : trips) {
+            if (trip.getPickUpPoint().getPlace().equals(departure)) {
+                result.add(trip);
             }
         }
         return result;
@@ -101,9 +99,9 @@ public class TripList implements Serializable {
 
     public TripList findAllByDestination(String destination) {
         TripList result = new TripList();
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).getDestination().getPlace().equals(destination)) {
-                result.add(trips.get(i));
+        for (Trip trip : trips) {
+            if (trip.getDestination().getPlace().equals(destination)) {
+                result.add(trip);
             }
         }
         return result;
@@ -112,18 +110,18 @@ public class TripList implements Serializable {
     public TripList findAllByPassengers(String nrOfPassangers) {
         int passengers = Integer.parseInt(nrOfPassangers);
         TripList result = new TripList();
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).getFreeSpaces()>passengers) {
-                result.add(trips.get(i));
+        for (Trip trip : trips) {
+            if (trip.getFreeSpaces() > passengers) {
+                result.add(trip);
             }
         }
         return result;
     }
 
     public Trip findByToString(String tripToString) {
-        for (int i = 0; i < trips.size(); i++) {
-            if (trips.get(i).toString().equals(tripToString)) {
-                return trips.get(i);
+        for (Trip trip : trips) {
+            if (trip.toString().equals(tripToString)) {
+                return trip;
             }
         }
         return null;
@@ -131,8 +129,7 @@ public class TripList implements Serializable {
 
     public String toString() {
         String result = "";
-        for (int i = 0; i < trips.size(); i++)
-            result += trips.get(i).toString() + "\n";
+        for (Trip trip : trips) result += trip.toString() + "\n";
         return result;
     }
 }

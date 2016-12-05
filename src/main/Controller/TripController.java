@@ -43,6 +43,9 @@ public class TripController extends Controller implements Initializable {
     public ListView stopsList;
     public TextField stopTimeField;
     public ListView chauffeurList;
+    public CheckBox foodCheckBox;
+    public CheckBox accommodationCheckBox;
+    public CheckBox ticketCheckBox;
 
     //Add customer
     public TextField fieldCustomerName;
@@ -159,6 +162,17 @@ public class TripController extends Controller implements Initializable {
             }
             if (checkPrivateTrip.isSelected() && customer != null) {
                 trip.setCustomer(customer);
+            }
+
+
+            if (foodCheckBox.isSelected()) {
+                trip.setFood(true);
+            }
+            if (accommodationCheckBox.isSelected()) {
+                trip.setAccommodation(true);
+            }
+            if (ticketCheckBox.isSelected()) {
+                trip.setTickets(true);
             }
 
             DataHandler.getTrips().add(trip);
@@ -358,6 +372,9 @@ public class TripController extends Controller implements Initializable {
         fieldDistance.setText(Integer.toString(trip.getDistance()));
         fieldPrice.setText(Integer.toString(trip.getPrice()));
         checkPrivateTrip.setSelected(trip.isPrivate());
+        foodCheckBox.setSelected(trip.isFood());
+        accommodationCheckBox.setSelected(trip.isAccommodation());
+        ticketCheckBox.setSelected(trip.isTickets());
 
         busListview.getSelectionModel().select(trip.getBus());
         busType.setValue(trip.getBus().getBusType());

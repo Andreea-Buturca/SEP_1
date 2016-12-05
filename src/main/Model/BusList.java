@@ -1,6 +1,5 @@
 package main.Model;
 
-import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,18 +41,18 @@ public class BusList implements Serializable {
     }
 
     public Bus findByRegplate(String regPlate) {
-        for (int i = 0; i < buses.size(); i++) {
-            if (buses.get(i).getRegistrationPlate().equals(regPlate))
-                return buses.get(i);
+        for (Bus buse : buses) {
+            if (buse.getRegistrationPlate().equals(regPlate))
+                return buse;
         }
         return null;
     }
 
     public BusList findAllByRegplate(String regPlate) {
         BusList result = new BusList();
-        for (int i = 0; i < buses.size(); i++) {
-            if (buses.get(i).getRegistrationPlate().equals(regPlate))
-                result.add(buses.get(i));
+        for (Bus buse : buses) {
+            if (buse.getRegistrationPlate().equals(regPlate))
+                result.add(buse);
         }
         return result;
     }
@@ -79,8 +78,8 @@ public class BusList implements Serializable {
 
     public String toString() {
         String result = "";
-        for (int i = 0; i < buses.size(); i++) {
-            result += buses.get(i).toString() + "\n";
+        for (Bus buse : buses) {
+            result += buse.toString() + "\n";
         }
         return result;
     }
@@ -89,11 +88,11 @@ public class BusList implements Serializable {
         BusList result = new BusList();
         TripList trips = DataHandler.getTrips();
         for (int i = 0; i < trips.getArrayTrip().size(); i++) {
-            for (int j = 0; j < buses.size(); j++) {
-                if (buses.get(j).equals(trips.getArrayTrip().get(i).getBus())) {
+            for (Bus buse : buses) {
+                if (buse.equals(trips.getArrayTrip().get(i).getBus())) {
                     if (((from.before(trips.getArrayTrip().get(i).getDateObjStart())) && (to.before(trips.getArrayTrip().get(i).getDateObjStart())))
                             || ((from.after(trips.getArrayTrip().get(i).getDateObjEnd())) && (to.after(trips.getArrayTrip().get(i).getDateObjEnd())))) {
-                        result.add(buses.get(j));
+                        result.add(buse);
                     }
                 }
             }

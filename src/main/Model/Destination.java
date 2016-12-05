@@ -29,7 +29,11 @@ public class Destination implements Serializable {
 
     @Override
     public String toString() {
-        return place;
+        String time = "";
+        if (stopTime != null) {
+            time = ", " + stopTime + "min";
+        }
+        return place + time;
     }
 
 

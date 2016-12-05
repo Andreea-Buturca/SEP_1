@@ -1,6 +1,7 @@
 package main.Model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -37,10 +38,32 @@ public class Reservation implements Serializable {
     public String getReservationByCustomerAddress() {
         return this.customer.getAddress();
     }
+    public String getReservationByPassengerAddress(){
+        for (int i = 0; i < this.passengers.size(); i++) {
+            return this.passengers.get(i).getAddress();
+        }
+        return null;
+    }
+    public LocalDate getReservationByPassengerBirthday(){
+        for (int i = 0; i < this.passengers.size(); i++) {
+            return this.passengers.get(i).getDateOfBirth();
+        }
+        return null;
+    }
     public String getReservationByCustomerEmail(){ return this.customer.getEmail(); }
+    public String getReservationByPassengerEmail(){
+        for (int i = 0; i < this.passengers.size(); i++) {
+            return this.passengers.get(i).getEmail();
+        }
+        return null;
+    }
     public String getReservationByCustomerPhone(){ return this.customer.getEmail(); }
- //   public String getReservationByPassenger() { return this.passengers.g }
-
+    public String getReservationByPassengerName() {
+        for (int i = 0; i < this.passengers.size(); i++) {
+            return this.passengers.get(i).getPassengerName();
+        }
+        return null;
+    }
     public Destination getReservationDestination() {
         return this.trip.getDestination();
     }

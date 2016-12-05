@@ -1,6 +1,7 @@
 package main.Model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,7 +18,7 @@ public class Chauffeur extends Person implements Serializable {
     private ArrayList<String> busType;
 
 
-    public Chauffeur(String name, String address, String email, String phone, Date dateOfBirth, int employeeID, boolean isVikar) {
+    public Chauffeur(String name, String address, String email, String phone, LocalDate dateOfBirth, int employeeID, boolean isVikar) {
         super(name, address, email, phone, dateOfBirth);
         if (this.employeeID >= 10000 & this.employeeID <= 99999) {
             this.employeeID = employeeID;

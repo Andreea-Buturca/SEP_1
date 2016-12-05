@@ -13,6 +13,7 @@ import main.Model.*;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -78,7 +79,7 @@ public class ChauffeurController extends Controller implements Initializable {
             String address = fieldChauffeurAddAddress.getText();
             String email = fieldChauffeurAddEmail.getText();
             String phone = fieldChauffeurAddPhone.getText();
-            Date birthday = new Date(birthdayPicker.getValue().getYear()-1900,birthdayPicker.getValue().getMonthValue(),birthdayPicker.getValue().getDayOfMonth());
+            LocalDate birthday = birthdayPicker.getValue();
             int chauffeurID = Integer.parseInt(fieldChauffeurAddId.getText());
             boolean isVikar = false;
 

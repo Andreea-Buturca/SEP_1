@@ -2,6 +2,7 @@ package main.Model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ public class Person implements Serializable {
     private String address;
     private String email;
     private String phone;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     public Person(String name, String address, String email, String phone) {
         this.name = name;
@@ -22,7 +23,7 @@ public class Person implements Serializable {
         this.phone = phone;
     }
 
-    public Person(String name, String address, String email, String phone, Date dateOfBirth) {
+    public Person(String name, String address, String email, String phone, LocalDate dateOfBirth) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -30,7 +31,7 @@ public class Person implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Person(String name, String address, String email, Date dateOfBirth) {
+    public Person(String name, String address, String email, LocalDate dateOfBirth) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -53,7 +54,7 @@ public class Person implements Serializable {
         return phone;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -72,8 +73,7 @@ public class Person implements Serializable {
             address +=  ", address: " + this.address;
         }
         if (this.dateOfBirth != null) {
-            SimpleDateFormat ft = new SimpleDateFormat("dd/MM/yyyy");
-            return this.name + address + email + phone + ", birthday: " + ft.format(this.dateOfBirth);
+            return this.name + address + email + phone + ", birthday: " + this.dateOfBirth;
         } else {
             return this.name + address + email + phone;
         }

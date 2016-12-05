@@ -1,5 +1,7 @@
 package main.Controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import main.Main;
+import main.Model.DataHandler;
+import main.Model.Reservation;
+import main.Model.Trip;
+import main.Model.TripList;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,6 +58,18 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        showList();
+    }
+
+    private void showList() {
+        if (tripList!=null){
+            TripList trips = DataHandler.getTrips();
+            ObservableList<Trip> data = FXCollections.observableArrayList();
+            for(int i=0;i<trips.getSize();i++){
+                data.add(trips.get(i));
+            }
+            tripList.setItems(data);
+        }
     }
 
     //todo how much he paid, times

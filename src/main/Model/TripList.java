@@ -8,19 +8,31 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * Created by andreea on 12/4/2016.
+ * Created by Marek on 04-Dec-16.
  */
 
 public class TripList implements Serializable {
 
-    private ArrayList<Trip> trips = new ArrayList<>();
-
+    private ArrayList<Trip> trips;
 
     public TripList() {
+        this.trips = new ArrayList<>();
     }
 
     public void add(Trip trip) {
         this.trips.add(trip);
+    }
+
+    public int getSize() {
+        return trips.size();
+    }
+
+    public void remove(Trip trip) {
+        trips.remove(trip);
+    }
+
+    public Trip get(int index) {
+        return trips.get(index);
     }
 
     public Trip findByDestination(String destination) {
@@ -51,35 +63,26 @@ public class TripList implements Serializable {
         return trips;
     }
 
-public Trip getTrip(Trip trip){
-        for(int i=0;i<trips.size();i++)
-        {
-            if(trips.get(i).equals(trip))
+    public Trip getTrip(Trip trip) {
+        for (int i = 0; i < trips.size(); i++) {
+            if (trips.get(i).equals(trip))
                 return trips.get(i);
         }
         return null;
-}
-public int getTripListSize(){
-    return this.trips.size();
-}
-    public String toString() {
-        String s = "";
-        for (int i = 0; i < trips.size(); i++) {
-            s += trips.get(i);
-            if (i < trips.size() - 1)
-                s += "\n";
-        }
-        return s;
     }
 
-    public TripList findAllByDate(LocalDate date){
+    public int getTripListSize() {
+        return this.trips.size();
+    }
+
+    public TripList findAllByDate(LocalDate date) {
         TripList result = new TripList();
-        for (int i=0;i<trips.size();i++){
+        for (int i = 0; i < trips.size(); i++) {
             Calendar cal = Calendar.getInstance();
-            cal.setTime(trips.get(i).getTimeStart());
-            if ((cal.get(Calendar.YEAR)==date.getYear())
-                    &&(cal.get(Calendar.MONTH)==date.getMonthValue())
-                    &&(cal.get(Calendar.DAY_OF_MONTH)==date.getDayOfMonth())){
+            cal.setTime(trips.get(i).getDateObjStart());
+            if ((cal.get(Calendar.YEAR) == date.getYear())
+                    && (cal.get(Calendar.MONTH) == date.getMonthValue())
+                    && (cal.get(Calendar.DAY_OF_MONTH) == date.getDayOfMonth())) {
                 result.add(trips.get(i));
             }
         }
@@ -104,6 +107,21 @@ public int getTripListSize(){
             }
         }
         return result;
+    }
 
+    public Trip findByToString(String tripToString) {
+        for (int i = 0; i < trips.size(); i++) {
+            if (trips.get(i).toString().equals(tripToString)) {
+                return trips.get(i);
+            }
+        }
+        return null;
+    }
+
+    public String toString() {
+        String result = "";
+        for (int i = 0; i < trips.size(); i++)
+            result += trips.get(i).toString() + "\n";
+        return result;
     }
 }

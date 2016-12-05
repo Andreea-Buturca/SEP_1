@@ -56,7 +56,7 @@ public class SearchController extends Controller {
 
                                 ObservableList<String> items = FXCollections.observableArrayList();
                                 for (int i = 0; i < matching.getSize(); i++) {
-                                    items.add(matching.getCustomer(i).toString());
+                                    items.add(matching.getArrayCustomer().get(i).toString());
                                 }
                                 matchingCustomers.setItems(items);
                             }
@@ -96,7 +96,7 @@ public class SearchController extends Controller {
         selected = matchingTrips.getSelectionModel().getSelectedItems();
         for (String aSelected : selected) {
             System.out.println(aSelected.toString());
-            DataHandler.getTrips().remove(DataHandler.getTrips().findByToString(aSelected.toString()));
+            DataHandler.getTrips().getArrayTrip().remove(DataHandler.getTrips().findByToString(aSelected.toString()));
         }
     }
 

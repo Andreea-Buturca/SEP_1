@@ -38,7 +38,7 @@ public class Reservation implements Serializable {
         return this.trip.getPickUpPoint();
     }
     public Date getReservationTimeStart() {
-        return this.trip.getTimeStart();
+        return this.trip.getDateObjStart();
     }
 
     public Trip getReservationByTrip() {

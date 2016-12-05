@@ -57,11 +57,8 @@ public class CustomerList implements Serializable {
     }
 
     public Customer findByPhone(String phone) {
-        System.out.println(phone);
         for (Customer customer : customers) {
-            System.out.println(customer.getPhone());
             if (customer.getPhone().equals(phone))
-                System.out.println(customer);
             return customer;
         }
         return null;

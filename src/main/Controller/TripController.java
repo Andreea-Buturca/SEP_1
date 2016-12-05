@@ -55,6 +55,7 @@ public class TripController extends Controller implements Initializable {
     public TextField fieldCustomerPhone;
     public ListView customerList;
     public Button saveCustomerBtn;
+    public Label tourLabel;
 
     private Customer customer = null;
 
@@ -363,6 +364,10 @@ public class TripController extends Controller implements Initializable {
     }
 
     public void setEditData(Trip trip) {
+        menu.setVisible(false);
+        tourLabel.setText("Edit Trip");
+        CreateTourBtn.setText("Edit");
+
         fieldStartTime.setText(trip.getTimeStart());
         fieldEndTime.setText(trip.getTimeEnd());
         startDatePicker.setValue(trip.getDateStart());

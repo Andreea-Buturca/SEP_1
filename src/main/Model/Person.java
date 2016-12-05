@@ -60,7 +60,6 @@ public class Person implements Serializable {
 
     public String toString() {
         String email = "";
-        System.out.println(this.email);
         if (!this.email.equals("")) {
             email += ", email: " + this.email;
         }

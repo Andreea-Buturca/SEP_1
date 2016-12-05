@@ -128,66 +128,38 @@ public class Controller implements Initializable {
 
 
     protected boolean validateEmptyField(TextField textField) {
-        if (!textField.getText().isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+        return !textField.getText().isEmpty();
 
     }
 
     protected boolean validateNumberField(TextField textField) {
-        if (textField.getText().matches("[0-9]+")) {
-            return true;
-        } else {
-            return false;
-        }
+        return textField.getText().matches("[0-9]+");
 
     }
 
     protected boolean validateNumberPlate(TextField textField) {
-        if (textField.getText().matches("[A-Z]{2}[0-9]{5}")) {
-            return true;
-        } else {
-            return false;
-        }
+        return textField.getText().matches("[A-Z]{2}[0-9]{5}");
 
     }
 
     protected boolean validateLength(TextField textField, int length) {
         if (length < 1) length = length * (-1);
-        if (textField.getText().length() == length) {
-            return true;
-        } else {
-            return false;
-        }
+        return textField.getText().length() == length;
 
     }
 
     protected boolean validateTimeField(TextField textField) {
-        if (textField.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")) {
-            return true;
-        } else {
-            return false;
-        }
+        return textField.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]");
 
     }
 
     protected boolean validateEmptyDate(DatePicker datePicker) {
-        if (datePicker.getValue() != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return datePicker.getValue() != null;
 
     }
 
     protected boolean validateEmptyCombo(ComboBox comboBox) {
-        if (comboBox.getValue() != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return comboBox.getValue() != null;
 
     }
 

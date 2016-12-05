@@ -41,8 +41,7 @@ public class Customer extends Person implements Serializable {
         if (super.getName() != customer.getName()) return false;
         if (super.getAddress() != customer.getAddress()) return false;
         if (super.getEmail() != customer.getEmail()) return false;
-        if (super.getPhone() != customer.getPhone()) return false;
-        return true;
+        return super.getPhone() == customer.getPhone();
     }
 
 

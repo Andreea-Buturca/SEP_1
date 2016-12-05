@@ -55,16 +55,13 @@ public class Customer extends Person implements Serializable {
         points = points++;
     }
 
-    public boolean checkIfFrequentCustomer(Customer customer) {
-        return true;
-    }
 
     public String getCompanyName() {
         return companyName;
     }
 
     public boolean isFrequent() {
-        return numberOfTrips > 5;
+        return points > 5;
         // TODO: 28-Nov-16 how many trips is frequent?
     }
 
@@ -75,5 +72,6 @@ public class Customer extends Person implements Serializable {
         }
         return super.toString() + x;
     }
+    // TODO: 12/5/2016 add number of points into toString
     // TODO: 03-Dec-16 probably add number of trips?
 }

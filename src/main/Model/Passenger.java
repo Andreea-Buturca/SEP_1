@@ -12,7 +12,7 @@ public class Passenger extends Person implements Serializable {
     public Passenger(String name, String address, String email, Date dateOfBirth) {
         super(name, address, email, dateOfBirth);
     }
-
+public String getPassengerName(){ return super.getName(); }
     public String toString() {
         return super.toString();
     }

@@ -27,7 +27,13 @@ public class ReservationList implements Serializable {
         }
         return null;
     }
-
+    public Reservation getReservationByCompany(String companyName) {
+        for (int i = 0; i < reservations.size(); i++) {
+            if (this.reservations.get(i).getReservationByCustomer().getCompanyName().equals(companyName))
+                return this.reservations.get(i);
+        }
+        return null;
+    }
     public Reservation getReservationByDestination(Trip trip) {
         for (int i = 0; i < reservations.size(); i++) {
             if (reservations.get(i).getReservationByTrip().equals(trip))

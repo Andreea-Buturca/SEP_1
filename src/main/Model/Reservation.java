@@ -31,6 +31,15 @@ public class Reservation implements Serializable {
     public Customer getCustomer() {
         return this.customer;
     }
+    public String getReservationByCompany() {
+                return this.customer.getCompanyName();
+    }
+    public String getReservationByCustomerAddress() {
+        return this.customer.getAddress();
+    }
+    public String getReservationByCustomerEmail(){ return this.customer.getEmail(); }
+    public String getReservationByCustomerPhone(){ return this.customer.getEmail(); }
+    //public Passenger getReservationByPassenger() { return this.passengers. }
 
     public Destination getReservationDestination() {
         return this.trip.getDestination();

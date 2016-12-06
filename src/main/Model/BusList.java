@@ -78,8 +78,8 @@ public class BusList implements Serializable {
 
     public String toString() {
         String result = "";
-        for (Bus buse : buses) {
-            result += buse.toString() + "\n";
+        for (Bus bus : buses) {
+            result += bus.toString() + "\n";
         }
         return result;
     }

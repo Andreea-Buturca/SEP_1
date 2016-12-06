@@ -43,9 +43,9 @@ public class ChauffeurController extends Controller implements Initializable {
 
     public void loadList() {
         listViewChauffeurList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        ObservableList<String> items = FXCollections.observableArrayList();
+        ObservableList<Chauffeur> items = FXCollections.observableArrayList();
         for (Chauffeur chauffeur : DataHandler.getChauffeurList().getArrayChauffeur()) {
-            items.add(chauffeur.toString());
+            items.add(chauffeur);
         }
         listViewChauffeurList.setItems(items);
     }
@@ -124,12 +124,10 @@ public class ChauffeurController extends Controller implements Initializable {
 
 
     public void deleteChauffeur(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
-        ObservableList<String> selected;
+        ObservableList<Chauffeur> selected;
         selected = listViewChauffeurList.getSelectionModel().getSelectedItems();
-        for (String aSelected : selected) {
-            String[] lineToken = aSelected.split(", ");
-            String name = lineToken[0].trim();
-            DataHandler.getChauffeurList().removeChauffeur(DataHandler.getChauffeurList().getByName(name));
+        for (Chauffeur aSelected : selected) {
+            DataHandler.getChauffeurList().removeChauffeur(aSelected);
         }
         loadList();
         successdisplay("Success", "Chauffeur was deleted.");

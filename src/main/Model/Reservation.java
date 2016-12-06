@@ -132,8 +132,8 @@ public class Reservation implements Serializable {
     public String toString() {
         String passsengers = "";
         for (int i = 0; i < passengerList.getArrayPassenger().size(); i++) {
-            passsengers += " , for passenger nr: " + (i + 1) + ": " + this.passengerList.getArrayPassenger().get(i).toString();
+            passsengers += " , for Passenger nr. " + (i + 1) + ": " + this.passengerList.getArrayPassenger().get(i).toString();
         }
-        return "Tour to: " + this.trip + " , price: " + this.finalPrice + " , reserved by customer: " + this.customer + passsengers;
+        return this.trip + " , Reserved by Customer: " + this.customer + passsengers+ " , Total price: " + this.finalPrice;
     }
 }

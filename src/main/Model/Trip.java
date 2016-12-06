@@ -186,6 +186,6 @@ public class Trip implements Serializable {
 
     public String toString(){
         // TODO: 05-Dec-16 trip display also extra services 
-        return this.bus.toString() +" "+ this.chauffeur.toString() +" "+ this.pickUpPoint.toString()+" "+this.destination+" "+this.distance+" "+ this.timeStart+" "+this.timeEnd+this.price;
+        return  "Tour to: " + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd +  ", distance: " + this.distance + " km" + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: "+ this.chauffeur.toString() ;
     }
 }

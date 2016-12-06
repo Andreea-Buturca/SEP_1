@@ -23,7 +23,7 @@ public class LuxuryBus extends Bus implements Serializable {
     public String getBusType(){ return "Luxury Bus";}
 
     public String toString() {
-        return super.toString() + ", Type: Luxury Bus";
+        return " Bus type: Luxury Bus, " + super.toString() ;
     }
 
     // TODO: 29-Nov-16 when adding a bus in gui there is no place to tick if it has snacs and waiter.

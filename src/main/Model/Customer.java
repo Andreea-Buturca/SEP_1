@@ -61,7 +61,6 @@ public class Customer extends Person implements Serializable {
 
     public boolean isFrequent() {
         return points > 5;
-        // TODO: 28-Nov-16 how many trips is frequent?
     }
 
     public String toString() {
@@ -69,8 +68,14 @@ public class Customer extends Person implements Serializable {
         if (isCompany) {
             x += ", Company name: " + this.companyName;
         }
-        return super.toString() + x;
+        String frequent="";
+        if(isFrequent()){
+            frequent += ", Frequent customer, nr of points: "+ this.points;
+        }
+        else if(!isFrequent()){
+            frequent += ", nr of points: "+ this.points;
+        }
+        return super.toString() + x + frequent ;
     }
-    // TODO: 12/5/2016 add number of points into toString
-    // TODO: 03-Dec-16 probably add number of trips?
+
 }

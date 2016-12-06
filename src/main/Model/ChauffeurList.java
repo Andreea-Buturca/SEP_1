@@ -82,6 +82,29 @@ public class ChauffeurList implements Serializable {
         return result;
     }
 
+    public boolean checkIfContains(Chauffeur chauffeur){
+        return chauffeurs.contains(chauffeur);
+    }
+
+    public ChauffeurList getAllByPrefferedBus(String busType) {
+        ChauffeurList result = new ChauffeurList();
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            ArrayList<String> prefferedBuses = chauffeurs.get(i).getArrayBusTypes();
+            for (int j=0;j<prefferedBuses.size();j++){
+                if (busType.equals(prefferedBuses.get(j))){
+                    if (!result.checkIfContains(chauffeurs.get(i)))
+                        result.add(chauffeurs.get(i));
+                }
+            }
+        }
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).isVikar()) {
+                result.add(chauffeurs.get(i));
+            }
+        }
+        return result;
+    }
+
 
     public Chauffeur getChauffeurByID(int ID) {
         for (Chauffeur chauffeur : chauffeurs) {

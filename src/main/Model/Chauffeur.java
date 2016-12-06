@@ -85,6 +85,10 @@ public class Chauffeur extends Person implements Serializable {
         else return null;
     }
 
+    public ArrayList<String> getArrayBusTypes(){
+        return this.busType;
+    }
+
     public void setPreferredBusType(String bus) {
         this.busType.add(bus);
     }

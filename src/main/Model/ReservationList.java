@@ -27,6 +27,7 @@ public class ReservationList implements Serializable {
         }
         return null;
     }
+
     public Reservation getReservationByCompany(String companyName) {
         for (Reservation reservation : reservations) {
             if (reservation.getReservationByCompany().equals(companyName))
@@ -34,6 +35,7 @@ public class ReservationList implements Serializable {
         }
         return null;
     }
+
     public Reservation getReservationByDestination(Trip trip) {
         for (Reservation reservation : reservations) {
             if (reservation.getReservationByTrip().equals(trip))
@@ -50,7 +52,7 @@ public class ReservationList implements Serializable {
         return this.reservations.size();
     }
 
-    public ReservationList findAllReservationByDate(LocalDate date){
+    public ReservationList findAllReservationByDate(LocalDate date) {
         ReservationList result = new ReservationList();
         for (Reservation reservation : reservations) {
             Calendar cal = Calendar.getInstance();
@@ -64,15 +66,15 @@ public class ReservationList implements Serializable {
         return result;
     }
 
-    public void remove(Reservation reservation){
+    public void remove(Reservation reservation) {
         reservations.remove(reservation);
     }
 
-    public int getSize(){
+    public int getSize() {
         return reservations.size();
     }
 
-    public Reservation getReservation(int index){
+    public Reservation getReservation(int index) {
         return reservations.get(index);
     }
 

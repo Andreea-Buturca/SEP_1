@@ -73,7 +73,7 @@ public class ChauffeurList implements Serializable {
             if (!chauffeurs.get(i).isVikar()) {
                 if (chauffeurs.get(i).getPreferredDistance().get(i) > prefferedDistance)
                     result.add(chauffeurs.get(i));
-            }else{
+            } else {
                 result.add(chauffeurs.get(i));
             }
         }

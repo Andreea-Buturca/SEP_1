@@ -1,9 +1,7 @@
 package main.Model;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -68,8 +66,8 @@ public class Person implements Serializable {
             phone += ", phone: " + this.phone;
         }
         String address = "";
-        if(!this.address.equals("")){
-            address +=  ", address: " + this.address;
+        if (!this.address.equals("")) {
+            address += ", address: " + this.address;
         }
         if (this.dateOfBirth != null) {
             return this.name + address + email + phone + ", birthday: " + this.dateOfBirth;

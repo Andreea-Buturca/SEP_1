@@ -19,7 +19,6 @@ public class BusController extends Controller {
 
     public ListView busListview;
     public Button deleteBus;
-    public Button addBusInList;
     public TextField regPlate;
     public TextField seatNumber;
     public ChoiceBox typeChoice;

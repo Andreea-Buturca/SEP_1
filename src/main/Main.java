@@ -48,9 +48,6 @@ public class Main extends Application {
         //creating test data
         DataHandler.testData();
 
-        // TODO: 02-Dec-16 todo
-        //specify number of customers
-
         // TODO: 30-Nov-16 make load from file when done
         // TODO: 30-Nov-16 override onclose to make backup
         //DataHandler.load();

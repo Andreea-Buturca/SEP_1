@@ -2,7 +2,6 @@ package main.Model;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -73,9 +72,9 @@ public class DataHandler implements Serializable {
 
 
         getChauffeurList().add(new Chauffeur("name1", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad",  LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad",  LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad",  LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
         getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
 
         getCustomerList().add(new Customer("name1", "address", "email", "25447"));

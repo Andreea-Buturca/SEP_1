@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
-public abstract class Bus implements Serializable{
+public abstract class Bus implements Serializable {
 
     private final String registrationPlate;
     private final int seatPlaces;

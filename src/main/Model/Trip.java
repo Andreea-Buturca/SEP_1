@@ -31,9 +31,9 @@ public class Trip implements Serializable {
     private Date dateObjEnd;
     private boolean food = false;
     private boolean accommodation = false;
-    private boolean tickets  = false;
+    private boolean tickets = false;
 
-    public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Destination destination, int distance, LocalDate dateStart, String timeStart, LocalDate dateEnd,  String timeEnd, int price) {
+    public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Destination destination, int distance, LocalDate dateStart, String timeStart, LocalDate dateEnd, String timeEnd, int price) {
         this.bus = bus;
         this.freeSpaces = this.bus.getSeatPlaces();
         this.chauffeur = chauffeur;
@@ -49,11 +49,11 @@ public class Trip implements Serializable {
         String[] lineToken = timeStart.split(":");
         int hours = Integer.parseInt(lineToken[0]);
         int minutes = Integer.parseInt(lineToken[1]);
-        this.dateObjStart = new Date(dateStart.getYear()-1900, dateStart.getMonthValue(), dateStart.getDayOfMonth(), hours, minutes);
+        this.dateObjStart = new Date(dateStart.getYear() - 1900, dateStart.getMonthValue(), dateStart.getDayOfMonth(), hours, minutes);
         lineToken = timeEnd.split(":");
         hours = Integer.parseInt(lineToken[0]);
         minutes = Integer.parseInt(lineToken[1]);
-        this.dateObjEnd = new Date(dateEnd.getYear()-1900, dateEnd.getMonthValue(), dateEnd.getDayOfMonth(), hours, minutes);
+        this.dateObjEnd = new Date(dateEnd.getYear() - 1900, dateEnd.getMonthValue(), dateEnd.getDayOfMonth(), hours, minutes);
         this.duration = this.getDuration(this.dateObjStart, this.dateObjEnd);
         privateString = "False";
 
@@ -61,22 +61,22 @@ public class Trip implements Serializable {
 
     public String getDuration(Date start, Date end) {
         String result = "";
-        long diff = end.getTime()-start.getTime();
+        long diff = end.getTime() - start.getTime();
         int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
-        if(diffDays>0){
-            result+=diffDays+" day ";
+        if (diffDays > 0) {
+            result += diffDays + " day ";
         }
         diff -= diffDays * (24 * 60 * 60 * 1000);
 
         int diffhours = (int) (diff / (60 * 60 * 1000));
-        if(diffhours>0){
-            result+=diffhours+" hour ";
+        if (diffhours > 0) {
+            result += diffhours + " hour ";
         }
         diff -= diffhours * (60 * 60 * 1000);
 
         int diffmin = (int) (diff / (60 * 1000));
-        if(diffmin>0){
-            result+=diffmin+" min ";
+        if (diffmin > 0) {
+            result += diffmin + " min ";
         }
         return result;
     }
@@ -184,8 +184,8 @@ public class Trip implements Serializable {
         return dateObjEnd;
     }
 
-    public String toString(){
+    public String toString() {
         // TODO: 05-Dec-16 trip display also extra services 
-        return  "Tour to: " + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd +  ", distance: " + this.distance + " km" + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: "+ this.chauffeur.toString() ;
+        return "Tour to: " + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd + ", distance: " + this.distance + " km" + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: " + this.chauffeur.toString();
     }
 }

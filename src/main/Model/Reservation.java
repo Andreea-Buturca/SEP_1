@@ -2,7 +2,6 @@ package main.Model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -134,6 +133,6 @@ public class Reservation implements Serializable {
         for (int i = 0; i < passengerList.getArrayPassenger().size(); i++) {
             passsengers += " , Passenger nr. " + (i + 1) + ": " + this.passengerList.getArrayPassenger().get(i).toString();
         }
-        return "Reservation for Customer: " + this.customer + passsengers+ " , Total price: " + this.finalPrice + " , " + this.trip;
+        return "Reservation for Customer: " + this.customer + passsengers + " , Total price: " + this.finalPrice + " , " + this.trip;
     }
 }

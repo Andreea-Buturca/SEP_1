@@ -84,10 +84,10 @@ public class SearchController extends Controller implements Initializable {
     }
 
     public void searchTrip(KeyEvent keyEvent) throws FileNotFoundException, ParseException {
-       findTrips();
+        findTrips();
     }
 
-    private void findTrips(){
+    private void findTrips() {
         if (matchingTrips != null) {
             TripList matching = DataHandler.getTrips();
             if (destination.getText() != null && (!destination.getText().equals("")))
@@ -139,10 +139,10 @@ public class SearchController extends Controller implements Initializable {
     public void editTrip(ActionEvent actionEvent) throws IOException {
         if (matchingTrips.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/createTour.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
+            Parent root = fxmlLoader.load();
             Scene scene = new Scene(root, 1000, 600);
             Stage window = new Stage();
-            TripController tripController = fxmlLoader.<TripController>getController();
+            TripController tripController = fxmlLoader.getController();
             tripController.setEditData((Trip) matchingTrips.getSelectionModel().getSelectedItem());
             window.initModality(Modality.APPLICATION_MODAL);
             window.setTitle("Edit trip");

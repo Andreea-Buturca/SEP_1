@@ -59,7 +59,7 @@ public class CustomerList implements Serializable {
     public Customer findByPhone(String phone) {
         for (Customer customer : customers) {
             if (customer.getPhone().equals(phone))
-            return customer;
+                return customer;
         }
         return null;
     } // TODO: 05-Dec-16 this has weird behavior

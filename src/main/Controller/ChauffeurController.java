@@ -12,7 +12,6 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -100,7 +99,7 @@ public class ChauffeurController extends Controller implements Initializable {
                     chauffeur.setPreferredWeekHours(37);
                 }
                 if (checkBoxClasicBus.isSelected()) {
-                   chauffeur.setPreferredBusType("Classic Bus");
+                    chauffeur.setPreferredBusType("Classic Bus");
                 }
                 if (checkboxLuxuryBus.isSelected()) {
                     chauffeur.setPreferredBusType("Luxury Bus");

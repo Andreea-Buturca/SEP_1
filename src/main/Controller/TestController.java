@@ -50,8 +50,7 @@ public class TestController implements Initializable {
                     // when it not matches the pattern (1.0 - 6.0)
                     // set the textField empty
                     testtext.getStyleClass().add("error");
-                }
-                else {
+                } else {
                     testtext.getStyleClass().remove("error");
                 }
             }

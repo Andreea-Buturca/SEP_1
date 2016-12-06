@@ -18,8 +18,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -139,7 +137,7 @@ public class ReservationController extends Controller implements Initializable {
 
             Stage stage = (Stage) mkReservationView.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/makeReservationDate.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
+            Parent root = fxmlLoader.load();
 
             ReservationController editReservation = fxmlLoader.getController();
             editReservation.setTrip((Trip) tripListReservation.getSelectionModel().getSelectedItem());
@@ -223,9 +221,9 @@ public class ReservationController extends Controller implements Initializable {
             boolean isCompany = true;
             isCompany = validateEmptyField(fieldNameCompany);
 
-            if (isCompany == false) {
+            if (!isCompany) {
                 DataHandler.getCustomerList().add(new Customer(name, address, email, phone));
-            } else if (isCompany == true) {
+            } else if (isCompany) {
                 String companyName = fieldNameCompany.getText();
                 DataHandler.getCustomerList().add(new Customer(name, address, email, phone, isCompany, companyName));
             }

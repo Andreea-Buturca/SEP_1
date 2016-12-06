@@ -70,10 +70,35 @@ public class ChauffeurList implements Serializable {
     public ChauffeurList getAllByPrefferedDistance(int prefferedDistance) {
         ChauffeurList result = new ChauffeurList();
         for (int i = 0; i < chauffeurs.size(); i++) {
-            if (!chauffeurs.get(i).isVikar()) {
-                if (chauffeurs.get(i).getPreferredDistance().get(i) > prefferedDistance)
+            if ((chauffeurs.get(i).getPreferredDistance() != null)&&!(chauffeurs.get(i).getPreferredDistance().isEmpty()))
+                if (chauffeurs.get(i).getPreferredDistance().get(0) > prefferedDistance)
                     result.add(chauffeurs.get(i));
-            }else{
+        }
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).isVikar()) {
+                result.add(chauffeurs.get(i));
+            }
+        }
+        return result;
+    }
+
+    public boolean checkIfContains(Chauffeur chauffeur){
+        return chauffeurs.contains(chauffeur);
+    }
+
+    public ChauffeurList getAllByPrefferedBus(String busType) {
+        ChauffeurList result = new ChauffeurList();
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            ArrayList<String> prefferedBuses = chauffeurs.get(i).getArrayBusTypes();
+            for (int j=0;j<prefferedBuses.size();j++){
+                if (busType.equals(prefferedBuses.get(j))){
+                    if (!result.checkIfContains(chauffeurs.get(i)))
+                        result.add(chauffeurs.get(i));
+                }
+            }
+        }
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).isVikar()) {
                 result.add(chauffeurs.get(i));
             }
         }

@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import main.Main;
 import main.Model.DataHandler;
-import main.Model.Reservation;
 import main.Model.Trip;
 import main.Model.TripList;
 
@@ -55,21 +54,20 @@ public class Controller implements Initializable {
     public Button addChauffeur;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        showList();
+        if (tripList != null) {
+            showList();
+        }
     }
 
     private void showList() {
-        if (tripList!=null){
-            TripList trips = DataHandler.getTrips();
-            ObservableList<Trip> data = FXCollections.observableArrayList();
-            for(int i=0;i<trips.getSize();i++){
-                data.add(trips.get(i));
-            }
-            tripList.setItems(data);
+        TripList trips = DataHandler.getTrips();
+        ObservableList<Trip> data = FXCollections.observableArrayList();
+        for (int i = 0; i < trips.getSize(); i++) {
+            data.add(trips.get(i));
         }
+        tripList.setItems(data);
     }
 
     //todo how much he paid, times
@@ -95,9 +93,8 @@ public class Controller implements Initializable {
         //chauffeur view
         else if ((mouseEvent.getSource() == addChauffeur)) {
             root = FXMLLoader.load(getClass().getResource("../View/AddChauffeur.fxml"));
-        } else {
-            // root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
         }
+
 
         if (root != null) {
             Scene scene = new Scene(root);
@@ -128,10 +125,7 @@ public class Controller implements Initializable {
             root = FXMLLoader.load(getClass().getResource("../View/chauffeurList.fxml"));
         } else if ((actionEvent.getSource() == homeDriverAdd)) {
             root = FXMLLoader.load(getClass().getResource("../View/addChauffeur.fxml"));
-        } else {
-            //root = FXMLLoader.load(getClass().getResource("./View/mainScreen.fxml"));
         }
-
 
         if (root != null) {
             Scene scene = new Scene(root);
@@ -141,7 +135,7 @@ public class Controller implements Initializable {
 
     }
 
-    protected void test(){
+    protected void test() {
     }
 
 

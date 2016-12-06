@@ -3,7 +3,6 @@ package main.Model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -84,6 +83,10 @@ public class Chauffeur extends Person implements Serializable {
         else if (this.bus.getBusType().equals(bus))
             return "Luxury Bus";
         else return null;
+    }
+
+    public ArrayList<String> getArrayBusTypes(){
+        return this.busType;
     }
 
     public void setPreferredBusType(String bus) {

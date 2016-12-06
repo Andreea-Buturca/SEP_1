@@ -17,6 +17,6 @@ public class MiniBus extends Bus implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString() + ", Type: Mini Bus";
+        return " Bus type: Mini Bus, " + super.toString();
     }
 }

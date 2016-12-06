@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
- * Created by andreea on 11/28/2016.
+ * Created by MartinNtb on 11/28/2016.
  */
 public class TripController extends Controller implements Initializable {
 
@@ -62,6 +62,8 @@ public class TripController extends Controller implements Initializable {
     //list for stops
     private DestinationList stops = new DestinationList();
 
+    private Trip oldTrip;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -75,7 +77,6 @@ public class TripController extends Controller implements Initializable {
             fieldDestination.setItems(destinationItems);
             fieldDeparture.setItems(destinationItems);
             stopName.setItems(destinationItems);
-
         }
 
         if (checkPrivateTrip != null) {
@@ -95,15 +96,9 @@ public class TripController extends Controller implements Initializable {
                     window.setMinHeight(400);
                     window.setResizable(false);
 
-
-                    // TODO: 30-Nov-16 getReservation somehow data from here
-
-
                     Scene scene = new Scene(root);
                     window.setScene(scene);
                     window.show();
-
-
                 }
             });
         }
@@ -112,92 +107,12 @@ public class TripController extends Controller implements Initializable {
 
     }
 
-
-    public void createTour(ActionEvent actionEvent) throws IOException {
-
-
-        String alert = "There are some mistakes: ";
-        int length = alert.length();
-
-        if (!validateEmptyDate(startDatePicker)) alert += "Start Date, ";
-        if (!validateEmptyDate(endDatePicker)) alert += "End Date, ";
-        if (!validateEmptyField(fieldStartTime) || !validateTimeField(fieldStartTime)) alert += "Start time, ";
-        if (!validateEmptyField(fieldEndTime) || !validateTimeField(fieldEndTime)) alert += "End time, ";
-        if (!validateEmptyField(fieldDistance) || !validateNumberField(fieldDistance)) alert += "Distance, ";
-        if (!validateEmptyField(fieldPrice) || !validateNumberField(fieldPrice)) alert += "Price, ";
-        if (!validateEmptyCombo(fieldDestination)) alert += "Destination, ";
-        if (!validateEmptyCombo(fieldDeparture)) alert += "Departure, ";
-        if (busListview.getSelectionModel().getSelectedItem() == null) alert += "Bus, ";
-        if (chauffeurList.getSelectionModel().getSelectedItem() == null) alert += "Chauffeur, ";
-
-        if (length == alert.length()) {
-            //save it DataHandler. .....
-            Bus bus = (Bus) busListview.getSelectionModel().getSelectedItem();
-            Chauffeur chauffeur = (Chauffeur) chauffeurList.getSelectionModel().getSelectedItem();
-
-            Destination pickUp;
-            Destination destination;
-
-            if (DataHandler.getDestinationList().findByName(fieldDeparture.getValue().toString()) != null) {
-                pickUp = DataHandler.getDestinationList().findByName(fieldDeparture.getValue().toString());
-            } else {
-                pickUp = new Destination(fieldDeparture.getValue().toString());
-                DataHandler.getDestinationList().add(pickUp);
-            }
-
-            if (DataHandler.getDestinationList().findByName(fieldDestination.getValue().toString()) != null) {
-                destination = DataHandler.getDestinationList().findByName(fieldDestination.getValue().toString());
-            } else {
-                destination = new Destination(fieldDestination.getValue().toString());
-                DataHandler.getDestinationList().add(destination);
-            }
-
-            int distance = Integer.parseInt(fieldDistance.getText());
-
-            // TODO: 04-Dec-16 extra services
-
-            Trip trip = new Trip(bus, chauffeur, pickUp, destination, distance, startDatePicker.getValue(), fieldStartTime.getText(), endDatePicker.getValue(), fieldEndTime.getText(), Integer.parseInt(fieldPrice.getText()));
-
-            if (stops != null) {
-                trip.setStops(stops);
-            }
-            if (checkPrivateTrip.isSelected() && customer != null) {
-                trip.setCustomer(customer);
-            }
-
-
-            if (foodCheckBox.isSelected()) {
-                trip.setFood(true);
-            }
-            if (accommodationCheckBox.isSelected()) {
-                trip.setAccommodation(true);
-            }
-            if (ticketCheckBox.isSelected()) {
-                trip.setTickets(true);
-            }
-
-            DataHandler.getTrips().add(trip);
-
-            successdisplay("Created", "Trip was created.");
-
-            Parent root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
-            Scene scene = new Scene(root);
-            Main.stage.setScene(scene);
-            Main.stage.show();
-
-        } else {
-            //alert
-            alertdisplay("Wrong Input", alert);
-        }
-    }
-
     public void getDataChoice(ActionEvent actionEvent) {
         loadBusList();
         loadChauffeurList();
     }
 
     public void getDataFromField(KeyEvent keyEvent) {
-
         loadBusList();
         loadChauffeurList();
     }
@@ -212,7 +127,7 @@ public class TripController extends Controller implements Initializable {
         chauffeurs = DataHandler.getChauffeurList();
 
         if (validateEmptyField(fieldDistance) && validateNumberField(fieldDistance)) {
-             chauffeurs = chauffeurs.getAllByPrefferedDistance(Integer.parseInt(fieldDistance.getText()));
+            chauffeurs = chauffeurs.getAllByPrefferedDistance(Integer.parseInt(fieldDistance.getText()));
         }
 
 
@@ -220,11 +135,11 @@ public class TripController extends Controller implements Initializable {
             String[] lineToken = fieldStartTime.getText().split(":");
             int hours = Integer.parseInt(lineToken[0]);
             int minutes = Integer.parseInt(lineToken[1]);
-            Date dateStart = new Date(startDatePicker.getValue().getYear()-1900, startDatePicker.getValue().getMonthValue(), startDatePicker.getValue().getDayOfMonth(), hours, minutes);
+            Date dateStart = new Date(startDatePicker.getValue().getYear() - 1900, startDatePicker.getValue().getMonthValue(), startDatePicker.getValue().getDayOfMonth(), hours, minutes);
             lineToken = fieldEndTime.getText().split(":");
             hours = Integer.parseInt(lineToken[0]);
             minutes = Integer.parseInt(lineToken[1]);
-            Date dateEnd = new Date(endDatePicker.getValue().getYear()-1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
+            Date dateEnd = new Date(endDatePicker.getValue().getYear() - 1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
             chauffeurs.getAvailable(dateStart, dateEnd);
             //chauffeurs.byprefference
         }
@@ -254,11 +169,11 @@ public class TripController extends Controller implements Initializable {
             String[] lineToken = fieldStartTime.getText().split(":");
             int hours = Integer.parseInt(lineToken[0]);
             int minutes = Integer.parseInt(lineToken[1]);
-            Date dateStart = new Date(startDatePicker.getValue().getYear()-1900, startDatePicker.getValue().getMonthValue(), startDatePicker.getValue().getDayOfMonth(), hours, minutes);
+            Date dateStart = new Date(startDatePicker.getValue().getYear() - 1900, startDatePicker.getValue().getMonthValue(), startDatePicker.getValue().getDayOfMonth(), hours, minutes);
             lineToken = fieldEndTime.getText().split(":");
             hours = Integer.parseInt(lineToken[0]);
             minutes = Integer.parseInt(lineToken[1]);
-            Date dateEnd = new Date(endDatePicker.getValue().getYear()-1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
+            Date dateEnd = new Date(endDatePicker.getValue().getYear() - 1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
             buses.getAvailable(dateStart, dateEnd);
         }
 
@@ -351,22 +266,12 @@ public class TripController extends Controller implements Initializable {
 
     }
 
-    public void chooseCustomer(ActionEvent actionEvent) {
-
-        if (customerList.getSelectionModel().getSelectedItem() != null) {
-            customer = (Customer) customerList.getSelectionModel().getSelectedItem();
-
-            Stage stage = (Stage) saveCustomerBtn.getScene().getWindow();
-            stage.close();
-        } else {
-            alertdisplay("No customer", "Please choose one Customer");
-        }
-    }
-
     public void setEditData(Trip trip) {
         menu.setVisible(false);
         tourLabel.setText("Edit Trip");
         CreateTourBtn.setText("Edit");
+
+        oldTrip = trip;
 
         fieldStartTime.setText(trip.getTimeStart());
         fieldEndTime.setText(trip.getTimeEnd());
@@ -393,6 +298,104 @@ public class TripController extends Controller implements Initializable {
 
         if (trip.getChauffeur() != null) {
             chauffeurList.getSelectionModel().select(trip.getCustomer());
+        }
+    }
+
+    public void chooseCustomer(ActionEvent actionEvent) {
+
+        if (customerList.getSelectionModel().getSelectedItem() != null) {
+            customer = (Customer) customerList.getSelectionModel().getSelectedItem();
+
+            Stage stage = (Stage) saveCustomerBtn.getScene().getWindow();
+            stage.close();
+        } else {
+            alertdisplay("No customer", "Please choose one Customer");
+        }
+    }
+
+    public void createTour(ActionEvent actionEvent) throws IOException {
+
+
+        String alert = "There are some mistakes: ";
+        int length = alert.length();
+
+        if (!validateEmptyDate(startDatePicker)) alert += "Start Date, ";
+        if (!validateEmptyDate(endDatePicker)) alert += "End Date, ";
+        if (!validateEmptyField(fieldStartTime) || !validateTimeField(fieldStartTime)) alert += "Start time, ";
+        if (!validateEmptyField(fieldEndTime) || !validateTimeField(fieldEndTime)) alert += "End time, ";
+        if (!validateEmptyField(fieldDistance) || !validateNumberField(fieldDistance)) alert += "Distance, ";
+        if (!validateEmptyField(fieldPrice) || !validateNumberField(fieldPrice)) alert += "Price, ";
+        if (!validateEmptyCombo(fieldDestination)) alert += "Destination, ";
+        if (!validateEmptyCombo(fieldDeparture)) alert += "Departure, ";
+        if (busListview.getSelectionModel().getSelectedItem() == null) alert += "Bus, ";
+        if (chauffeurList.getSelectionModel().getSelectedItem() == null) alert += "Chauffeur, ";
+
+        if (length == alert.length()) {
+            //save it DataHandler. .....
+            Bus bus = (Bus) busListview.getSelectionModel().getSelectedItem();
+            Chauffeur chauffeur = (Chauffeur) chauffeurList.getSelectionModel().getSelectedItem();
+
+            Destination pickUp;
+            Destination destination;
+
+            if (DataHandler.getDestinationList().findByName(fieldDeparture.getValue().toString()) != null) {
+                pickUp = DataHandler.getDestinationList().findByName(fieldDeparture.getValue().toString());
+            } else {
+                pickUp = new Destination(fieldDeparture.getValue().toString());
+                DataHandler.getDestinationList().add(pickUp);
+            }
+
+            if (DataHandler.getDestinationList().findByName(fieldDestination.getValue().toString()) != null) {
+                destination = DataHandler.getDestinationList().findByName(fieldDestination.getValue().toString());
+            } else {
+                destination = new Destination(fieldDestination.getValue().toString());
+                DataHandler.getDestinationList().add(destination);
+            }
+
+            int distance = Integer.parseInt(fieldDistance.getText());
+
+            Trip trip = new Trip(bus, chauffeur, pickUp, destination, distance, startDatePicker.getValue(), fieldStartTime.getText(), endDatePicker.getValue(), fieldEndTime.getText(), Integer.parseInt(fieldPrice.getText()));
+
+            if (stops != null) {
+                trip.setStops(stops);
+            }
+            if (checkPrivateTrip.isSelected() && customer != null) {
+                trip.setCustomer(customer);
+            }
+
+
+            if (foodCheckBox.isSelected()) {
+                trip.setFood(true);
+            }
+            if (accommodationCheckBox.isSelected()) {
+                trip.setAccommodation(true);
+            }
+            if (ticketCheckBox.isSelected()) {
+                trip.setTickets(true);
+            }
+
+            if (oldTrip != null) {
+                DataHandler.getTrips().remove(oldTrip);
+            }
+
+            DataHandler.getTrips().add(trip);
+            if (oldTrip != null) {
+                successdisplay("Edited", "Trip was edited.");
+
+                Stage stage = (Stage) accommodationCheckBox.getScene().getWindow();
+                stage.close();
+            } else {
+                successdisplay("Created", "Trip was created.");
+            }
+
+            Parent root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
+
+        } else {
+            //alert
+            alertdisplay("Wrong Input", alert);
         }
     }
 }

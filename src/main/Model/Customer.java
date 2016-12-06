@@ -2,6 +2,7 @@ package main.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -38,12 +39,11 @@ public class Customer extends Person implements Serializable {
         if (points != customer.points) return false;
         if (companyName != null ? !companyName.equals(customer.companyName) : customer.companyName != null)
             return false;
-        if (super.getName() != customer.getName()) return false;
-        if (super.getAddress() != customer.getAddress()) return false;
+        if (!Objects.equals(super.getName(), customer.getName())) return false;
+        if (!Objects.equals(super.getAddress(), customer.getAddress())) return false;
         if (super.getEmail() != customer.getEmail()) return false;
         return super.getPhone() == customer.getPhone();
     }
-
 
 
     public void addPassenger(Passenger passenger) {
@@ -61,7 +61,6 @@ public class Customer extends Person implements Serializable {
 
     public boolean isFrequent() {
         return points > 5;
-        // TODO: 28-Nov-16 how many trips is frequent?
     }
 
     public String toString() {
@@ -69,8 +68,14 @@ public class Customer extends Person implements Serializable {
         if (isCompany) {
             x += ", Company name: " + this.companyName;
         }
-        return super.toString() + x;
+        String frequent="";
+        if(isFrequent()){
+            frequent += ", Frequent customer, nr of points: "+ this.points;
+        }
+        else if(!isFrequent()){
+            frequent += ", nr of points: "+ this.points;
+        }
+        return super.toString() + x + frequent ;
     }
-    // TODO: 12/5/2016 add number of points into toString
-    // TODO: 03-Dec-16 probably add number of trips?
+
 }

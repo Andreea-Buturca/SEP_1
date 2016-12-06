@@ -19,7 +19,6 @@ public class BusController extends Controller {
 
     public ListView busListview;
     public Button deleteBus;
-    public Button addBusInList;
     public TextField regPlate;
     public TextField seatNumber;
     public ChoiceBox typeChoice;
@@ -34,21 +33,19 @@ public class BusController extends Controller {
 
     public void loadList() {
         busListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        ObservableList<String> items = FXCollections.observableArrayList();
+        ObservableList<Bus> items = FXCollections.observableArrayList();
         for (Bus bus : DataHandler.getBusList().getArrayBuses()) {
-            items.add(bus.toString());
+            items.add(bus);
         }
         busListview.setItems(items);
     }
 
 
     public void deleteBus(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
-        ObservableList<String> selected;
+        ObservableList<Bus> selected;
         selected = busListview.getSelectionModel().getSelectedItems();
-        for (String aSelected : selected) {
-            String[] lineToken = aSelected.split(", ");
-            String regPlate = lineToken[0].trim();
-            DataHandler.getBusList().removeBus(DataHandler.getBusList().findByRegplate(regPlate));
+        for (Bus aSelected : selected) {
+            DataHandler.getBusList().removeBus(aSelected);
         }
 
         loadList();

@@ -2,7 +2,6 @@ package main.Model;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Created by MartinNtb on 15-Nov-16.
@@ -14,7 +13,6 @@ public class DataHandler implements Serializable {
     private static BusList busList;
     private static ChauffeurList chauffeurList;
     private static CustomerList customerList;
-    private static PassengerList passengerList;
     private static ReservationList reservationList;
     private static DestinationList destinationList;
 
@@ -34,10 +32,6 @@ public class DataHandler implements Serializable {
         return customerList;
     }
 
-    public static PassengerList getPassengerList() {
-        return passengerList;
-    }
-
     public static ReservationList getReservationList() {
         return reservationList;
     }
@@ -51,7 +45,6 @@ public class DataHandler implements Serializable {
         busList = new BusList();
         chauffeurList = new ChauffeurList();
         customerList = new CustomerList();
-        passengerList = new PassengerList();
         reservationList = new ReservationList();
         destinationList = new DestinationList();
     }
@@ -79,9 +72,9 @@ public class DataHandler implements Serializable {
 
 
         getChauffeurList().add(new Chauffeur("name1", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad",  LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad",  LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad",  LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
+        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
         getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
 
         getCustomerList().add(new Customer("name1", "address", "email", "25447"));
@@ -95,11 +88,6 @@ public class DataHandler implements Serializable {
         getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
         getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
 
-        //getTrips().getReservation(0).setCustomer(getCustomerList().getCustomer(0));
-
-        getReservationList().add(new Reservation(getTrips().getArrayTrip().get(0), getCustomerList().getCustomer(0), getPassengerList().getArrayPassenger(), 500.50));
-        getReservationList().add(new Reservation(getTrips().getArrayTrip().get(0), getCustomerList().getCustomer(1), getPassengerList().getArrayPassenger(), 580.50));
-        getReservationList().add(new Reservation(getTrips().getArrayTrip().get(0), getCustomerList().getCustomer(2), getPassengerList().getArrayPassenger(), 850.50));
     }
 
     public static void save() {
@@ -117,7 +105,6 @@ public class DataHandler implements Serializable {
             out.writeObject(busList);
             out.writeObject(chauffeurList);
             out.writeObject(customerList);
-            out.writeObject(passengerList);
             out.writeObject(reservationList);
             out.writeObject(destinationList);
         } catch (IOException e) {
@@ -144,7 +131,6 @@ public class DataHandler implements Serializable {
             busList = (BusList) in.readObject();
             chauffeurList = (ChauffeurList) in.readObject();
             customerList = (CustomerList) in.readObject();
-            passengerList = (PassengerList) in.readObject();
             reservationList = (ReservationList) in.readObject();
             destinationList = (DestinationList) in.readObject();
         } catch (IOException | ClassNotFoundException e) {

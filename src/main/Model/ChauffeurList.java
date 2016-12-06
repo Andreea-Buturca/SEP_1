@@ -149,17 +149,24 @@ public class ChauffeurList implements Serializable {
     }
 
     public ChauffeurList getAvailable(Date from, Date to) {
+        ArrayList<Chauffeur> inTrips = new ArrayList<>();
         ChauffeurList result = new ChauffeurList();
         TripList trips = DataHandler.getTrips();
         for (int i = 0; i < trips.getArrayTrip().size(); i++) {
             for (Chauffeur chauffeur : chauffeurs) {
-                if (chauffeur.equals(trips.getArrayTrip().get(i).getBus())) {
+                if (chauffeur.equals(trips.getArrayTrip().get(i).getChauffeur())) {
+                    if (!inTrips.contains(chauffeur))
+                        inTrips.add(chauffeur);
                     if (((from.before(trips.getArrayTrip().get(i).getDateObjStart())) && (to.before(trips.getArrayTrip().get(i).getDateObjStart())))
                             || ((from.after(trips.getArrayTrip().get(i).getDateObjEnd())) && (to.after(trips.getArrayTrip().get(i).getDateObjEnd())))) {
                         result.add(chauffeur);
                     }
                 }
             }
+        }
+        for (int i=0;i<chauffeurs.size();i++){
+            if (!inTrips.contains(chauffeurs.get(i)))
+                result.add(chauffeurs.get(i));
         }
         return result;
     }

@@ -26,11 +26,7 @@ public class Main extends Application {
 
 
     // TODO: 05-Dec-16 For Marek
-    //add getReservation chauffeur by preffered bustype
-    //possible controlling days of weeks by prefference
-    //always show vicar
 
-    //chauffeur.getAllByPrefferedDistance errors there array
     //in createtour try to fill distance to show it
 
 

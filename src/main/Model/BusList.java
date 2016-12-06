@@ -85,17 +85,24 @@ public class BusList implements Serializable {
     }
 
     public BusList getAvailable(Date from, Date to) {
+        ArrayList<Bus> inTrips = new ArrayList<>();
         BusList result = new BusList();
         TripList trips = DataHandler.getTrips();
         for (int i = 0; i < trips.getArrayTrip().size(); i++) {
             for (Bus buse : buses) {
                 if (buse.equals(trips.getArrayTrip().get(i).getBus())) {
+                    if (!inTrips.contains(buse))
+                        inTrips.add(buse);
                     if (((from.before(trips.getArrayTrip().get(i).getDateObjStart())) && (to.before(trips.getArrayTrip().get(i).getDateObjStart())))
                             || ((from.after(trips.getArrayTrip().get(i).getDateObjEnd())) && (to.after(trips.getArrayTrip().get(i).getDateObjEnd())))) {
                         result.add(buse);
                     }
                 }
             }
+        }
+        for (int i=0;i<buses.size();i++) {
+            if (!inTrips.contains(buses.get(i)))
+                result.add(buses.get(i));
         }
         return result;
     }

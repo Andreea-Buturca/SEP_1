@@ -12,17 +12,17 @@ public class Reservation implements Serializable {
 
     private Trip trip;
     private Customer customer;
-    private ArrayList<Passenger> passengers;
+    private PassengerList passengerList;
     private double defaultPricePerson;
     private double finalPrice;
     private double priceExtraServices;
     private double discount;
 
-    public Reservation(Trip trip, Customer customer, ArrayList<Passenger> passengers, double price) {
+    public Reservation(Trip trip, Customer customer, PassengerList passengerList, double price) {
         this.trip = trip;
         this.customer = customer;
-        this.passengers = passengers;
-        this.trip.freeSpaces -=this.passengers.size();
+        this.passengerList = passengerList;
+        this.trip.freeSpaces -= this.passengerList.getArrayPassenger().size();
         this.defaultPricePerson = price;
         this.priceExtraServices = 0;
         this.discount = 0;
@@ -32,44 +32,59 @@ public class Reservation implements Serializable {
     public Customer getCustomer() {
         return this.customer;
     }
+
     public String getReservationByCompany() {
-                return this.customer.getCompanyName();
+        return this.customer.getCompanyName();
     }
+
     public String getReservationByCustomerAddress() {
         return this.customer.getAddress();
     }
-    public String getReservationByPassengerAddress(){
-        for (int i = 0; i < this.passengers.size(); i++) {
-            return this.passengers.get(i).getAddress();
+
+    public String getReservationByPassengerAddress() {
+        for (int i = 0; i < this.passengerList.getArrayPassenger().size(); i++) {
+            return this.passengerList.getArrayPassenger().get(i).getAddress();
         }
         return null;
     }
-    public LocalDate getReservationByPassengerBirthday(){
-        for (int i = 0; i < this.passengers.size(); i++) {
-            return this.passengers.get(i).getDateOfBirth();
+
+    public LocalDate getReservationByPassengerBirthday() {
+        for (int i = 0; i < this.passengerList.getArrayPassenger().size(); i++) {
+            return this.passengerList.getArrayPassenger().get(i).getDateOfBirth();
         }
         return null;
     }
-    public String getReservationByCustomerEmail(){ return this.customer.getEmail(); }
-    public String getReservationByPassengerEmail(){
-        for (int i = 0; i < this.passengers.size(); i++) {
-            return this.passengers.get(i).getEmail();
+
+    public String getReservationByCustomerEmail() {
+        return this.customer.getEmail();
+    }
+
+    public String getReservationByPassengerEmail() {
+        for (int i = 0; i < this.passengerList.getArrayPassenger().size(); i++) {
+            return this.passengerList.getArrayPassenger().get(i).getEmail();
         }
         return null;
     }
-    public String getReservationByCustomerPhone(){ return this.customer.getEmail(); }
+
+    public String getReservationByCustomerPhone() {
+        return this.customer.getEmail();
+    }
+
     public String getReservationByPassengerName() {
-        for (int i = 0; i < this.passengers.size(); i++) {
-            return this.passengers.get(i).getPassengerName();
+        for (int i = 0; i < this.passengerList.getArrayPassenger().size(); i++) {
+            return this.passengerList.getArrayPassenger().get(i).getPassengerName();
         }
         return null;
     }
+
     public Destination getReservationDestination() {
         return this.trip.getDestination();
     }
+
     public Destination getReservationPickUpPoint() {
         return this.trip.getPickUpPoint();
     }
+
     public Date getReservationTimeStart() {
         return this.trip.getDateObjStart();
     }
@@ -78,8 +93,8 @@ public class Reservation implements Serializable {
         return this.trip;
     }
 
-    public ArrayList<Passenger> getReservationPassengers() {
-        return this.passengers;
+    public PassengerList getReservationPassengers() {
+        return this.passengerList;
     }
 
     public double getDefaultPricePerson() {
@@ -111,13 +126,13 @@ public class Reservation implements Serializable {
     }
 
     public void setFinalPrice() {
-        this.finalPrice = ((getDefaultPricePerson() + getPriceExtraServices()) - getDiscount()) * this.passengers.size();
+        this.finalPrice = ((getDefaultPricePerson() + getPriceExtraServices()) - getDiscount()) * this.passengerList.getArrayPassenger().size();
     }
 
     public String toString() {
         String passsengers = "";
-        for (int i = 0; i < passengers.size(); i++) {
-            passsengers += " , for passenger nr: " + (i + 1) +": "+ this.passengers.get(i).toString();
+        for (int i = 0; i < passengerList.getArrayPassenger().size(); i++) {
+            passsengers += " , for passenger nr: " + (i + 1) + ": " + this.passengerList.getArrayPassenger().get(i).toString();
         }
         return "Tour to: " + this.trip + " , price: " + this.finalPrice + " , reserved by customer: " + this.customer + passsengers;
     }

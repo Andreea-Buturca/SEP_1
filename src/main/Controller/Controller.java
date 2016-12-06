@@ -60,7 +60,6 @@ public class Controller implements Initializable {
         if (tripList != null) {
             showList();
         }
-        System.out.println(DataHandler.getReservationList().getArrayReservation().toString());
     }
 
     private void showList() {

@@ -56,6 +56,21 @@ public class Person implements Serializable {
         return dateOfBirth;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+
+        Person person = (Person) o;
+
+        if (!name.equals(person.name)) return false;
+        if (!address.equals(person.address)) return false;
+        if (!email.equals(person.email)) return false;
+        if (!phone.equals(person.phone)) return false;
+        return dateOfBirth.equals(person.dateOfBirth);
+    }
+
+
     public String toString() {
         String email = "";
         if (!this.email.equals("")) {

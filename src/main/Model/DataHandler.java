@@ -83,10 +83,10 @@ public class DataHandler implements Serializable {
         getCustomerList().add(new Customer("name4", "address", "email", "128216"));
         getCustomerList().add(new Customer("name5", "address", "email", "118416"));
 
-        getTrips().add(new Trip(getBusList().getAtIndex(0), getChauffeurList().getChauffeurByIndex(0), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
-        getTrips().add(new Trip(getBusList().getAtIndex(1), getChauffeurList().getChauffeurByIndex(1), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
-        getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
-        getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 11, 12), "08:20", LocalDate.of(2016, 12, 12), "08:20", 50));
+        getTrips().add(new Trip(getBusList().getAtIndex(0), getChauffeurList().getChauffeurByIndex(0), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 10, 12), "08:20", LocalDate.of(2016, 11, 12), "08:20", 50));
+        getTrips().add(new Trip(getBusList().getAtIndex(1), getChauffeurList().getChauffeurByIndex(1), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 9, 12), "08:20", LocalDate.of(2016, 10, 12), "08:20", 50));
+        getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 5, 12), "08:20", LocalDate.of(2016, 6, 12), "08:20", 50));
+        getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 8, 12), "08:20", LocalDate.of(2016, 9, 12), "08:20", 50));
 
     }
 

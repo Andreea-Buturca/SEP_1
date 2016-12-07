@@ -93,6 +93,34 @@ public class Chauffeur extends Person implements Serializable {
             this.workedHours = hours;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Chauffeur)) return false;
+        if (!super.equals(o)) return false;
+
+        Chauffeur chauffeur = (Chauffeur) o;
+
+        if (employeeID != chauffeur.employeeID) return false;
+        if (workedHours != chauffeur.workedHours) return false;
+        if (isVikar != chauffeur.isVikar) return false;
+        if (!preferredDistance.equals(chauffeur.preferredDistance)) return false;
+        if (bus != null ? !bus.equals(chauffeur.bus) : chauffeur.bus != null) return false;
+        return busType.equals(chauffeur.busType);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = employeeID;
+        result = 31 * result + preferredDistance.hashCode();
+        result = 31 * result + workedHours;
+        result = 31 * result + (isVikar ? 1 : 0);
+        result = 31 * result + (bus != null ? bus.hashCode() : 0);
+        result = 31 * result + busType.hashCode();
+        return result;
+    }
+
     public int getPreferredWorkedHours() {
         return workedHours;
     }

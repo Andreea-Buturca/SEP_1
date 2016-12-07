@@ -31,7 +31,7 @@ public class BusController extends Controller {
         }
     }
 
-    public void loadList() {
+    private void loadList() {
         busListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<Bus> items = FXCollections.observableArrayList();
         for (Bus bus : DataHandler.getBusList().getArrayBuses()) {
@@ -57,7 +57,7 @@ public class BusController extends Controller {
         String alert = "There are some mistakes: \n";
         int length = alert.length();
 
-        if (!validateEmptyField(regPlate) || !validateNumberField(regPlate)) alert += "Registration plate \n";
+        if (!validateEmptyField(regPlate) || !validateNumberPlate(regPlate)) alert += "Registration plate \n";
         if (!validateEmptyField(seatNumber) || !validateNumberField(seatNumber)) alert += "Number of seats \n";
 
         if (length == alert.length()) {

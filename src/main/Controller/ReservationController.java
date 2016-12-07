@@ -136,7 +136,7 @@ public class ReservationController extends Controller implements Initializable {
             }
 
             Stage stage = (Stage) mkReservationView.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/makeReservationDate.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/makeReservationData.fxml"));
             Parent root = fxmlLoader.load();
 
             ReservationController editReservation = fxmlLoader.getController();
@@ -219,7 +219,7 @@ public class ReservationController extends Controller implements Initializable {
             String address = fieldAddressCustomer.getText();
             String email = fieldEmailCustomer.getText();
             String phone = fieldPhoneCustomer.getText();
-            boolean isCompany = true;
+            boolean isCompany;
             isCompany = validateEmptyField(fieldNameCompany);
 
             if (!isCompany) {
@@ -272,7 +272,8 @@ public class ReservationController extends Controller implements Initializable {
             stage = (Stage) buttonCancelReservation.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
         }
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root != null ? root : null);
+        assert stage != null;
         stage.setScene(scene);
         stage.show();
     }
@@ -305,7 +306,8 @@ public class ReservationController extends Controller implements Initializable {
         int length = alert.length();
         if (listViewCustomer.getSelectionModel().getSelectedItem() == null) alert += "Select Customer \n";
         if (listViewPassenger.getItems().size() == 0) alert += "Add passenger \n";
-        if (!validateNumberField(fieldDefaultPrice) && !validateDoubleNumberField(fieldDefaultPrice)) alert += "Price \n";
+        if (!validateNumberField(fieldDefaultPrice) && !validateDoubleNumberField(fieldDefaultPrice))
+            alert += "Price \n";
 
         if (length == alert.length()) {
             //save it DataHandler. .....

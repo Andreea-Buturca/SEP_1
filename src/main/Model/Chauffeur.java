@@ -30,10 +30,6 @@ public class Chauffeur extends Person implements Serializable {
         this.workedHours = 0;
     }
 
-    public void setWorkedHours(int workedHours) {
-        this.workedHours = workedHours;
-    }
-
     public String getName() {
         return super.getName();
     }
@@ -48,10 +44,6 @@ public class Chauffeur extends Person implements Serializable {
 
     public String getPhone() {
         return super.getPhone();
-    }
-
-    public int getEmployeeID() {
-        return employeeID;
     }
 
     public void setPreferredShortDistance(int distance) {
@@ -74,25 +66,13 @@ public class Chauffeur extends Person implements Serializable {
     }
 
 
-
-    public ArrayList<String> getArrayBusTypes(){
+    public ArrayList<String> getArrayBusTypes() {
         return this.busType;
     }
 
     public void setPreferredBusType(String bus) {
         this.busType.add(bus);
     }
-
-    public void setPreferredWeekHours(int hours) {
-        if (hours > 17)
-            this.workedHours = hours;
-    }
-
-    public void setPreferredWeekendHours(int hours) {
-        if (hours < 17)
-            this.workedHours = hours;
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -106,8 +86,7 @@ public class Chauffeur extends Person implements Serializable {
         if (workedHours != chauffeur.workedHours) return false;
         if (isVikar != chauffeur.isVikar) return false;
         if (!preferredDistance.equals(chauffeur.preferredDistance)) return false;
-        if (bus != null ? !bus.equals(chauffeur.bus) : chauffeur.bus != null) return false;
-        return busType.equals(chauffeur.busType);
+        return bus != null ? bus.equals(chauffeur.bus) : chauffeur.bus == null && busType.equals(chauffeur.busType);
     }
 
     @Override
@@ -119,10 +98,6 @@ public class Chauffeur extends Person implements Serializable {
         result = 31 * result + (bus != null ? bus.hashCode() : 0);
         result = 31 * result + busType.hashCode();
         return result;
-    }
-
-    public int getPreferredWorkedHours() {
-        return workedHours;
     }
 
     public boolean isVikar() {

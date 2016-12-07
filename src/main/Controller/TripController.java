@@ -96,7 +96,7 @@ public class TripController extends Controller implements Initializable {
                     window.setMinHeight(400);
                     window.setResizable(false);
 
-                    Scene scene = new Scene(root);
+                    Scene scene = new Scene(root != null ? root : null);
                     window.setScene(scene);
                     window.show();
                 }

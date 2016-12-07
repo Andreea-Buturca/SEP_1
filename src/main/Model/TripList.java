@@ -33,44 +33,8 @@ public class TripList implements Serializable {
         return trips.get(index);
     }
 
-    public Trip findByDestination(String destination) {
-        for (Trip trip : trips) {
-            if (trip.getDestination().equals(destination))
-                return trip;
-        }
-        return null;
-    }
-
-    public Trip findByStartDate(LocalDate date) {
-        for (Trip trip : trips) {
-            if (trip.getTimeStart().equals(date))
-                return trip;
-        }
-        return null;
-    }
-
-    public Trip findByPrice(double price) {
-        for (Trip trip : trips) {
-            if (trip.getPrice() == price)
-                return trip;
-        }
-        return null;
-    }
-
     public ArrayList<Trip> getArrayTrip() {
         return trips;
-    }
-
-    public Trip getTrip(Trip trip) {
-        for (Trip trip1 : trips) {
-            if (trip1.equals(trip))
-                return trip1;
-        }
-        return null;
-    }
-
-    public int getTripListSize() {
-        return this.trips.size();
     }
 
     public TripList findAllByDate(LocalDate date) {
@@ -116,15 +80,6 @@ public class TripList implements Serializable {
             }
         }
         return result;
-    }
-
-    public Trip findByToString(String tripToString) {
-        for (Trip trip : trips) {
-            if (trip.toString().equals(tripToString)) {
-                return trip;
-            }
-        }
-        return null;
     }
 
     public String toString() {

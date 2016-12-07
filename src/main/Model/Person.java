@@ -7,7 +7,7 @@ import java.time.LocalDate;
  * Created by MartinNtb on 15-Nov-16.
  */
 
-public class Person implements Serializable {
+class Person implements Serializable {
 
     private String name;
     private String address;
@@ -15,14 +15,14 @@ public class Person implements Serializable {
     private String phone;
     private LocalDate dateOfBirth;
 
-    public Person(String name, String address, String email, String phone) {
+    Person(String name, String address, String email, String phone) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.phone = phone;
     }
 
-    public Person(String name, String address, String email, String phone, LocalDate dateOfBirth) {
+    Person(String name, String address, String email, String phone, LocalDate dateOfBirth) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -30,7 +30,7 @@ public class Person implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Person(String name, String address, String email, LocalDate dateOfBirth) {
+    Person(String name, String address, String email, LocalDate dateOfBirth) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -53,10 +53,6 @@ public class Person implements Serializable {
         return phone;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -67,8 +63,7 @@ public class Person implements Serializable {
         if (!name.equals(person.name)) return false;
         if (!address.equals(person.address)) return false;
         if (!email.equals(person.email)) return false;
-        if (!phone.equals(person.phone)) return false;
-        return dateOfBirth.equals(person.dateOfBirth);
+        return phone.equals(person.phone) && dateOfBirth.equals(person.dateOfBirth);
     }
 
 

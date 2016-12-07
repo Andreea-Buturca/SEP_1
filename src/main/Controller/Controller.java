@@ -37,15 +37,6 @@ public class Controller implements Initializable {
     public Button findTrip;
     //tripList
     public ListView tripList;
-    public TableColumn departureCol;
-    public TableColumn destinationCol;
-    public TableColumn durationCol;
-    public TableColumn chauffeurCol;
-    public TableColumn busCol;
-    public TableColumn tourCol;
-    public TableColumn freeCol;
-    public TableColumn priceCol;
-
 
     //bus list
     public Button addBusView;
@@ -69,8 +60,6 @@ public class Controller implements Initializable {
         }
         tripList.setItems(data);
     }
-
-    //todo how much he paid, times
 
     public void changeView(MouseEvent mouseEvent) throws IOException {
 
@@ -134,10 +123,6 @@ public class Controller implements Initializable {
         }
 
     }
-
-    protected void test() {
-    }
-
 
     protected boolean validateEmptyField(TextField textField) {
         return !textField.getText().isEmpty();

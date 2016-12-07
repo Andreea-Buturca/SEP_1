@@ -19,7 +19,6 @@ public class Trip implements Serializable {
     private LocalDate dateEnd;
     private String timeStart;
     private String timeEnd;
-    //private ArrayList<String> notes; // TODO: 29-Nov-16 so do we need it?
     private Customer customer;
     private boolean isPrivate;
     private String privateString;
@@ -59,7 +58,7 @@ public class Trip implements Serializable {
 
     }
 
-    public String getDuration(Date start, Date end) {
+    private String getDuration(Date start, Date end) {
         String result = "";
         long diff = end.getTime() - start.getTime();
         int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
@@ -172,10 +171,6 @@ public class Trip implements Serializable {
         return price;
     }
 
-    public String getDuration() {
-        return duration;
-    }
-
     public Date getDateObjStart() {
         return dateObjStart;
     }
@@ -185,7 +180,6 @@ public class Trip implements Serializable {
     }
 
     public String toString() {
-        // TODO: 05-Dec-16 trip display also extra services 
         return "Tour to: " + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd + ", distance: " + this.distance + " km" + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: " + this.chauffeur.toString();
     }
 }

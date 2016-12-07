@@ -5,11 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.Model.*;
-
-import java.lang.*;
-import java.time.LocalDate;
-import java.util.Date;
+import main.Model.DataHandler;
 
 public class Main extends Application {
 
@@ -26,18 +22,6 @@ public class Main extends Application {
         stage = primaryStage;
     }
 
-
-    // TODO: 05-Dec-16 For Marek
-
-    //in createtour try to fill distance to show it
-
-
-    //change items in combobox, choicebox to normal Object like Bus, Trip ...,  not object to strings and then to object
-
-
-    // TODO: 05-Dec-16 frequent customer
-
-
     public static void main(String[] args) {
 
 //for now just creating empty objects
@@ -46,8 +30,6 @@ public class Main extends Application {
         //creating test data
         DataHandler.testData();
 
-        // TODO: 30-Nov-16 make load from file when done
-        // TODO: 30-Nov-16 override onclose to make backup
         //DataHandler.load();
 
         launch(args);

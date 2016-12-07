@@ -13,10 +13,6 @@ public class Passenger extends Person implements Serializable {
         super(name, address, email, dateOfBirth);
     }
 
-    public String getPassengerName() {
-        return super.getName();
-    }
-
     public String toString() {
         return super.toString();
     }

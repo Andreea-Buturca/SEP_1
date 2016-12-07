@@ -93,9 +93,6 @@ public class DataHandler implements Serializable {
     public static void save() {
 
         String filename = "mainData.bin";
-
-        // TODO: 30-Nov-16 first time needed to construct all data 
-
         ObjectOutputStream out = null;
         try {
             File file = new File(filename);
@@ -111,6 +108,7 @@ public class DataHandler implements Serializable {
             System.out.println("Exception: " + filename);
         } finally {
             try {
+                assert out != null;
                 out.close();
             } catch (IOException e) {
                 e.printStackTrace();

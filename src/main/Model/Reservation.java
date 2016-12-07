@@ -1,8 +1,6 @@
 package main.Model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Created by andreea on 12/1/2016.
@@ -33,64 +31,8 @@ public class Reservation implements Serializable {
         return this.customer;
     }
 
-    public String getReservationByCompany() {
-        return this.customer.getCompanyName();
-    }
-
-    public String getReservationByCustomerAddress() {
-        return this.customer.getAddress();
-    }
-
-    public String getReservationByPassengerAddress() {
-        for (int i = 0; i < this.passengerList.getArrayPassenger().size(); i++) {
-            return this.passengerList.getArrayPassenger().get(i).getAddress();
-        }
-        return null;
-    }
-
-    public LocalDate getReservationByPassengerBirthday() {
-        for (int i = 0; i < this.passengerList.getArrayPassenger().size(); i++) {
-            return this.passengerList.getArrayPassenger().get(i).getDateOfBirth();
-        }
-        return null;
-    }
-
-    public String getReservationByCustomerEmail() {
-        return this.customer.getEmail();
-    }
-
-    public String getReservationByPassengerEmail() {
-        for (int i = 0; i < this.passengerList.getArrayPassenger().size(); i++) {
-            return this.passengerList.getArrayPassenger().get(i).getEmail();
-        }
-        return null;
-    }
-
-    public String getReservationByCustomerPhone() {
-        return this.customer.getEmail();
-    }
-
-    public String getReservationByPassengerName() {
-        for (int i = 0; i < this.passengerList.getArrayPassenger().size(); i++) {
-            return this.passengerList.getArrayPassenger().get(i).getPassengerName();
-        }
-        return null;
-    }
-
     public Destination getReservationDestination() {
         return this.trip.getDestination();
-    }
-
-    public Destination getReservationPickUpPoint() {
-        return this.trip.getPickUpPoint();
-    }
-
-    public Date getReservationTimeStart() {
-        return this.trip.getDateObjStart();
-    }
-
-    public Trip getReservationByTrip() {
-        return this.trip;
     }
 
     public PassengerList getReservationPassengers() {
@@ -99,10 +41,6 @@ public class Reservation implements Serializable {
 
     public double getDefaultPricePerson() {
         return defaultPricePerson;
-    }
-
-    public void setDefaultPricePerson(int price) {
-        this.defaultPricePerson = price;
     }
 
     public double getPriceExtraServices() {
@@ -123,10 +61,6 @@ public class Reservation implements Serializable {
 
     public double getDiscount() {
         return discount;
-    }
-
-    public double getFinalPrice() {
-        return finalPrice;
     }
 
     public void setFinalPrice() {

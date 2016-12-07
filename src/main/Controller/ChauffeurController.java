@@ -6,7 +6,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import main.Model.*;
+import main.Model.Chauffeur;
+import main.Model.DataHandler;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -37,11 +38,8 @@ public class ChauffeurController extends Controller implements Initializable {
     public CheckBox checkBoxMiniBus;
     public CheckBox checkBoxPartyBus;
     public CheckBox checkboxLuxuryBus;
-    public CheckBox checkBoxWeekend;
-    public CheckBox checkBoxWeek;
-    private Chauffeur chauffeur;
 
-    public void loadList() {
+    private void loadList() {
         listViewChauffeurList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<Chauffeur> items = FXCollections.observableArrayList();
         for (Chauffeur chauffeur : DataHandler.getChauffeurList().getArrayChauffeur()) {

@@ -7,7 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -123,7 +126,7 @@ public class SearchController extends Controller implements Initializable {
     }
 
     public void editReservation(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/makeReservationDate.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/makeReservationData.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1000, 600);
         Stage window = new Stage();

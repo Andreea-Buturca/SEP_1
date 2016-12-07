@@ -36,28 +36,6 @@ public class BusList implements Serializable {
         buses.remove(bus);
     }
 
-    public int getSize() {
-        return buses.size();
-    }
-
-    public Bus findByRegplate(String regPlate) {
-        for (Bus buse : buses) {
-            if (buse.getRegistrationPlate().equals(regPlate))
-                return buse;
-        }
-        return null;
-    }
-
-    public BusList findAllByRegplate(String regPlate) {
-        BusList result = new BusList();
-        for (Bus buse : buses) {
-            if (buse.getRegistrationPlate().equals(regPlate))
-                result.add(buse);
-        }
-        return result;
-    }
-
-
     public ArrayList<Bus> searchByType(String name) {
         ArrayList<Bus> busTemp = new ArrayList<>();
 
@@ -66,14 +44,6 @@ public class BusList implements Serializable {
         }
 
         return busTemp;
-    }
-
-    public int getIndex(Bus bus) {
-        for (int i = 0; i < buses.size(); i++) {
-            if (buses.get(i).equals(bus))
-                return i;
-        }
-        return -1;
     }
 
     public String toString() {
@@ -100,9 +70,9 @@ public class BusList implements Serializable {
                 }
             }
         }
-        for (int i=0;i<buses.size();i++) {
-            if (!inTrips.contains(buses.get(i)))
-                result.add(buses.get(i));
+        for (Bus buse : buses) {
+            if (!inTrips.contains(buse))
+                result.add(buse);
         }
         return result;
     }

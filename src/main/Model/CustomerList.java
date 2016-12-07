@@ -22,14 +22,6 @@ public class CustomerList implements Serializable {
         customers.remove(customer);
     }
 
-    public Customer findByName(String name) {
-        for (Customer customer : customers) {
-            if (customer.getName().equals(name))
-                return customer;
-        }
-        return null;
-    }
-
     public int getSize() {
         return customers.size();
     }
@@ -56,14 +48,6 @@ public class CustomerList implements Serializable {
         return result;
     }
 
-    public Customer findByPhone(String phone) {
-        for (Customer customer : customers) {
-            if (customer.getPhone().equals(phone))
-                return customer;
-        }
-        return null;
-    } // TODO: 05-Dec-16 this has weird behavior
-
     public CustomerList findAllByPhone(String phone) {
         CustomerList result = new CustomerList();
         for (Customer customer : customers) {
@@ -89,14 +73,6 @@ public class CustomerList implements Serializable {
                 result.add(customer);
         }
         return result;
-    }
-
-    public Customer findByCompany(String company) {
-        for (Customer customer : customers) {
-            if (customer.getCompanyName().equals(company))
-                return customer;
-        }
-        return null;
     }
 
     public int getIndex(Customer customer) {

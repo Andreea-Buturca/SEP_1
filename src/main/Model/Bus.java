@@ -11,14 +11,9 @@ public abstract class Bus implements Serializable {
     private final int seatPlaces;
 
 
-    public Bus(String registrationPlate, int seatPlaces) {
+    Bus(String registrationPlate, int seatPlaces) {
         this.registrationPlate = registrationPlate;
         this.seatPlaces = seatPlaces;
-    }
-
-
-    public String getRegistrationPlate() {
-        return registrationPlate;
     }
 
     public int getSeatPlaces() {

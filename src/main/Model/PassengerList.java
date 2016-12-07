@@ -17,30 +17,6 @@ public class PassengerList implements Serializable {
         this.passengers.add(passenger);
     }
 
-    public Passenger findByName(String name) {
-        for (Passenger passenger : passengers) {
-            if (passenger.getName().equals(name))
-                return passenger;
-        }
-        return null;
-    }
-
-    public Passenger findByPhone(String phone) {
-        for (Passenger passenger : passengers) {
-            if (passenger.getPhone().equals(phone))
-                return passenger;
-        }
-        return null;
-    }
-
-    public Passenger findByEmail(String email) {
-        for (Passenger passenger : passengers) {
-            if (passenger.getEmail().equals(email))
-                return passenger;
-        }
-        return null;
-    }
-
     public ArrayList<Passenger> getArrayPassenger() {
         return passengers;
     }

@@ -23,10 +23,6 @@ public class Destination implements Serializable {
         return place;
     }
 
-    public String getStopString() {
-        return place + ", " + stopTime;
-    }
-
     @Override
     public String toString() {
         String time = "";

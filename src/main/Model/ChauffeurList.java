@@ -82,7 +82,7 @@ public class ChauffeurList implements Serializable {
                                 result.add(chauffeurs.get(i));
                         }
                     }
-                }else if (chauffeurs.get(i).getPreferredDistance().isEmpty()){
+                } else if (chauffeurs.get(i).getPreferredDistance().isEmpty()) {
                     result.add(chauffeurs.get(i));
                 }
             }
@@ -98,11 +98,16 @@ public class ChauffeurList implements Serializable {
         ChauffeurList result = new ChauffeurList();
         for (int i = 0; i < chauffeurs.size(); i++) {
             ArrayList<String> prefferedBuses = chauffeurs.get(i).getArrayBusTypes();
-            for (int j = 0; j < prefferedBuses.size(); j++) {
-                if (busType.equals(prefferedBuses.get(j))) {
-                    if (!result.checkIfContains(chauffeurs.get(i)))
-                        result.add(chauffeurs.get(i));
-                }
+            if (!chauffeurs.get(i).isVikar()) {
+                if (!prefferedBuses.isEmpty()) {
+                    for (int j = 0; j < prefferedBuses.size(); j++) {
+                        if (busType.equals(prefferedBuses.get(j))) {
+                            if (!result.checkIfContains(chauffeurs.get(i)))
+                                result.add(chauffeurs.get(i));
+                        }
+                    }
+                } else
+                    result.add(chauffeurs.get(i));
             }
         }
 

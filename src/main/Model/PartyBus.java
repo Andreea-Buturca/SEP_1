@@ -16,6 +16,6 @@ public class PartyBus extends Bus implements Serializable {
 
     @Override
     public String toString() {
-        return " Bus type: Party Bus, " + super.toString();
+        return "Party Bus, " + super.toString();
     }
 }

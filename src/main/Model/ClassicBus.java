@@ -16,6 +16,6 @@ public class ClassicBus extends Bus implements Serializable {
     }
 
     public String toString() {
-        return " Bus type: Classic Bus, " + super.toString();
+        return "Classic Bus, " + super.toString();
     }
 }

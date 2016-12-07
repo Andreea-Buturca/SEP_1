@@ -4,12 +4,17 @@ package main.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import main.Main;
 import main.Model.Chauffeur;
 import main.Model.DataHandler;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -54,7 +59,7 @@ public class ChauffeurController extends Controller implements Initializable {
         }
     }
 
-    public void addChauffeur(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+    public void addChauffeur(ActionEvent actionEvent) throws IOException, ParseException {
         String alert = "There are some mistakes: \n";
         int length = alert.length();
 
@@ -109,6 +114,11 @@ public class ChauffeurController extends Controller implements Initializable {
 
             DataHandler.save();
             successdisplay("Success", "Chauffeur was added.");
+
+            Parent root = FXMLLoader.load(getClass().getResource("../View/chauffeurList.fxml"));
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
         } else {
             //alert
             alertdisplay("Wrong Input", alert);

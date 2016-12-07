@@ -3,10 +3,15 @@ package main.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import main.Main;
 import main.Model.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ResourceBundle;
@@ -53,7 +58,7 @@ public class BusController extends Controller {
     }
 
 
-    public void addBus(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
+    public void addBus(ActionEvent actionEvent) throws IOException, ParseException {
 
         String alert = "There are some mistakes: \n";
         int length = alert.length();
@@ -76,6 +81,10 @@ public class BusController extends Controller {
             }
             DataHandler.save();
             successdisplay("Success", "Bus was created.");
+            Parent root = FXMLLoader.load(getClass().getResource("../View/busList.fxml"));
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
 
         } else {
             //alert

@@ -16,6 +16,6 @@ public class LuxuryBus extends Bus implements Serializable {
     }
 
     public String toString() {
-        return " Bus type: Luxury Bus, " + super.toString();
+        return "Luxury Bus, " + super.toString();
     }
 }

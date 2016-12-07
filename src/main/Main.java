@@ -44,7 +44,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        //DataHandler.testCreate();
+//        DataHandler.testCreate();
 
         DataHandler.load();
 

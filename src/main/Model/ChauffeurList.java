@@ -74,11 +74,6 @@ public class ChauffeurList implements Serializable {
                 if (chauffeurs.get(i).getPreferredDistance().get(0) > prefferedDistance)
                     result.add(chauffeurs.get(i));
         }
-        for (int i = 0; i < chauffeurs.size(); i++) {
-            if (chauffeurs.get(i).isVikar()) {
-                result.add(chauffeurs.get(i));
-            }
-        }
         return result;
     }
 
@@ -97,6 +92,12 @@ public class ChauffeurList implements Serializable {
                 }
             }
         }
+
+        return result;
+    }
+
+    public ChauffeurList getAllVicars(){
+        ChauffeurList result = new ChauffeurList();
         for (int i = 0; i < chauffeurs.size(); i++) {
             if (chauffeurs.get(i).isVikar()) {
                 result.add(chauffeurs.get(i));

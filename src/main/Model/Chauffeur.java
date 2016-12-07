@@ -73,17 +73,7 @@ public class Chauffeur extends Person implements Serializable {
         return preferredDistance;
     }
 
-    public String getPreferredBusType(String bus) {
-        if (this.bus.getBusType().equals(bus))
-            return "Classic Bus";
-        else if (this.bus.getBusType().equals(bus))
-            return "Mini Bus";
-        else if (this.bus.getBusType().equals(bus))
-            return "Party Bus";
-        else if (this.bus.getBusType().equals(bus))
-            return "Luxury Bus";
-        else return null;
-    }
+
 
     public ArrayList<String> getArrayBusTypes(){
         return this.busType;

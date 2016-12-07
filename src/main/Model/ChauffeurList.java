@@ -67,17 +67,30 @@ public class ChauffeurList implements Serializable {
         return result;
     }
 
+    public boolean contains(Chauffeur chauffeur) {
+        return chauffeurs.contains(chauffeur);
+    }
+
     public ChauffeurList getAllByPrefferedDistance(int prefferedDistance) {
         ChauffeurList result = new ChauffeurList();
         for (int i = 0; i < chauffeurs.size(); i++) {
-            if ((chauffeurs.get(i).getPreferredDistance() != null)&&!(chauffeurs.get(i).getPreferredDistance().isEmpty()))
-                if (chauffeurs.get(i).getPreferredDistance().get(0) > prefferedDistance)
+            if (!chauffeurs.get(i).isVikar()) {
+                if ((chauffeurs.get(i).getPreferredDistance() != null) && !(chauffeurs.get(i).getPreferredDistance().isEmpty())) {
+                    for (int j = 0; j < chauffeurs.get(i).getPreferredDistance().size(); j++) {
+                        if (chauffeurs.get(i).getPreferredDistance().get(j) > prefferedDistance) {
+                            if (!result.contains(chauffeurs.get(i)))
+                                result.add(chauffeurs.get(i));
+                        }
+                    }
+                }else if (chauffeurs.get(i).getPreferredDistance().isEmpty()){
                     result.add(chauffeurs.get(i));
+                }
+            }
         }
         return result;
     }
 
-    public boolean checkIfContains(Chauffeur chauffeur){
+    public boolean checkIfContains(Chauffeur chauffeur) {
         return chauffeurs.contains(chauffeur);
     }
 
@@ -85,8 +98,8 @@ public class ChauffeurList implements Serializable {
         ChauffeurList result = new ChauffeurList();
         for (int i = 0; i < chauffeurs.size(); i++) {
             ArrayList<String> prefferedBuses = chauffeurs.get(i).getArrayBusTypes();
-            for (int j=0;j<prefferedBuses.size();j++){
-                if (busType.equals(prefferedBuses.get(j))){
+            for (int j = 0; j < prefferedBuses.size(); j++) {
+                if (busType.equals(prefferedBuses.get(j))) {
                     if (!result.checkIfContains(chauffeurs.get(i)))
                         result.add(chauffeurs.get(i));
                 }
@@ -96,7 +109,7 @@ public class ChauffeurList implements Serializable {
         return result;
     }
 
-    public ChauffeurList getAllVicars(){
+    public ChauffeurList getAllVicars() {
         ChauffeurList result = new ChauffeurList();
         for (int i = 0; i < chauffeurs.size(); i++) {
             if (chauffeurs.get(i).isVikar()) {
@@ -106,7 +119,7 @@ public class ChauffeurList implements Serializable {
         return result;
     }
 
-    public void removeAllVicars(){
+    public void removeAllVicars() {
         for (int i = 0; i < chauffeurs.size(); i++) {
             if (chauffeurs.get(i).isVikar()) {
                 chauffeurs.remove(chauffeurs.get(i));
@@ -173,16 +186,16 @@ public class ChauffeurList implements Serializable {
                 }
             }
         }
-        for (int i=0;i<chauffeurs.size();i++){
+        for (int i = 0; i < chauffeurs.size(); i++) {
             if (!inTrips.contains(chauffeurs.get(i)))
                 result.add(chauffeurs.get(i));
         }
         return result;
     }
 
-    public ChauffeurList copy () {
+    public ChauffeurList copy() {
         ChauffeurList chauffeurList = new ChauffeurList();
-        for (Chauffeur chauffeur: chauffeurs) {
+        for (Chauffeur chauffeur : chauffeurs) {
             chauffeurList.add(chauffeur);
         }
         return chauffeurList;

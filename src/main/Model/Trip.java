@@ -180,6 +180,25 @@ public class Trip implements Serializable {
     }
 
     public String toString() {
-        return "Tour to: " + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd + ", distance: " + this.distance + " km" + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: " + this.chauffeur.toString();
+        String extra = "";
+        if(isTickets() || isAccommodation() || isFood()) {
+            extra = ", Extra services ";
+        }
+            if (isFood()) {
+                extra += "- food";
+            }
+            if (isAccommodation()) {
+                extra += "- accomodation";
+            }
+            if (isTickets()) {
+                extra += "- tickets";
+            }
+        String tour = "";
+        if(this.isPrivate()) {
+            tour += "Private Tour: ";
+        }
+        else if(!this.isPrivate())
+            tour += "Tour to: ";
+        return tour + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd + ", distance: " + this.distance + " km" + extra + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: " + this.chauffeur.toString();
     }
 }

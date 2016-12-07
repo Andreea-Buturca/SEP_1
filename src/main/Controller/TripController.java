@@ -145,7 +145,7 @@ public class TripController extends Controller implements Initializable {
             hours = Integer.parseInt(lineToken[0]);
             minutes = Integer.parseInt(lineToken[1]);
             Date dateEnd = new Date(endDatePicker.getValue().getYear() - 1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
-            chauffeurs.getAvailable(dateStart, dateEnd);
+            chauffeurs = chauffeurs.getAvailable(dateStart, dateEnd);
         }
 
         chauffeurList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -177,7 +177,7 @@ public class TripController extends Controller implements Initializable {
             hours = Integer.parseInt(lineToken[0]);
             minutes = Integer.parseInt(lineToken[1]);
             Date dateEnd = new Date(endDatePicker.getValue().getYear() - 1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
-            buses.getAvailable(dateStart, dateEnd);
+            buses = buses.getAvailable(dateStart, dateEnd);
         }
 
         busListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);

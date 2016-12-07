@@ -92,12 +92,6 @@ public class ChauffeurController extends Controller implements Initializable {
                 if (checkBoxDistanceLong.isSelected()) {
                     chauffeur.setPreferredLongDistance(2500);
                 }
-                if (checkBoxWeekend.isSelected()) {
-                    chauffeur.setPreferredWeekendHours(16);
-                }
-                if (checkBoxWeek.isSelected()) {
-                    chauffeur.setPreferredWeekHours(37);
-                }
                 if (checkBoxClasicBus.isSelected()) {
                     chauffeur.setPreferredBusType("Classic Bus");
                 }

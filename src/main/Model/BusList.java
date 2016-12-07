@@ -106,5 +106,4 @@ public class BusList implements Serializable {
         }
         return result;
     }
-
 }

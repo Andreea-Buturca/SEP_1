@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.112"
+            prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ChauffeurController">
     <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
         <bottom>
@@ -61,24 +61,19 @@
                         <Label text="Email:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                                GridPane.rowIndex="2"/>
                         <TextField fx:id="fieldChauffeurAddAddress" maxHeight="-Infinity" maxWidth="-Infinity"
-                                   minHeight="-Infinity"
-                                   minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
+                                   minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
                                    GridPane.rowIndex="1"/>
                         <TextField fx:id="fieldChauffeurAddEmail" maxHeight="-Infinity" maxWidth="-Infinity"
-                                   minHeight="-Infinity"
-                                   minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
+                                   minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
                                    GridPane.rowIndex="2"/>
                         <TextField fx:id="fieldChauffeurAddName" maxHeight="-Infinity" maxWidth="-Infinity"
-                                   minHeight="-Infinity"
-                                   minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
+                                   minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
                                    GridPane.rowIndex="0"/>
                         <TextField fx:id="fieldChauffeurAddPhone" maxHeight="-Infinity" maxWidth="-Infinity"
-                                   minHeight="-Infinity"
-                                   minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
+                                   minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
                                    GridPane.rowIndex="3"/>
                         <TextField fx:id="fieldChauffeurAddId" maxHeight="-Infinity" maxWidth="-Infinity"
-                                   minHeight="-Infinity"
-                                   minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
+                                   minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1"
                                    GridPane.rowIndex="5"/>
                         <Label text="Phone:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                                GridPane.rowIndex="3"/>
@@ -92,8 +87,9 @@
                                GridPane.rowIndex="7"/>
                         <CheckBox fx:id="checkBoxVikar" mnemonicParsing="false" GridPane.columnIndex="1"
                                   GridPane.rowIndex="6"/>
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                            <VBox minHeight="46.0" prefHeight="47.0" prefWidth="444.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+                              GridPane.rowIndex="7">
+                            <VBox alignment="CENTER" minHeight="46.0" prefHeight="47.0" prefWidth="444.0">
                                 <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="353.0" spacing="10.0">
                                     <Label prefWidth="84.0" text="Distance:"/>
                                     <CheckBox fx:id="checkBoxDistanceLong" mnemonicParsing="false" text="Long"/>
@@ -101,7 +97,7 @@
                                               text="Medium"/>
                                     <CheckBox fx:id="checkBoxDistanceShort" mnemonicParsing="false" text="Short"/>
                                 </HBox>
-                                <HBox prefHeight="72.0" prefWidth="311.0" spacing="10.0">
+                                <HBox prefHeight="19.0" prefWidth="444.0" spacing="10.0">
                                     <Label prefWidth="83.0" text="Bus Type:"/>
                                     <CheckBox fx:id="checkBoxClasicBus" mnemonicParsing="false" text="Clasic"/>
                                     <CheckBox fx:id="checkBoxMiniBus" mnemonicParsing="false" text="Mini"/>
@@ -109,12 +105,6 @@
                                     <CheckBox fx:id="checkboxLuxuryBus" mnemonicParsing="false" text="Luxury"/>
                                 </HBox>
                             </VBox>
-                            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="357.0" spacing="10.0">
-                                <Label prefWidth="104.0" text="Work time:"/>
-                                <CheckBox fx:id="checkBoxWeekend" mnemonicParsing="false" prefWidth="133.0"
-                                          text="Weekend"/>
-                                <CheckBox fx:id="checkBoxWeek" mnemonicParsing="false" text="Week"/>
-                            </HBox>
                         </HBox>
                         <DatePicker fx:id="birthdayPicker" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1"
                                     GridPane.rowIndex="4"/>

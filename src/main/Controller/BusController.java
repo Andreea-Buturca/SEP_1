@@ -49,6 +49,7 @@ public class BusController extends Controller {
         }
 
         loadList();
+        DataHandler.save();
     }
 
 
@@ -73,7 +74,7 @@ public class BusController extends Controller {
             } else {
                 DataHandler.getBusList().add(new PartyBus(regplate, seats));
             }
-
+            DataHandler.save();
             successdisplay("Success", "Bus was created.");
 
         } else {

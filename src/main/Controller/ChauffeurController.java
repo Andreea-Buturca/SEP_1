@@ -107,6 +107,7 @@ public class ChauffeurController extends Controller implements Initializable {
                 DataHandler.getChauffeurList().add(new Chauffeur(name, address, email, phone, birthday, chauffeurID, isVikar));
             }
 
+            DataHandler.save();
             successdisplay("Success", "Chauffeur was added.");
         } else {
             //alert
@@ -122,6 +123,7 @@ public class ChauffeurController extends Controller implements Initializable {
             DataHandler.getChauffeurList().removeChauffeur(aSelected);
         }
         loadList();
+        DataHandler.save();
         successdisplay("Success", "Chauffeur was deleted.");
     }
 }

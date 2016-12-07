@@ -340,7 +340,7 @@ public class ReservationController extends Controller implements Initializable {
             } else {
                 successdisplay("Created", "Reservation created.");
             }
-
+            DataHandler.save();
             Parent root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
             Scene scene = new Scene(root);
             Main.stage.setScene(scene);

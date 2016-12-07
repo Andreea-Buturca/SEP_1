@@ -49,77 +49,22 @@ public class DataHandler implements Serializable {
         destinationList = new DestinationList();
     }
 
-    public static void testData() {
-
-        getBusList().add(new PartyBus("AD1234", 12));
-        getBusList().add(new PartyBus("AD1234", 12));
-        getBusList().add(new ClassicBus("AD1454", 52));
-        getBusList().add(new ClassicBus("AD1454", 52));
-        getBusList().add(new ClassicBus("AD1454", 52));
-        getBusList().add(new MiniBus("DD1254", 9));
-        getBusList().add(new MiniBus("DD1254", 9));
-        getBusList().add(new MiniBus("DD1254", 9));
-        getBusList().add(new LuxuryBus("DD1254", 9));
-        getBusList().add(new LuxuryBus("DD1254", 9));
-        getBusList().add(new LuxuryBus("DD1254", 9));
-
-
-        getDestinationList().getArrayDestination().add(new Destination("Place 1"));
-        getDestinationList().getArrayDestination().add(new Destination("Place 2"));
-        getDestinationList().getArrayDestination().add(new Destination("Place 3"));
-        getDestinationList().getArrayDestination().add(new Destination("Place 4"));
-        getDestinationList().getArrayDestination().add(new Destination("Place 5"));
-
-
-        getChauffeurList().add(new Chauffeur("name1", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name2", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name3", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name4", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
-        getChauffeurList().add(new Chauffeur("name5", "addres", "sda", "sad", LocalDate.of(2016, 11, 12), 5221, true));
-
-        getCustomerList().add(new Customer("name1", "address", "email", "25447"));
-        getCustomerList().add(new Customer("name2", "address", "email", "444446"));
-        getCustomerList().add(new Customer("name3", "address", "email", "2554556"));
-        getCustomerList().add(new Customer("name4", "address", "email", "128216"));
-        getCustomerList().add(new Customer("name5", "address", "email", "118416"));
-
-        getTrips().add(new Trip(getBusList().getAtIndex(0), getChauffeurList().getChauffeurByIndex(0), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 10, 12), "08:20", LocalDate.of(2016, 11, 12), "08:20", 50));
-        getTrips().add(new Trip(getBusList().getAtIndex(1), getChauffeurList().getChauffeurByIndex(1), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 9, 12), "08:20", LocalDate.of(2016, 10, 12), "08:20", 50));
-        getTrips().add(new Trip(getBusList().getAtIndex(2), getChauffeurList().getChauffeurByIndex(2), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 5, 12), "08:20", LocalDate.of(2016, 6, 12), "08:20", 50));
-        getTrips().add(new Trip(getBusList().getAtIndex(3), getChauffeurList().getChauffeurByIndex(3), getDestinationList().getAtIndex(0), getDestinationList().getAtIndex(0), 500, LocalDate.of(2016, 8, 12), "08:20", LocalDate.of(2016, 9, 12), "08:20", 50));
-
-    }
-
     public static void save() {
 
         String filename = "mainData.bin";
-        ObjectOutputStream out = null;
-        try {
-            File file = new File(filename);
-            FileOutputStream fos = new FileOutputStream(file);
-            out = new ObjectOutputStream(fos);
-            out.writeObject(trips);
-            out.writeObject(busList);
-            out.writeObject(chauffeurList);
-            out.writeObject(customerList);
-            out.writeObject(reservationList);
-            out.writeObject(destinationList);
-        } catch (IOException e) {
-            System.out.println("Exception: " + filename);
-        } finally {
-            try {
-                assert out != null;
-                out.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        saveFile(filename);
 
     }
 
+    public static void backUp() {
+
+        String filename = "mainDataBackUp.bin";
+        saveFile(filename);
+
+    }
 
     public static void load() {
-        String filename = "test.bin";
+        String filename = "mainData.bin";
         ObjectInputStream in = null;
         try {
             File file = new File(filename);
@@ -138,6 +83,30 @@ public class DataHandler implements Serializable {
                 if (in != null) {
                     in.close();
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void saveFile(String filename) {
+        ObjectOutputStream out = null;
+        try {
+            File file = new File(filename);
+            FileOutputStream fos = new FileOutputStream(file);
+            out = new ObjectOutputStream(fos);
+            out.writeObject(trips);
+            out.writeObject(busList);
+            out.writeObject(chauffeurList);
+            out.writeObject(customerList);
+            out.writeObject(reservationList);
+            out.writeObject(destinationList);
+        } catch (IOException e) {
+            System.out.println("Exception: " + filename);
+        } finally {
+            try {
+                assert out != null;
+                out.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

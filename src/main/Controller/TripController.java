@@ -253,7 +253,7 @@ public class TripController extends Controller implements Initializable {
             } else if (isCompany) {
                 DataHandler.getCustomerList().add(new Customer(fieldCustomerName.getText(), fieldCustomerAddress.getText(), fieldCustomerEmail.getText(), fieldCustomerPhone.getText(), isCompany, fieldCustomerCompany.getText()));
 
-
+                DataHandler.save();
                 successdisplay("Success", "Customer was created.");
                 loadCustomerList();
             } else {
@@ -390,7 +390,7 @@ public class TripController extends Controller implements Initializable {
             } else {
                 successdisplay("Created", "Trip was created.");
             }
-
+            DataHandler.save();
             Parent root = FXMLLoader.load(getClass().getResource("../View/mainScreen.fxml"));
             Scene scene = new Scene(root);
             Main.stage.setScene(scene);

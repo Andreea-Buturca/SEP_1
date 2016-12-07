@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import main.Main;
 import main.Model.*;
 
@@ -58,6 +59,7 @@ public class ReservationController extends Controller implements Initializable {
     private Reservation editing;
     private Trip trip;
     private PassengerList passengerList = new PassengerList();
+    private Stage noteWindow;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -110,7 +112,7 @@ public class ReservationController extends Controller implements Initializable {
 
     }
 
-    private void openWindowedNote() throws IOException {
+    private Stage openWindowedNote() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/noteReservation.fxml"));
         Parent parent = fxmlLoader.load();
         Scene sceneNote = new Scene(parent);
@@ -120,7 +122,13 @@ public class ReservationController extends Controller implements Initializable {
         window.setTitle("Edit trip");
         window.setScene(sceneNote);
         window.setResizable(false);
-        window.showAndWait();
+        window.show();
+
+        return window;
+    }
+
+    private void closeNote() {
+        noteWindow.close();
     }
 
     public void controlData(ActionEvent actionEvent) throws IOException {
@@ -141,19 +149,21 @@ public class ReservationController extends Controller implements Initializable {
 
             ReservationController editReservation = fxmlLoader.getController();
             editReservation.setTrip((Trip) tripListReservation.getSelectionModel().getSelectedItem());
-
+            //editReservation.
+            if (!note.equals("")) {
+                editReservation.addNoteWindow(openWindowedNote());
+            }
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
 
-            if (!note.equals("")) {
-                openWindowedNote();
-            }
+
         } else {
             //alert
             alertdisplay("Wrong Input", alert);
         }
     }
+
 
     //makeReservationData
 
@@ -164,6 +174,10 @@ public class ReservationController extends Controller implements Initializable {
     private void setTrip(Trip trip) {
         this.trip = trip;
         fieldDefaultPrice.setText(Integer.toString(trip.getPrice()));
+    }
+
+    private void addNoteWindow(Stage stage) {
+        noteWindow = stage;
     }
 
     public void priceListener(KeyEvent keyEvent) {
@@ -332,6 +346,9 @@ public class ReservationController extends Controller implements Initializable {
             }
             reservation.setFinalPrice();
             DataHandler.getReservationList().add(reservation);
+            if (noteWindow != null) {
+                closeNote();
+            }
             if (editing != null) {
                 successdisplay("Edited", "Reservation edited.");
 

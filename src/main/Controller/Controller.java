@@ -149,6 +149,12 @@ public class Controller implements Initializable {
 
     }
 
+    protected boolean validateDoubleNumberField(TextField textField) {
+        return textField.getText().matches("[0-9]+.[0-9]+");
+
+    }
+
+
     protected boolean validateNumberPlate(TextField textField) {
         return textField.getText().matches("[A-Z]{2}[0-9]{5}");
 
@@ -174,7 +180,6 @@ public class Controller implements Initializable {
         return comboBox.getValue() != null;
 
     }
-
 
     protected void alertdisplay(String title, String message) {
 

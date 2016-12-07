@@ -106,6 +106,14 @@ public class ChauffeurList implements Serializable {
         return result;
     }
 
+    public void removeAllVicars(){
+        for (int i = 0; i < chauffeurs.size(); i++) {
+            if (chauffeurs.get(i).isVikar()) {
+                chauffeurs.remove(chauffeurs.get(i));
+            }
+        }
+    }
+
 
     public Chauffeur getChauffeurByID(int ID) {
         for (Chauffeur chauffeur : chauffeurs) {
@@ -170,6 +178,14 @@ public class ChauffeurList implements Serializable {
                 result.add(chauffeurs.get(i));
         }
         return result;
+    }
+
+    public ChauffeurList copy () {
+        ChauffeurList chauffeurList = new ChauffeurList();
+        for (Chauffeur chauffeur: chauffeurs) {
+            chauffeurList.add(chauffeur);
+        }
+        return chauffeurList;
     }
 
 }

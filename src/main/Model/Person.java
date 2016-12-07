@@ -6,6 +6,7 @@ import java.time.LocalDate;
 /**
  * Created by MartinNtb on 15-Nov-16.
  */
+
 public class Person implements Serializable {
 
     private String name;

@@ -124,12 +124,17 @@ public class TripController extends Controller implements Initializable {
     private void loadChauffeurList() {
         ChauffeurList chauffeurs;
 
-        chauffeurs = DataHandler.getChauffeurList();
+        chauffeurs = DataHandler.getChauffeurList().copy();
+        chauffeurs.removeAllVicars();
 
         if (validateEmptyField(fieldDistance) && validateNumberField(fieldDistance)) {
             chauffeurs = chauffeurs.getAllByPrefferedDistance(Integer.parseInt(fieldDistance.getText()));
         }
+        chauffeurs.getAllByPrefferedBus(busType.getValue().toString());
 
+        for (Chauffeur chauffeur : DataHandler.getChauffeurList().getAllVicars().getArrayChauffeur()) {
+            chauffeurs.add(chauffeur);
+        }
 
         if (startDatePicker.getValue() != null && endDatePicker.getValue() != null && validateTimeField(fieldStartTime) && validateTimeField(fieldEndTime)) {
             String[] lineToken = fieldStartTime.getText().split(":");
@@ -141,9 +146,7 @@ public class TripController extends Controller implements Initializable {
             minutes = Integer.parseInt(lineToken[1]);
             Date dateEnd = new Date(endDatePicker.getValue().getYear() - 1900, endDatePicker.getValue().getMonthValue(), endDatePicker.getValue().getDayOfMonth(), hours, minutes);
             chauffeurs.getAvailable(dateStart, dateEnd);
-            //chauffeurs.byprefference
         }
-
 
         chauffeurList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         ObservableList<Chauffeur> items = FXCollections.observableArrayList();

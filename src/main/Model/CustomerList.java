@@ -99,6 +99,14 @@ public class CustomerList implements Serializable {
         return null;
     }
 
+    public int getIndex(Customer customer) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).equals(customer))
+                return i;
+        }
+        return -1;
+    }
+
     public ArrayList<Customer> getArrayCustomer() {
         return customers;
     }

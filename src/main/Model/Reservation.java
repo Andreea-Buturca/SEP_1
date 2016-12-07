@@ -17,6 +17,7 @@ public class Reservation implements Serializable {
     private double priceExtraServices;
     private double discount;
 
+
     public Reservation(Trip trip, Customer customer, PassengerList passengerList, double price) {
         this.trip = trip;
         this.customer = customer;
@@ -108,12 +109,16 @@ public class Reservation implements Serializable {
         return priceExtraServices;
     }
 
-    public void setPriceExtraServices(int priceExtraServices) {
+    public void setPriceExtraServices(double priceExtraServices) {
         this.priceExtraServices = priceExtraServices;
     }
 
     public void setDiscount(double discount) {
-        this.discount = (getDefaultPricePerson() + getPriceExtraServices()) * discount;
+        this.discount = (discount);
+    }
+
+    public Trip getTrip() {
+        return trip;
     }
 
     public double getDiscount() {

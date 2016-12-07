@@ -163,6 +163,7 @@ public class ReservationController extends Controller implements Initializable {
 
     private void setTrip(Trip trip) {
         this.trip = trip;
+        fieldDefaultPrice.setText(Integer.toString(trip.getPrice()));
     }
 
     public void priceListener(KeyEvent keyEvent) {
@@ -172,17 +173,17 @@ public class ReservationController extends Controller implements Initializable {
     private void calculatePrice() {
         double price = 0;
 
-        if (validateEmptyField(fieldDefaultPrice) && validateNumberField(fieldDefaultPrice)) {
-            price = Integer.parseInt(fieldDefaultPrice.getText());
+        if (validateEmptyField(fieldDefaultPrice) && (validateNumberField(fieldDefaultPrice) || validateDoubleNumberField(fieldDefaultPrice))) {
+            price = Double.parseDouble(fieldDefaultPrice.getText());
         }
-        if (validateEmptyField(fieldExtraServices) && validateNumberField(fieldExtraServices)) {
-            price = price + Integer.parseInt(fieldExtraServices.getText());
+        if (validateEmptyField(fieldExtraServices) && (validateNumberField(fieldExtraServices) || validateDoubleNumberField(fieldExtraServices))) {
+            price = price + Double.parseDouble(fieldExtraServices.getText());
         }
 
         price = price * listViewPassenger.getItems().size();
 
-        if (validateEmptyField(fieldDiscount) && validateNumberField(fieldDiscount)) {
-            price = price - Integer.parseInt(fieldDiscount.getText());
+        if (validateEmptyField(fieldDiscount) && (validateNumberField(fieldDiscount) || validateDoubleNumberField(fieldDiscount))) {
+            price = price - Double.parseDouble(fieldDiscount.getText());
         }
 
         labelTotalPrice.setText(price + " DKK");
@@ -292,6 +293,7 @@ public class ReservationController extends Controller implements Initializable {
             fieldExtraServices.setText(Double.toString(reservation.getPriceExtraServices()));
         }
         if (reservation.getDiscount() != 0) {
+            System.out.println(reservation.getDiscount());
             fieldDiscount.setText(Double.toString(reservation.getDiscount()));
         }
 
@@ -303,25 +305,28 @@ public class ReservationController extends Controller implements Initializable {
         int length = alert.length();
         if (listViewCustomer.getSelectionModel().getSelectedItem() == null) alert += "Select Customer \n";
         if (listViewPassenger.getItems().size() == 0) alert += "Add passenger \n";
-        if (!validateEmptyField(fieldDefaultPrice) || !validateNumberField(fieldDefaultPrice)) alert += "Price \n";
+        if (!validateNumberField(fieldDefaultPrice) && !validateDoubleNumberField(fieldDefaultPrice)) alert += "Price \n";
 
         if (length == alert.length()) {
             //save it DataHandler. .....
             Customer customer = (Customer) listViewCustomer.getSelectionModel().getSelectedItem();
+            DataHandler.getCustomerList().getCustomer(DataHandler.getCustomerList().getIndex((Customer) listViewCustomer.getSelectionModel().getSelectedItem())).addPointToCustomer();
             String[] priceLine = labelTotalPrice.getText().split(" ");
             double price = Double.parseDouble(priceLine[0]);
 
             if (editing != null) {
+                trip = editing.getTrip();
                 DataHandler.getReservationList().remove(editing);
             }
 
             Reservation reservation = new Reservation(trip, customer, passengerList, price);
 
-            if (validateEmptyField(fieldDiscount) && validateNumberField(fieldDiscount)) {
+            if (validateEmptyField(fieldDiscount) && (validateNumberField(fieldDiscount) || validateDoubleNumberField(fieldDiscount))) {
                 reservation.setDiscount(Double.parseDouble(fieldDiscount.getText()));
+                System.out.println(Double.parseDouble(fieldDiscount.getText()));
             }
-            if (validateEmptyField(fieldExtraServices) && validateNumberField(fieldExtraServices)) {
-                reservation.setPriceExtraServices(Integer.parseInt(fieldExtraServices.getText()));
+            if (validateEmptyField(fieldExtraServices) && (validateNumberField(fieldExtraServices) || validateDoubleNumberField(fieldExtraServices))) {
+                reservation.setPriceExtraServices(Double.parseDouble(fieldExtraServices.getText()));
             }
             reservation.setFinalPrice();
             DataHandler.getReservationList().add(reservation);

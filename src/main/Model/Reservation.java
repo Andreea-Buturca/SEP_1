@@ -3,8 +3,11 @@ package main.Model;
 import java.io.Serializable;
 
 /**
- * Created by andreea on 12/1/2016.
+ * Class that represents reservation.
+ *
+ * @author IT-1Y-A16 Group 1
  */
+
 public class Reservation implements Serializable {
 
     private Trip trip;
@@ -15,6 +18,14 @@ public class Reservation implements Serializable {
     private double priceExtraServices;
     private double discount;
 
+    /**
+     * Constructs object of reservation with trip, customer, list of passengers and price.
+     *
+     * @param trip          trip
+     * @param customer      customer
+     * @param passengerList list pf passengers
+     * @param price         price
+     */
 
     public Reservation(Trip trip, Customer customer, PassengerList passengerList, double price) {
         this.trip = trip;
@@ -27,45 +38,93 @@ public class Reservation implements Serializable {
         this.finalPrice = 0;
     }
 
+    /**
+     * @return customer from reservation
+     */
+
     public Customer getCustomer() {
         return this.customer;
     }
+
+    /**
+     * @return destination from reservation's trip
+     */
 
     public Destination getReservationDestination() {
         return this.trip.getDestination();
     }
 
+    /**
+     * @return list of all passengers
+     */
+
     public PassengerList getReservationPassengers() {
         return this.passengerList;
     }
+
+    /**
+     * @return default price for one person
+     */
 
     public double getDefaultPricePerson() {
         return defaultPricePerson;
     }
 
+    /**
+     * @return price for all extra services
+     */
+
     public double getPriceExtraServices() {
         return priceExtraServices;
     }
+
+    /**
+     * Sets price for extra services.
+     *
+     * @param priceExtraServices price to set
+     */
 
     public void setPriceExtraServices(double priceExtraServices) {
         this.priceExtraServices = priceExtraServices;
     }
 
+    /**
+     * Sets discount.
+     *
+     * @param discount discount
+     */
+
     public void setDiscount(double discount) {
         this.discount = (discount);
     }
+
+    /**
+     * @return trip from reservation
+     */
 
     public Trip getTrip() {
         return trip;
     }
 
+    /**
+     * @return discount
+     */
+
     public double getDiscount() {
         return discount;
     }
 
+    /**
+     * Sets final price for the reservation according to price for person and number of passengers, discount and price for extra services.
+     */
+
     public void setFinalPrice() {
         this.finalPrice = ((getDefaultPricePerson() + getPriceExtraServices()) - getDiscount()) * this.passengerList.getArrayPassenger().size();
     }
+
+    /**
+     * @return Reservation converted to String
+     */
 
     public String toString() {
         String passsengers = "";

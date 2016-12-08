@@ -6,36 +6,76 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * Created by Marek on 04-Dec-16.
+ * Class which represents a list of trips.
+ *
+ * @author IT-1Y-A16 Group 1
  */
 
 public class TripList implements Serializable {
 
     private ArrayList<Trip> trips;
 
+    /**
+     * Constructs a list of trips.
+     */
+
     public TripList() {
         this.trips = new ArrayList<>();
     }
+
+    /**
+     * Adds a given trip to the list.
+     *
+     * @param trip trip to add
+     */
 
     public void add(Trip trip) {
         this.trips.add(trip);
     }
 
+    /**
+     * @return size of trip list
+     */
+
     public int getSize() {
         return trips.size();
     }
+
+    /**
+     * Removes given trip from the list.
+     *
+     * @param trip trip to remove
+     */
 
     public void remove(Trip trip) {
         trips.remove(trip);
     }
 
+    /**
+     * Finds trip at the given index.
+     *
+     * @param index index to look at
+     * @return trip at given index
+     */
+
     public Trip get(int index) {
         return trips.get(index);
     }
 
+    /**
+     * @return arraylist of all trips in the list
+     */
+
     public ArrayList<Trip> getArrayTrip() {
         return trips;
     }
+
+    /**
+     * Finds all trips that starts at given date.
+     *
+     * @param date date to find by
+     * @return TripList of all trips that starts at given date
+     */
 
     public TripList findAllByDate(LocalDate date) {
         TripList result = new TripList();
@@ -51,6 +91,13 @@ public class TripList implements Serializable {
         return result;
     }
 
+    /**
+     * Finds all trips that starts that start from given place.
+     *
+     * @param departure place of departure
+     * @return TripList of all trips that starts at given place
+     */
+
     public TripList findAllByDeparture(String departure) {
         TripList result = new TripList();
         for (Trip trip : trips) {
@@ -60,6 +107,13 @@ public class TripList implements Serializable {
         }
         return result;
     }
+
+    /**
+     * Finds all trips with given destination.
+     *
+     * @param destination destination to find by
+     * @return TripList of all with given destination
+     */
 
     public TripList findAllByDestination(String destination) {
         TripList result = new TripList();
@@ -71,6 +125,13 @@ public class TripList implements Serializable {
         return result;
     }
 
+    /**
+     * Finds all trips which have more free spaces than given number of passengers.
+     *
+     * @param nrOfPassangers number of passengers
+     * @return TripList of all trips with more space as given number
+     */
+
     public TripList findAllByPassengers(String nrOfPassangers) {
         int passengers = Integer.parseInt(nrOfPassangers);
         TripList result = new TripList();
@@ -81,6 +142,10 @@ public class TripList implements Serializable {
         }
         return result;
     }
+
+    /**
+     * @return list of trips converted to String
+     */
 
     public String toString() {
         String result = "";

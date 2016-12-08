@@ -3,8 +3,11 @@ package main.Model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
 /**
- * Created by MartinNtb on 15-Nov-16.
+ * Abstract class that stores name, address, email, phone and date of birth of person.
+ *
+ * @author IT-1Y-A16 Group 1
  */
 
 class Person implements Serializable {
@@ -15,12 +18,31 @@ class Person implements Serializable {
     private String phone;
     private LocalDate dateOfBirth;
 
+    /**
+     * Method which constructs a object of person without a date of birth.
+     *
+     * @param name    name of person
+     * @param address address of person
+     * @param email   email of person
+     * @param phone   phone of person
+     */
+
     Person(String name, String address, String email, String phone) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.phone = phone;
     }
+
+    /**
+     * Method which constructs a object of person.
+     *
+     * @param name        name of person
+     * @param address     address of person
+     * @param email       email of person
+     * @param phone       phone of person
+     * @param dateOfBirth person's date of birth
+     */
 
     Person(String name, String address, String email, String phone, LocalDate dateOfBirth) {
         this.name = name;
@@ -30,6 +52,15 @@ class Person implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
+    /**
+     * Method which constructs a object of person without a phone
+     *
+     * @param name        name of person
+     * @param address     address of person
+     * @param email       email of person
+     * @param dateOfBirth person's date of birth
+     */
+
     Person(String name, String address, String email, LocalDate dateOfBirth) {
         this.name = name;
         this.address = address;
@@ -37,21 +68,44 @@ class Person implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
+    /**
+     * @return person's name of type String
+     */
+
     public String getName() {
         return name;
     }
+
+    /**
+     * @return person's address of type String
+     */
 
     public String getAddress() {
         return address;
     }
 
+    /**
+     * @return person's email of type String
+     */
+
     public String getEmail() {
         return email;
     }
 
+    /**
+     * @return person's phone of type String
+     */
+
     public String getPhone() {
         return phone;
     }
+
+    /**
+     * method that compares given person in argument to this one.
+     *
+     * @param o object of type Person
+     * @return true if persons are equal / false if not
+     */
 
     @Override
     public boolean equals(Object o) {
@@ -66,6 +120,11 @@ class Person implements Serializable {
         return phone.equals(person.phone) && dateOfBirth.equals(person.dateOfBirth);
     }
 
+    /**
+     * method that converts the person to String
+     *
+     * @return String version of person
+     */
 
     public String toString() {
         String email = "";

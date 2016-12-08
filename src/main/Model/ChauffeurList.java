@@ -5,23 +5,46 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by andreea on 11/28/2016.
+ * Class which represents a list of chauffeurs.
+ *
+ * @author IT-1Y-A16 Group 1
  */
+
 public class ChauffeurList implements Serializable {
 
     private ArrayList<Chauffeur> chauffeurs;
+
+    /**
+     * Constructs a list of chauffeurs.
+     */
 
     public ChauffeurList() {
         chauffeurs = new ArrayList<>();
     }
 
+    /**
+     * @return size of chauffeur list
+     */
+
     public int getSize() {
         return chauffeurs.size();
     }
 
+    /**
+     * Adds a given chauffeur to the list.
+     *
+     * @param chauffeur chauffeur to add
+     */
+
     public void add(Chauffeur chauffeur) {
         chauffeurs.add(chauffeur);
     }
+
+    /**
+     * Removes given chauffeur from the list.
+     *
+     * @param chauffeur chauffeur to remove
+     */
 
     public void removeChauffeur(Chauffeur chauffeur) {
         for (int i = 0; i < chauffeurs.size(); i++) {
@@ -30,13 +53,31 @@ public class ChauffeurList implements Serializable {
         }
     }
 
+    /**
+     * Finds chauffeur at the given index.
+     *
+     * @param index index to look at
+     * @return chauffeur at given index
+     */
+
     public Chauffeur getChauffeurByIndex(int index) {
         return chauffeurs.get(index);
     }
 
+    /**
+     * @return arraylist of all chauffeurs in the list
+     */
+
     public ArrayList<Chauffeur> getArrayChauffeur() {
         return chauffeurs;
     }
+
+    /**
+     * Finds chauffeur with the given name.
+     *
+     * @param name name to look by
+     * @return chauuffeur with given name
+     */
 
     public Chauffeur getByName(String name) {
         for (Chauffeur chauffeur : chauffeurs) {
@@ -46,9 +87,23 @@ public class ChauffeurList implements Serializable {
         return null;
     }
 
+    /**
+     * Checks if list contains given chauffeur.
+     *
+     * @param chauffeur chauffeur to check
+     * @return true if list contains given chauffeur
+     */
+
     private boolean contains(Chauffeur chauffeur) {
         return chauffeurs.contains(chauffeur);
     }
+
+    /**
+     * Finds all chauffeurs with given preferred distance.
+     *
+     * @param prefferedDistance distance to look by
+     * @return ChauffeurList of all chauffeurs with given preferred distance
+     */
 
     public ChauffeurList getAllByPrefferedDistance(int prefferedDistance) {
         ChauffeurList result = new ChauffeurList();
@@ -69,9 +124,12 @@ public class ChauffeurList implements Serializable {
         return result;
     }
 
-    private boolean checkIfContains(Chauffeur chauffeur) {
-        return chauffeurs.contains(chauffeur);
-    }
+    /**
+     * Finds all chauffeurs with given preferred bustype.
+     *
+     * @param busType bustype to look by
+     * @return ChauffeurList of all chauffeurs with given preferred bustype
+     */
 
     public ChauffeurList getAllByPrefferedBus(String busType) {
         ChauffeurList result = new ChauffeurList();
@@ -81,7 +139,7 @@ public class ChauffeurList implements Serializable {
                 if (!prefferedBuses.isEmpty()) {
                     for (String prefferedBuse : prefferedBuses) {
                         if (busType.equals(prefferedBuse)) {
-                            if (!result.checkIfContains(chauffeur))
+                            if (!result.contains(chauffeur))
                                 result.add(chauffeur);
                         }
                     }
@@ -93,6 +151,10 @@ public class ChauffeurList implements Serializable {
         return result;
     }
 
+    /**
+     * @return ChauffeurList of all with vicar contract
+     */
+
     public ChauffeurList getAllVicars() {
         ChauffeurList result = new ChauffeurList();
         for (Chauffeur chauffeur : chauffeurs) {
@@ -103,6 +165,10 @@ public class ChauffeurList implements Serializable {
         return result;
     }
 
+    /**
+     * Removes all vicars in the list.
+     */
+
     public void removeAllVicars() {
         for (int i = 0; i < chauffeurs.size(); i++) {
             if (chauffeurs.get(i).isVikar()) {
@@ -110,6 +176,10 @@ public class ChauffeurList implements Serializable {
             }
         }
     }
+
+    /**
+     * @return List converted to String
+     */
 
     public String toString() {
         String s = "";
@@ -120,6 +190,14 @@ public class ChauffeurList implements Serializable {
         }
         return s;
     }
+
+    /**
+     * Finds all chauffeurs who are available in the given date interval.
+     *
+     * @param from start of date interval
+     * @param to   end of date interval
+     * @return ChauffeurList of all available in the given date interval
+     */
 
     public ChauffeurList getAvailable(Date from, Date to) {
         ArrayList<Chauffeur> inTrips = new ArrayList<>();
@@ -143,6 +221,12 @@ public class ChauffeurList implements Serializable {
         }
         return result;
     }
+
+    /**
+     * Copies this list.
+     *
+     * @return Copy of this ChauffeurList
+     */
 
     public ChauffeurList copy() {
         ChauffeurList chauffeurList = new ChauffeurList();

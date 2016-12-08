@@ -21,10 +21,12 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
- * Created by MartinNtb on 28-Nov-16.
+ * Class that manages window with chauffeur list.
+ *
+ * @author IT-1Y-A16 Group 1
  */
-public class ChauffeurController extends Controller implements Initializable {
 
+public class ChauffeurController extends Controller implements Initializable {
 
     public TextField fieldChauffeurAddAddress;
     public TextField fieldChauffeurAddEmail;
@@ -44,6 +46,10 @@ public class ChauffeurController extends Controller implements Initializable {
     public CheckBox checkBoxPartyBus;
     public CheckBox checkboxLuxuryBus;
 
+    /**
+     * Loads list of chauffeurs into listview.
+     */
+
     private void loadList() {
         listViewChauffeurList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<Chauffeur> items = FXCollections.observableArrayList();
@@ -58,6 +64,10 @@ public class ChauffeurController extends Controller implements Initializable {
             loadList();
         }
     }
+
+    /**
+     * Changes view to window to add chauffeur.
+     */
 
     public void addChauffeur(ActionEvent actionEvent) throws IOException, ParseException {
         String alert = "There are some mistakes: \n";
@@ -125,6 +135,9 @@ public class ChauffeurController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Deletes selected chauffeurs.
+     */
 
     public void deleteChauffeur(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         ObservableList<Chauffeur> selected;

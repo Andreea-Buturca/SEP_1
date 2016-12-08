@@ -22,8 +22,11 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
- * Created by MartinNtb on 27-Nov-16.
+ * Class that making reservations.
+ *
+ * @author IT-1Y-A16 Group 1
  */
+
 public class ReservationController extends Controller implements Initializable {
 
     public Button mkReservationView;
@@ -74,8 +77,6 @@ public class ReservationController extends Controller implements Initializable {
         }
     }
 
-
-    //makeReservationView
     public void searchTrip(KeyEvent keyEvent) {
         findTrip();
     }
@@ -163,9 +164,6 @@ public class ReservationController extends Controller implements Initializable {
             alertdisplay("Wrong Input", alert);
         }
     }
-
-
-    //makeReservationData
 
     private void setNote(String note) {
         noteReservationWindowed.setText(note);

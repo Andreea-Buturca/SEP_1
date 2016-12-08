@@ -18,6 +18,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class that manages data and files.
+ *
+ * @author IT-1Y-A16 Group 1
+ */
+
 public class Controller implements Initializable {
 
     public MenuBar menu;
@@ -29,7 +35,6 @@ public class Controller implements Initializable {
     public MenuItem homeBusAdd;
     public MenuItem homeDriver;
     public MenuItem homeDriverAdd;
-
 
     //main screen
     public Button createTour;
@@ -44,13 +49,16 @@ public class Controller implements Initializable {
     //chauffeur list
     public Button addChauffeur;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (tripList != null) {
             showList();
         }
     }
+
+    /**
+     * Loads and displays list of trips on the listview.
+     */
 
     private void showList() {
         TripList trips = DataHandler.getTrips();
@@ -60,6 +68,10 @@ public class Controller implements Initializable {
         }
         tripList.setItems(data);
     }
+
+    /**
+     * Changes view in GUI.
+     */
 
     public void changeView(MouseEvent mouseEvent) throws IOException {
 
@@ -93,6 +105,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Changes view in GUI through menu bar.
+     */
 
     public void changeViewMenu(ActionEvent actionEvent) throws IOException {
 
@@ -124,26 +139,45 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Validates if textfied is not empty.
+     */
+
     protected boolean validateEmptyField(TextField textField) {
         return !textField.getText().isEmpty();
 
     }
+
+    /**
+     * Validates if textfied contains only numbers.
+     */
 
     protected boolean validateNumberField(TextField textField) {
         return textField.getText().matches("[0-9]+");
 
     }
 
+    /**
+     * Validates if textfied contain double number.
+     */
+
     protected boolean validateDoubleNumberField(TextField textField) {
         return textField.getText().matches("[0-9]+.[0-9]+");
 
     }
 
+    /**
+     * Validates if textfied contains registration plate, two letters and three numbers.
+     */
 
     protected boolean validateNumberPlate(TextField textField) {
         return textField.getText().matches("[A-Z]{2}[0-9]{5}");
 
     }
+
+    /**
+     * Validates if textfield text has given length.
+     */
 
     protected boolean validateLength(TextField textField, int length) {
         if (length < 1) length = length * (-1);
@@ -151,20 +185,39 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Validates if textfied contains time.
+     */
+
     protected boolean validateTimeField(TextField textField) {
         return textField.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]");
 
     }
+
+    /**
+     * Validates if datepicker is empty.
+     */
 
     protected boolean validateEmptyDate(DatePicker datePicker) {
         return datePicker.getValue() != null;
 
     }
 
+    /**
+     * Validates if combobox is empty.
+     */
+
     protected boolean validateEmptyCombo(ComboBox comboBox) {
         return comboBox.getValue() != null;
 
     }
+
+    /**
+     * Displays alert.
+     *
+     * @param title   title for alert
+     * @param message alert's message
+     */
 
     protected void alertdisplay(String title, String message) {
 
@@ -175,6 +228,12 @@ public class Controller implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Displays success alert.
+     *
+     * @param title   tittle for mesage
+     * @param message to show
+     */
 
     protected void successdisplay(String title, String message) {
 

@@ -23,8 +23,11 @@ import java.text.ParseException;
 import java.util.ResourceBundle;
 
 /**
- * Created by MartinNtb on 27-Nov-16.
+ * Class that searching window.
+ *
+ * @author IT-1Y-A16 Group 1
  */
+
 public class SearchController extends Controller implements Initializable {
 
 

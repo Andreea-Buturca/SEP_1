@@ -20,8 +20,11 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
- * Created by MartinNtb on 11/28/2016.
+ * Class that manages trips.
+ *
+ * @author IT-1Y-A16 Group 1
  */
+
 public class TripController extends Controller implements Initializable {
 
 
@@ -56,7 +59,6 @@ public class TripController extends Controller implements Initializable {
     public ListView customerList;
     public Button saveCustomerBtn;
     public Label tourLabel;
-
     private Customer customer = null;
 
     //list for stops

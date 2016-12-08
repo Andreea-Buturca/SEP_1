@@ -5,10 +5,12 @@ import java.time.LocalDate;
 import java.util.Date;
 
 /**
- * Created by MartinNtb on 15-Nov-16.
+ * Class that represents trip, tour or bus and chauffeur when private.
+ *
+ * @author IT-1Y-A16 Group 1
  */
-public class Trip implements Serializable {
 
+public class Trip implements Serializable {
 
     private Bus bus;
     private Chauffeur chauffeur;
@@ -32,6 +34,21 @@ public class Trip implements Serializable {
     private boolean accommodation = false;
     private boolean tickets = false;
 
+    /**
+     * Constructs a trip object;
+     *
+     * @param bus         bus in the trip
+     * @param chauffeur   chauffeur for bus
+     * @param pickUpPoint destination from which trip starts
+     * @param destination trip destination
+     * @param distance    overall distance of destination
+     * @param dateStart   start date of the trip
+     * @param timeStart   start time of the trip
+     * @param dateEnd     end date of the trip
+     * @param timeEnd     end time of the trip
+     * @param price       normal price for the trip
+     */
+
     public Trip(Bus bus, Chauffeur chauffeur, Destination pickUpPoint, Destination destination, int distance, LocalDate dateStart, String timeStart, LocalDate dateEnd, String timeEnd, int price) {
         this.bus = bus;
         this.freeSpaces = this.bus.getSeatPlaces();
@@ -49,14 +66,24 @@ public class Trip implements Serializable {
         int hours = Integer.parseInt(lineToken[0]);
         int minutes = Integer.parseInt(lineToken[1]);
         this.dateObjStart = new Date(dateStart.getYear() - 1900, dateStart.getMonthValue(), dateStart.getDayOfMonth(), hours, minutes);
+
         lineToken = timeEnd.split(":");
         hours = Integer.parseInt(lineToken[0]);
         minutes = Integer.parseInt(lineToken[1]);
+
         this.dateObjEnd = new Date(dateEnd.getYear() - 1900, dateEnd.getMonthValue(), dateEnd.getDayOfMonth(), hours, minutes);
         this.duration = this.getDuration(this.dateObjStart, this.dateObjEnd);
         privateString = "False";
 
     }
+
+    /**
+     * Creates String version of duration between two given dates.
+     *
+     * @param start start of date interval
+     * @param end   end of date interval
+     * @return String version of duration
+     */
 
     private String getDuration(Date start, Date end) {
         String result = "";
@@ -80,9 +107,22 @@ public class Trip implements Serializable {
         return result;
     }
 
+    /**
+     * Sets stops for the trip.
+     *
+     * @param stops DestinationList of the stops for the trip
+     */
+
     public void setStops(DestinationList stops) {
         this.stops = stops;
     }
+
+    /**
+     * Sets customer for the trip.
+     * When customer is set, trip becomes private... Bus and Chauffeur.
+     *
+     * @param customer customer to set trip to
+     */
 
     public void setCustomer(Customer customer) {
         this.isPrivate = true;
@@ -91,113 +131,204 @@ public class Trip implements Serializable {
         this.freeSpaces = 0;
     }
 
+    /**
+     * Sets if trip provides food for passengers.
+     */
+
     public void setFood(boolean food) {
         this.food = food;
     }
+
+    /**
+     * Sets if trip provides accommodation for passengers.
+     */
 
     public void setAccommodation(boolean accommodation) {
         this.accommodation = accommodation;
     }
 
+    /**
+     * Sets if trip provides tickets for passengers.
+     */
+
     public void setTickets(boolean tickets) {
         this.tickets = tickets;
     }
+
+    /**
+     * Checks if food is provided in this trip.
+     */
 
     public boolean isFood() {
         return food;
     }
 
+    /**
+     * Checks if accommodation is provided in this trip.
+     */
+
     public boolean isAccommodation() {
         return accommodation;
     }
+
+    /**
+     * Checks if tickets are provided in this trip.
+     */
 
     public boolean isTickets() {
         return tickets;
     }
 
+    /**
+     * @return bus from the trip
+     */
+
     public Bus getBus() {
         return bus;
     }
+
+    /**
+     * @return time of trip start;
+     */
 
     public String getTimeStart() {
         return timeStart;
     }
 
+    /**
+     * @return time of trip end
+     */
+
     public String getTimeEnd() {
         return timeEnd;
     }
+
+    /**
+     * @return number of free spaces for the trip
+     */
 
     public Integer getFreeSpaces() {
         return freeSpaces;
     }
 
+    /**
+     * @return destination of trip start
+     */
+
     public Destination getPickUpPoint() {
         return pickUpPoint;
     }
+
+    /**
+     * @return destination for the trip
+     */
 
     public Destination getDestination() {
         return destination;
     }
 
+    /**
+     * @return chauffeur for the trip
+     */
+
     public Chauffeur getChauffeur() {
         return chauffeur;
     }
+
+    /**
+     * @return DestinationList of all the stops
+     */
 
     public DestinationList getStops() {
         return stops;
     }
 
+    /**
+     * @return date of trip start
+     */
+
     public LocalDate getDateStart() {
         return dateStart;
     }
+
+    /**
+     * @return date of trip end
+     */
 
     public LocalDate getDateEnd() {
         return dateEnd;
     }
 
+    /**
+     * @return trip's customer
+     */
+
     public Customer getCustomer() {
         return customer;
     }
+
+    /**
+     * Checks if trip is private.
+     */
 
     public boolean isPrivate() {
         return isPrivate;
     }
 
+    /**
+     * @return distance of the trip
+     */
+
     public int getDistance() {
         return distance;
     }
+
+    /**
+     * @return price of the trip
+     */
 
     public int getPrice() {
         return price;
     }
 
+    /**
+     * @return Date object of trip start
+     */
+
     public Date getDateObjStart() {
         return dateObjStart;
     }
+
+    /**
+     * @return Date object of trip end
+     */
 
     public Date getDateObjEnd() {
         return dateObjEnd;
     }
 
+    /**
+     * @return trip converted to string
+     */
+
     public String toString() {
         String extra = "";
-        if(isTickets() || isAccommodation() || isFood()) {
+        if (isTickets() || isAccommodation() || isFood()) {
             extra = ", Extra services ";
         }
-            if (isFood()) {
-                extra += "- food";
-            }
-            if (isAccommodation()) {
-                extra += "- accomodation";
-            }
-            if (isTickets()) {
-                extra += "- tickets";
-            }
-        String tour = "";
-        if(this.isPrivate()) {
-            tour += "Private Tour: ";
+        if (isFood()) {
+            extra += "- food";
         }
-        else if(!this.isPrivate())
+        if (isAccommodation()) {
+            extra += "- accomodation";
+        }
+        if (isTickets()) {
+            extra += "- tickets";
+        }
+        String tour = "";
+        if (this.isPrivate()) {
+            tour += "Private Tour: ";
+        } else if (!this.isPrivate())
             tour += "Tour to: ";
         return tour + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd + ", distance: " + this.distance + " km" + extra + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: " + this.chauffeur.toString();
     }

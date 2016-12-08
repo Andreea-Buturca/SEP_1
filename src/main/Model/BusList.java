@@ -5,36 +5,77 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by MartinNtb on 15-Nov-16.
+ * Class which represents a list of buses.
+ *
+ * @author IT-1Y-A16 Group 1
  */
-public class BusList implements Serializable {
 
+public class BusList implements Serializable {
 
     private ArrayList<Bus> buses = new ArrayList<>();
 
+    /**
+     * Constructs a list of buses.
+     */
+
     public BusList() {
     }
+
+    /**
+     * Constructs a list of buses with given list.
+     *
+     * @param buses arraylist of buses to create list with
+     */
 
     public BusList(ArrayList<Bus> buses) {
         this.buses = buses;
     }
 
+    /**
+     * Adds a given bus to the list.
+     *
+     * @param bus bus to add
+     */
+
     public void add(Bus bus) {
         buses.add(bus);
     }
+
+    /**
+     * @return arraylist of all buses in the list
+     */
 
     public ArrayList<Bus> getArrayBuses() {
         return buses;
     }
 
+    /**
+     * Finds bus at the given index.
+     *
+     * @param index index to look at
+     * @return bus at given index
+     */
+
     public Bus getAtIndex(int index) {
         return buses.get(index);
     }
 
+    /**
+     * Removes given bus from the list.
+     *
+     * @param bus bus to remove
+     */
 
     public void removeBus(Bus bus) {
         buses.remove(bus);
     }
+
+    /**
+     * Finds all buses of given type.
+     *
+     * @param name type of bus to look by
+     * @return arraylist of matching buses
+     */
 
     public ArrayList<Bus> searchByType(String name) {
         ArrayList<Bus> busTemp = new ArrayList<>();
@@ -46,6 +87,10 @@ public class BusList implements Serializable {
         return busTemp;
     }
 
+    /**
+     * @return List converted to String
+     */
+
     public String toString() {
         String result = "";
         for (Bus bus : buses) {
@@ -53,6 +98,14 @@ public class BusList implements Serializable {
         }
         return result;
     }
+
+    /**
+     * Finds all buses who are available in the given date interval.
+     *
+     * @param from start of date interval
+     * @param to   end of date interval
+     * @return BusList of all available in the given date interval
+     */
 
     public BusList getAvailable(Date from, Date to) {
         ArrayList<Bus> inTrips = new ArrayList<>();

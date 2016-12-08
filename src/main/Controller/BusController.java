@@ -17,10 +17,12 @@ import java.text.ParseException;
 import java.util.ResourceBundle;
 
 /**
- * Created by MartinNtb on 28-Nov-16.
+ * Class that manages window with bus list.
+ *
+ * @author IT-1Y-A16 Group 1
  */
-public class BusController extends Controller {
 
+public class BusController extends Controller {
 
     public ListView busListview;
     public Button deleteBus;
@@ -36,6 +38,10 @@ public class BusController extends Controller {
         }
     }
 
+    /**
+     * Loads list of buses to listview.
+     */
+
     private void loadList() {
         busListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<Bus> items = FXCollections.observableArrayList();
@@ -45,6 +51,9 @@ public class BusController extends Controller {
         busListview.setItems(items);
     }
 
+    /**
+     * Deletes selected buses from list of buses.
+     */
 
     public void deleteBus(ActionEvent actionEvent) throws FileNotFoundException, ParseException {
         ObservableList<Bus> selected;
@@ -57,6 +66,9 @@ public class BusController extends Controller {
         DataHandler.save();
     }
 
+    /**
+     * Changes view to add bus window.
+     */
 
     public void addBus(ActionEvent actionEvent) throws IOException, ParseException {
 

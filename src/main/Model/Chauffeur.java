@@ -5,8 +5,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * Created by MartinNtb on 15-Nov-16.
+ * Class that represents a chauffeur.
+ * Class extends Person class.
+ *
+ * @author IT-1Y-A16 Group 1
  */
+
 public class Chauffeur extends Person implements Serializable {
 
     private int employeeID;
@@ -16,6 +20,17 @@ public class Chauffeur extends Person implements Serializable {
     private Bus bus;
     private ArrayList<String> busType;
 
+    /**
+     * Constructs a chauffeur object.
+     *
+     * @param name name of chauffeur
+     * @param address address of chauffeur
+     * @param email email of chauffeur
+     * @param phone phone of chauffeur
+     * @param dateOfBirth chauffeur's date of birth
+     * @param employeeID 5-digit employee ID
+     * @param isVikar type of chauffeur's contract
+     */
 
     public Chauffeur(String name, String address, String email, String phone, LocalDate dateOfBirth, int employeeID, boolean isVikar) {
         super(name, address, email, phone, dateOfBirth);
@@ -30,49 +45,99 @@ public class Chauffeur extends Person implements Serializable {
         this.workedHours = 0;
     }
 
+    /**
+     * @return name of chauffeur
+     */
+
     public String getName() {
         return super.getName();
     }
+
+    /**
+     * @return address of chauffeur
+     */
 
     public String getAddress() {
         return super.getAddress();
     }
 
+    /**
+     * @return chauffeur's email
+     */
+
     public String getEmail() {
         return super.getEmail();
     }
 
+    /**
+     * @return chauffeur's phone
+     */
+
     public String getPhone() {
         return super.getPhone();
     }
+
+    /**
+     * Sets chauffeur's preferred distance
+     * @param distance proffered distance
+     */
 
     public void setPreferredShortDistance(int distance) {
         if (distance <= 400 && distance > 0)
             this.preferredDistance.add(distance);
     }
 
+    /**
+     * Sets chauffeur's preferred distance
+     * @param distance proffered distance
+     */
+
     public void setPreferredMediumDistance(int distance) {
         if (distance > 400 && distance < 2500)
             this.preferredDistance.add(distance);
     }
+
+    /**
+     * Sets chauffeur's preferred distance
+     * @param distance proffered distance
+     */
 
     public void setPreferredLongDistance(int distance) {
         if (distance >= 2500)
             this.preferredDistance.add(distance);
     }
 
+    /**
+     * @return Arraylist of chauffeur's preferred distances
+     */
+
     public ArrayList<Integer> getPreferredDistance() {
         return preferredDistance;
     }
 
+    /**
+     * @return Arraylist of chauffeur's preferred bustypes
+     */
 
     public ArrayList<String> getArrayBusTypes() {
         return this.busType;
     }
 
+    /**
+     * Sets preferred bustype
+     * @param bus preferred bustype
+     */
+
     public void setPreferredBusType(String bus) {
         this.busType.add(bus);
     }
+
+    /**
+     * Compares this chauffeur to on given as argument.
+     *
+     * @param o object of type Chauffeur
+     * @return true/false according to chauffeurs being equal
+     */
 
     @Override
     public boolean equals(Object o) {
@@ -89,20 +154,19 @@ public class Chauffeur extends Person implements Serializable {
         return bus != null ? bus.equals(chauffeur.bus) : chauffeur.bus == null && busType.equals(chauffeur.busType);
     }
 
-    @Override
-    public int hashCode() {
-        int result = employeeID;
-        result = 31 * result + preferredDistance.hashCode();
-        result = 31 * result + workedHours;
-        result = 31 * result + (isVikar ? 1 : 0);
-        result = 31 * result + (bus != null ? bus.hashCode() : 0);
-        result = 31 * result + busType.hashCode();
-        return result;
-    }
+    /**
+     * Checks if chauffeur has vicar contract type.
+     * @return true if chauffeur has vicar contract type
+     */
 
     public boolean isVikar() {
         return isVikar;
     }
+
+    /**
+     * Converts chauffeur to String.
+     * @return String og chauffeur
+     */
 
     public String toString() {
         String preferredDistance = "";

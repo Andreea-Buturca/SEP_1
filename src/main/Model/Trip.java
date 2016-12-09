@@ -149,6 +149,7 @@ public class Trip implements Serializable {
 
     /**
      * Sets if trip provides tickets for passengers.
+     * @param tickets true if ticket are provided
      */
 
     public void setTickets(boolean tickets) {

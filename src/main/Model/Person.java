@@ -93,6 +93,14 @@ class Person implements Serializable {
     }
 
     /**
+     * @return person's date of birth
+     */
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    /**
      * @return person's phone of type String
      */
 

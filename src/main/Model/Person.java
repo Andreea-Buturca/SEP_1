@@ -2,6 +2,7 @@ package main.Model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
 
 
 /**
@@ -128,6 +129,25 @@ class Person implements Serializable {
         return phone.equals(person.phone) && dateOfBirth.equals(person.dateOfBirth);
     }
 
+
+    /**
+     * Method that checks if person is more than 18 years old.
+     *
+     * @return true if adult
+     */
+
+    public boolean isAdult() {
+        if (dateOfBirth != null) {
+            LocalDate bday = getDateOfBirth();
+            LocalDate today = LocalDate.now();
+            if (Period.between(bday, today).getYears() > 18)
+                return true;
+            else
+                return false;
+        }
+        return true;
+    }
+
     /**
      * method that converts the person to String
      *
@@ -147,8 +167,13 @@ class Person implements Serializable {
         if (!this.address.equals("")) {
             address += ", address: " + this.address;
         }
+        String minor = "";
+        if(!isAdult())
+        {
+            minor += ", Minor person.";
+        }
         if (this.dateOfBirth != null) {
-            return this.name + address + email + phone + ", birthday: " + this.dateOfBirth;
+            return this.name + address + email + phone + ", birthday: " + this.dateOfBirth + minor;
         } else {
             return this.name + address + email + phone;
         }

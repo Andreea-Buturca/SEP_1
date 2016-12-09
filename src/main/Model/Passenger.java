@@ -28,20 +28,6 @@ public class Passenger extends Person implements Serializable {
         super(name, address, email, dateOfBirth);
     }
 
-    /**
-     * Method that checks if passenger is more than 18 years old.
-     *
-     * @return true if adult
-     */
-
-    public boolean isAdult() {
-        LocalDate bday = super.getDateOfBirth();
-        LocalDate today = LocalDate.now();
-        if (Period.between(bday, today).getYears() > 18)
-            return true;
-        else
-            return false;
-    }
 
     /**
      * Method that converts Passenger object to String

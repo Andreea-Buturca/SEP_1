@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 
 /**
  * Class which represents a list of trips.
@@ -68,6 +69,10 @@ public class TripList implements Serializable {
 
     public ArrayList<Trip> getArrayTrip() {
         return trips;
+    }
+
+    public void sort(){
+        Collections.sort(trips, new Trip.TripDateComparator());
     }
 
     /**

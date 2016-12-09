@@ -2,6 +2,7 @@ package main.Model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -105,6 +106,13 @@ public class Trip implements Serializable {
             result += diffmin + " min ";
         }
         return result;
+    }
+
+    static class TripDateComparator implements Comparator<Trip> {
+        public int compare(Trip trip1, Trip trip2) {
+            Date today = new Date();
+            return (int) ((today.getTime()-trip1.getDateObjStart().getTime()) - (today.getTime()-trip2.getDateObjStart().getTime()));
+        }
     }
 
     /**

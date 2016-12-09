@@ -132,7 +132,7 @@ public class TripController extends Controller implements Initializable {
         if (validateEmptyField(fieldDistance) && validateNumberField(fieldDistance)) {
             chauffeurs = chauffeurs.getAllByPrefferedDistance(Integer.parseInt(fieldDistance.getText()));
         }
-        chauffeurs.getAllByPrefferedBus(busType.getValue().toString());
+        chauffeurs = chauffeurs.getAllByPrefferedBus(busType.getValue().toString());
 
         for (Chauffeur chauffeur : DataHandler.getChauffeurList().getAllVicars().getArrayChauffeur()) {
             chauffeurs.add(chauffeur);
@@ -254,21 +254,14 @@ public class TripController extends Controller implements Initializable {
                 DataHandler.getCustomerList().add(new Customer(fieldCustomerName.getText(), fieldCustomerAddress.getText(), fieldCustomerEmail.getText(), fieldCustomerPhone.getText()));
             } else if (isCompany) {
                 DataHandler.getCustomerList().add(new Customer(fieldCustomerName.getText(), fieldCustomerAddress.getText(), fieldCustomerEmail.getText(), fieldCustomerPhone.getText(), isCompany, fieldCustomerCompany.getText()));
-
-                DataHandler.save();
-                successdisplay("Success", "Customer was created.");
-                loadCustomerList();
-            } else {
-                //alert
-                alertdisplay("Wrong Input", alert);
             }
-
-
+            DataHandler.save();
+            successdisplay("Success", "Customer was created.");
+            loadCustomerList();
         } else {
             //alert
             alertdisplay("Wrong Input", alert);
         }
-
     }
 
     public void setEditData(Trip trip) {

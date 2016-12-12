@@ -98,6 +98,7 @@ public class ReservationController extends Controller implements Initializable {
     private void findTrip() {
         if (tripListReservation != null) {
             TripList matching = DataHandler.getTrips();
+            matching = matching.findAllStandard();
             if (fieldDestination.getText() != null && (!fieldDestination.getText().equals("")))
                 matching = matching.findAllByDestination(fieldDestination.getText());
             if (fieldDeparture.getText() != null && (!fieldDeparture.getText().equals("")))

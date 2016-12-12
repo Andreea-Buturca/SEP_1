@@ -16,6 +16,8 @@ import main.Model.TripList;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 
 /**
@@ -62,9 +64,11 @@ public class Controller implements Initializable {
 
     private void showList() {
         TripList trips = DataHandler.getTrips();
+        trips.sort();
         ObservableList<Trip> data = FXCollections.observableArrayList();
         for (int i = 0; i < trips.getSize(); i++) {
-            data.add(trips.get(i));
+            if (trips.getArrayTrip().get(i).getDateStart().isEqual(LocalDate.now())) data.add(trips.get(i));
+            if (trips.getArrayTrip().get(i).getDateStart().isAfter(LocalDate.now())) data.add(trips.get(i));
         }
         tripList.setItems(data);
     }
@@ -204,11 +208,37 @@ public class Controller implements Initializable {
     }
 
     /**
+     * Validates if person is adult.
+     */
+
+    protected boolean validateAdultDate(DatePicker datePicker) {
+        LocalDate birthDate = datePicker.getValue();
+        LocalDate now = LocalDate.now();
+        if (birthDate != null) {
+            int age = Period.between(birthDate, now).getYears();
+            System.out.println(age);
+            return (age >= 18);
+        } else {
+            return false;
+        }
+
+    }
+
+    /**
      * Validates if combobox is empty.
      */
 
     protected boolean validateEmptyCombo(ComboBox comboBox) {
         return comboBox.getValue() != null;
+
+    }
+
+    /**
+     * Validates if email is valid.
+     */
+
+    protected boolean validateEmail(TextField textField) {
+        return textField.getText().matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
 
     }
 

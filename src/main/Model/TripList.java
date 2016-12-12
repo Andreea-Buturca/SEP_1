@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Class which represents a list of trips.
@@ -22,6 +22,16 @@ public class TripList implements Serializable {
 
     public TripList() {
         this.trips = new ArrayList<>();
+    }
+
+    /**
+     * Replace arraylist with new.
+     *
+     * @param tripArrayList<Trip> tripArrayList to addNewArrayList
+     */
+
+    public void addNewArrayList(ArrayList<Trip> tripArrayList) {
+        this.trips = tripArrayList;
     }
 
     /**
@@ -71,8 +81,12 @@ public class TripList implements Serializable {
         return trips;
     }
 
-    public void sort(){
-        Collections.sort(trips, new Trip.TripDateComparator());
+    /**
+     * Sort trips by date
+     */
+    public void sort() {
+        getArrayTrip().sort(Comparator.comparing(Trip::getDateObjStart));
+        addNewArrayList(getArrayTrip());
     }
 
     /**

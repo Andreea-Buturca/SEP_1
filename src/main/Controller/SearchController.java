@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -43,6 +40,9 @@ public class SearchController extends Controller implements Initializable {
     public ListView matchingTrips;
     public Button removeReservation;
     public Button removeTrip;
+    public RadioButton tourTypeAll;
+    public RadioButton tourTypeStandard;
+    public RadioButton tourTypePrivate;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -102,6 +102,9 @@ public class SearchController extends Controller implements Initializable {
                 matching = matching.findAllByDeparture(departure.getText());
             if (date.getValue() != null)
                 matching = matching.findAllByDate(date.getValue());
+            //if (tourTypeStandard.isSelected())
+            //matching = matching.
+            // TODO: 09-Dec-16 make selecting based on radio btns
             ObservableList<Trip> items = FXCollections.observableArrayList();
             for (int i = 0; i < matching.getSize(); i++) {
                 items.add(matching.get(i));

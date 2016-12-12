@@ -15,6 +15,15 @@ public class Main extends Application {
 
     public static Stage stage;
 
+    public static void main(String[] args) {
+
+        //DataHandler.testCreate();
+
+        DataHandler.load();
+
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("./View/mainScreen.fxml"));
@@ -40,18 +49,9 @@ public class Main extends Application {
             }
         });
 
-        //overview main screen
         //age validation, reservation, add extra for adult and nonadult
         //search only for private
+        //trip add customer fix ...
 
-    }
-
-    public static void main(String[] args) {
-
-        //DataHandler.testCreate();
-
-        DataHandler.load();
-
-        launch(args);
     }
 }

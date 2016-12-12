@@ -243,7 +243,8 @@ public class TripController extends Controller implements Initializable {
 
         if (!validateEmptyField(fieldCustomerName)) alert += "Name, ";
         if (!validateEmptyField(fieldCustomerAddress)) alert += "Address, ";
-        if (!validateEmptyField(fieldCustomerEmail)) alert += "Email, ";
+        if (!validateEmptyField(fieldCustomerEmail) || !validateDoubleNumberField(fieldCustomerEmail))
+            alert += "Email, ";
         if (!validateEmptyField(fieldCustomerPhone) || !validateLength(fieldCustomerPhone, 8)) alert += "Phone, ";
 
         if (length == alert.length()) {
@@ -318,7 +319,7 @@ public class TripController extends Controller implements Initializable {
         int length = alert.length();
 
         if (!validateEmptyDate(startDatePicker)) alert += "Start Date, ";
-        if (!validateEmptyDate(endDatePicker)) alert += "End Date, ";
+        if (!validateEmptyDate(endDatePicker) || validateAdultDate(endDatePicker)) alert += "End Date, ";
         if (!validateEmptyField(fieldStartTime) || !validateTimeField(fieldStartTime)) alert += "Start time, ";
         if (!validateEmptyField(fieldEndTime) || !validateTimeField(fieldEndTime)) alert += "End time, ";
         if (!validateEmptyField(fieldDistance) || !validateNumberField(fieldDistance)) alert += "Distance, ";

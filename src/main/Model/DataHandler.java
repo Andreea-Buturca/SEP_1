@@ -1,7 +1,6 @@
 package main.Model;
 
 import java.io.*;
-import java.time.LocalDate;
 
 /**
  * Class that manages data and files.
@@ -115,7 +114,7 @@ public class DataHandler implements Serializable {
             reservationList = (ReservationList) in.readObject();
             destinationList = (DestinationList) in.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            testCreate();
         } finally {
             try {
                 if (in != null) {

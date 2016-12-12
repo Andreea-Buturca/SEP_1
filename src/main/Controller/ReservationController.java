@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import main.Main;
 import main.Model.*;
 
@@ -87,7 +86,10 @@ public class ReservationController extends Controller implements Initializable {
         tripListReservation.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         ObservableList<Trip> items = FXCollections.observableArrayList();
         if (trips.getSize() != 0) {
-            items.addAll(trips.getArrayTrip());
+            for (Trip trip : trips.getArrayTrip()) {
+                if (trip.getDateStart().isEqual(LocalDate.now())) items.add(trip);
+                if (trip.getDateStart().isAfter(LocalDate.now())) items.add(trip);
+            }
         }
         tripListReservation.setItems(items);
     }
@@ -224,6 +226,8 @@ public class ReservationController extends Controller implements Initializable {
         if (!validateEmptyField(fieldNameCustomer)) alert += "Name, ";
         if (!validateEmptyField(fieldAddressCustomer)) alert += "Address, ";
         if (!validateEmptyField(fieldPhoneCustomer) || !validateLength(fieldPhoneCustomer, 8)) alert += "Phone, ";
+        if (!validateEmptyField(fieldEmailCustomer) || !validateDoubleNumberField(fieldEmailCustomer))
+            alert += "Email, ";
 
         if (length == alert.length()) {
             //save it DataHandler. .....

@@ -75,12 +75,12 @@ public class ChauffeurController extends Controller implements Initializable {
 
         if (!validateEmptyField(fieldChauffeurAddName)) alert += "Name \n";
         if (!validateEmptyField(fieldChauffeurAddAddress)) alert += "Address \n";
-        if (!validateEmptyField(fieldChauffeurAddEmail)) alert += "Email \n";
+        if (!validateEmptyField(fieldChauffeurAddEmail) || !validateEmail(fieldChauffeurAddEmail)) alert += "Email \n";
         if (!validateEmptyField(fieldChauffeurAddPhone) || !validateLength(fieldChauffeurAddPhone, 8))
             alert += "Phone \n";
         if (!validateEmptyField(fieldChauffeurAddId) || !validateLength(fieldChauffeurAddId, 5))
             alert += "Employee ID(5 digit nr) \n";
-        if (!validateEmptyDate(birthdayPicker)) alert += "Birthday \n";
+        if (!validateEmptyDate(birthdayPicker) || !validateAdultDate(birthdayPicker)) alert += "Birthday \n";
 
         if (length == alert.length()) {
 

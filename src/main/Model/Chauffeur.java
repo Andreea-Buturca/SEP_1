@@ -23,13 +23,13 @@ public class Chauffeur extends Person implements Serializable {
     /**
      * Constructs a chauffeur object.
      *
-     * @param name name of chauffeur
-     * @param address address of chauffeur
-     * @param email email of chauffeur
-     * @param phone phone of chauffeur
+     * @param name        name of chauffeur
+     * @param address     address of chauffeur
+     * @param email       email of chauffeur
+     * @param phone       phone of chauffeur
      * @param dateOfBirth chauffeur's date of birth
-     * @param employeeID 5-digit employee ID
-     * @param isVikar type of chauffeur's contract
+     * @param employeeID  5-digit employee ID
+     * @param isVikar     type of chauffeur's contract
      */
 
     public Chauffeur(String name, String address, String email, String phone, LocalDate dateOfBirth, int employeeID, boolean isVikar) {
@@ -79,6 +79,7 @@ public class Chauffeur extends Person implements Serializable {
 
     /**
      * Sets chauffeur's preferred distance
+     *
      * @param distance proffered distance
      */
 
@@ -89,6 +90,7 @@ public class Chauffeur extends Person implements Serializable {
 
     /**
      * Sets chauffeur's preferred distance
+     *
      * @param distance proffered distance
      */
 
@@ -99,6 +101,7 @@ public class Chauffeur extends Person implements Serializable {
 
     /**
      * Sets chauffeur's preferred distance
+     *
      * @param distance proffered distance
      */
 
@@ -125,6 +128,7 @@ public class Chauffeur extends Person implements Serializable {
 
     /**
      * Sets preferred bustype
+     *
      * @param bus preferred bustype
      */
 
@@ -156,6 +160,7 @@ public class Chauffeur extends Person implements Serializable {
 
     /**
      * Checks if chauffeur has vicar contract type.
+     *
      * @return true if chauffeur has vicar contract type
      */
 
@@ -165,6 +170,7 @@ public class Chauffeur extends Person implements Serializable {
 
     /**
      * Converts chauffeur to String.
+     *
      * @return String og chauffeur
      */
 

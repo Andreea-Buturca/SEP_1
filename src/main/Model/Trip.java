@@ -13,6 +13,7 @@ import java.util.Date;
 
 public class Trip implements Serializable {
 
+    public Integer freeSpaces;
     private Bus bus;
     private Chauffeur chauffeur;
     private Destination pickUpPoint;
@@ -28,7 +29,6 @@ public class Trip implements Serializable {
     private int distance;
     private Integer price;
     private String duration;
-    public Integer freeSpaces;
     private Date dateObjStart;
     private Date dateObjEnd;
     private boolean food = false;
@@ -108,35 +108,12 @@ public class Trip implements Serializable {
         return result;
     }
 
-    static class TripDateComparator implements Comparator<Trip> {
-        public int compare(Trip trip1, Trip trip2) {
-            Date today = new Date();
-            return (int) ((today.getTime()-trip1.getDateObjStart().getTime()) - (today.getTime()-trip2.getDateObjStart().getTime()));
-        }
-    }
-
     /**
-     * Sets stops for the trip.
-     *
-     * @param stops DestinationList of the stops for the trip
+     * Checks if food is provided in this trip.
      */
 
-    public void setStops(DestinationList stops) {
-        this.stops = stops;
-    }
-
-    /**
-     * Sets customer for the trip.
-     * When customer is set, trip becomes private... Bus and Chauffeur.
-     *
-     * @param customer customer to set trip to
-     */
-
-    public void setCustomer(Customer customer) {
-        this.isPrivate = true;
-        privateString = "True";
-        this.customer = customer;
-        this.freeSpaces = 0;
+    public boolean isFood() {
+        return food;
     }
 
     /**
@@ -148,31 +125,6 @@ public class Trip implements Serializable {
     }
 
     /**
-     * Sets if trip provides accommodation for passengers.
-     */
-
-    public void setAccommodation(boolean accommodation) {
-        this.accommodation = accommodation;
-    }
-
-    /**
-     * Sets if trip provides tickets for passengers.
-     * @param tickets true if ticket are provided
-     */
-
-    public void setTickets(boolean tickets) {
-        this.tickets = tickets;
-    }
-
-    /**
-     * Checks if food is provided in this trip.
-     */
-
-    public boolean isFood() {
-        return food;
-    }
-
-    /**
      * Checks if accommodation is provided in this trip.
      */
 
@@ -181,11 +133,29 @@ public class Trip implements Serializable {
     }
 
     /**
+     * Sets if trip provides accommodation for passengers.
+     */
+
+    public void setAccommodation(boolean accommodation) {
+        this.accommodation = accommodation;
+    }
+
+    /**
      * Checks if tickets are provided in this trip.
      */
 
     public boolean isTickets() {
         return tickets;
+    }
+
+    /**
+     * Sets if trip provides tickets for passengers.
+     *
+     * @param tickets true if ticket are provided
+     */
+
+    public void setTickets(boolean tickets) {
+        this.tickets = tickets;
     }
 
     /**
@@ -253,6 +223,16 @@ public class Trip implements Serializable {
     }
 
     /**
+     * Sets stops for the trip.
+     *
+     * @param stops DestinationList of the stops for the trip
+     */
+
+    public void setStops(DestinationList stops) {
+        this.stops = stops;
+    }
+
+    /**
      * @return date of trip start
      */
 
@@ -274,6 +254,20 @@ public class Trip implements Serializable {
 
     public Customer getCustomer() {
         return customer;
+    }
+
+    /**
+     * Sets customer for the trip.
+     * When customer is set, trip becomes private... Bus and Chauffeur.
+     *
+     * @param customer customer to set trip to
+     */
+
+    public void setCustomer(Customer customer) {
+        this.isPrivate = true;
+        privateString = "True";
+        this.customer = customer;
+        this.freeSpaces = 0;
     }
 
     /**
@@ -340,5 +334,12 @@ public class Trip implements Serializable {
         } else if (!this.isPrivate())
             tour += "Tour to: ";
         return tour + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd + ", distance: " + this.distance + " km" + extra + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: " + this.chauffeur.toString();
+    }
+
+    static class TripDateComparator implements Comparator<Trip> {
+        public int compare(Trip trip1, Trip trip2) {
+            Date today = new Date();
+            return (int) ((today.getTime() - trip1.getDateObjStart().getTime()) - (today.getTime() - trip2.getDateObjStart().getTime()));
+        }
     }
 }

@@ -42,6 +42,7 @@ public class ReservationController extends Controller implements Initializable {
     public TextField fieldEmailPassenger;
     public TextField fieldDefaultPrice;
     public TextField fieldExtraServices;
+    public TextField fieldExtraServicesYoung;
     public TextField fieldDiscount;
     public Button buttonAddCustomer;
     public Button buttonAddPassenger;
@@ -186,15 +187,27 @@ public class ReservationController extends Controller implements Initializable {
 
     private void calculatePrice() {
         double price = 0;
+        double countOfAdult = 0;
+        double countOfYoung = 0;
 
         if (validateEmptyField(fieldDefaultPrice) && (validateNumberField(fieldDefaultPrice) || validateDoubleNumberField(fieldDefaultPrice))) {
             price = Double.parseDouble(fieldDefaultPrice.getText());
+            price = price * listViewPassenger.getItems().size();
         }
         if (validateEmptyField(fieldExtraServices) && (validateNumberField(fieldExtraServices) || validateDoubleNumberField(fieldExtraServices))) {
-            price = price + Double.parseDouble(fieldExtraServices.getText());
+            for (int i = 0; i < listViewPassenger.getItems().size(); i++) {
+                Passenger adult = (Passenger) listViewPassenger.getItems().get(i);
+                if (adult.isAdult()) countOfAdult++;
+            }
+            price = price + (Double.parseDouble(fieldExtraServices.getText()) * countOfAdult);
         }
-
-        price = price * listViewPassenger.getItems().size();
+        if (validateEmptyField(fieldExtraServicesYoung) && (validateNumberField(fieldExtraServicesYoung) || validateDoubleNumberField(fieldExtraServicesYoung))) {
+            for (int i = 0; i < listViewPassenger.getItems().size(); i++) {
+                Passenger young = (Passenger) listViewPassenger.getItems().get(i);
+                if (!young.isAdult()) countOfYoung++;
+            }
+            price = price + (Double.parseDouble(fieldExtraServicesYoung.getText()) * countOfYoung);
+        }
 
         if (validateEmptyField(fieldDiscount) && (validateNumberField(fieldDiscount) || validateDoubleNumberField(fieldDiscount))) {
             price = price - Double.parseDouble(fieldDiscount.getText());
@@ -226,7 +239,7 @@ public class ReservationController extends Controller implements Initializable {
         if (!validateEmptyField(fieldNameCustomer)) alert += "Name, ";
         if (!validateEmptyField(fieldAddressCustomer)) alert += "Address, ";
         if (!validateEmptyField(fieldPhoneCustomer) || !validateLength(fieldPhoneCustomer, 8)) alert += "Phone, ";
-        if (!validateEmptyField(fieldEmailCustomer) || !validateDoubleNumberField(fieldEmailCustomer))
+        if (!validateEmptyField(fieldEmailCustomer) || !validateEmail(fieldEmailCustomer))
             alert += "Email, ";
 
         if (length == alert.length()) {
@@ -309,12 +322,15 @@ public class ReservationController extends Controller implements Initializable {
         if (reservation.getPriceExtraServices() != 0) {
             fieldExtraServices.setText(Double.toString(reservation.getPriceExtraServices()));
         }
+        if (reservation.getPriceExtraServicesYoung() != 0) {
+            fieldExtraServicesYoung.setText(Double.toString(reservation.getPriceExtraServicesYoung()));
+        }
         if (reservation.getDiscount() != 0) {
-            System.out.println(reservation.getDiscount());
             fieldDiscount.setText(Double.toString(reservation.getDiscount()));
         }
 
         editing = reservation;
+        calculatePrice();
     }
 
     public void saveReservation(ActionEvent actionEvent) throws IOException {
@@ -341,10 +357,12 @@ public class ReservationController extends Controller implements Initializable {
 
             if (validateEmptyField(fieldDiscount) && (validateNumberField(fieldDiscount) || validateDoubleNumberField(fieldDiscount))) {
                 reservation.setDiscount(Double.parseDouble(fieldDiscount.getText()));
-                System.out.println(Double.parseDouble(fieldDiscount.getText()));
             }
             if (validateEmptyField(fieldExtraServices) && (validateNumberField(fieldExtraServices) || validateDoubleNumberField(fieldExtraServices))) {
                 reservation.setPriceExtraServices(Double.parseDouble(fieldExtraServices.getText()));
+            }
+            if (validateEmptyField(fieldExtraServicesYoung) && (validateNumberField(fieldExtraServicesYoung) || validateDoubleNumberField(fieldExtraServicesYoung))) {
+                reservation.setPriceExtraServicesYoung(Double.parseDouble(fieldExtraServicesYoung.getText()));
             }
             reservation.setFinalPrice();
             DataHandler.getReservationList().add(reservation);

@@ -168,8 +168,7 @@ class Person implements Serializable {
             address += ", address: " + this.address;
         }
         String minor = "";
-        if(!isAdult())
-        {
+        if (!isAdult()) {
             minor += ", Minor person.";
         }
         if (this.dateOfBirth != null) {

@@ -216,7 +216,6 @@ public class Controller implements Initializable {
         LocalDate now = LocalDate.now();
         if (birthDate != null) {
             int age = Period.between(birthDate, now).getYears();
-            System.out.println(age);
             return (age >= 18);
         } else {
             return false;

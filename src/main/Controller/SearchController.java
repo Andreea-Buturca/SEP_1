@@ -89,6 +89,10 @@ public class SearchController extends Controller implements Initializable {
         }
     }
 
+    public void searchTripRadio(ActionEvent actionEvent) {
+        findTrips();
+    }
+
     public void searchTrip(KeyEvent keyEvent) throws FileNotFoundException, ParseException {
         findTrips();
     }
@@ -102,9 +106,9 @@ public class SearchController extends Controller implements Initializable {
                 matching = matching.findAllByDeparture(departure.getText());
             if (date.getValue() != null)
                 matching = matching.findAllByDate(date.getValue());
-            //if (tourTypeStandard.isSelected())
-            //matching = matching.
-            // TODO: 09-Dec-16 make selecting based on radio btns
+            if (tourTypePrivate.isSelected()) matching = matching.findAllPrivate();
+            if (tourTypeStandard.isSelected()) matching = matching.findAllStandard();
+
             ObservableList<Trip> items = FXCollections.observableArrayList();
             for (int i = 0; i < matching.getSize(); i++) {
                 items.add(matching.get(i));
@@ -161,26 +165,3 @@ public class SearchController extends Controller implements Initializable {
         }
     }
 }
-
-
-//make on key method in panel
-// create new object of list then call methot find by.... save it on saved call it again
-
-    /*
-    Datalist data = new DataList();
-
-    if ..... data = data.find by...
-    if ..... data = data.find by...
-    if ..... data = data.find by...
-
-    print
-     */
-
-    /*private void test (){
-        TripTempController.edit(new Trip(DataHandler.getBusList().getAtIndex(0), DataHandler.getDestinationList().getAtIndex(0), null, new Date(2012, 1, 1, 1, 1), new Date(2012, 1, 1, 1, 1)));
-    }*/
-
-
-
-
-

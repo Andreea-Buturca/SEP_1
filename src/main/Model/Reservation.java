@@ -16,6 +16,7 @@ public class Reservation implements Serializable {
     private double defaultPricePerson;
     private double finalPrice;
     private double priceExtraServices;
+    private double priceExtraServicesYoung;
     private double discount;
 
     /**
@@ -34,6 +35,7 @@ public class Reservation implements Serializable {
         this.trip.freeSpaces -= this.passengerList.getArrayPassenger().size();
         this.defaultPricePerson = price;
         this.priceExtraServices = 0;
+        this.priceExtraServicesYoung = 0;
         this.discount = 0;
         this.finalPrice = 0;
     }
@@ -71,7 +73,7 @@ public class Reservation implements Serializable {
     }
 
     /**
-     * @return price for all extra services
+     * @return price for adult extra services
      */
 
     public double getPriceExtraServices() {
@@ -88,14 +90,21 @@ public class Reservation implements Serializable {
         this.priceExtraServices = priceExtraServices;
     }
 
-    /**
-     * Sets discount.
-     *
-     * @param discount discount
-     */
 
-    public void setDiscount(double discount) {
-        this.discount = (discount);
+    /**
+     * @return price for under 18 extra services
+     */
+    public double getPriceExtraServicesYoung() {
+        return priceExtraServicesYoung;
+    }
+
+    /**
+     * Sets price for extra services under 18.
+     *
+     * @param priceExtraServicesYoung price to set
+     */
+    public void setPriceExtraServicesYoung(double priceExtraServicesYoung) {
+        this.priceExtraServicesYoung = priceExtraServicesYoung;
     }
 
     /**
@@ -112,6 +121,16 @@ public class Reservation implements Serializable {
 
     public double getDiscount() {
         return discount;
+    }
+
+    /**
+     * Sets discount.
+     *
+     * @param discount discount
+     */
+
+    public void setDiscount(double discount) {
+        this.discount = (discount);
     }
 
     /**

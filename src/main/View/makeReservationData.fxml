@@ -4,9 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.91"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.ReservationController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0"
+            xmlns="http://javafx.com/javafx/8.0.91" fx:controller="main.Controller.ReservationController">
     <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
         <bottom>
             <Label alignment="CENTER_RIGHT" prefWidth="1000.0" text="Copyright © 2016 Group1. All rights reserved.">
@@ -136,8 +137,7 @@
                                        GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
                                 <Label text="Extra services:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                                        GridPane.rowIndex="2"/>
-                                <Label text="Discount:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
-                                       GridPane.rowIndex="3"/>
+                                <Label text="Discount:" GridPane.halignment="RIGHT" GridPane.rowIndex="4"/>
                                 <Label text="Total:" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                                        GridPane.rowIndex="5"/>
                                 <TextField fx:id="fieldDefaultPrice" onKeyReleased="#priceListener" prefWidth="200.0"
@@ -145,9 +145,13 @@
                                 <TextField fx:id="fieldExtraServices" onKeyReleased="#priceListener" prefWidth="200.0"
                                            GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                                 <TextField fx:id="fieldDiscount" onKeyReleased="#priceListener" prefWidth="200.0"
-                                           GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                           GridPane.columnIndex="1" GridPane.rowIndex="4"/>
                                 <Label fx:id="labelTotalPrice" text="0 DKK" GridPane.columnIndex="1"
                                        GridPane.rowIndex="5"/>
+                                <Label text="Extra services (under 18):" GridPane.halignment="RIGHT"
+                                       GridPane.rowIndex="3"/>
+                                <TextField fx:id="fieldExtraServicesYoung" onKeyReleased="#priceListener"
+                                           GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                             </GridPane>
                         </HBox>
                         <HBox prefHeight="207.0" prefWidth="990.0">

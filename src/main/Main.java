@@ -16,11 +16,7 @@ public class Main extends Application {
     public static Stage stage;
 
     public static void main(String[] args) {
-
-        //DataHandler.testCreate();
-
         DataHandler.load();
-
         launch(args);
     }
 
@@ -48,10 +44,5 @@ public class Main extends Application {
                 we.consume();
             }
         });
-
-        //age validation, reservation, add extra for adult and nonadult
-        //search only for private
-        //trip add customer fix ...
-
     }
 }

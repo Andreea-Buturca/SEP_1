@@ -4,8 +4,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="1010.0" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0"
             xmlns="http://javafx.com/javafx/2.2" fx:controller="main.Controller.BusController">
     <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
         <bottom>

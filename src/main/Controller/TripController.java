@@ -60,6 +60,7 @@ public class TripController extends Controller implements Initializable {
     public Button saveCustomerBtn;
     public Label tourLabel;
     private Customer customer = null;
+    private TripController mainController;
 
     //list for stops
     private DestinationList stops = new DestinationList();
@@ -79,30 +80,6 @@ public class TripController extends Controller implements Initializable {
             fieldDestination.setItems(destinationItems);
             fieldDeparture.setItems(destinationItems);
             stopName.setItems(destinationItems);
-        }
-
-        if (checkPrivateTrip != null) {
-            checkPrivateTrip.setOnAction(event -> {
-                if (checkPrivateTrip.isSelected()) {
-                    Stage window = new Stage();
-                    Parent root = null;
-                    try {
-                        root = FXMLLoader.load(getClass().getResource("../View/addCustomerData.fxml"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    window.initModality(Modality.APPLICATION_MODAL);
-                    window.setTitle("Add Customer Data");
-                    window.setMinWidth(600);
-                    window.setMinHeight(400);
-                    window.setResizable(false);
-
-                    Scene scene = new Scene(root != null ? root : null);
-                    window.setScene(scene);
-                    window.show();
-                }
-            });
         }
 
         if (customerList != null) loadCustomerList();
@@ -232,8 +209,40 @@ public class TripController extends Controller implements Initializable {
             String stopNameTemp = lineToken[0].trim();
             stops.removeDestination(stops.findByName(stopNameTemp));
         }
-
         loadStops();
+    }
+
+    public void openCustomerView(ActionEvent actionEvent) {
+        if (checkPrivateTrip != null) {
+            Stage stage = Main.stage;
+            if (checkPrivateTrip.isSelected()) {
+                Stage window = new Stage();
+                Parent root = null;
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/addCustomerData.fxml"));
+                    root = fxmlLoader.load();
+                    TripController CustomerViewController = fxmlLoader.getController();
+                    CustomerViewController.addMainController(this);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                window.initModality(Modality.APPLICATION_MODAL);
+                window.setTitle("Add Customer Data");
+                window.setMinWidth(600);
+                window.setMinHeight(400);
+                window.setResizable(false);
+
+                Scene scene = new Scene(root != null ? root : null);
+                window.setScene(scene);
+                window.show();
+            }
+        }
+
+    }
+
+    public void addMainController(TripController tripController) {
+        mainController = tripController;
     }
 
     public void addCustomerData(ActionEvent actionEvent) {
@@ -243,7 +252,7 @@ public class TripController extends Controller implements Initializable {
 
         if (!validateEmptyField(fieldCustomerName)) alert += "Name, ";
         if (!validateEmptyField(fieldCustomerAddress)) alert += "Address, ";
-        if (!validateEmptyField(fieldCustomerEmail) || !validateDoubleNumberField(fieldCustomerEmail))
+        if (!validateEmptyField(fieldCustomerEmail) || !validateEmail(fieldCustomerEmail))
             alert += "Email, ";
         if (!validateEmptyField(fieldCustomerPhone) || !validateLength(fieldCustomerPhone, 8)) alert += "Phone, ";
 
@@ -263,6 +272,22 @@ public class TripController extends Controller implements Initializable {
             //alert
             alertdisplay("Wrong Input", alert);
         }
+    }
+
+    public void chooseCustomer(ActionEvent actionEvent) {
+
+        if (customerList.getSelectionModel().getSelectedItem() != null) {
+            mainController.saveCustomerToMain((Customer) customerList.getSelectionModel().getSelectedItem());
+
+            Stage stage = (Stage) saveCustomerBtn.getScene().getWindow();
+            stage.close();
+        } else {
+            alertdisplay("No customer", "Please choose one Customer");
+        }
+    }
+
+    public void saveCustomerToMain(Customer customer) {
+        this.customer = customer;
     }
 
     public void setEditData(Trip trip) {
@@ -297,18 +322,6 @@ public class TripController extends Controller implements Initializable {
 
         if (trip.getChauffeur() != null) {
             chauffeurList.getSelectionModel().select(trip.getCustomer());
-        }
-    }
-
-    public void chooseCustomer(ActionEvent actionEvent) {
-
-        if (customerList.getSelectionModel().getSelectedItem() != null) {
-            customer = (Customer) customerList.getSelectionModel().getSelectedItem();
-
-            Stage stage = (Stage) saveCustomerBtn.getScene().getWindow();
-            stage.close();
-        } else {
-            alertdisplay("No customer", "Please choose one Customer");
         }
     }
 

@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0"
+            minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="1010.0"
             xmlns="http://javafx.com/javafx/8.0.91" fx:controller="main.Controller.SearchController">
     <BorderPane onMouseClicked="#changeView" prefHeight="600.0" prefWidth="1010.0">
         <bottom>
@@ -73,15 +74,15 @@
                                   GridPane.columnIndex="1" GridPane.rowIndex="4">
                                 <children>
                                     <RadioButton fx:id="tourTypeAll" contentDisplay="RIGHT" mnemonicParsing="false"
-                                                 selected="true" text="All">
+                                                 onAction="#searchTripRadio" selected="true" text="All">
                                         <toggleGroup>
                                             <ToggleGroup fx:id="tourType"/>
                                         </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton fx:id="tourTypeStandard" mnemonicParsing="false" text="Standard"
-                                                 toggleGroup="$tourType"/>
-                                    <RadioButton fx:id="tourTypePrivate" mnemonicParsing="false" text="Private"
-                                                 toggleGroup="$tourType"/>
+                                    <RadioButton fx:id="tourTypeStandard" mnemonicParsing="false"
+                                                 onAction="#searchTripRadio" text="Standard" toggleGroup="$tourType"/>
+                                    <RadioButton fx:id="tourTypePrivate" mnemonicParsing="false"
+                                                 onAction="#searchTripRadio" text="Private" toggleGroup="$tourType"/>
                                 </children>
                             </HBox>
                             <Label text="Tour type:" GridPane.halignment="RIGHT" GridPane.rowIndex="4"/>

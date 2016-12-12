@@ -90,6 +90,38 @@ public class TripList implements Serializable {
     }
 
     /**
+     * Finds all trips that are not private.
+     *
+     * @return TripList of all trips that are not private.
+     */
+
+    public TripList findAllStandard() {
+        TripList result = new TripList();
+        for (Trip trip : trips) {
+            if (!trip.isPrivate()) {
+                result.add(trip);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Finds all trips that are private.
+     *
+     * @return TripList of all trips that are private.
+     */
+
+    public TripList findAllPrivate() {
+        TripList result = new TripList();
+        for (Trip trip : trips) {
+            if (trip.isPrivate()) {
+                result.add(trip);
+            }
+        }
+        return result;
+    }
+
+    /**
      * Finds all trips that starts at given date.
      *
      * @param date date to find by

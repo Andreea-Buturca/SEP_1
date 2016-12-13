@@ -31,6 +31,7 @@ public class Customer extends Person implements Serializable {
         super(name, address, email, phone);
         this.isCompany = isCompany;
         this.companyName = companyName;
+        this.points = 0;
     }
 
     /**
@@ -72,7 +73,7 @@ public class Customer extends Person implements Serializable {
      */
 
     public void addPointToCustomer() {
-        points = points++;
+        this.points++;
     }
 
     /**

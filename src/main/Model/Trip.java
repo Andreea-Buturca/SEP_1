@@ -333,7 +333,10 @@ public class Trip implements Serializable {
             tour += "Private Tour: ";
         } else if (!this.isPrivate())
             tour += "Tour to: ";
-        return tour + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd + ", distance: " + this.distance + " km" + extra + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: " + this.chauffeur.toString();
+        String stop = "";
+        {
+            stop += ", Stop: " +this.stops+" ";
+        return tour + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + stop + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd + ", distance: " + this.distance + " km" + extra + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: " + this.chauffeur.toString();
     }
 
     static class TripDateComparator implements Comparator<Trip> {

@@ -334,8 +334,10 @@ public class Trip implements Serializable {
         } else if (!this.isPrivate())
             tour += "Tour to: ";
         String stop = "";
+       /* if(this.stops != null)
         {
             stop += ", Stop: " +this.stops+" ";
+        }*/
         return tour + this.destination + ", place of departure: " + this.pickUpPoint.toString() + ", departure time and date: " + this.timeStart + ", " + this.dateStart + stop + ", arrival time and date: " + this.timeEnd + ", " + this.dateEnd + ", distance: " + this.distance + " km" + extra + ", standard price/pers: " + this.price + " dkk, " + this.bus.toString() + ", chauffeur: " + this.chauffeur.toString();
     }
 

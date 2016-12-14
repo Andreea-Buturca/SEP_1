@@ -71,6 +71,10 @@ public class DestinationList implements Serializable {
         return null;
     }
 
+    public boolean isEmpty(){
+        return destinations.isEmpty();
+    }
+
     /**
      * @return DestinationList converted to String
      */

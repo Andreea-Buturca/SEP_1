@@ -118,7 +118,7 @@ public class BusList implements Serializable {
                         inTrips.add(buse);
                     if (((from.before(trips.getArrayTrip().get(i).getDateObjStart())) && (to.before(trips.getArrayTrip().get(i).getDateObjStart())))
                             || ((from.after(trips.getArrayTrip().get(i).getDateObjEnd())) && (to.after(trips.getArrayTrip().get(i).getDateObjEnd())))) {
-                        result.add(buse);
+                       if(!result.getArrayBuses().contains(buse)) result.add(buse);
                     }
                 }
             }

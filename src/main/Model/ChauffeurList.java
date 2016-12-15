@@ -210,7 +210,7 @@ public class ChauffeurList implements Serializable {
                         inTrips.add(chauffeur);
                     if (((from.before(trips.getArrayTrip().get(i).getDateObjStart())) && (to.before(trips.getArrayTrip().get(i).getDateObjStart())))
                             || ((from.after(trips.getArrayTrip().get(i).getDateObjEnd())) && (to.after(trips.getArrayTrip().get(i).getDateObjEnd())))) {
-                        result.add(chauffeur);
+                   if(!result.contains(chauffeur))     result.add(chauffeur);
                     }
                 }
             }

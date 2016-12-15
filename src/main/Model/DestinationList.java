@@ -80,7 +80,7 @@ public class DestinationList implements Serializable {
      */
     public String toString() {
         String x = "";
-        for (int i = 0; i > this.destinations.size(); i++) {
+        for (int i = 0; i < this.destinations.size(); i++) {
             x += this.destinations.get(i) + " ";
             if (this.destinations.size() - 1 > i) {
                 x += ",";

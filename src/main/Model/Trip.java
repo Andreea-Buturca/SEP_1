@@ -330,9 +330,14 @@ public class Trip implements Serializable {
         }
         String tour = "";
         if (this.isPrivate()) {
-            tour += "Private Tour: ";
+            tour += "Private Tour for customer: "+ this.customer+ ", ";
         } else if (!this.isPrivate())
-            tour += "Tour to: ";
+        {
+            if(!this.dateStart.equals(this.dateEnd))
+            tour += "Travel to: ";
+            else if(this.dateStart.equals(this.dateEnd))
+                tour += "Trip to: ";
+        }
         String stop = "";
         if(!this.stops.isEmpty())
         {
